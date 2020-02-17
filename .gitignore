@@ -1,0 +1,9 @@
+/.idea
+/playground.py
+/.pytest_cache
+venv
+dump
+.vscode
+**/__pycache__
+.DS_Store
+.env

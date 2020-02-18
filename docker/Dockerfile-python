@@ -1,0 +1,9 @@
+FROM operam/base-images:python3.7-latest
+
+WORKDIR /usr/src/app
+
+ADD python .
+
+RUN pip install .[dev]
+
+CMD ["python"]

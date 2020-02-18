@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
 
-VERSION = 'py-1.0.0'
+VERSION = '1.0.0'
 setup(
-    name='tel_grammar_python',
+    name='antlr_tel',
     url='https://github.com/unite-io/tel_grammar/python',
     description='TEL Grammar parser in Python',
     version=VERSION,
-    # TODO not sure with following args..
-    packages=find_packages(include=['tel_python*']),
+    packages=['antlr_tel.grammar'],
+    package_dir={
+        'antlr_tel.grammar': 'generated',
+    },
     include_package_data=True,
     install_requires=[
         'antlr4-python3-runtime==4.8',

@@ -13,21 +13,19 @@ PYTHON_IMAGE_NAME_FULL?=$(VENDOR_NAME)/python-$(IMAGE_NAME)
 WORKDIR=/usr/src/app
 
 image-java:
-	DOCKER_BUILDKIT=1 docker build \
+	docker build \
 	    --pull \
 		-t $(JAVA_IMAGE_NAME_FULL):latest \
 		-f docker/Dockerfile-java .
 
 image-python:
-	DOCKER_BUILDKIT=1 docker build \
+	docker build \
 	    --pull \
 		-t $(PYTHON_IMAGE_NAME_FULL):latest \
 		-f docker/Dockerfile-python .
 
 PHONY: image-java image-python
 
-# SchematicsDeprecationWarning was spamming toooo much it was impossible to find test results. Ignoring.
-# Fix not yet in release https://github.com/schematics/schematics/pull/576
 test: image-python
 	docker run --rm ${PYTHON_IMAGE_NAME_FULL}:latest python -m pytest tests
 
@@ -40,7 +38,7 @@ build-code-python:
 		-v $(PWD):$(WORKDIR) \
 		--workdir ${WORKDIR} \
 		--rm ${JAVA_IMAGE_NAME_FULL}:latest \
-		java -Xmx500M -cp '/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH' org.antlr.v4.Tool -visitor -Dlanguage=Python3 -o python/tel_python -Xexact-output-dir grammar/Tel.g4
+		java -Xmx500M -cp '/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH' org.antlr.v4.Tool -visitor -Dlanguage=Python3 -o python/generated -Xexact-output-dir grammar/Tel.g4
 
 .PHONY: build-code-python
 

@@ -9,7 +9,7 @@ setup(
     version=VERSION,
     packages=['antlr_tel.grammar'],
     package_dir={
-        'antlr_tel.grammar': 'generated',
+        'antlr_tel.grammar': 'src/generated',
     },
     include_package_data=True,
     install_requires=[

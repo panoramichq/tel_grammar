@@ -1,11 +1,21 @@
 # Taxon Expression Language (TEL)
 
+## WARNING
+This grammar is still under development and can be change at will. If you want to use it,
+please consult your decision with data blending team in #fdev-data-glossary channel.
+
+## Introduction
+
 This repository contains formal definition of grammar for TEL written in [ANTLR v4](https://github.com/antlr/antlr4).
 It can generate following components in both python and JavaScript to handle parsing string expressions:
 
 - *lexer* - splits string expression into tokens
 - *parser* - connects tokens into parse tree (similar to AST)
 - *visitor* - class which helps to traverse generated parse tree
+
+## Grammar definition
+
+Current documentation about the language is available [here](https://diesel-service.operamprod.com/documentation#taxon-expression-language-tel).
 
 ## How to use it
 

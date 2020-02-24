@@ -3,15 +3,12 @@ from setuptools import setup, find_packages
 
 VERSION = '1.0.0'
 setup(
-    name='antlr_tel',
+    name='tel_grammar',
     url='https://github.com/unite-io/tel_grammar/python',
     description='TEL Grammar parser in Python',
     version=VERSION,
-    packages=['antlr_tel.grammar'],
-    package_dir={
-        'antlr_tel.grammar': 'src/generated',
-    },
-    include_package_data=True,
+    packages=find_packages(where='src'),
+    package_dir={'': 'src'},
     install_requires=[
         'antlr4-python3-runtime==4.8',
     ],

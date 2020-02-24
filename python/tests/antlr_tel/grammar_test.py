@@ -1,8 +1,9 @@
 import pytest
 from antlr4 import CommonTokenStream, InputStream
 
-from antlr_tel.grammar.TelLexer import TelLexer
-from antlr_tel.grammar.TelParser import TelParser
+from tel_grammar.antlr.TelLexer import TelLexer
+from tel_grammar.antlr.TelParser import TelParser
+
 
 @pytest.mark.parametrize(["test_case"], [
     # Basic operations

@@ -38,7 +38,7 @@ build-code-python:
 		-v $(PWD):$(WORKDIR) \
 		--workdir ${WORKDIR} \
 		--rm ${JAVA_IMAGE_NAME_FULL}:latest \
-		java -Xmx500M -cp '/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH' org.antlr.v4.Tool -visitor -Dlanguage=Python3 -o python/src/generated -Xexact-output-dir grammar/Tel.g4
+		java -Xmx500M -cp '/usr/local/lib/antlr-4.8-complete.jar:$$CLASSPATH' org.antlr.v4.Tool -visitor -Dlanguage=Python3 -o python/src/tel_grammar/antlr -Xexact-output-dir grammar/Tel.g4
 
 .PHONY: build-code-python
 

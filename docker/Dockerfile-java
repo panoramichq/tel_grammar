@@ -1,0 +1,8 @@
+FROM openjdk:15-slim
+
+RUN apt-get update && apt-get install -y wget
+RUN wget https://www.antlr.org/download/antlr-4.8-complete.jar -P /usr/local/lib
+
+ENV CLASSPATH=".:/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
+RUN echo "java -Xmx500M -cp \"/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH\" org.antlr.v4.Tool \$@" >> /usr/local/bin/antlr4 && chmod u+x /usr/local/bin/antlr4
+RUN echo "alias grun='java org.antlr.v4.runtime.misc.TestRig'" >> ~/.bashrc

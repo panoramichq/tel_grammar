@@ -15,7 +15,7 @@ It can generate following components in both python and JavaScript to handle par
 
 ## Grammar definition
 
-Current documentation about the language is available [here](https://diesel-service.operamprod.com/documentation#taxon-expression-language-tel).
+Current documentation on the language is available [here](https://diesel-service.operamprod.com/documentation#taxon-expression-language-tel).
 
 ## How to use it
 

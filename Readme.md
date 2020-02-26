@@ -31,6 +31,11 @@ It builds local docker image to run python tests. This image is used to run test
 
 It generates all components in python language
 
+
+### `make build-code-js`
+
+It generates all components in JavaScript language
+
 ### `make test`
 
 Runs tests on the current version of grammar.

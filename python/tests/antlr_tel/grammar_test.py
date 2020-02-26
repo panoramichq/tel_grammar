@@ -31,6 +31,8 @@ from tel_grammar.antlr.TelParser import TelParser
     ('ds|slug + 10 - sluging',),
     # Handle nested functions
     ('fn_4(fn_1(slug))',),
+    ('"str1" + "str2"',),
+    ('"str1\"escape"',),
 ])
 def test_grammar(test_case):
     inp_stream = InputStream(test_case)

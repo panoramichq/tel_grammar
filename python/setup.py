@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 setup(
     name='tel_grammar',
     url='https://github.com/unite-io/tel_grammar/python',

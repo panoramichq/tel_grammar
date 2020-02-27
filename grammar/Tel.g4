@@ -6,7 +6,7 @@ TRUE : 'true' ;                     // true
 FALSE : 'false' ;                   // false
 NOT : 'not';
 WORD : [a-zA-Z0-9_]+;               // one word (either part of slug or fn name)
-STRING_CONSTANT : '"' (.)* '"' ;    // string constant
+STRING_CONSTANT : '"' ( '\\"' | ~'"' )* '"' ;    // string constant. Not greedy, and supports \ to escape " char.
 
 L_BRACKET: '(';
 R_BRACKET: ')';
@@ -37,18 +37,18 @@ taxon: WORD (TAXON_NAMESPACE_DELIMITER WORD)? ;  // matches a taxon slug
 parse: expr EOF; // main rule for parsing
 
 expr
- : NOT expr                                                     #notExpr
- | expr op=(OR | AND | EQ | NEQ | GT | LT | GTEQ | LTEQ) expr   #logicalExpr
- | expr op=(MULT | DIV) expr                                    #multiplicationExpr
- | expr op=(PLUS | MINUS) expr                                  #additiveExpr
- | atom                                                         #atomExpr
- ;
+: NOT expr                                                     #notExpr
+| expr op=(OR | AND | EQ | NEQ | GT | LT | GTEQ | LTEQ) expr   #logicalExpr
+| expr op=(MULT | DIV) expr                                    #multiplicationExpr
+| expr op=(PLUS | MINUS) expr                                  #additiveExpr
+| atom                                                         #atomExpr
+;
 
 atom
- :  L_BRACKET expr R_BRACKET  #bracketExpr
- | (INT | REAL)              #numberAtom
- | fn                        #fnExpr
- | (TRUE | FALSE)            #booleanAtom
- | taxon                     #taxonSlugAtom
- | STRING_CONSTANT           #stringConstantAtom
- ;
+:  L_BRACKET expr R_BRACKET  #bracketExpr
+| (INT | REAL)              #numberAtom
+| fn                        #fnExpr
+| (TRUE | FALSE)            #booleanAtom
+| taxon                     #taxonSlugAtom
+| STRING_CONSTANT           #stringConstantAtom
+;

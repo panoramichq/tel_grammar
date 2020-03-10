@@ -1,3 +1,4 @@
-include *.toml *.md *.yaml .flake8
+include *.toml *.md *.yaml .flake8 Makefile
+include ../README.md
 include tox.ini
 recursive-include tests *.py

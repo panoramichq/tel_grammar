@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import os
+
 from setuptools import setup, find_packages
 
 VERSION = '1.0.1'
@@ -23,6 +25,6 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     install_requires=['antlr4-python3-runtime==4.8'],
-    extras_require={'tests': ['pytest>=5.3.5'], 'dev': ['pytest>=5.3.5', 'pre-commit>=2.1.1.']},
+    extras_require={"tests": ["pytest>=5.3.5"], "dev": ["pytest>=5.3.5", "pre-commit>=2.1.1"]},
     include_package_data=True,
 )

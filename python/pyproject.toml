@@ -20,5 +20,5 @@ not_skip="__init__.py"
 use_parentheses=true
 
 # TODO: add these back in?
-# known_first_party="tel_grammar"
-# known_third_party=["bugsnag", "consul", "datadog", "operamdatacol", "pynamodb", "pytest", "setuptools", "structlog"]
+known_first_party="tel_grammar"
+known_third_party=["pytest", "setuptools"]

@@ -7,7 +7,7 @@ pipeline {
         axes {
           axis {
             name 'TOX_ENV'
-            values 'py36', 'py37', 'py38', 'lint', 'manifest'
+            values 'py36', 'py37', 'py38', 'manifest'
           }
         }
         stages {

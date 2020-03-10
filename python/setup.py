@@ -13,8 +13,6 @@ setup(
     maintainer="Panoramic",
     keywords=["grammar", "taxonomy"],
     version=VERSION,
-    long_description=open("README.md").read(),
-    long_description_content_type="text/markdown",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     python_requires=">=3.6",

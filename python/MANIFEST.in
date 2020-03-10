@@ -1,0 +1,3 @@
+include *.toml *.md *.yaml .flake8
+include tox.ini
+recursive-include tests *.py

@@ -1,0 +1,5 @@
+include *.toml *.md *.yaml .flake8 Makefile
+include tox.ini
+recursive-include src *.interp
+recursive-include src *.tokens
+recursive-include tests *.py

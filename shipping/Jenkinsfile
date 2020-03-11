@@ -36,23 +36,25 @@ pipeline {
         }
       }
       environment {
-        VERSION = sh(script: 'python setup.py --version', returnStdout: true).trim()
+        VERSION = sh(script: 'python python/setup.py --version', returnStdout: true).trim()
       }
       steps {
-        sh 'cd python && python setup.py sdist bdist_wheel'
-        rtUpload(
-          serverId: 'pano',
-          spec: '''{
-            "files": [
-              {
-                "pattern": "python/dist/*",
-                "target": "pypi/tel-grammar/${VERSION}/",
-                "props": "pypi.name=tel-grammar;pypi.normalized.name=tel-grammar;pypi.requires.python=>=3.6;pypi.version=${VERSION}"
-              }
-            ]
-          }''',
-          failNoOp: true,
-        )
+        dir('python')  {
+          sh 'python setup.py sdist bdist_wheel'
+          rtUpload(
+            serverId: 'pano',
+            spec: '''{
+              "files": [
+                {
+                  "pattern": "dist/*",
+                  "target": "pypi/tel-grammar/${VERSION}/",
+                  "props": "pypi.name=tel-grammar;pypi.normalized.name=tel-grammar;pypi.requires.python=>=3.6;pypi.version=${VERSION}"
+                }
+              ]
+            }''',
+            failNoOp: true,
+          )
+        }
       }
       post {
         success {

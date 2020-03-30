@@ -30,7 +30,7 @@ DIV : '/';
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
 // auxiliarly rules
-fn : WORD L_BRACKET expr (FN_PARAMETER_DELIMITER expr)* R_BRACKET ; // matches functions
+fn : WORD L_BRACKET expr? (FN_PARAMETER_DELIMITER expr)* R_BRACKET ; // matches functions
 taxon: WORD (TAXON_NAMESPACE_DELIMITER WORD)? ;  // matches a taxon slug
 
 // final rules

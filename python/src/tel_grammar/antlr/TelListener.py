@@ -26,6 +26,15 @@ class TelListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TelParser#taxon_expr.
+    def enterTaxon_expr(self, ctx:TelParser.Taxon_exprContext):
+        pass
+
+    # Exit a parse tree produced by TelParser#taxon_expr.
+    def exitTaxon_expr(self, ctx:TelParser.Taxon_exprContext):
+        pass
+
+
     # Enter a parse tree produced by TelParser#parse.
     def enterParse(self, ctx:TelParser.ParseContext):
         pass

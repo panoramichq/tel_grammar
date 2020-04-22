@@ -34,6 +34,8 @@ from tel_grammar.antlr.TelParser import TelParser
         ('fn_4(fn_1(slug))',),
         ('"str1" + "str2"',),
         ('"str1\"escape"',),
+        # Handle optional taxons
+        ('?ds|slug + 10 - ?sluging + sluggingX',),
     ],
 )
 def test_grammar(test_case):

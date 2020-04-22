@@ -4,7 +4,7 @@ import os
 from setuptools import find_packages, setup
 
 
-VERSION = '1.0.3'
+VERSION = '1.0.4'
 setup(
     name='tel_grammar',
     description='TEL Grammar parser in Python',

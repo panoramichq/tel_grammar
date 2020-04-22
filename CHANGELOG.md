@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.4 Release
+
+Add optional `?` taxon prefix to note that the given taxon is optional.
+
 ## Version 1.0.3 Release
 
 Allow function without any argument

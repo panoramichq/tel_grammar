@@ -29,6 +29,15 @@ TelListener.prototype.exitTaxon = function(ctx) {
 };
 
 
+// Enter a parse tree produced by TelParser#taxon_expr.
+TelListener.prototype.enterTaxon_expr = function(ctx) {
+};
+
+// Exit a parse tree produced by TelParser#taxon_expr.
+TelListener.prototype.exitTaxon_expr = function(ctx) {
+};
+
+
 // Enter a parse tree produced by TelParser#parse.
 TelListener.prototype.enterParse = function(ctx) {
 };

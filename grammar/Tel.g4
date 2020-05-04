@@ -40,9 +40,9 @@ parse: expr EOF; // main rule for parsing
 
 expr
 : NOT expr                                                     #notExpr
-| expr op=(OR | AND | EQ | NEQ | GT | LT | GTEQ | LTEQ) expr   #logicalExpr
 | expr op=(MULT | DIV) expr                                    #multiplicationExpr
 | expr op=(PLUS | MINUS) expr                                  #additiveExpr
+| expr op=(OR | AND | EQ | NEQ | GT | LT | GTEQ | LTEQ) expr   #logicalExpr
 | atom                                                         #atomExpr
 ;
 

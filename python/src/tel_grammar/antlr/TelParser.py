@@ -18,7 +18,7 @@ def serializedATN():
         buf.write("\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6.\n\6\3\6\3\6\3\6\3\6\3")
         buf.write("\6\3\6\3\6\3\6\3\6\7\69\n\6\f\6\16\6<\13\6\3\7\3\7\3\7")
         buf.write("\3\7\3\7\3\7\3\7\3\7\3\7\5\7G\n\7\3\7\2\3\n\b\2\4\6\b")
-        buf.write("\n\f\2\7\3\2\16\25\3\2\30\31\3\2\26\27\3\2\3\4\3\2\5\6")
+        buf.write("\n\f\2\7\3\2\30\31\3\2\26\27\3\2\16\25\3\2\3\4\3\2\5\6")
         buf.write("\2O\2\16\3\2\2\2\4\34\3\2\2\2\6\"\3\2\2\2\b&\3\2\2\2\n")
         buf.write("-\3\2\2\2\fF\3\2\2\2\16\17\7\b\2\2\17\21\7\n\2\2\20\22")
         buf.write("\5\n\6\2\21\20\3\2\2\2\21\22\3\2\2\2\22\27\3\2\2\2\23")
@@ -595,7 +595,7 @@ class TelParser ( Parser ):
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
                     if la_ == 1:
-                        localctx = TelParser.LogicalExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = TelParser.MultiplicationExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 45
                         if not self.precpred(self._ctx, 4):
@@ -604,7 +604,7 @@ class TelParser ( Parser ):
                         self.state = 46
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << TelParser.OR) | (1 << TelParser.AND) | (1 << TelParser.EQ) | (1 << TelParser.NEQ) | (1 << TelParser.GT) | (1 << TelParser.LT) | (1 << TelParser.GTEQ) | (1 << TelParser.LTEQ))) != 0)):
+                        if not(_la==TelParser.MULT or _la==TelParser.DIV):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -614,7 +614,7 @@ class TelParser ( Parser ):
                         pass
 
                     elif la_ == 2:
-                        localctx = TelParser.MultiplicationExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = TelParser.AdditiveExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 48
                         if not self.precpred(self._ctx, 3):
@@ -623,7 +623,7 @@ class TelParser ( Parser ):
                         self.state = 49
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==TelParser.MULT or _la==TelParser.DIV):
+                        if not(_la==TelParser.PLUS or _la==TelParser.MINUS):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -633,7 +633,7 @@ class TelParser ( Parser ):
                         pass
 
                     elif la_ == 3:
-                        localctx = TelParser.AdditiveExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
+                        localctx = TelParser.LogicalExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 51
                         if not self.precpred(self._ctx, 2):
@@ -642,7 +642,7 @@ class TelParser ( Parser ):
                         self.state = 52
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
-                        if not(_la==TelParser.PLUS or _la==TelParser.MINUS):
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << TelParser.OR) | (1 << TelParser.AND) | (1 << TelParser.EQ) | (1 << TelParser.NEQ) | (1 << TelParser.GT) | (1 << TelParser.LT) | (1 << TelParser.GTEQ) | (1 << TelParser.LTEQ))) != 0)):
                             localctx.op = self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)

@@ -20,8 +20,8 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0007\u00069\n\u0006\f\u0006\u000e\u0006<\u000b\u0006\u0003\u0007\u0003",
     "\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003",
     "\u0007\u0003\u0007\u0005\u0007G\n\u0007\u0003\u0007\u0002\u0003\n\b",
-    "\u0002\u0004\u0006\b\n\f\u0002\u0007\u0003\u0002\u000e\u0015\u0003\u0002",
-    "\u0018\u0019\u0003\u0002\u0016\u0017\u0003\u0002\u0003\u0004\u0003\u0002",
+    "\u0002\u0004\u0006\b\n\f\u0002\u0007\u0003\u0002\u0018\u0019\u0003\u0002",
+    "\u0016\u0017\u0003\u0002\u000e\u0015\u0003\u0002\u0003\u0004\u0003\u0002",
     "\u0005\u0006\u0002O\u0002\u000e\u0003\u0002\u0002\u0002\u0004\u001c",
     "\u0003\u0002\u0002\u0002\u0006\"\u0003\u0002\u0002\u0002\b&\u0003\u0002",
     "\u0002\u0002\n-\u0003\u0002\u0002\u0002\fF\u0003\u0002\u0002\u0002\u000e",
@@ -829,7 +829,7 @@ TelParser.prototype.expr = function(_p) {
                 var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
                 switch(la_) {
                 case 1:
-                    localctx = new LogicalExprContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new MultiplicationExprContext(this, new ExprContext(this, _parentctx, _parentState));
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
                     this.state = 45;
                     if (!( this.precpred(this._ctx, 4))) {
@@ -838,7 +838,7 @@ TelParser.prototype.expr = function(_p) {
                     this.state = 46;
                     localctx.op = this._input.LT(1);
                     _la = this._input.LA(1);
-                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.OR) | (1 << TelParser.AND) | (1 << TelParser.EQ) | (1 << TelParser.NEQ) | (1 << TelParser.GT) | (1 << TelParser.LT) | (1 << TelParser.GTEQ) | (1 << TelParser.LTEQ))) !== 0))) {
+                    if(!(_la===TelParser.MULT || _la===TelParser.DIV)) {
                         localctx.op = this._errHandler.recoverInline(this);
                     }
                     else {
@@ -850,7 +850,7 @@ TelParser.prototype.expr = function(_p) {
                     break;
 
                 case 2:
-                    localctx = new MultiplicationExprContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new AdditiveExprContext(this, new ExprContext(this, _parentctx, _parentState));
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
                     this.state = 48;
                     if (!( this.precpred(this._ctx, 3))) {
@@ -859,7 +859,7 @@ TelParser.prototype.expr = function(_p) {
                     this.state = 49;
                     localctx.op = this._input.LT(1);
                     _la = this._input.LA(1);
-                    if(!(_la===TelParser.MULT || _la===TelParser.DIV)) {
+                    if(!(_la===TelParser.PLUS || _la===TelParser.MINUS)) {
                         localctx.op = this._errHandler.recoverInline(this);
                     }
                     else {
@@ -871,7 +871,7 @@ TelParser.prototype.expr = function(_p) {
                     break;
 
                 case 3:
-                    localctx = new AdditiveExprContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new LogicalExprContext(this, new ExprContext(this, _parentctx, _parentState));
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
                     this.state = 51;
                     if (!( this.precpred(this._ctx, 2))) {
@@ -880,7 +880,7 @@ TelParser.prototype.expr = function(_p) {
                     this.state = 52;
                     localctx.op = this._input.LT(1);
                     _la = this._input.LA(1);
-                    if(!(_la===TelParser.PLUS || _la===TelParser.MINUS)) {
+                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.OR) | (1 << TelParser.AND) | (1 << TelParser.EQ) | (1 << TelParser.NEQ) | (1 << TelParser.GT) | (1 << TelParser.LT) | (1 << TelParser.GTEQ) | (1 << TelParser.LTEQ))) !== 0))) {
                         localctx.op = this._errHandler.recoverInline(this);
                     }
                     else {

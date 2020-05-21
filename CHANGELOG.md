@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.6 Release
+
+Add support for tag operator `:`, e.g. `campaign_tags:film`
+
 ## Version 1.0.5 Release
 
 Addition and multiplication has higher priority than logical expression

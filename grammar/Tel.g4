@@ -11,6 +11,7 @@ STRING_CONSTANT : '"' ( '\\"' | ~'"' )* '"' ;    // string constant. Not greedy,
 L_BRACKET: '(';
 R_BRACKET: ')';
 TAXON_NAMESPACE_DELIMITER: '|';
+TAXON_TAG_DELIMITER: ':';
 FN_PARAMETER_DELIMITER: ',';
 // OPERATORS
 OR : '||';
@@ -32,7 +33,7 @@ WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
 // auxiliarly rules
 fn : WORD L_BRACKET expr? (FN_PARAMETER_DELIMITER expr)* R_BRACKET ; // matches functions
-taxon: WORD (TAXON_NAMESPACE_DELIMITER WORD)? ;  // matches a taxon slug
+taxon: WORD (TAXON_NAMESPACE_DELIMITER WORD)? (TAXON_TAG_DELIMITER WORD)? ;  // matches a taxon slug
 taxon_expr: OPTIONAL_TAXON_OPERATOR?taxon ;  // taxon slug with optional taxon prefix operator
 
 // final rules

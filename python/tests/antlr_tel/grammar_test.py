@@ -36,6 +36,7 @@ from tel_grammar.antlr.TelParser import TelParser
         ('"str1\"escape"',),
         # Handle optional taxons
         ('?ds|slug + 10 - ?sluging + sluggingX',),
+        ('fb|a:x + fb|a + a:x + ?fb|a:x + ?fb|a + ?a:x',),
     ],
 )
 def test_grammar(test_case):

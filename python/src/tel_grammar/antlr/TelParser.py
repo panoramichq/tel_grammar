@@ -11,32 +11,33 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33")
-        buf.write("I\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34")
+        buf.write("M\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2")
         buf.write("\3\2\3\2\5\2\22\n\2\3\2\3\2\7\2\26\n\2\f\2\16\2\31\13")
-        buf.write("\2\3\2\3\2\3\3\3\3\3\3\5\3 \n\3\3\4\5\4#\n\4\3\4\3\4\3")
-        buf.write("\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6.\n\6\3\6\3\6\3\6\3\6\3")
-        buf.write("\6\3\6\3\6\3\6\3\6\7\69\n\6\f\6\16\6<\13\6\3\7\3\7\3\7")
-        buf.write("\3\7\3\7\3\7\3\7\3\7\3\7\5\7G\n\7\3\7\2\3\n\b\2\4\6\b")
-        buf.write("\n\f\2\7\3\2\30\31\3\2\26\27\3\2\16\25\3\2\3\4\3\2\5\6")
-        buf.write("\2O\2\16\3\2\2\2\4\34\3\2\2\2\6\"\3\2\2\2\b&\3\2\2\2\n")
-        buf.write("-\3\2\2\2\fF\3\2\2\2\16\17\7\b\2\2\17\21\7\n\2\2\20\22")
-        buf.write("\5\n\6\2\21\20\3\2\2\2\21\22\3\2\2\2\22\27\3\2\2\2\23")
-        buf.write("\24\7\r\2\2\24\26\5\n\6\2\25\23\3\2\2\2\26\31\3\2\2\2")
-        buf.write("\27\25\3\2\2\2\27\30\3\2\2\2\30\32\3\2\2\2\31\27\3\2\2")
-        buf.write("\2\32\33\7\13\2\2\33\3\3\2\2\2\34\37\7\b\2\2\35\36\7\f")
-        buf.write("\2\2\36 \7\b\2\2\37\35\3\2\2\2\37 \3\2\2\2 \5\3\2\2\2")
-        buf.write("!#\7\32\2\2\"!\3\2\2\2\"#\3\2\2\2#$\3\2\2\2$%\5\4\3\2")
-        buf.write("%\7\3\2\2\2&\'\5\n\6\2\'(\7\2\2\3(\t\3\2\2\2)*\b\6\1\2")
-        buf.write("*+\7\7\2\2+.\5\n\6\7,.\5\f\7\2-)\3\2\2\2-,\3\2\2\2.:\3")
-        buf.write("\2\2\2/\60\f\6\2\2\60\61\t\2\2\2\619\5\n\6\7\62\63\f\5")
-        buf.write("\2\2\63\64\t\3\2\2\649\5\n\6\6\65\66\f\4\2\2\66\67\t\4")
-        buf.write("\2\2\679\5\n\6\58/\3\2\2\28\62\3\2\2\28\65\3\2\2\29<\3")
-        buf.write("\2\2\2:8\3\2\2\2:;\3\2\2\2;\13\3\2\2\2<:\3\2\2\2=>\7\n")
-        buf.write("\2\2>?\5\n\6\2?@\7\13\2\2@G\3\2\2\2AG\t\5\2\2BG\5\2\2")
-        buf.write("\2CG\t\6\2\2DG\5\6\4\2EG\7\t\2\2F=\3\2\2\2FA\3\2\2\2F")
-        buf.write("B\3\2\2\2FC\3\2\2\2FD\3\2\2\2FE\3\2\2\2G\r\3\2\2\2\n\21")
-        buf.write("\27\37\"-8:F")
+        buf.write("\2\3\2\3\2\3\3\3\3\3\3\5\3 \n\3\3\3\3\3\5\3$\n\3\3\4\5")
+        buf.write("\4\'\n\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6\62\n")
+        buf.write("\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\7\6=\n\6\f\6\16")
+        buf.write("\6@\13\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7K\n\7")
+        buf.write("\3\7\2\3\n\b\2\4\6\b\n\f\2\7\3\2\31\32\3\2\27\30\3\2\17")
+        buf.write("\26\3\2\3\4\3\2\5\6\2T\2\16\3\2\2\2\4\34\3\2\2\2\6&\3")
+        buf.write("\2\2\2\b*\3\2\2\2\n\61\3\2\2\2\fJ\3\2\2\2\16\17\7\b\2")
+        buf.write("\2\17\21\7\n\2\2\20\22\5\n\6\2\21\20\3\2\2\2\21\22\3\2")
+        buf.write("\2\2\22\27\3\2\2\2\23\24\7\16\2\2\24\26\5\n\6\2\25\23")
+        buf.write("\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30")
+        buf.write("\32\3\2\2\2\31\27\3\2\2\2\32\33\7\13\2\2\33\3\3\2\2\2")
+        buf.write("\34\37\7\b\2\2\35\36\7\f\2\2\36 \7\b\2\2\37\35\3\2\2\2")
+        buf.write("\37 \3\2\2\2 #\3\2\2\2!\"\7\r\2\2\"$\7\b\2\2#!\3\2\2\2")
+        buf.write("#$\3\2\2\2$\5\3\2\2\2%\'\7\33\2\2&%\3\2\2\2&\'\3\2\2\2")
+        buf.write("\'(\3\2\2\2()\5\4\3\2)\7\3\2\2\2*+\5\n\6\2+,\7\2\2\3,")
+        buf.write("\t\3\2\2\2-.\b\6\1\2./\7\7\2\2/\62\5\n\6\7\60\62\5\f\7")
+        buf.write("\2\61-\3\2\2\2\61\60\3\2\2\2\62>\3\2\2\2\63\64\f\6\2\2")
+        buf.write("\64\65\t\2\2\2\65=\5\n\6\7\66\67\f\5\2\2\678\t\3\2\28")
+        buf.write("=\5\n\6\69:\f\4\2\2:;\t\4\2\2;=\5\n\6\5<\63\3\2\2\2<\66")
+        buf.write("\3\2\2\2<9\3\2\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?\13\3")
+        buf.write("\2\2\2@>\3\2\2\2AB\7\n\2\2BC\5\n\6\2CD\7\13\2\2DK\3\2")
+        buf.write("\2\2EK\t\5\2\2FK\5\2\2\2GK\t\6\2\2HK\5\6\4\2IK\7\t\2\2")
+        buf.write("JA\3\2\2\2JE\3\2\2\2JF\3\2\2\2JG\3\2\2\2JH\3\2\2\2JI\3")
+        buf.write("\2\2\2K\r\3\2\2\2\13\21\27\37#&\61<>J")
         return buf.getvalue()
 
 
@@ -52,15 +53,16 @@ class TelParser ( Parser ):
 
     literalNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "'true'", "'false'", 
                      "'not'", "<INVALID>", "<INVALID>", "'('", "')'", "'|'", 
-                     "','", "'||'", "'&&'", "'=='", "'!='", "'>'", "'<'", 
-                     "'>='", "'<='", "'+'", "'-'", "'*'", "'/'", "'?'" ]
+                     "':'", "','", "'||'", "'&&'", "'=='", "'!='", "'>'", 
+                     "'<'", "'>='", "'<='", "'+'", "'-'", "'*'", "'/'", 
+                     "'?'" ]
 
     symbolicNames = [ "<INVALID>", "INT", "REAL", "TRUE", "FALSE", "NOT", 
                       "WORD", "STRING_CONSTANT", "L_BRACKET", "R_BRACKET", 
-                      "TAXON_NAMESPACE_DELIMITER", "FN_PARAMETER_DELIMITER", 
-                      "OR", "AND", "EQ", "NEQ", "GT", "LT", "GTEQ", "LTEQ", 
-                      "PLUS", "MINUS", "MULT", "DIV", "OPTIONAL_TAXON_OPERATOR", 
-                      "WS" ]
+                      "TAXON_NAMESPACE_DELIMITER", "TAXON_TAG_DELIMITER", 
+                      "FN_PARAMETER_DELIMITER", "OR", "AND", "EQ", "NEQ", 
+                      "GT", "LT", "GTEQ", "LTEQ", "PLUS", "MINUS", "MULT", 
+                      "DIV", "OPTIONAL_TAXON_OPERATOR", "WS" ]
 
     RULE_fn = 0
     RULE_taxon = 1
@@ -82,21 +84,22 @@ class TelParser ( Parser ):
     L_BRACKET=8
     R_BRACKET=9
     TAXON_NAMESPACE_DELIMITER=10
-    FN_PARAMETER_DELIMITER=11
-    OR=12
-    AND=13
-    EQ=14
-    NEQ=15
-    GT=16
-    LT=17
-    GTEQ=18
-    LTEQ=19
-    PLUS=20
-    MINUS=21
-    MULT=22
-    DIV=23
-    OPTIONAL_TAXON_OPERATOR=24
-    WS=25
+    TAXON_TAG_DELIMITER=11
+    FN_PARAMETER_DELIMITER=12
+    OR=13
+    AND=14
+    EQ=15
+    NEQ=16
+    GT=17
+    LT=18
+    GTEQ=19
+    LTEQ=20
+    PLUS=21
+    MINUS=22
+    MULT=23
+    DIV=24
+    OPTIONAL_TAXON_OPERATOR=25
+    WS=26
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -212,6 +215,9 @@ class TelParser ( Parser ):
         def TAXON_NAMESPACE_DELIMITER(self):
             return self.getToken(TelParser.TAXON_NAMESPACE_DELIMITER, 0)
 
+        def TAXON_TAG_DELIMITER(self):
+            return self.getToken(TelParser.TAXON_TAG_DELIMITER, 0)
+
         def getRuleIndex(self):
             return TelParser.RULE_taxon
 
@@ -247,6 +253,16 @@ class TelParser ( Parser ):
                 self.state = 27
                 self.match(TelParser.TAXON_NAMESPACE_DELIMITER)
                 self.state = 28
+                self.match(TelParser.WORD)
+
+
+            self.state = 33
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
+            if la_ == 1:
+                self.state = 31
+                self.match(TelParser.TAXON_TAG_DELIMITER)
+                self.state = 32
                 self.match(TelParser.WORD)
 
 
@@ -299,15 +315,15 @@ class TelParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 32
+            self.state = 36
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==TelParser.OPTIONAL_TAXON_OPERATOR:
-                self.state = 31
+                self.state = 35
                 self.match(TelParser.OPTIONAL_TAXON_OPERATOR)
 
 
-            self.state = 34
+            self.state = 38
             self.taxon()
         except RecognitionException as re:
             localctx.exception = re
@@ -357,9 +373,9 @@ class TelParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_parse)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 36
+            self.state = 40
             self.expr(0)
-            self.state = 37
+            self.state = 41
             self.match(TelParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -559,7 +575,7 @@ class TelParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 43
+            self.state = 47
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [TelParser.NOT]:
@@ -567,41 +583,41 @@ class TelParser ( Parser ):
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 40
+                self.state = 44
                 self.match(TelParser.NOT)
-                self.state = 41
+                self.state = 45
                 self.expr(5)
                 pass
             elif token in [TelParser.INT, TelParser.REAL, TelParser.TRUE, TelParser.FALSE, TelParser.WORD, TelParser.STRING_CONSTANT, TelParser.L_BRACKET, TelParser.OPTIONAL_TAXON_OPERATOR]:
                 localctx = TelParser.AtomExprContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 42
+                self.state = 46
                 self.atom()
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 56
+            self.state = 60
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 54
+                    self.state = 58
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
                     if la_ == 1:
                         localctx = TelParser.MultiplicationExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 45
+                        self.state = 49
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 46
+                        self.state = 50
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==TelParser.MULT or _la==TelParser.DIV):
@@ -609,18 +625,18 @@ class TelParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 47
+                        self.state = 51
                         self.expr(5)
                         pass
 
                     elif la_ == 2:
                         localctx = TelParser.AdditiveExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 48
+                        self.state = 52
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 49
+                        self.state = 53
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==TelParser.PLUS or _la==TelParser.MINUS):
@@ -628,18 +644,18 @@ class TelParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 50
+                        self.state = 54
                         self.expr(4)
                         pass
 
                     elif la_ == 3:
                         localctx = TelParser.LogicalExprContext(self, TelParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 51
+                        self.state = 55
                         if not self.precpred(self._ctx, 2):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                        self.state = 52
+                        self.state = 56
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << TelParser.OR) | (1 << TelParser.AND) | (1 << TelParser.EQ) | (1 << TelParser.NEQ) | (1 << TelParser.GT) | (1 << TelParser.LT) | (1 << TelParser.GTEQ) | (1 << TelParser.LTEQ))) != 0)):
@@ -647,14 +663,14 @@ class TelParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 53
+                        self.state = 57
                         self.expr(3)
                         pass
 
              
-                self.state = 58
+                self.state = 62
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,6,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -843,24 +859,24 @@ class TelParser ( Parser ):
         self.enterRule(localctx, 10, self.RULE_atom)
         self._la = 0 # Token type
         try:
-            self.state = 68
+            self.state = 72
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
                 localctx = TelParser.BracketExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 59
+                self.state = 63
                 self.match(TelParser.L_BRACKET)
-                self.state = 60
+                self.state = 64
                 self.expr(0)
-                self.state = 61
+                self.state = 65
                 self.match(TelParser.R_BRACKET)
                 pass
 
             elif la_ == 2:
                 localctx = TelParser.NumberAtomContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 63
+                self.state = 67
                 _la = self._input.LA(1)
                 if not(_la==TelParser.INT or _la==TelParser.REAL):
                     self._errHandler.recoverInline(self)
@@ -872,14 +888,14 @@ class TelParser ( Parser ):
             elif la_ == 3:
                 localctx = TelParser.FnExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 64
+                self.state = 68
                 self.fn()
                 pass
 
             elif la_ == 4:
                 localctx = TelParser.BooleanAtomContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 65
+                self.state = 69
                 _la = self._input.LA(1)
                 if not(_la==TelParser.TRUE or _la==TelParser.FALSE):
                     self._errHandler.recoverInline(self)
@@ -891,14 +907,14 @@ class TelParser ( Parser ):
             elif la_ == 5:
                 localctx = TelParser.TaxonSlugAtomContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
-                self.state = 66
+                self.state = 70
                 self.taxon_expr()
                 pass
 
             elif la_ == 6:
                 localctx = TelParser.StringConstantAtomContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
-                self.state = 67
+                self.state = 71
                 self.match(TelParser.STRING_CONSTANT)
                 pass
 

@@ -137,6 +137,15 @@ TelListener.prototype.exitTaxonSlugAtom = function(ctx) {
 };
 
 
+// Enter a parse tree produced by TelParser#singleQuotedAtom.
+TelListener.prototype.enterSingleQuotedAtom = function(ctx) {
+};
+
+// Exit a parse tree produced by TelParser#singleQuotedAtom.
+TelListener.prototype.exitSingleQuotedAtom = function(ctx) {
+};
+
+
 // Enter a parse tree produced by TelParser#stringConstantAtom.
 TelListener.prototype.enterStringConstantAtom = function(ctx) {
 };

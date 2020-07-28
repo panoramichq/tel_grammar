@@ -8,7 +8,7 @@ var grammarFileName = "Tel.g4";
 
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003\u001cM\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0003\u001dN\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
     "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0003",
     "\u0002\u0003\u0002\u0003\u0002\u0005\u0002\u0012\n\u0002\u0003\u0002",
     "\u0003\u0002\u0007\u0002\u0016\n\u0002\f\u0002\u000e\u0002\u0019\u000b",
@@ -20,43 +20,44 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0007\u0006=\n\u0006",
     "\f\u0006\u000e\u0006@\u000b\u0006\u0003\u0007\u0003\u0007\u0003\u0007",
     "\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007",
-    "\u0005\u0007K\n\u0007\u0003\u0007\u0002\u0003\n\b\u0002\u0004\u0006",
-    "\b\n\f\u0002\u0007\u0003\u0002\u0019\u001a\u0003\u0002\u0017\u0018\u0003",
-    "\u0002\u000f\u0016\u0003\u0002\u0003\u0004\u0003\u0002\u0005\u0006\u0002",
-    "T\u0002\u000e\u0003\u0002\u0002\u0002\u0004\u001c\u0003\u0002\u0002",
-    "\u0002\u0006&\u0003\u0002\u0002\u0002\b*\u0003\u0002\u0002\u0002\n1",
-    "\u0003\u0002\u0002\u0002\fJ\u0003\u0002\u0002\u0002\u000e\u000f\u0007",
-    "\b\u0002\u0002\u000f\u0011\u0007\n\u0002\u0002\u0010\u0012\u0005\n\u0006",
-    "\u0002\u0011\u0010\u0003\u0002\u0002\u0002\u0011\u0012\u0003\u0002\u0002",
-    "\u0002\u0012\u0017\u0003\u0002\u0002\u0002\u0013\u0014\u0007\u000e\u0002",
-    "\u0002\u0014\u0016\u0005\n\u0006\u0002\u0015\u0013\u0003\u0002\u0002",
-    "\u0002\u0016\u0019\u0003\u0002\u0002\u0002\u0017\u0015\u0003\u0002\u0002",
-    "\u0002\u0017\u0018\u0003\u0002\u0002\u0002\u0018\u001a\u0003\u0002\u0002",
-    "\u0002\u0019\u0017\u0003\u0002\u0002\u0002\u001a\u001b\u0007\u000b\u0002",
-    "\u0002\u001b\u0003\u0003\u0002\u0002\u0002\u001c\u001f\u0007\b\u0002",
-    "\u0002\u001d\u001e\u0007\f\u0002\u0002\u001e \u0007\b\u0002\u0002\u001f",
-    "\u001d\u0003\u0002\u0002\u0002\u001f \u0003\u0002\u0002\u0002 #\u0003",
-    "\u0002\u0002\u0002!\"\u0007\r\u0002\u0002\"$\u0007\b\u0002\u0002#!\u0003",
-    "\u0002\u0002\u0002#$\u0003\u0002\u0002\u0002$\u0005\u0003\u0002\u0002",
-    "\u0002%\'\u0007\u001b\u0002\u0002&%\u0003\u0002\u0002\u0002&\'\u0003",
-    "\u0002\u0002\u0002\'(\u0003\u0002\u0002\u0002()\u0005\u0004\u0003\u0002",
-    ")\u0007\u0003\u0002\u0002\u0002*+\u0005\n\u0006\u0002+,\u0007\u0002",
-    "\u0002\u0003,\t\u0003\u0002\u0002\u0002-.\b\u0006\u0001\u0002./\u0007",
-    "\u0007\u0002\u0002/2\u0005\n\u0006\u000702\u0005\f\u0007\u00021-\u0003",
-    "\u0002\u0002\u000210\u0003\u0002\u0002\u00022>\u0003\u0002\u0002\u0002",
-    "34\f\u0006\u0002\u000245\t\u0002\u0002\u00025=\u0005\n\u0006\u00076",
-    "7\f\u0005\u0002\u000278\t\u0003\u0002\u00028=\u0005\n\u0006\u00069:",
-    "\f\u0004\u0002\u0002:;\t\u0004\u0002\u0002;=\u0005\n\u0006\u0005<3\u0003",
-    "\u0002\u0002\u0002<6\u0003\u0002\u0002\u0002<9\u0003\u0002\u0002\u0002",
-    "=@\u0003\u0002\u0002\u0002><\u0003\u0002\u0002\u0002>?\u0003\u0002\u0002",
-    "\u0002?\u000b\u0003\u0002\u0002\u0002@>\u0003\u0002\u0002\u0002AB\u0007",
-    "\n\u0002\u0002BC\u0005\n\u0006\u0002CD\u0007\u000b\u0002\u0002DK\u0003",
-    "\u0002\u0002\u0002EK\t\u0005\u0002\u0002FK\u0005\u0002\u0002\u0002G",
-    "K\t\u0006\u0002\u0002HK\u0005\u0006\u0004\u0002IK\u0007\t\u0002\u0002",
-    "JA\u0003\u0002\u0002\u0002JE\u0003\u0002\u0002\u0002JF\u0003\u0002\u0002",
-    "\u0002JG\u0003\u0002\u0002\u0002JH\u0003\u0002\u0002\u0002JI\u0003\u0002",
-    "\u0002\u0002K\r\u0003\u0002\u0002\u0002\u000b\u0011\u0017\u001f#&1<",
-    ">J"].join("");
+    "\u0003\u0007\u0005\u0007L\n\u0007\u0003\u0007\u0002\u0003\n\b\u0002",
+    "\u0004\u0006\b\n\f\u0002\u0007\u0003\u0002\u001a\u001b\u0003\u0002\u0018",
+    "\u0019\u0003\u0002\u0010\u0017\u0003\u0002\u0003\u0004\u0003\u0002\u0005",
+    "\u0006\u0002V\u0002\u000e\u0003\u0002\u0002\u0002\u0004\u001c\u0003",
+    "\u0002\u0002\u0002\u0006&\u0003\u0002\u0002\u0002\b*\u0003\u0002\u0002",
+    "\u0002\n1\u0003\u0002\u0002\u0002\fK\u0003\u0002\u0002\u0002\u000e\u000f",
+    "\u0007\b\u0002\u0002\u000f\u0011\u0007\u000b\u0002\u0002\u0010\u0012",
+    "\u0005\n\u0006\u0002\u0011\u0010\u0003\u0002\u0002\u0002\u0011\u0012",
+    "\u0003\u0002\u0002\u0002\u0012\u0017\u0003\u0002\u0002\u0002\u0013\u0014",
+    "\u0007\u000f\u0002\u0002\u0014\u0016\u0005\n\u0006\u0002\u0015\u0013",
+    "\u0003\u0002\u0002\u0002\u0016\u0019\u0003\u0002\u0002\u0002\u0017\u0015",
+    "\u0003\u0002\u0002\u0002\u0017\u0018\u0003\u0002\u0002\u0002\u0018\u001a",
+    "\u0003\u0002\u0002\u0002\u0019\u0017\u0003\u0002\u0002\u0002\u001a\u001b",
+    "\u0007\f\u0002\u0002\u001b\u0003\u0003\u0002\u0002\u0002\u001c\u001f",
+    "\u0007\b\u0002\u0002\u001d\u001e\u0007\r\u0002\u0002\u001e \u0007\b",
+    "\u0002\u0002\u001f\u001d\u0003\u0002\u0002\u0002\u001f \u0003\u0002",
+    "\u0002\u0002 #\u0003\u0002\u0002\u0002!\"\u0007\u000e\u0002\u0002\"",
+    "$\u0007\b\u0002\u0002#!\u0003\u0002\u0002\u0002#$\u0003\u0002\u0002",
+    "\u0002$\u0005\u0003\u0002\u0002\u0002%\'\u0007\u001c\u0002\u0002&%\u0003",
+    "\u0002\u0002\u0002&\'\u0003\u0002\u0002\u0002\'(\u0003\u0002\u0002\u0002",
+    "()\u0005\u0004\u0003\u0002)\u0007\u0003\u0002\u0002\u0002*+\u0005\n",
+    "\u0006\u0002+,\u0007\u0002\u0002\u0003,\t\u0003\u0002\u0002\u0002-.",
+    "\b\u0006\u0001\u0002./\u0007\u0007\u0002\u0002/2\u0005\n\u0006\u0007",
+    "02\u0005\f\u0007\u00021-\u0003\u0002\u0002\u000210\u0003\u0002\u0002",
+    "\u00022>\u0003\u0002\u0002\u000234\f\u0006\u0002\u000245\t\u0002\u0002",
+    "\u00025=\u0005\n\u0006\u000767\f\u0005\u0002\u000278\t\u0003\u0002\u0002",
+    "8=\u0005\n\u0006\u00069:\f\u0004\u0002\u0002:;\t\u0004\u0002\u0002;",
+    "=\u0005\n\u0006\u0005<3\u0003\u0002\u0002\u0002<6\u0003\u0002\u0002",
+    "\u0002<9\u0003\u0002\u0002\u0002=@\u0003\u0002\u0002\u0002><\u0003\u0002",
+    "\u0002\u0002>?\u0003\u0002\u0002\u0002?\u000b\u0003\u0002\u0002\u0002",
+    "@>\u0003\u0002\u0002\u0002AB\u0007\u000b\u0002\u0002BC\u0005\n\u0006",
+    "\u0002CD\u0007\f\u0002\u0002DL\u0003\u0002\u0002\u0002EL\t\u0005\u0002",
+    "\u0002FL\u0005\u0002\u0002\u0002GL\t\u0006\u0002\u0002HL\u0005\u0006",
+    "\u0004\u0002IL\u0007\n\u0002\u0002JL\u0007\t\u0002\u0002KA\u0003\u0002",
+    "\u0002\u0002KE\u0003\u0002\u0002\u0002KF\u0003\u0002\u0002\u0002KG\u0003",
+    "\u0002\u0002\u0002KH\u0003\u0002\u0002\u0002KI\u0003\u0002\u0002\u0002",
+    "KJ\u0003\u0002\u0002\u0002L\r\u0003\u0002\u0002\u0002\u000b\u0011\u0017",
+    "\u001f#&1<>K"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -66,16 +67,16 @@ var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new a
 var sharedContextCache = new antlr4.PredictionContextCache();
 
 var literalNames = [ null, null, null, "'true'", "'false'", "'not'", null, 
-                     null, "'('", "')'", "'|'", "':'", "','", "'||'", "'&&'", 
-                     "'=='", "'!='", "'>'", "'<'", "'>='", "'<='", "'+'", 
-                     "'-'", "'*'", "'/'", "'?'" ];
+                     null, null, "'('", "')'", "'|'", "':'", "','", "'||'", 
+                     "'&&'", "'=='", "'!='", "'>'", "'<'", "'>='", "'<='", 
+                     "'+'", "'-'", "'*'", "'/'", "'?'" ];
 
 var symbolicNames = [ null, "INT", "REAL", "TRUE", "FALSE", "NOT", "WORD", 
-                      "STRING_CONSTANT", "L_BRACKET", "R_BRACKET", "TAXON_NAMESPACE_DELIMITER", 
-                      "TAXON_TAG_DELIMITER", "FN_PARAMETER_DELIMITER", "OR", 
-                      "AND", "EQ", "NEQ", "GT", "LT", "GTEQ", "LTEQ", "PLUS", 
-                      "MINUS", "MULT", "DIV", "OPTIONAL_TAXON_OPERATOR", 
-                      "WS" ];
+                      "STRING_CONSTANT", "SINGLE_QUOTED_ELEMENT", "L_BRACKET", 
+                      "R_BRACKET", "TAXON_NAMESPACE_DELIMITER", "TAXON_TAG_DELIMITER", 
+                      "FN_PARAMETER_DELIMITER", "OR", "AND", "EQ", "NEQ", 
+                      "GT", "LT", "GTEQ", "LTEQ", "PLUS", "MINUS", "MULT", 
+                      "DIV", "OPTIONAL_TAXON_OPERATOR", "WS" ];
 
 var ruleNames =  [ "fn", "taxon", "taxon_expr", "parse", "expr", "atom" ];
 
@@ -105,25 +106,26 @@ TelParser.FALSE = 4;
 TelParser.NOT = 5;
 TelParser.WORD = 6;
 TelParser.STRING_CONSTANT = 7;
-TelParser.L_BRACKET = 8;
-TelParser.R_BRACKET = 9;
-TelParser.TAXON_NAMESPACE_DELIMITER = 10;
-TelParser.TAXON_TAG_DELIMITER = 11;
-TelParser.FN_PARAMETER_DELIMITER = 12;
-TelParser.OR = 13;
-TelParser.AND = 14;
-TelParser.EQ = 15;
-TelParser.NEQ = 16;
-TelParser.GT = 17;
-TelParser.LT = 18;
-TelParser.GTEQ = 19;
-TelParser.LTEQ = 20;
-TelParser.PLUS = 21;
-TelParser.MINUS = 22;
-TelParser.MULT = 23;
-TelParser.DIV = 24;
-TelParser.OPTIONAL_TAXON_OPERATOR = 25;
-TelParser.WS = 26;
+TelParser.SINGLE_QUOTED_ELEMENT = 8;
+TelParser.L_BRACKET = 9;
+TelParser.R_BRACKET = 10;
+TelParser.TAXON_NAMESPACE_DELIMITER = 11;
+TelParser.TAXON_TAG_DELIMITER = 12;
+TelParser.FN_PARAMETER_DELIMITER = 13;
+TelParser.OR = 14;
+TelParser.AND = 15;
+TelParser.EQ = 16;
+TelParser.NEQ = 17;
+TelParser.GT = 18;
+TelParser.LT = 19;
+TelParser.GTEQ = 20;
+TelParser.LTEQ = 21;
+TelParser.PLUS = 22;
+TelParser.MINUS = 23;
+TelParser.MULT = 24;
+TelParser.DIV = 25;
+TelParser.OPTIONAL_TAXON_OPERATOR = 26;
+TelParser.WS = 27;
 
 TelParser.RULE_fn = 0;
 TelParser.RULE_taxon = 1;
@@ -223,7 +225,7 @@ TelParser.prototype.fn = function() {
         this.state = 15;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
-        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.INT) | (1 << TelParser.REAL) | (1 << TelParser.TRUE) | (1 << TelParser.FALSE) | (1 << TelParser.NOT) | (1 << TelParser.WORD) | (1 << TelParser.STRING_CONSTANT) | (1 << TelParser.L_BRACKET) | (1 << TelParser.OPTIONAL_TAXON_OPERATOR))) !== 0)) {
+        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.INT) | (1 << TelParser.REAL) | (1 << TelParser.TRUE) | (1 << TelParser.FALSE) | (1 << TelParser.NOT) | (1 << TelParser.WORD) | (1 << TelParser.STRING_CONSTANT) | (1 << TelParser.SINGLE_QUOTED_ELEMENT) | (1 << TelParser.L_BRACKET) | (1 << TelParser.OPTIONAL_TAXON_OPERATOR))) !== 0)) {
             this.state = 14;
             this.expr(0);
         }
@@ -822,6 +824,7 @@ TelParser.prototype.expr = function(_p) {
         case TelParser.FALSE:
         case TelParser.WORD:
         case TelParser.STRING_CONSTANT:
+        case TelParser.SINGLE_QUOTED_ELEMENT:
         case TelParser.L_BRACKET:
         case TelParser.OPTIONAL_TAXON_OPERATOR:
             localctx = new AtomExprContext(this, localctx);
@@ -1107,6 +1110,41 @@ BracketExprContext.prototype.accept = function(visitor) {
 };
 
 
+function SingleQuotedAtomContext(parser, ctx) {
+	AtomContext.call(this, parser);
+    AtomContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+SingleQuotedAtomContext.prototype = Object.create(AtomContext.prototype);
+SingleQuotedAtomContext.prototype.constructor = SingleQuotedAtomContext;
+
+TelParser.SingleQuotedAtomContext = SingleQuotedAtomContext;
+
+SingleQuotedAtomContext.prototype.SINGLE_QUOTED_ELEMENT = function() {
+    return this.getToken(TelParser.SINGLE_QUOTED_ELEMENT, 0);
+};
+SingleQuotedAtomContext.prototype.enterRule = function(listener) {
+    if(listener instanceof TelListener ) {
+        listener.enterSingleQuotedAtom(this);
+	}
+};
+
+SingleQuotedAtomContext.prototype.exitRule = function(listener) {
+    if(listener instanceof TelListener ) {
+        listener.exitSingleQuotedAtom(this);
+	}
+};
+
+SingleQuotedAtomContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof TelVisitor ) {
+        return visitor.visitSingleQuotedAtom(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
 function NumberAtomContext(parser, ctx) {
 	AtomContext.call(this, parser);
     AtomContext.prototype.copyFrom.call(this, ctx);
@@ -1190,7 +1228,7 @@ TelParser.prototype.atom = function() {
     this.enterRule(localctx, 10, TelParser.RULE_atom);
     var _la = 0; // Token type
     try {
-        this.state = 72;
+        this.state = 73;
         this._errHandler.sync(this);
         var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
         switch(la_) {
@@ -1248,9 +1286,16 @@ TelParser.prototype.atom = function() {
             break;
 
         case 6:
-            localctx = new StringConstantAtomContext(this, localctx);
+            localctx = new SingleQuotedAtomContext(this, localctx);
             this.enterOuterAlt(localctx, 6);
             this.state = 71;
+            this.match(TelParser.SINGLE_QUOTED_ELEMENT);
+            break;
+
+        case 7:
+            localctx = new StringConstantAtomContext(this, localctx);
+            this.enterOuterAlt(localctx, 7);
+            this.state = 72;
             this.match(TelParser.STRING_CONSTANT);
             break;
 

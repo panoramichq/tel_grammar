@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.7 Release
+
+Add support for identifiers surrounded by single quotes, e.g. `'my test identifier/constant'`
+
 ## Version 1.0.6 Release
 
 Add support for tag operator `:`, e.g. `campaign_tags:film`

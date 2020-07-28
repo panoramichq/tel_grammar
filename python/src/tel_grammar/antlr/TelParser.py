@@ -11,33 +11,34 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34")
-        buf.write("M\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35")
+        buf.write("N\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2")
         buf.write("\3\2\3\2\5\2\22\n\2\3\2\3\2\7\2\26\n\2\f\2\16\2\31\13")
         buf.write("\2\3\2\3\2\3\3\3\3\3\3\5\3 \n\3\3\3\3\3\5\3$\n\3\3\4\5")
         buf.write("\4\'\n\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\5\6\62\n")
         buf.write("\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\7\6=\n\6\f\6\16")
-        buf.write("\6@\13\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7K\n\7")
-        buf.write("\3\7\2\3\n\b\2\4\6\b\n\f\2\7\3\2\31\32\3\2\27\30\3\2\17")
-        buf.write("\26\3\2\3\4\3\2\5\6\2T\2\16\3\2\2\2\4\34\3\2\2\2\6&\3")
-        buf.write("\2\2\2\b*\3\2\2\2\n\61\3\2\2\2\fJ\3\2\2\2\16\17\7\b\2")
-        buf.write("\2\17\21\7\n\2\2\20\22\5\n\6\2\21\20\3\2\2\2\21\22\3\2")
-        buf.write("\2\2\22\27\3\2\2\2\23\24\7\16\2\2\24\26\5\n\6\2\25\23")
-        buf.write("\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30")
-        buf.write("\32\3\2\2\2\31\27\3\2\2\2\32\33\7\13\2\2\33\3\3\2\2\2")
-        buf.write("\34\37\7\b\2\2\35\36\7\f\2\2\36 \7\b\2\2\37\35\3\2\2\2")
-        buf.write("\37 \3\2\2\2 #\3\2\2\2!\"\7\r\2\2\"$\7\b\2\2#!\3\2\2\2")
-        buf.write("#$\3\2\2\2$\5\3\2\2\2%\'\7\33\2\2&%\3\2\2\2&\'\3\2\2\2")
-        buf.write("\'(\3\2\2\2()\5\4\3\2)\7\3\2\2\2*+\5\n\6\2+,\7\2\2\3,")
-        buf.write("\t\3\2\2\2-.\b\6\1\2./\7\7\2\2/\62\5\n\6\7\60\62\5\f\7")
-        buf.write("\2\61-\3\2\2\2\61\60\3\2\2\2\62>\3\2\2\2\63\64\f\6\2\2")
-        buf.write("\64\65\t\2\2\2\65=\5\n\6\7\66\67\f\5\2\2\678\t\3\2\28")
-        buf.write("=\5\n\6\69:\f\4\2\2:;\t\4\2\2;=\5\n\6\5<\63\3\2\2\2<\66")
-        buf.write("\3\2\2\2<9\3\2\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?\13\3")
-        buf.write("\2\2\2@>\3\2\2\2AB\7\n\2\2BC\5\n\6\2CD\7\13\2\2DK\3\2")
-        buf.write("\2\2EK\t\5\2\2FK\5\2\2\2GK\t\6\2\2HK\5\6\4\2IK\7\t\2\2")
-        buf.write("JA\3\2\2\2JE\3\2\2\2JF\3\2\2\2JG\3\2\2\2JH\3\2\2\2JI\3")
-        buf.write("\2\2\2K\r\3\2\2\2\13\21\27\37#&\61<>J")
+        buf.write("\6@\13\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7L")
+        buf.write("\n\7\3\7\2\3\n\b\2\4\6\b\n\f\2\7\3\2\32\33\3\2\30\31\3")
+        buf.write("\2\20\27\3\2\3\4\3\2\5\6\2V\2\16\3\2\2\2\4\34\3\2\2\2")
+        buf.write("\6&\3\2\2\2\b*\3\2\2\2\n\61\3\2\2\2\fK\3\2\2\2\16\17\7")
+        buf.write("\b\2\2\17\21\7\13\2\2\20\22\5\n\6\2\21\20\3\2\2\2\21\22")
+        buf.write("\3\2\2\2\22\27\3\2\2\2\23\24\7\17\2\2\24\26\5\n\6\2\25")
+        buf.write("\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2")
+        buf.write("\30\32\3\2\2\2\31\27\3\2\2\2\32\33\7\f\2\2\33\3\3\2\2")
+        buf.write("\2\34\37\7\b\2\2\35\36\7\r\2\2\36 \7\b\2\2\37\35\3\2\2")
+        buf.write("\2\37 \3\2\2\2 #\3\2\2\2!\"\7\16\2\2\"$\7\b\2\2#!\3\2")
+        buf.write("\2\2#$\3\2\2\2$\5\3\2\2\2%\'\7\34\2\2&%\3\2\2\2&\'\3\2")
+        buf.write("\2\2\'(\3\2\2\2()\5\4\3\2)\7\3\2\2\2*+\5\n\6\2+,\7\2\2")
+        buf.write("\3,\t\3\2\2\2-.\b\6\1\2./\7\7\2\2/\62\5\n\6\7\60\62\5")
+        buf.write("\f\7\2\61-\3\2\2\2\61\60\3\2\2\2\62>\3\2\2\2\63\64\f\6")
+        buf.write("\2\2\64\65\t\2\2\2\65=\5\n\6\7\66\67\f\5\2\2\678\t\3\2")
+        buf.write("\28=\5\n\6\69:\f\4\2\2:;\t\4\2\2;=\5\n\6\5<\63\3\2\2\2")
+        buf.write("<\66\3\2\2\2<9\3\2\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?")
+        buf.write("\13\3\2\2\2@>\3\2\2\2AB\7\13\2\2BC\5\n\6\2CD\7\f\2\2D")
+        buf.write("L\3\2\2\2EL\t\5\2\2FL\5\2\2\2GL\t\6\2\2HL\5\6\4\2IL\7")
+        buf.write("\n\2\2JL\7\t\2\2KA\3\2\2\2KE\3\2\2\2KF\3\2\2\2KG\3\2\2")
+        buf.write("\2KH\3\2\2\2KI\3\2\2\2KJ\3\2\2\2L\r\3\2\2\2\13\21\27\37")
+        buf.write("#&\61<>K")
         return buf.getvalue()
 
 
@@ -52,17 +53,18 @@ class TelParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "'true'", "'false'", 
-                     "'not'", "<INVALID>", "<INVALID>", "'('", "')'", "'|'", 
-                     "':'", "','", "'||'", "'&&'", "'=='", "'!='", "'>'", 
-                     "'<'", "'>='", "'<='", "'+'", "'-'", "'*'", "'/'", 
-                     "'?'" ]
+                     "'not'", "<INVALID>", "<INVALID>", "<INVALID>", "'('", 
+                     "')'", "'|'", "':'", "','", "'||'", "'&&'", "'=='", 
+                     "'!='", "'>'", "'<'", "'>='", "'<='", "'+'", "'-'", 
+                     "'*'", "'/'", "'?'" ]
 
     symbolicNames = [ "<INVALID>", "INT", "REAL", "TRUE", "FALSE", "NOT", 
-                      "WORD", "STRING_CONSTANT", "L_BRACKET", "R_BRACKET", 
-                      "TAXON_NAMESPACE_DELIMITER", "TAXON_TAG_DELIMITER", 
-                      "FN_PARAMETER_DELIMITER", "OR", "AND", "EQ", "NEQ", 
-                      "GT", "LT", "GTEQ", "LTEQ", "PLUS", "MINUS", "MULT", 
-                      "DIV", "OPTIONAL_TAXON_OPERATOR", "WS" ]
+                      "WORD", "STRING_CONSTANT", "SINGLE_QUOTED_ELEMENT", 
+                      "L_BRACKET", "R_BRACKET", "TAXON_NAMESPACE_DELIMITER", 
+                      "TAXON_TAG_DELIMITER", "FN_PARAMETER_DELIMITER", "OR", 
+                      "AND", "EQ", "NEQ", "GT", "LT", "GTEQ", "LTEQ", "PLUS", 
+                      "MINUS", "MULT", "DIV", "OPTIONAL_TAXON_OPERATOR", 
+                      "WS" ]
 
     RULE_fn = 0
     RULE_taxon = 1
@@ -81,25 +83,26 @@ class TelParser ( Parser ):
     NOT=5
     WORD=6
     STRING_CONSTANT=7
-    L_BRACKET=8
-    R_BRACKET=9
-    TAXON_NAMESPACE_DELIMITER=10
-    TAXON_TAG_DELIMITER=11
-    FN_PARAMETER_DELIMITER=12
-    OR=13
-    AND=14
-    EQ=15
-    NEQ=16
-    GT=17
-    LT=18
-    GTEQ=19
-    LTEQ=20
-    PLUS=21
-    MINUS=22
-    MULT=23
-    DIV=24
-    OPTIONAL_TAXON_OPERATOR=25
-    WS=26
+    SINGLE_QUOTED_ELEMENT=8
+    L_BRACKET=9
+    R_BRACKET=10
+    TAXON_NAMESPACE_DELIMITER=11
+    TAXON_TAG_DELIMITER=12
+    FN_PARAMETER_DELIMITER=13
+    OR=14
+    AND=15
+    EQ=16
+    NEQ=17
+    GT=18
+    LT=19
+    GTEQ=20
+    LTEQ=21
+    PLUS=22
+    MINUS=23
+    MULT=24
+    DIV=25
+    OPTIONAL_TAXON_OPERATOR=26
+    WS=27
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -172,7 +175,7 @@ class TelParser ( Parser ):
             self.state = 15
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << TelParser.INT) | (1 << TelParser.REAL) | (1 << TelParser.TRUE) | (1 << TelParser.FALSE) | (1 << TelParser.NOT) | (1 << TelParser.WORD) | (1 << TelParser.STRING_CONSTANT) | (1 << TelParser.L_BRACKET) | (1 << TelParser.OPTIONAL_TAXON_OPERATOR))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << TelParser.INT) | (1 << TelParser.REAL) | (1 << TelParser.TRUE) | (1 << TelParser.FALSE) | (1 << TelParser.NOT) | (1 << TelParser.WORD) | (1 << TelParser.STRING_CONSTANT) | (1 << TelParser.SINGLE_QUOTED_ELEMENT) | (1 << TelParser.L_BRACKET) | (1 << TelParser.OPTIONAL_TAXON_OPERATOR))) != 0):
                 self.state = 14
                 self.expr(0)
 
@@ -588,7 +591,7 @@ class TelParser ( Parser ):
                 self.state = 45
                 self.expr(5)
                 pass
-            elif token in [TelParser.INT, TelParser.REAL, TelParser.TRUE, TelParser.FALSE, TelParser.WORD, TelParser.STRING_CONSTANT, TelParser.L_BRACKET, TelParser.OPTIONAL_TAXON_OPERATOR]:
+            elif token in [TelParser.INT, TelParser.REAL, TelParser.TRUE, TelParser.FALSE, TelParser.WORD, TelParser.STRING_CONSTANT, TelParser.SINGLE_QUOTED_ELEMENT, TelParser.L_BRACKET, TelParser.OPTIONAL_TAXON_OPERATOR]:
                 localctx = TelParser.AtomExprContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
@@ -802,6 +805,30 @@ class TelParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class SingleQuotedAtomContext(AtomContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a TelParser.AtomContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def SINGLE_QUOTED_ELEMENT(self):
+            return self.getToken(TelParser.SINGLE_QUOTED_ELEMENT, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSingleQuotedAtom" ):
+                listener.enterSingleQuotedAtom(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSingleQuotedAtom" ):
+                listener.exitSingleQuotedAtom(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSingleQuotedAtom" ):
+                return visitor.visitSingleQuotedAtom(self)
+            else:
+                return visitor.visitChildren(self)
+
+
     class NumberAtomContext(AtomContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a TelParser.AtomContext
@@ -859,7 +886,7 @@ class TelParser ( Parser ):
         self.enterRule(localctx, 10, self.RULE_atom)
         self._la = 0 # Token type
         try:
-            self.state = 72
+            self.state = 73
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
@@ -912,9 +939,16 @@ class TelParser ( Parser ):
                 pass
 
             elif la_ == 6:
-                localctx = TelParser.StringConstantAtomContext(self, localctx)
+                localctx = TelParser.SingleQuotedAtomContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
                 self.state = 71
+                self.match(TelParser.SINGLE_QUOTED_ELEMENT)
+                pass
+
+            elif la_ == 7:
+                localctx = TelParser.StringConstantAtomContext(self, localctx)
+                self.enterOuterAlt(localctx, 7)
+                self.state = 72
                 self.match(TelParser.STRING_CONSTANT)
                 pass
 

@@ -37,6 +37,9 @@ from tel_grammar.antlr.TelParser import TelParser
         # Handle optional taxons
         ('?ds|slug + 10 - ?sluging + sluggingX',),
         ('fb|a:x + fb|a + a:x + ?fb|a:x + ?fb|a + ?a:x',),
+        # handle single quotes
+        ("'my test'",),
+        ("'my \' new test'",),
     ],
 )
 def test_grammar(test_case):

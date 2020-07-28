@@ -96,6 +96,12 @@ TelVisitor.prototype.visitTaxonSlugAtom = function(ctx) {
 };
 
 
+// Visit a parse tree produced by TelParser#singleQuotedAtom.
+TelVisitor.prototype.visitSingleQuotedAtom = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by TelParser#stringConstantAtom.
 TelVisitor.prototype.visitStringConstantAtom = function(ctx) {
   return this.visitChildren(ctx);

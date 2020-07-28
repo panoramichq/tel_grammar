@@ -79,6 +79,11 @@ class TelVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by TelParser#singleQuotedAtom.
+    def visitSingleQuotedAtom(self, ctx:TelParser.SingleQuotedAtomContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by TelParser#stringConstantAtom.
     def visitStringConstantAtom(self, ctx:TelParser.StringConstantAtomContext):
         return self.visitChildren(ctx)

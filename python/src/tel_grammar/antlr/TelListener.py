@@ -134,6 +134,15 @@ class TelListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TelParser#singleQuotedAtom.
+    def enterSingleQuotedAtom(self, ctx:TelParser.SingleQuotedAtomContext):
+        pass
+
+    # Exit a parse tree produced by TelParser#singleQuotedAtom.
+    def exitSingleQuotedAtom(self, ctx:TelParser.SingleQuotedAtomContext):
+        pass
+
+
     # Enter a parse tree produced by TelParser#stringConstantAtom.
     def enterStringConstantAtom(self, ctx:TelParser.StringConstantAtomContext):
         pass

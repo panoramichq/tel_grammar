@@ -4,6 +4,19 @@ from antlr4 import CommonTokenStream, InputStream
 
 from tel_grammar.antlr.TelLexer import TelLexer
 from tel_grammar.antlr.TelParser import TelParser
+from tel_grammar.antlr.TelVisitor import TelVisitor
+
+
+class AssertTelVisitor(TelVisitor):
+    """
+    Special TelVisitor for testing grammar. Throws error in case of invalid node.
+    """
+
+    def visitErrorNode(self, node):
+        wrong_symbol = node.symbol.text
+        position = node.symbol.column + 1
+        details = f'Unexpected symbol "{wrong_symbol}" at position {position}'
+        raise AssertionError(details)
 
 
 @pytest.mark.parametrize(
@@ -33,13 +46,13 @@ from tel_grammar.antlr.TelParser import TelParser
         # Handle nested functions
         ('fn_4(fn_1(slug))',),
         ('"str1" + "str2"',),
-        ('"str1\"escape"',),
+        ('"str1\\"escape"',),
         # Handle optional taxons
         ('?ds|slug + 10 - ?sluging + sluggingX',),
         ('fb|a:x + fb|a + a:x + ?fb|a:x + ?fb|a + ?a:x',),
         # handle single quotes
         ("'my test'",),
-        ("'my \' new test'",),
+        ("'my \\' new test'",),
     ],
 )
 def test_grammar(test_case):
@@ -47,4 +60,7 @@ def test_grammar(test_case):
     lexer = TelLexer(inp_stream)
     stream = CommonTokenStream(lexer)
     parser = TelParser(stream)
-    assert parser.expr()
+    tree = parser.parse()
+    # Use error visitor on parsed tree to test it
+    visitor = AssertTelVisitor()
+    visitor.visit(tree)

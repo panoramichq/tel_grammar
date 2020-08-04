@@ -5,7 +5,7 @@ REAL : '-'? [0-9]+ '.' [0-9]+ ;     // integer
 TRUE : 'true' ;                     // true
 FALSE : 'false' ;                   // false
 NOT : 'not';
-WORD : [a-zA-Z0-9_]+;               // one word (either part of slug or fn name)
+WORD : [a-zA-Z0-9_.]+;              // one word (either part of slug or fn name)
 STRING_CONSTANT : '"' ( '\\"' | ~'"' )* '"' ;    // string constant. Not greedy, and supports \ to escape " char.
 SINGLE_QUOTED_ELEMENT: '\'' ( '\\\'' | ~'\'' )* '\'' ;    // string element surrounded by single quotes. Not greedy, and supports \ to escape ' char.
 

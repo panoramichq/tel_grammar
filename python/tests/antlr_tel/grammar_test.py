@@ -53,6 +53,12 @@ class AssertTelVisitor(TelVisitor):
         # handle single quotes
         ("'my test'",),
         ("'my \\' new test'",),
+        # Handle taxon slugs and functions with dot
+        ('db.prod',),
+        ('db.prod|schema.table.column',),
+        ('db.prod|schema.table.column:v2.0',),
+        ('fn.contains()',),
+        ('fn.contains.v2(db.prod, 3.14)',),
     ],
 )
 def test_grammar(test_case):

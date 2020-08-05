@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.8 Release
+
+Add support for taxon slugs with `.` in their name, e.g. `db.prod|schema.table.column`
+
 ## Version 1.0.7 Release
 
 Add support for identifiers surrounded by single quotes, e.g. `'my test identifier/constant'`

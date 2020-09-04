@@ -19,11 +19,6 @@ class TelVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by TelParser#taxon_expr.
-    def visitTaxon_expr(self, ctx:TelParser.Taxon_exprContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by TelParser#parse.
     def visitParse(self, ctx:TelParser.ParseContext):
         return self.visitChildren(ctx)

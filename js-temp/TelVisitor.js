@@ -24,12 +24,6 @@ TelVisitor.prototype.visitTaxon = function(ctx) {
 };
 
 
-// Visit a parse tree produced by TelParser#taxon_expr.
-TelVisitor.prototype.visitTaxon_expr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
 // Visit a parse tree produced by TelParser#parse.
 TelVisitor.prototype.visitParse = function(ctx) {
   return this.visitChildren(ctx);

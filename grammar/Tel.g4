@@ -29,13 +29,11 @@ MULT : '*';
 DIV : '/';
 OPTIONAL_TAXON_OPERATOR: '?'; // Taxon slug prefix noting, that the taxon slug is optional.
 
-
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
 // auxiliarly rules
 fn : WORD L_BRACKET expr? (FN_PARAMETER_DELIMITER expr)* R_BRACKET ; // matches functions
-taxon: WORD (TAXON_NAMESPACE_DELIMITER WORD)? (TAXON_TAG_DELIMITER WORD)? ;  // matches a taxon slug
-taxon_expr: OPTIONAL_TAXON_OPERATOR?taxon ;  // taxon slug with optional taxon prefix operator
+taxon: OPTIONAL_TAXON_OPERATOR? WORD (TAXON_NAMESPACE_DELIMITER WORD)? (TAXON_TAG_DELIMITER WORD)? ;  // matches a taxon slug
 
 // final rules
 parse: expr EOF; // main rule for parsing
@@ -49,11 +47,11 @@ expr
 ;
 
 atom
-:  L_BRACKET expr R_BRACKET  #bracketExpr
+:  L_BRACKET expr R_BRACKET #bracketExpr
 | (INT | REAL)              #numberAtom
 | fn                        #fnExpr
 | (TRUE | FALSE)            #booleanAtom
-| taxon_expr                #taxonSlugAtom
+| taxon                     #taxonSlugAtom
 | SINGLE_QUOTED_ELEMENT     #singleQuotedAtom
 | STRING_CONSTANT           #stringConstantAtom
 ;

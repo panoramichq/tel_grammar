@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.9-adam Release
+
+Merge rules taxon and taxon_expr into one.
+
 ## Version 1.0.8 Release
 
 Add support for taxon slugs with `.` in their name, e.g. `db.prod|schema.table.column`

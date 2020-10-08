@@ -59,6 +59,16 @@ class AssertTelVisitor(TelVisitor):
         ('db.prod|schema.table.column:v2.0',),
         ('fn.contains()',),
         ('fn.contains.v2(db.prod, 3.14)',),
+        # Handle not operator
+        ('not (true || false)',),
+        ('NOT (TRUE && FALSE)',),
+        # Handle null test operators
+        ('slug is null',),
+        ('slug IS NULL',),
+        ('slug is not null',),
+        ('slug IS NOT NULL',),
+        ('slug is         NULL',),
+        ('slug is   NOT   NULL',),
     ],
 )
 def test_grammar(test_case):

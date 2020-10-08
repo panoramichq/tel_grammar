@@ -47,6 +47,15 @@ TelListener.prototype.exitParse = function(ctx) {
 };
 
 
+// Enter a parse tree produced by TelParser#nullTestExpr.
+TelListener.prototype.enterNullTestExpr = function(ctx) {
+};
+
+// Exit a parse tree produced by TelParser#nullTestExpr.
+TelListener.prototype.exitNullTestExpr = function(ctx) {
+};
+
+
 // Enter a parse tree produced by TelParser#notExpr.
 TelListener.prototype.enterNotExpr = function(ctx) {
 };

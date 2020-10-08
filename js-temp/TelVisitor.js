@@ -36,6 +36,12 @@ TelVisitor.prototype.visitParse = function(ctx) {
 };
 
 
+// Visit a parse tree produced by TelParser#nullTestExpr.
+TelVisitor.prototype.visitNullTestExpr = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by TelParser#notExpr.
 TelVisitor.prototype.visitNotExpr = function(ctx) {
   return this.visitChildren(ctx);

@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.0.9 Release
+
+* Add support for `is null` and `is not null` operators, e.g. `taxon_slug is null`
+* Support upper-case operators `NOT`, `IS NULL`, `IS NOT NULL` and atoms `TRUE`, `FALSE`
+
 ## Version 1.0.8 Release
 
 Add support for taxon slugs with `.` in their name, e.g. `db.prod|schema.table.column`

@@ -2,9 +2,11 @@ grammar Tel;
 
 INT : '-'? [0-9]+ ;                 // integer
 REAL : '-'? [0-9]+ '.' [0-9]+ ;     // integer
-TRUE : 'true' ;                     // true
-FALSE : 'false' ;                   // false
-NOT : 'not';
+TRUE : 'true' | 'TRUE';             // true
+FALSE : 'false' | 'FALSE';          // false
+NOT : 'not' | 'NOT';
+KW_IS : 'is' | 'IS';
+KW_NULL : 'null' | 'NULL';
 WORD : [a-zA-Z0-9_.]+;              // one word (either part of slug or fn name)
 STRING_CONSTANT : '"' ( '\\"' | ~'"' )* '"' ;    // string constant. Not greedy, and supports \ to escape " char.
 SINGLE_QUOTED_ELEMENT: '\'' ( '\\\'' | ~'\'' )* '\'' ;    // string element surrounded by single quotes. Not greedy, and supports \ to escape ' char.
@@ -45,6 +47,7 @@ expr
 | expr op=(MULT | DIV) expr                                    #multiplicationExpr
 | expr op=(PLUS | MINUS) expr                                  #additiveExpr
 | expr op=(OR | AND | EQ | NEQ | GT | LT | GTEQ | LTEQ) expr   #logicalExpr
+| expr KW_IS NOT? KW_NULL                                      #nullTestExpr
 | atom                                                         #atomExpr
 ;
 

@@ -8,7 +8,7 @@ var grammarFileName = "Tel.g4";
 
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003\u001dN\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0003\u001fT\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
     "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0003",
     "\u0002\u0003\u0002\u0003\u0002\u0005\u0002\u0012\n\u0002\u0003\u0002",
     "\u0003\u0002\u0007\u0002\u0016\n\u0002\f\u0002\u000e\u0002\u0019\u000b",
@@ -17,47 +17,50 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0005\u0004\'\n\u0004\u0003\u0004\u0003\u0004\u0003\u0005\u0003\u0005",
     "\u0003\u0005\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0005\u0006",
     "2\n\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006",
-    "\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0007\u0006=\n\u0006",
-    "\f\u0006\u000e\u0006@\u000b\u0006\u0003\u0007\u0003\u0007\u0003\u0007",
+    "\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006",
+    "\u0003\u0006\u0005\u0006@\n\u0006\u0003\u0006\u0007\u0006C\n\u0006\f",
+    "\u0006\u000e\u0006F\u000b\u0006\u0003\u0007\u0003\u0007\u0003\u0007",
     "\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007",
-    "\u0003\u0007\u0005\u0007L\n\u0007\u0003\u0007\u0002\u0003\n\b\u0002",
-    "\u0004\u0006\b\n\f\u0002\u0007\u0003\u0002\u001a\u001b\u0003\u0002\u0018",
-    "\u0019\u0003\u0002\u0010\u0017\u0003\u0002\u0003\u0004\u0003\u0002\u0005",
-    "\u0006\u0002V\u0002\u000e\u0003\u0002\u0002\u0002\u0004\u001c\u0003",
+    "\u0003\u0007\u0005\u0007R\n\u0007\u0003\u0007\u0002\u0003\n\b\u0002",
+    "\u0004\u0006\b\n\f\u0002\u0007\u0003\u0002\u001c\u001d\u0003\u0002\u001a",
+    "\u001b\u0003\u0002\u0012\u0019\u0003\u0002\u0003\u0004\u0003\u0002\u0005",
+    "\u0006\u0002^\u0002\u000e\u0003\u0002\u0002\u0002\u0004\u001c\u0003",
     "\u0002\u0002\u0002\u0006&\u0003\u0002\u0002\u0002\b*\u0003\u0002\u0002",
-    "\u0002\n1\u0003\u0002\u0002\u0002\fK\u0003\u0002\u0002\u0002\u000e\u000f",
-    "\u0007\b\u0002\u0002\u000f\u0011\u0007\u000b\u0002\u0002\u0010\u0012",
-    "\u0005\n\u0006\u0002\u0011\u0010\u0003\u0002\u0002\u0002\u0011\u0012",
-    "\u0003\u0002\u0002\u0002\u0012\u0017\u0003\u0002\u0002\u0002\u0013\u0014",
-    "\u0007\u000f\u0002\u0002\u0014\u0016\u0005\n\u0006\u0002\u0015\u0013",
-    "\u0003\u0002\u0002\u0002\u0016\u0019\u0003\u0002\u0002\u0002\u0017\u0015",
-    "\u0003\u0002\u0002\u0002\u0017\u0018\u0003\u0002\u0002\u0002\u0018\u001a",
-    "\u0003\u0002\u0002\u0002\u0019\u0017\u0003\u0002\u0002\u0002\u001a\u001b",
-    "\u0007\f\u0002\u0002\u001b\u0003\u0003\u0002\u0002\u0002\u001c\u001f",
-    "\u0007\b\u0002\u0002\u001d\u001e\u0007\r\u0002\u0002\u001e \u0007\b",
-    "\u0002\u0002\u001f\u001d\u0003\u0002\u0002\u0002\u001f \u0003\u0002",
-    "\u0002\u0002 #\u0003\u0002\u0002\u0002!\"\u0007\u000e\u0002\u0002\"",
-    "$\u0007\b\u0002\u0002#!\u0003\u0002\u0002\u0002#$\u0003\u0002\u0002",
-    "\u0002$\u0005\u0003\u0002\u0002\u0002%\'\u0007\u001c\u0002\u0002&%\u0003",
-    "\u0002\u0002\u0002&\'\u0003\u0002\u0002\u0002\'(\u0003\u0002\u0002\u0002",
-    "()\u0005\u0004\u0003\u0002)\u0007\u0003\u0002\u0002\u0002*+\u0005\n",
-    "\u0006\u0002+,\u0007\u0002\u0002\u0003,\t\u0003\u0002\u0002\u0002-.",
-    "\b\u0006\u0001\u0002./\u0007\u0007\u0002\u0002/2\u0005\n\u0006\u0007",
-    "02\u0005\f\u0007\u00021-\u0003\u0002\u0002\u000210\u0003\u0002\u0002",
-    "\u00022>\u0003\u0002\u0002\u000234\f\u0006\u0002\u000245\t\u0002\u0002",
-    "\u00025=\u0005\n\u0006\u000767\f\u0005\u0002\u000278\t\u0003\u0002\u0002",
-    "8=\u0005\n\u0006\u00069:\f\u0004\u0002\u0002:;\t\u0004\u0002\u0002;",
-    "=\u0005\n\u0006\u0005<3\u0003\u0002\u0002\u0002<6\u0003\u0002\u0002",
-    "\u0002<9\u0003\u0002\u0002\u0002=@\u0003\u0002\u0002\u0002><\u0003\u0002",
-    "\u0002\u0002>?\u0003\u0002\u0002\u0002?\u000b\u0003\u0002\u0002\u0002",
-    "@>\u0003\u0002\u0002\u0002AB\u0007\u000b\u0002\u0002BC\u0005\n\u0006",
-    "\u0002CD\u0007\f\u0002\u0002DL\u0003\u0002\u0002\u0002EL\t\u0005\u0002",
-    "\u0002FL\u0005\u0002\u0002\u0002GL\t\u0006\u0002\u0002HL\u0005\u0006",
-    "\u0004\u0002IL\u0007\n\u0002\u0002JL\u0007\t\u0002\u0002KA\u0003\u0002",
-    "\u0002\u0002KE\u0003\u0002\u0002\u0002KF\u0003\u0002\u0002\u0002KG\u0003",
-    "\u0002\u0002\u0002KH\u0003\u0002\u0002\u0002KI\u0003\u0002\u0002\u0002",
-    "KJ\u0003\u0002\u0002\u0002L\r\u0003\u0002\u0002\u0002\u000b\u0011\u0017",
-    "\u001f#&1<>K"].join("");
+    "\u0002\n1\u0003\u0002\u0002\u0002\fQ\u0003\u0002\u0002\u0002\u000e\u000f",
+    "\u0007\n\u0002\u0002\u000f\u0011\u0007\r\u0002\u0002\u0010\u0012\u0005",
+    "\n\u0006\u0002\u0011\u0010\u0003\u0002\u0002\u0002\u0011\u0012\u0003",
+    "\u0002\u0002\u0002\u0012\u0017\u0003\u0002\u0002\u0002\u0013\u0014\u0007",
+    "\u0011\u0002\u0002\u0014\u0016\u0005\n\u0006\u0002\u0015\u0013\u0003",
+    "\u0002\u0002\u0002\u0016\u0019\u0003\u0002\u0002\u0002\u0017\u0015\u0003",
+    "\u0002\u0002\u0002\u0017\u0018\u0003\u0002\u0002\u0002\u0018\u001a\u0003",
+    "\u0002\u0002\u0002\u0019\u0017\u0003\u0002\u0002\u0002\u001a\u001b\u0007",
+    "\u000e\u0002\u0002\u001b\u0003\u0003\u0002\u0002\u0002\u001c\u001f\u0007",
+    "\n\u0002\u0002\u001d\u001e\u0007\u000f\u0002\u0002\u001e \u0007\n\u0002",
+    "\u0002\u001f\u001d\u0003\u0002\u0002\u0002\u001f \u0003\u0002\u0002",
+    "\u0002 #\u0003\u0002\u0002\u0002!\"\u0007\u0010\u0002\u0002\"$\u0007",
+    "\n\u0002\u0002#!\u0003\u0002\u0002\u0002#$\u0003\u0002\u0002\u0002$",
+    "\u0005\u0003\u0002\u0002\u0002%\'\u0007\u001e\u0002\u0002&%\u0003\u0002",
+    "\u0002\u0002&\'\u0003\u0002\u0002\u0002\'(\u0003\u0002\u0002\u0002(",
+    ")\u0005\u0004\u0003\u0002)\u0007\u0003\u0002\u0002\u0002*+\u0005\n\u0006",
+    "\u0002+,\u0007\u0002\u0002\u0003,\t\u0003\u0002\u0002\u0002-.\b\u0006",
+    "\u0001\u0002./\u0007\u0007\u0002\u0002/2\u0005\n\u0006\b02\u0005\f\u0007",
+    "\u00021-\u0003\u0002\u0002\u000210\u0003\u0002\u0002\u00022D\u0003\u0002",
+    "\u0002\u000234\f\u0007\u0002\u000245\t\u0002\u0002\u00025C\u0005\n\u0006",
+    "\b67\f\u0006\u0002\u000278\t\u0003\u0002\u00028C\u0005\n\u0006\u0007",
+    "9:\f\u0005\u0002\u0002:;\t\u0004\u0002\u0002;C\u0005\n\u0006\u0006<",
+    "=\f\u0004\u0002\u0002=?\u0007\b\u0002\u0002>@\u0007\u0007\u0002\u0002",
+    "?>\u0003\u0002\u0002\u0002?@\u0003\u0002\u0002\u0002@A\u0003\u0002\u0002",
+    "\u0002AC\u0007\t\u0002\u0002B3\u0003\u0002\u0002\u0002B6\u0003\u0002",
+    "\u0002\u0002B9\u0003\u0002\u0002\u0002B<\u0003\u0002\u0002\u0002CF\u0003",
+    "\u0002\u0002\u0002DB\u0003\u0002\u0002\u0002DE\u0003\u0002\u0002\u0002",
+    "E\u000b\u0003\u0002\u0002\u0002FD\u0003\u0002\u0002\u0002GH\u0007\r",
+    "\u0002\u0002HI\u0005\n\u0006\u0002IJ\u0007\u000e\u0002\u0002JR\u0003",
+    "\u0002\u0002\u0002KR\t\u0005\u0002\u0002LR\u0005\u0002\u0002\u0002M",
+    "R\t\u0006\u0002\u0002NR\u0005\u0006\u0004\u0002OR\u0007\f\u0002\u0002",
+    "PR\u0007\u000b\u0002\u0002QG\u0003\u0002\u0002\u0002QK\u0003\u0002\u0002",
+    "\u0002QL\u0003\u0002\u0002\u0002QM\u0003\u0002\u0002\u0002QN\u0003\u0002",
+    "\u0002\u0002QO\u0003\u0002\u0002\u0002QP\u0003\u0002\u0002\u0002R\r",
+    "\u0003\u0002\u0002\u0002\f\u0011\u0017\u001f#&1?BDQ"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -66,17 +69,18 @@ var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new a
 
 var sharedContextCache = new antlr4.PredictionContextCache();
 
-var literalNames = [ null, null, null, "'true'", "'false'", "'not'", null, 
+var literalNames = [ null, null, null, null, null, null, null, null, null, 
                      null, null, "'('", "')'", "'|'", "':'", "','", "'||'", 
                      "'&&'", "'=='", "'!='", "'>'", "'<'", "'>='", "'<='", 
                      "'+'", "'-'", "'*'", "'/'", "'?'" ];
 
-var symbolicNames = [ null, "INT", "REAL", "TRUE", "FALSE", "NOT", "WORD", 
-                      "STRING_CONSTANT", "SINGLE_QUOTED_ELEMENT", "L_BRACKET", 
-                      "R_BRACKET", "TAXON_NAMESPACE_DELIMITER", "TAXON_TAG_DELIMITER", 
-                      "FN_PARAMETER_DELIMITER", "OR", "AND", "EQ", "NEQ", 
-                      "GT", "LT", "GTEQ", "LTEQ", "PLUS", "MINUS", "MULT", 
-                      "DIV", "OPTIONAL_TAXON_OPERATOR", "WS" ];
+var symbolicNames = [ null, "INT", "REAL", "TRUE", "FALSE", "NOT", "KW_IS", 
+                      "KW_NULL", "WORD", "STRING_CONSTANT", "SINGLE_QUOTED_ELEMENT", 
+                      "L_BRACKET", "R_BRACKET", "TAXON_NAMESPACE_DELIMITER", 
+                      "TAXON_TAG_DELIMITER", "FN_PARAMETER_DELIMITER", "OR", 
+                      "AND", "EQ", "NEQ", "GT", "LT", "GTEQ", "LTEQ", "PLUS", 
+                      "MINUS", "MULT", "DIV", "OPTIONAL_TAXON_OPERATOR", 
+                      "WS" ];
 
 var ruleNames =  [ "fn", "taxon", "taxon_expr", "parse", "expr", "atom" ];
 
@@ -104,28 +108,30 @@ TelParser.REAL = 2;
 TelParser.TRUE = 3;
 TelParser.FALSE = 4;
 TelParser.NOT = 5;
-TelParser.WORD = 6;
-TelParser.STRING_CONSTANT = 7;
-TelParser.SINGLE_QUOTED_ELEMENT = 8;
-TelParser.L_BRACKET = 9;
-TelParser.R_BRACKET = 10;
-TelParser.TAXON_NAMESPACE_DELIMITER = 11;
-TelParser.TAXON_TAG_DELIMITER = 12;
-TelParser.FN_PARAMETER_DELIMITER = 13;
-TelParser.OR = 14;
-TelParser.AND = 15;
-TelParser.EQ = 16;
-TelParser.NEQ = 17;
-TelParser.GT = 18;
-TelParser.LT = 19;
-TelParser.GTEQ = 20;
-TelParser.LTEQ = 21;
-TelParser.PLUS = 22;
-TelParser.MINUS = 23;
-TelParser.MULT = 24;
-TelParser.DIV = 25;
-TelParser.OPTIONAL_TAXON_OPERATOR = 26;
-TelParser.WS = 27;
+TelParser.KW_IS = 6;
+TelParser.KW_NULL = 7;
+TelParser.WORD = 8;
+TelParser.STRING_CONSTANT = 9;
+TelParser.SINGLE_QUOTED_ELEMENT = 10;
+TelParser.L_BRACKET = 11;
+TelParser.R_BRACKET = 12;
+TelParser.TAXON_NAMESPACE_DELIMITER = 13;
+TelParser.TAXON_TAG_DELIMITER = 14;
+TelParser.FN_PARAMETER_DELIMITER = 15;
+TelParser.OR = 16;
+TelParser.AND = 17;
+TelParser.EQ = 18;
+TelParser.NEQ = 19;
+TelParser.GT = 20;
+TelParser.LT = 21;
+TelParser.GTEQ = 22;
+TelParser.LTEQ = 23;
+TelParser.PLUS = 24;
+TelParser.MINUS = 25;
+TelParser.MULT = 26;
+TelParser.DIV = 27;
+TelParser.OPTIONAL_TAXON_OPERATOR = 28;
+TelParser.WS = 29;
 
 TelParser.RULE_fn = 0;
 TelParser.RULE_taxon = 1;
@@ -540,6 +546,53 @@ ExprContext.prototype.copyFrom = function(ctx) {
     antlr4.ParserRuleContext.prototype.copyFrom.call(this, ctx);
 };
 
+function NullTestExprContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+NullTestExprContext.prototype = Object.create(ExprContext.prototype);
+NullTestExprContext.prototype.constructor = NullTestExprContext;
+
+TelParser.NullTestExprContext = NullTestExprContext;
+
+NullTestExprContext.prototype.expr = function() {
+    return this.getTypedRuleContext(ExprContext,0);
+};
+
+NullTestExprContext.prototype.KW_IS = function() {
+    return this.getToken(TelParser.KW_IS, 0);
+};
+
+NullTestExprContext.prototype.KW_NULL = function() {
+    return this.getToken(TelParser.KW_NULL, 0);
+};
+
+NullTestExprContext.prototype.NOT = function() {
+    return this.getToken(TelParser.NOT, 0);
+};
+NullTestExprContext.prototype.enterRule = function(listener) {
+    if(listener instanceof TelListener ) {
+        listener.enterNullTestExpr(this);
+	}
+};
+
+NullTestExprContext.prototype.exitRule = function(listener) {
+    if(listener instanceof TelListener ) {
+        listener.exitNullTestExpr(this);
+	}
+};
+
+NullTestExprContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof TelVisitor ) {
+        return visitor.visitNullTestExpr(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
 function NotExprContext(parser, ctx) {
 	ExprContext.call(this, parser);
     ExprContext.prototype.copyFrom.call(this, ctx);
@@ -816,7 +869,7 @@ TelParser.prototype.expr = function(_p) {
             this.state = 44;
             this.match(TelParser.NOT);
             this.state = 45;
-            this.expr(5);
+            this.expr(6);
             break;
         case TelParser.INT:
         case TelParser.REAL:
@@ -837,25 +890,25 @@ TelParser.prototype.expr = function(_p) {
             throw new antlr4.error.NoViableAltException(this);
         }
         this._ctx.stop = this._input.LT(-1);
-        this.state = 60;
+        this.state = 66;
         this._errHandler.sync(this);
-        var _alt = this._interp.adaptivePredict(this._input,7,this._ctx)
+        var _alt = this._interp.adaptivePredict(this._input,8,this._ctx)
         while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
             if(_alt===1) {
                 if(this._parseListeners!==null) {
                     this.triggerExitRuleEvent();
                 }
                 _prevctx = localctx;
-                this.state = 58;
+                this.state = 64;
                 this._errHandler.sync(this);
-                var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
+                var la_ = this._interp.adaptivePredict(this._input,7,this._ctx);
                 switch(la_) {
                 case 1:
                     localctx = new MultiplicationExprContext(this, new ExprContext(this, _parentctx, _parentState));
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
                     this.state = 49;
-                    if (!( this.precpred(this._ctx, 4))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
+                    if (!( this.precpred(this._ctx, 5))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
                     }
                     this.state = 50;
                     localctx.op = this._input.LT(1);
@@ -868,15 +921,15 @@ TelParser.prototype.expr = function(_p) {
                         this.consume();
                     }
                     this.state = 51;
-                    this.expr(5);
+                    this.expr(6);
                     break;
 
                 case 2:
                     localctx = new AdditiveExprContext(this, new ExprContext(this, _parentctx, _parentState));
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
                     this.state = 52;
-                    if (!( this.precpred(this._ctx, 3))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
+                    if (!( this.precpred(this._ctx, 4))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
                     }
                     this.state = 53;
                     localctx.op = this._input.LT(1);
@@ -889,15 +942,15 @@ TelParser.prototype.expr = function(_p) {
                         this.consume();
                     }
                     this.state = 54;
-                    this.expr(4);
+                    this.expr(5);
                     break;
 
                 case 3:
                     localctx = new LogicalExprContext(this, new ExprContext(this, _parentctx, _parentState));
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
                     this.state = 55;
-                    if (!( this.precpred(this._ctx, 2))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
+                    if (!( this.precpred(this._ctx, 3))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
                     }
                     this.state = 56;
                     localctx.op = this._input.LT(1);
@@ -910,14 +963,35 @@ TelParser.prototype.expr = function(_p) {
                         this.consume();
                     }
                     this.state = 57;
-                    this.expr(3);
+                    this.expr(4);
+                    break;
+
+                case 4:
+                    localctx = new NullTestExprContext(this, new ExprContext(this, _parentctx, _parentState));
+                    this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
+                    this.state = 58;
+                    if (!( this.precpred(this._ctx, 2))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
+                    }
+                    this.state = 59;
+                    this.match(TelParser.KW_IS);
+                    this.state = 61;
+                    this._errHandler.sync(this);
+                    _la = this._input.LA(1);
+                    if(_la===TelParser.NOT) {
+                        this.state = 60;
+                        this.match(TelParser.NOT);
+                    }
+
+                    this.state = 63;
+                    this.match(TelParser.KW_NULL);
                     break;
 
                 } 
             }
-            this.state = 62;
+            this.state = 68;
             this._errHandler.sync(this);
-            _alt = this._interp.adaptivePredict(this._input,7,this._ctx);
+            _alt = this._interp.adaptivePredict(this._input,8,this._ctx);
         }
 
     } catch( error) {
@@ -1228,25 +1302,25 @@ TelParser.prototype.atom = function() {
     this.enterRule(localctx, 10, TelParser.RULE_atom);
     var _la = 0; // Token type
     try {
-        this.state = 73;
+        this.state = 79;
         this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
+        var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
         switch(la_) {
         case 1:
             localctx = new BracketExprContext(this, localctx);
             this.enterOuterAlt(localctx, 1);
-            this.state = 63;
+            this.state = 69;
             this.match(TelParser.L_BRACKET);
-            this.state = 64;
+            this.state = 70;
             this.expr(0);
-            this.state = 65;
+            this.state = 71;
             this.match(TelParser.R_BRACKET);
             break;
 
         case 2:
             localctx = new NumberAtomContext(this, localctx);
             this.enterOuterAlt(localctx, 2);
-            this.state = 67;
+            this.state = 73;
             _la = this._input.LA(1);
             if(!(_la===TelParser.INT || _la===TelParser.REAL)) {
             this._errHandler.recoverInline(this);
@@ -1260,14 +1334,14 @@ TelParser.prototype.atom = function() {
         case 3:
             localctx = new FnExprContext(this, localctx);
             this.enterOuterAlt(localctx, 3);
-            this.state = 68;
+            this.state = 74;
             this.fn();
             break;
 
         case 4:
             localctx = new BooleanAtomContext(this, localctx);
             this.enterOuterAlt(localctx, 4);
-            this.state = 69;
+            this.state = 75;
             _la = this._input.LA(1);
             if(!(_la===TelParser.TRUE || _la===TelParser.FALSE)) {
             this._errHandler.recoverInline(this);
@@ -1281,21 +1355,21 @@ TelParser.prototype.atom = function() {
         case 5:
             localctx = new TaxonSlugAtomContext(this, localctx);
             this.enterOuterAlt(localctx, 5);
-            this.state = 70;
+            this.state = 76;
             this.taxon_expr();
             break;
 
         case 6:
             localctx = new SingleQuotedAtomContext(this, localctx);
             this.enterOuterAlt(localctx, 6);
-            this.state = 71;
+            this.state = 77;
             this.match(TelParser.SINGLE_QUOTED_ELEMENT);
             break;
 
         case 7:
             localctx = new StringConstantAtomContext(this, localctx);
             this.enterOuterAlt(localctx, 7);
-            this.state = 72;
+            this.state = 78;
             this.match(TelParser.STRING_CONSTANT);
             break;
 
@@ -1327,10 +1401,12 @@ TelParser.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 TelParser.prototype.expr_sempred = function(localctx, predIndex) {
 	switch(predIndex) {
 		case 0:
-			return this.precpred(this._ctx, 4);
+			return this.precpred(this._ctx, 5);
 		case 1:
-			return this.precpred(this._ctx, 3);
+			return this.precpred(this._ctx, 4);
 		case 2:
+			return this.precpred(this._ctx, 3);
+		case 3:
 			return this.precpred(this._ctx, 2);
 		default:
 			throw "No predicate with index:" + predIndex;

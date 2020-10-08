@@ -29,6 +29,11 @@ class TelVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by TelParser#nullTestExpr.
+    def visitNullTestExpr(self, ctx:TelParser.NullTestExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by TelParser#notExpr.
     def visitNotExpr(self, ctx:TelParser.NotExprContext):
         return self.visitChildren(ctx)

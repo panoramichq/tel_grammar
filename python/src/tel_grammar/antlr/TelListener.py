@@ -44,6 +44,15 @@ class TelListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TelParser#nullTestExpr.
+    def enterNullTestExpr(self, ctx:TelParser.NullTestExprContext):
+        pass
+
+    # Exit a parse tree produced by TelParser#nullTestExpr.
+    def exitNullTestExpr(self, ctx:TelParser.NullTestExprContext):
+        pass
+
+
     # Enter a parse tree produced by TelParser#notExpr.
     def enterNotExpr(self, ctx:TelParser.NotExprContext):
         pass

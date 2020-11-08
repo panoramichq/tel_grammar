@@ -7,7 +7,7 @@ FALSE : 'false' | 'FALSE';          // false
 NOT : 'not' | 'NOT';
 KW_IS : 'is' | 'IS';
 KW_NULL : 'null' | 'NULL';
-WORD : [a-zA-Z0-9_.]+;              // one word (either part of slug or fn name)
+WORD : [a-zA-Z_][a-zA-Z_0-9$]*;     // one word (either part of slug or fn name)
 STRING_CONSTANT : '"' ( '\\"' | ~'"' )* '"' ;    // string constant. Not greedy, and supports \ to escape " char.
 SINGLE_QUOTED_ELEMENT: '\'' ( '\\\'' | ~'\'' )* '\'' ;    // string element surrounded by single quotes. Not greedy, and supports \ to escape ' char.
 
@@ -50,11 +50,11 @@ expr
 ;
 
 atom
-:  L_BRACKET expr R_BRACKET #bracketExpr
+: L_BRACKET expr R_BRACKET  #bracketExpr
 | (INT | REAL)              #numberAtom
-| fn                        #fnExpr
 | (TRUE | FALSE)            #booleanAtom
-| taxon                     #taxonSlugAtom
 | SINGLE_QUOTED_ELEMENT     #singleQuotedAtom
 | STRING_CONSTANT           #stringConstantAtom
+| fn                        #fnExpr
+| taxon                     #taxonSlugAtom
 ;

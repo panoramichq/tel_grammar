@@ -7,7 +7,7 @@ from antlr4 import CommonTokenStream, InputStream
 sys.path.append('./src')
 from tel_grammar.antlr.TelLexer import TelLexer
 from tel_grammar.antlr.TelParser import TelParser
-from tel_grammar.antlr.TelVisitor import TelVisitor
+from tel_grammar.antlr.TelParserVisitor import TelParserVisitor as TelVisitor
 
 
 class AssertTelVisitor(TelVisitor):

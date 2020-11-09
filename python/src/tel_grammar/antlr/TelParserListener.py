@@ -1,4 +1,4 @@
-# Generated from grammar/Tel.g4 by ANTLR 4.8
+# Generated from grammar/TelParser.g4 by ANTLR 4.8
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .TelParser import TelParser
@@ -6,34 +6,7 @@ else:
     from TelParser import TelParser
 
 # This class defines a complete listener for a parse tree produced by TelParser.
-class TelListener(ParseTreeListener):
-
-    # Enter a parse tree produced by TelParser#fn.
-    def enterFn(self, ctx:TelParser.FnContext):
-        pass
-
-    # Exit a parse tree produced by TelParser#fn.
-    def exitFn(self, ctx:TelParser.FnContext):
-        pass
-
-
-    # Enter a parse tree produced by TelParser#taxon.
-    def enterTaxon(self, ctx:TelParser.TaxonContext):
-        pass
-
-    # Exit a parse tree produced by TelParser#taxon.
-    def exitTaxon(self, ctx:TelParser.TaxonContext):
-        pass
-
-
-    # Enter a parse tree produced by TelParser#taxon_expr.
-    def enterTaxon_expr(self, ctx:TelParser.Taxon_exprContext):
-        pass
-
-    # Exit a parse tree produced by TelParser#taxon_expr.
-    def exitTaxon_expr(self, ctx:TelParser.Taxon_exprContext):
-        pass
-
+class TelParserListener(ParseTreeListener):
 
     # Enter a parse tree produced by TelParser#parse.
     def enterParse(self, ctx:TelParser.ParseContext):
@@ -116,30 +89,12 @@ class TelListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by TelParser#fnExpr.
-    def enterFnExpr(self, ctx:TelParser.FnExprContext):
-        pass
-
-    # Exit a parse tree produced by TelParser#fnExpr.
-    def exitFnExpr(self, ctx:TelParser.FnExprContext):
-        pass
-
-
     # Enter a parse tree produced by TelParser#booleanAtom.
     def enterBooleanAtom(self, ctx:TelParser.BooleanAtomContext):
         pass
 
     # Exit a parse tree produced by TelParser#booleanAtom.
     def exitBooleanAtom(self, ctx:TelParser.BooleanAtomContext):
-        pass
-
-
-    # Enter a parse tree produced by TelParser#taxonSlugAtom.
-    def enterTaxonSlugAtom(self, ctx:TelParser.TaxonSlugAtomContext):
-        pass
-
-    # Exit a parse tree produced by TelParser#taxonSlugAtom.
-    def exitTaxonSlugAtom(self, ctx:TelParser.TaxonSlugAtomContext):
         pass
 
 
@@ -158,6 +113,42 @@ class TelListener(ParseTreeListener):
 
     # Exit a parse tree produced by TelParser#stringConstantAtom.
     def exitStringConstantAtom(self, ctx:TelParser.StringConstantAtomContext):
+        pass
+
+
+    # Enter a parse tree produced by TelParser#fnExpr.
+    def enterFnExpr(self, ctx:TelParser.FnExprContext):
+        pass
+
+    # Exit a parse tree produced by TelParser#fnExpr.
+    def exitFnExpr(self, ctx:TelParser.FnExprContext):
+        pass
+
+
+    # Enter a parse tree produced by TelParser#taxonSlugAtom.
+    def enterTaxonSlugAtom(self, ctx:TelParser.TaxonSlugAtomContext):
+        pass
+
+    # Exit a parse tree produced by TelParser#taxonSlugAtom.
+    def exitTaxonSlugAtom(self, ctx:TelParser.TaxonSlugAtomContext):
+        pass
+
+
+    # Enter a parse tree produced by TelParser#fn.
+    def enterFn(self, ctx:TelParser.FnContext):
+        pass
+
+    # Exit a parse tree produced by TelParser#fn.
+    def exitFn(self, ctx:TelParser.FnContext):
+        pass
+
+
+    # Enter a parse tree produced by TelParser#taxon.
+    def enterTaxon(self, ctx:TelParser.TaxonContext):
+        pass
+
+    # Exit a parse tree produced by TelParser#taxon.
+    def exitTaxon(self, ctx:TelParser.TaxonContext):
         pass
 
 

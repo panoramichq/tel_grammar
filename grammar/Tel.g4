@@ -21,20 +21,18 @@ atom
 | taxon                     #taxonSlugAtom
 ;
 
-// auxiliarly rules
-fn : WORD L_BRACKET expr? (FN_PARAMETER_DELIMITER expr)* R_BRACKET ; // matches functions
-taxon: OPTIONAL_TAXON_OPERATOR? WORD (TAXON_NAMESPACE_DELIMITER WORD)? (TAXON_TAG_DELIMITER WORD)? ;  // matches a taxon slug
+fn : WORD L_BRACKET expr? (FN_PARAMETER_DELIMITER expr)* R_BRACKET ;
+taxon: OPTIONAL_TAXON_OPERATOR? WORD (TAXON_NAMESPACE_DELIMITER WORD)? (TAXON_TAG_DELIMITER WORD)? ;
 
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+INT : '-'? DIGIT+ ;                 // integer
+REAL : '-'? DIGIT+ '.' DIGIT+ ;     // integer
+TRUE : T R U E;
+FALSE : F A L S E;
+NOT : N O T;
+KW_IS : I S;
+KW_NULL : N U L L;
+WORD : [a-zA-Z_][a-zA-Z_0-9$.]*;     // one word (either part of slug or fn name). must start with non-digit
 
-INT : '-'? [0-9]+ ;                 // integer
-REAL : '-'? [0-9]+ '.' [0-9]+ ;     // integer
-TRUE : 'true' | 'TRUE';             // true
-FALSE : 'false' | 'FALSE';          // false
-NOT : 'not' | 'NOT';
-KW_IS : 'is' | 'IS';
-KW_NULL : 'null' | 'NULL';
-WORD : [a-zA-Z_][a-zA-Z_0-9$]*;     // one word (either part of slug or fn name)
 STRING_CONSTANT : '"' ( '\\"' | ~'"' )* '"' ;    // string constant. Not greedy, and supports \ to escape " char.
 SINGLE_QUOTED_ELEMENT: '\'' ( '\\\'' | ~'\'' )* '\'' ;    // string element surrounded by single quotes. Not greedy, and supports \ to escape ' char.
 
@@ -57,3 +55,33 @@ MINUS : '-';
 MULT : '*';
 DIV : '/';
 OPTIONAL_TAXON_OPERATOR: '?'; // Taxon slug prefix noting, that the taxon slug is optional.
+
+WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+
+fragment DIGIT : [0-9];
+fragment A : [aA];
+fragment B : [bB];
+fragment C : [cC];
+fragment D : [dD];
+fragment E : [eE];
+fragment F : [fF];
+fragment G : [gG];
+fragment H : [hH];
+fragment I : [iI];
+fragment J : [jJ];
+fragment K : [kK];
+fragment L : [lL];
+fragment M : [mM];
+fragment N : [nN];
+fragment O : [oO];
+fragment P : [pP];
+fragment Q : [qQ];
+fragment R : [rR];
+fragment S : [sS];
+fragment T : [tT];
+fragment U : [uU];
+fragment V : [vV];
+fragment W : [wW];
+fragment X : [xX];
+fragment Y : [yY];
+fragment Z : [zZ];

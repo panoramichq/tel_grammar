@@ -62,19 +62,42 @@ test:
 
 .PHONY: test test-dev
 
+image-antlr:
+	DOCKER_BUILDKIT=1 docker build \
+		-t antlr \
+		-f docker/Dockerfile-antlr .
 
-build-code-python:
-	docker run \
-		-v $(PWD):$(WORKDIR) \
-		--workdir ${WORKDIR} \
-		--rm ${JAVA_IMAGE_NAME_FULL}:latest \
-		java -Xmx500M -cp '/usr/local/lib/antlr-4.8-complete.jar:$$CLASSPATH' org.antlr.v4.Tool -visitor -Dlanguage=Python3 -o python/src/tel_grammar/antlr -Xexact-output-dir grammar/Tel.g4
+# https://github.com/antlr/antlr4/issues/2335
+# solves "cannot find token file" error
+grammar/TelLexer.tokens: grammar/TelLexer.g4
+	docker run --rm \
+		-v $(PWD):/mnt \
+		antlr \
+			-o ./ \
+			grammar/TelLexer.g4
 
-build-code-js:
-	docker run \
-		-v $(PWD):$(WORKDIR) \
-		--workdir ${WORKDIR} \
-		--rm ${JAVA_IMAGE_NAME_FULL}:latest \
-		java -Xmx500M -cp '/usr/local/lib/antlr-4.8-complete.jar:$$CLASSPATH' org.antlr.v4.Tool -visitor -Dlanguage=JavaScript -o js-temp/ -Xexact-output-dir grammar/Tel.g4
+build-code-python: grammar/TelLexer.tokens grammar/TelParser.g4 # image-antlr
+	docker run --rm \
+		-v $(PWD):/mnt \
+		antlr \
+			-visitor \
+			-Dlanguage=Python3 \
+			-Xexact-output-dir \
+			-o python/src/tel_grammar/antlr \
+			grammar/TelLexer.g4 \
+			grammar/TelParser.g4
 
-.PHONY: build-code-python
+build-code-js: grammar/TelLexer.tokens grammar/TelParser.g4 # image-antlr
+	docker run --rm \
+		-v $(PWD):/mnt \
+		antlr \
+			-visitor \
+			-Dlanguage=JavaScript \
+			-Xexact-output-dir \
+			-o js-temp/ \
+			grammar/TelLexer.g4 \
+			grammar/TelParser.g4
+
+build-code: build-code-python build-code-js
+
+.PHONY: image.antlr build-code-python build-code-js build-code

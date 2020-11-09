@@ -25,25 +25,27 @@ It can generate following components in both python and JavaScript to handle par
 
 Current documentation on the language is available [here](https://diesel-service.operamprod.com/documentation#taxon-expression-language-tel).
 
-## How to use it
+## Local Development
 
-### `make image-java`
+### `make image-antlr`
 
-It builds local docker image to run ANTLR commands. You need to run this command before you may run ANTLR-related make commands.
-
-### `make image-python`
-
-It builds local docker image to run python tests. This image is used to run tests on the current grammar.
+It builds local docker image to run ANTLR commands. 
+You need to run this command before you may run ANTLR-related make commands.
 
 ### `make build-code-python`
 
 It generates all components in python language
 
-
 ### `make build-code-js`
 
 It generates all components in JavaScript language
 
+### `make test-dev`
+
+Runs tests on the current version of grammar in quick mode.
+Reuses pre-built python image (3.8) to mount local python code and tests and run them.
+
 ### `make test`
 
-Runs tests on the current version of grammar.
+Runs same tests as above, but against multiple supported python versions, using TOX config.
+(Takes much much longer to run because each python image is built from scratch each time.)

@@ -69,25 +69,25 @@ image-antlr:
 
 # https://github.com/antlr/antlr4/issues/2335
 # solves "cannot find token file" error
-grammar/TelLexer.tokens: grammar/TelLexer.g4
+grammar/PqlLexer.tokens: grammar/PqlLexer.g4
 	docker run --rm \
 		-v $(PWD):/mnt \
 		antlr \
 			-o ./ \
-			grammar/TelLexer.g4
+			grammar/PqlLexer.g4
 
-build-code-python: grammar/TelLexer.tokens grammar/TelParser.g4 # image-antlr
+build-code-python: grammar/PqlLexer.tokens grammar/PqlParser.g4# image-antlr
 	docker run --rm \
 		-v $(PWD):/mnt \
 		antlr \
 			-visitor \
 			-Dlanguage=Python3 \
 			-Xexact-output-dir \
-			-o python/src/tel_grammar/antlr \
-			grammar/TelLexer.g4 \
-			grammar/TelParser.g4
+			-o python/src/pql_grammar/antlr \
+			grammar/PqlLexer.g4 \
+			grammar/PqlParser.g4
 
-build-code-js: grammar/TelLexer.tokens grammar/TelParser.g4 # image-antlr
+build-code-js: grammar/PqlLexer.tokens grammar/PqlParser.g4 # image-antlr
 	docker run --rm \
 		-v $(PWD):/mnt \
 		antlr \
@@ -95,8 +95,8 @@ build-code-js: grammar/TelLexer.tokens grammar/TelParser.g4 # image-antlr
 			-Dlanguage=JavaScript \
 			-Xexact-output-dir \
 			-o js-temp/ \
-			grammar/TelLexer.g4 \
-			grammar/TelParser.g4
+			grammar/PqlLexer.g4 \
+			grammar/PqlParser.g4
 
 build-code: build-code-python build-code-js
 

@@ -2,15 +2,32 @@ import os
 import sys
 import pytest
 
-from antlr4 import CommonTokenStream, InputStream
+from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 
 sys.path.append('./src')
-from tel_grammar.antlr.TelLexer import TelLexer
-from tel_grammar.antlr.TelParser import TelParser
-from tel_grammar.antlr.TelParserVisitor import TelParserVisitor as TelVisitor
+from pql_grammar.antlr.PqlLexer import PqlLexer
+from pql_grammar.antlr.PqlParser import PqlParser
+from pql_grammar.antlr.PqlParserVisitor import PqlParserVisitor
 
 
-class AssertTelVisitor(TelVisitor):
+def full_text(ctx: ParserRuleContext) -> str:
+    # extracts full text from a tree of nodes,
+    # including white space.
+    if ctx:
+        if isinstance(ctx, ParserRuleContext):
+            return ctx.start.getInputStream().getText(ctx.start.start, ctx.stop.stop)
+        else:
+            try:
+                # some primitive context object
+                return ctx.text
+            except AttributeError:
+                # Terminal Node of some sort
+                return str(ctx)
+    else:
+        return None
+
+
+class AssertTelVisitor(PqlParserVisitor):
     """
     Special TelVisitor for testing grammar. Throws error in case of invalid node.
     """
@@ -59,7 +76,7 @@ class AssertTelVisitor(TelVisitor):
         # Handle taxon slugs and functions with dot
         ('db.prod',),
         ('db.prod|schema.table.column',),
-        ('db.prod|schema.table.column:v2.0',),
+        ('db.prod|schema.table.column:v2.b0',),
         ('fn.contains()',),
         ('fn.contains.v2(db.prod, 3.14)',),
         # Handle not operator
@@ -76,10 +93,10 @@ class AssertTelVisitor(TelVisitor):
 )
 def test_grammar(test_case):
     inp_stream = InputStream(test_case)
-    lexer = TelLexer(inp_stream)
+    lexer = PqlLexer(inp_stream)
     stream = CommonTokenStream(lexer)
-    parser = TelParser(stream)
-    tree = parser.parse()
+    parser = PqlParser(stream)
+    tree = parser.parseTel()
     # Use error visitor on parsed tree to test it
     visitor = AssertTelVisitor()
     visitor.visit(tree)

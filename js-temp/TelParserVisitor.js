@@ -18,92 +18,38 @@ TelParserVisitor.prototype.visitParse = function(ctx) {
 };
 
 
-// Visit a parse tree produced by TelParser#nullTestExpr.
-TelParserVisitor.prototype.visitNullTestExpr = function(ctx) {
+// Visit a parse tree produced by TelParser#expr.
+TelParserVisitor.prototype.visitExpr = function(ctx) {
   return this.visitChildren(ctx);
 };
 
 
-// Visit a parse tree produced by TelParser#notExpr.
-TelParserVisitor.prototype.visitNotExpr = function(ctx) {
+// Visit a parse tree produced by TelParser#isNotNull.
+TelParserVisitor.prototype.visitIsNotNull = function(ctx) {
   return this.visitChildren(ctx);
 };
 
 
-// Visit a parse tree produced by TelParser#logicalExpr.
-TelParserVisitor.prototype.visitLogicalExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#multiplicationExpr.
-TelParserVisitor.prototype.visitMultiplicationExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#atomExpr.
-TelParserVisitor.prototype.visitAtomExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#additiveExpr.
-TelParserVisitor.prototype.visitAdditiveExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#bracketExpr.
-TelParserVisitor.prototype.visitBracketExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#numberAtom.
-TelParserVisitor.prototype.visitNumberAtom = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#booleanAtom.
-TelParserVisitor.prototype.visitBooleanAtom = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#singleQuotedAtom.
-TelParserVisitor.prototype.visitSingleQuotedAtom = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#stringConstantAtom.
-TelParserVisitor.prototype.visitStringConstantAtom = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#fnExpr.
-TelParserVisitor.prototype.visitFnExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#taxonSlugAtom.
-TelParserVisitor.prototype.visitTaxonSlugAtom = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by TelParser#fn.
-TelParserVisitor.prototype.visitFn = function(ctx) {
+// Visit a parse tree produced by TelParser#isNull.
+TelParserVisitor.prototype.visitIsNull = function(ctx) {
   return this.visitChildren(ctx);
 };
 
 
 // Visit a parse tree produced by TelParser#taxon.
 TelParserVisitor.prototype.visitTaxon = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by TelParser#identifierMultipart.
+TelParserVisitor.prototype.visitIdentifierMultipart = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by TelParser#literalValue.
+TelParserVisitor.prototype.visitLiteralValue = function(ctx) {
   return this.visitChildren(ctx);
 };
 

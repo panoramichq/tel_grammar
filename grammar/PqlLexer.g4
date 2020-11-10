@@ -1,9 +1,6 @@
 lexer grammar PqlLexer;
 
-TAXON_TAG_DELIMITER: ':';
-TAXON_OPTIONAL_OPERATOR: '?'; // Taxon slug prefix noting, that the taxon slug is optional.
-
-// SQL-compatible (except for some TEL-isms):
+// mostly SQL-compatible (except for some TEL-isms where marked):
 
 AND : '&&'; // TEL
 EQ : '==';
@@ -11,14 +8,14 @@ GT_EQ : '>=';
 LT_EQ : '<=';
 NOT_EQ1 : '!=';
 NOT_EQ2 : '<>';
-OR : '||'; // TEL
+OR : '||'; // TEL. !! CONFLICT WITH SQL where it's string concatenator !!
 SHIFT_LEFT : '<<';
 SHIFT_RIGHT : '>>';
-
 
 AMP : '&';
 ASSIGN : '=';
 CLOSE_PAREN : ')';
+COLON: ':';
 COMMA : ',';
 DOT : '.';
 FORWARD_SLASH : '/';
@@ -29,6 +26,7 @@ MOD : '%';
 OPEN_PAREN : '(';
 PIPE : '|';
 PLUS : '+';
+QUESTION_MARK: '?';
 SCOL : ';';
 STAR : '*';
 TILDE : '~';
@@ -36,6 +34,7 @@ UNDER: '_';
 
 // SQL keywords we adapt:
 K_AND : A N D;
+K_AS : A S;
 K_ASC : A S C;
 K_BY : B Y;
 K_DESC : D E S C;

@@ -62,6 +62,24 @@ class PqlParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PqlParser#column.
+    def enterColumn(self, ctx:PqlParser.ColumnContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#column.
+    def exitColumn(self, ctx:PqlParser.ColumnContext):
+        pass
+
+
+    # Enter a parse tree produced by PqlParser#typeCast.
+    def enterTypeCast(self, ctx:PqlParser.TypeCastContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#typeCast.
+    def exitTypeCast(self, ctx:PqlParser.TypeCastContext):
+        pass
+
+
     # Enter a parse tree produced by PqlParser#whereClause.
     def enterWhereClause(self, ctx:PqlParser.WhereClauseContext):
         pass
@@ -104,6 +122,24 @@ class PqlParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by PqlParser#expr.
     def exitExpr(self, ctx:PqlParser.ExprContext):
+        pass
+
+
+    # Enter a parse tree produced by PqlParser#function.
+    def enterFunction(self, ctx:PqlParser.FunctionContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#function.
+    def exitFunction(self, ctx:PqlParser.FunctionContext):
+        pass
+
+
+    # Enter a parse tree produced by PqlParser#exprList.
+    def enterExprList(self, ctx:PqlParser.ExprListContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#exprList.
+    def exitExprList(self, ctx:PqlParser.ExprListContext):
         pass
 
 

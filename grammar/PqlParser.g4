@@ -35,7 +35,25 @@ selectStmt
    ( limitClause )?
  ;
 
-columns: expr ( COMMA expr )* ;
+columns: column ( COMMA column )* ;
+
+// Column is a complicated structure of many parts:
+//  {tel expression (includes taxon)}{::Type Cast function or token} {{AS} taxon-like}
+// Example:
+//  (?ns3|taxon3 + (slug2 - 1234))::TypeHint(agg=ave) as ns1|custom_data1,
+column: value=expr type_cast=typeCast? (K_AS alias=taxon)? ;
+// this conflicts with end of taxon ":tag"
+// This means that typecasting cannot be used on naked taxon
+// Must wrap whatever expression into parens or other non-taxon before Type Casting
+// WRONG:
+//   ns1|taxon:tag:TypeCast()
+//   ns1|taxon::TypeCast()
+// CORRECT:
+//   (ns1|taxon:tag)::TypeCast()
+//   (ns1|taxon)::TypeCast()
+// While SQL allows non-function and function type casts,
+// we stick with requireing parens always for simplicity of syntax parser.
+typeCast: COLON COLON function ;
 
 whereClause
  : K_WHERE expr
@@ -60,21 +78,33 @@ expr
  | left=expr operator=( LT | LT_EQ | GT | GT_EQ ) right=expr
  | left=expr operator=( ASSIGN | EQ | NOT_EQ1 | NOT_EQ2 | K_IS ) right=expr
 // | left=expr is_negated=K_NOT? operator=( K_LIKE | K_BETWEEN ) right=expr
-// | left=expr is_negated=K_NOT? operator=K_IN '(' ( right=expr ( ',' right=expr )* )? ')'
+// | left=expr is_negated=K_NOT? operator=K_IN '(' exprList? ')'
  | left=expr operator=( K_AND | AND ) right=expr
  | left=expr operator=( K_OR | OR ) right=expr
  | OPEN_PAREN inner=expr CLOSE_PAREN
  | literalValue
- | function_name=identifierMultipart OPEN_PAREN ( expr ( COMMA expr )* )? CLOSE_PAREN
+ | function
  | taxon
  ;
 
+// Note that function supports optional list of arguments trapped as `expr`
+// which allows us to have
+//  named (`arg1=value1, arg2=value2'` and
+//  positional (`value1, value2`) args.
+// Named ones will come as `expr` with left=expr,operator=ASSIGN,right=expr contents.
+//  You might need to express these as ordered dict / list of tuples to preserve names of args.
+// Positional will be whatever literal or other single-valued expr content could be.
+function: function_name=identifierMultipart OPEN_PAREN arguments=exprList? CLOSE_PAREN;
+exprList: expr ( COMMA expr )* ;
+
 // TODO: TAXON_TAG_DELIMITER is being killed off. Remove when we migrate out of taxon tags.
 taxon:
-    TAXON_OPTIONAL_OPERATOR?
+    QUESTION_MARK?
     ( namespace=identifierMultipart PIPE )?
     slug=identifierMultipart
-    ( TAXON_TAG_DELIMITER tag=identifierMultipart )?
+    // TODO: drop this when we drop Data Tags system.
+    // May conflict with TypeCast expression
+    ( COLON tag=identifierMultipart )?
  ;
 
 identifierMultipart: WORD ( DOT WORD )* ;

@@ -3,8 +3,10 @@ sys.path.append('./src')
 
 from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 from antlr4.tree import Tree
-from unittest import mock, TestCase
+from dataclasses import dataclass
+from collections import namedtuple
 from typing import Optional
+from unittest import mock, TestCase
 
 from pql_grammar.antlr.PqlLexer import PqlLexer
 from pql_grammar.antlr.PqlParser import PqlParser
@@ -224,8 +226,9 @@ class WhereClauseParser:
         #         else:
         #             return clause
 
-        if ctx.function_name:
+        if ctx.function():
             raise NotImplementedError('Dont know how to pack functions yet')
+
         raise Exception(f'Where expression "{full_text(ctx)}" is not supported yet.')
 
 
@@ -252,6 +255,7 @@ class AssertPqlVisitor(PqlParserVisitor, WhereClauseParser):
 
 
 class PQLTests(TestCase):
+    maxDiff = None
 
     def test_select_no_filter(self):
 
@@ -259,20 +263,30 @@ class PQLTests(TestCase):
             select
                 ?ns1|taxon1,
                 ?ns2|taxon2,
-                slug1,
-                (?ns3|taxon3 + (slug2 - 1234)),
-                fn_4(fn_1(slug))
+                slug1 as myns|slug1,
+                (?ns3|taxon3 + (slug2 - 1234)) as myns|custom_data,
+                fn_4(fn_1(slug))::TypeCast(arg1=value1)
             where
                 ns6|taxon6 > 1234
                 and (ns0|taxon10 + 1234) == 0
         """
 
+        @dataclass
+        class Column:
+            value:str
+            type_cast:Optional[str] = None
+            alias:Optional[str] = None
+
         columns = []
         where_clause = []
         class V(AssertPqlVisitor):
             def visitColumns(self, ctx:PqlParser.ColumnsContext):
-                for column in ctx.expr():
-                    columns.append(full_text(column))
+                column : PqlParser.ColumnContext
+                for column in ctx.column():
+                    v = full_text(column.value)
+                    type_cast = full_text(column.type_cast.function()) if column.type_cast else None
+                    alias = full_text(column.alias)
+                    columns.append(Column(v, type_cast, alias))
             def visitWhereClause(self, ctx:PqlParser.WhereClauseContext):
                 ww = self._parse_where_clause_expr(ctx.expr())
                 where_clause.extend(ww)
@@ -280,11 +294,11 @@ class PQLTests(TestCase):
         V.parse_string(pql)
 
         assert columns == [
-            '?ns1|taxon1',
-            '?ns2|taxon2',
-            'slug1',
-            '(?ns3|taxon3 + (slug2 - 1234))',
-            'fn_4(fn_1(slug))'
+            Column('?ns1|taxon1'),
+            Column('?ns2|taxon2'),
+            Column('slug1', None, 'myns|slug1'),
+            Column('(?ns3|taxon3 + (slug2 - 1234))', None, 'myns|custom_data'),
+            Column('fn_4(fn_1(slug))', 'TypeCast(arg1=value1)')
         ]
         assert where_clause == [
             'AND',

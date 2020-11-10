@@ -39,6 +39,16 @@ class PqlParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PqlParser#column.
+    def visitColumn(self, ctx:PqlParser.ColumnContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PqlParser#typeCast.
+    def visitTypeCast(self, ctx:PqlParser.TypeCastContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PqlParser#whereClause.
     def visitWhereClause(self, ctx:PqlParser.WhereClauseContext):
         return self.visitChildren(ctx)
@@ -61,6 +71,16 @@ class PqlParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PqlParser#expr.
     def visitExpr(self, ctx:PqlParser.ExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PqlParser#function.
+    def visitFunction(self, ctx:PqlParser.FunctionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PqlParser#exprList.
+    def visitExprList(self, ctx:PqlParser.ExprListContext):
         return self.visitChildren(ctx)
 
 

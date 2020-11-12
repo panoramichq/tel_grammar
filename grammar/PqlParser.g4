@@ -29,20 +29,19 @@ sqlStmt
  ;
 
 selectStmt
- : K_SELECT columns
+ : selectClause
    ( whereClause )?
    ( orderByClause )?
    ( limitClause )?
  ;
 
-columns: column ( COMMA column )* ;
-
+selectClause: K_SELECT columns ( COMMA columns )* ;
 // Column is a complicated structure of many parts:
 //  {tel expression (includes taxon)}{::Type Cast function or token} {{AS} taxon-like}
 // Example:
 //  (?ns3|taxon3 + (slug2 - 1234))::TypeHint(agg=ave) as ns1|custom_data1,
-column: value=expr type_cast=typeCast? (K_AS alias=taxon)? ;
-// this conflicts with end of taxon ":tag"
+columns: value=expr (COLON COLON type_cast=function)? (K_AS alias=taxon)? ;
+// TypeCasting with ::TypeCast() conflicts with end of taxon ":tag"
 // This means that typecasting cannot be used on naked taxon
 // Must wrap whatever expression into parens or other non-taxon before Type Casting
 // WRONG:
@@ -53,7 +52,6 @@ column: value=expr type_cast=typeCast? (K_AS alias=taxon)? ;
 //   (ns1|taxon)::TypeCast()
 // While SQL allows non-function and function type casts,
 // we stick with requireing parens always for simplicity of syntax parser.
-typeCast: COLON COLON function ;
 
 whereClause
  : K_WHERE expr
@@ -99,7 +97,7 @@ exprList: expr ( COMMA expr )* ;
 
 // TODO: TAXON_TAG_DELIMITER is being killed off. Remove when we migrate out of taxon tags.
 taxon:
-    QUESTION_MARK?
+    is_optional=QUESTION_MARK?
     ( namespace=identifierMultipart PIPE )?
     slug=identifierMultipart
     // TODO: drop this when we drop Data Tags system.

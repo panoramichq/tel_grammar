@@ -34,18 +34,13 @@ class PqlParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PqlParser#selectClause.
+    def visitSelectClause(self, ctx:PqlParser.SelectClauseContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PqlParser#columns.
     def visitColumns(self, ctx:PqlParser.ColumnsContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by PqlParser#column.
-    def visitColumn(self, ctx:PqlParser.ColumnContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by PqlParser#typeCast.
-    def visitTypeCast(self, ctx:PqlParser.TypeCastContext):
         return self.visitChildren(ctx)
 
 

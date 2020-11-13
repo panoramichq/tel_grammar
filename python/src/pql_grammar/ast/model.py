@@ -9,6 +9,10 @@ from typing import (
 )
 
 
+# filled on the bottom
+inventory = {}
+
+
 class Node:
     pass
 
@@ -42,13 +46,13 @@ class Function(Node):
     function_name: str
     # support named args.
     # each tuple is a pair of arg_name=arg_value in order of occurrence.
-    args: List[Tuple[Optional[str],str]]
+    args: Optional[List[Tuple[Optional[str],str]]] = None
 
-Values = Union[TelExpr,Function,Taxon,Literal]
+ColumnValue = Union[TelExpr,Function,Taxon,Literal]
 
 @dataclass
 class Column(Node):
-    value: Values
+    value: ColumnValue
     type_cast: Optional[Function] = None
     alias: Optional[Taxon] = None
 
@@ -78,3 +82,10 @@ def ast_diff(a, b, path=None):
     else:
         if a != b:
             raise Exception(f"Values of {a} and {b} are not same for path {path}")
+
+
+inventory.update({
+    k : v
+    for k, v in dict(locals()).items()
+    if type(v) is type and issubclass(v, Node)
+})

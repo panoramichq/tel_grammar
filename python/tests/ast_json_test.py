@@ -1,0 +1,219 @@
+import sys
+from unittest import TestCase
+
+sys.path.append('./src')
+
+from pql_grammar.ast import model as ast
+from pql_grammar.ast.to_json import to_json
+from pql_grammar.ast.from_json import from_json
+
+
+null = None
+false = False
+true = True
+
+
+ast_should_be = ast.SelectStmt(
+    [
+        ast.Column(ast.Taxon('taxon1', 'ns1', True)),
+        ast.Column(ast.Taxon('taxon2', 'ns2', False)),
+        ast.Column(ast.Taxon('slug1'), None, ast.Taxon('slug1', 'myns')),
+        ast.Column(
+            ast.TelExpr('?ns3|taxon3 + (slug2 - 1234)'),
+            None,
+            ast.Taxon('custom_data', 'myns')
+        ),
+        ast.Column(
+            ast.TelExpr('ns3|taxon3 + 5'),
+            ast.Function(
+                'TypeCast'
+            ),
+            ast.Taxon('custom_data_cast', 'myns')
+        ),
+        ast.Column(
+            ast.TelExpr('fn_4(fn_1(slug))'),
+            ast.Function(
+                'TypeCast',
+                [['arg1','value1']]  # normally inner pair is a tuple, but for comparison making list.
+            ),
+        )
+    ],
+    ast.Expr(
+        'AND',
+        [
+            ast.Expr(
+                '>',
+                [
+                    ast.Taxon('taxon6', 'ns6'),
+                    ast.Literal(1234, '1234')
+                ]
+            ),
+            ast.Expr(
+                '==',
+                [
+                    ast.Expr(
+                        '+',
+                        [
+                            ast.Taxon('taxon10', 'ns0'),
+                            ast.Literal(4321, '4321')
+                        ]
+                    ),
+                    ast.Literal(0, '0')
+                ]
+            )
+        ]
+    )
+)
+
+
+json_should_be = {
+    "__type__": "SelectStmt",
+    "columns": [
+        {
+            "__type__": "Column",
+            "value": {
+                "__type__": "Taxon",
+                "slug": "taxon1",
+                "namespace": "ns1",
+                "is_optional": true
+            }
+        },
+        {
+            "__type__": "Column",
+            "value": {
+                "__type__": "Taxon",
+                "slug": "taxon2",
+                "namespace": "ns2",
+                "is_optional": false
+            }
+        },
+        {
+            "__type__": "Column",
+            "value": {
+                "__type__": "Taxon",
+                "slug": "slug1",
+                "is_optional": false
+            },
+            "alias": {
+                "__type__": "Taxon",
+                "slug": "slug1",
+                "namespace": "myns",
+                "is_optional": false
+            }
+        },
+        {
+            "__type__": "Column",
+            "value": {
+                "__type__": "TelExpr",
+                "raw_value": "?ns3|taxon3 + (slug2 - 1234)"
+            },
+            "alias": {
+                "__type__": "Taxon",
+                "slug": "custom_data",
+                "namespace": "myns",
+                "is_optional": false
+            }
+        },
+        {
+            "__type__": "Column",
+            "value": {
+                "__type__": "TelExpr",
+                "raw_value": "ns3|taxon3 + 5"
+            },
+            "type_cast": {
+                "__type__": "Function",
+                "function_name": "TypeCast"
+            },
+            "alias": {
+                "__type__": "Taxon",
+                "slug": "custom_data_cast",
+                "namespace": "myns",
+                "is_optional": false
+            }
+        },
+        {
+            "__type__": "Column",
+            "value": {
+                "__type__": "TelExpr",
+                "raw_value": "fn_4(fn_1(slug))"
+            },
+            "type_cast": {
+                "__type__": "Function",
+                "function_name": "TypeCast",
+                "args": [
+                    [
+                        "arg1",
+                        "value1"
+                    ]
+                ]
+            }
+        }
+    ],
+    "where_clause": {
+        "__type__": "Expr",
+        "operator": "AND",
+        "args": [
+            {
+                "__type__": "Expr",
+                "operator": ">",
+                "args": [
+                    {
+                        "__type__": "Taxon",
+                        "slug": "taxon6",
+                        "namespace": "ns6",
+                        "is_optional": false
+                    },
+                    {
+                        "__type__": "Literal",
+                        "value": 1234,
+                        "raw_value": "1234"
+                    }
+                ]
+            },
+            {
+                "__type__": "Expr",
+                "operator": "==",
+                "args": [
+                    {
+                        "__type__": "Expr",
+                        "operator": "+",
+                        "args": [
+                            {
+                                "__type__": "Taxon",
+                                "slug": "taxon10",
+                                "namespace": "ns0",
+                                "is_optional": false
+                            },
+                            {
+                                "__type__": "Literal",
+                                "value": 4321,
+                                "raw_value": "4321"
+                            }
+                        ]
+                    },
+                    {
+                        "__type__": "Literal",
+                        "value": 0,
+                        "raw_value": "0"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+
+class JsonAstTests(TestCase):
+    maxDiff = None
+
+    def test_render_json_from_ast(self):
+        json_result = to_json(ast_should_be)
+        # import json; print(json.dumps(json_result, indent=4))
+        assert json_should_be == json_result
+
+    def test_render_ast_from_json(self):
+        ast_result = from_json(json_should_be)
+        # import json; print(json.dumps(json_result, indent=4))
+
+        ast.ast_diff(ast_should_be, ast_result)
+        assert ast_should_be == ast_result

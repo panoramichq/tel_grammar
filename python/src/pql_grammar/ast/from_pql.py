@@ -1,18 +1,12 @@
-import sys
-sys.path.append('./src')
-
 from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
-from antlr4.tree import Tree
-from dataclasses import dataclass
-from collections import namedtuple
+from antlr4 import ParserRuleContext
 from typing import Optional, Tuple
-from unittest import mock, TestCase
 
-from pql_grammar.antlr.PqlLexer import PqlLexer
-from pql_grammar.antlr.PqlParser import PqlParser
-from pql_grammar.antlr.PqlParserVisitor import PqlParserVisitor
-from pql_grammar import operators as op
-from pql_grammar.ast import model as ast
+from ..antlr.PqlLexer import PqlLexer
+from ..antlr.PqlParser import PqlParser
+from ..antlr.PqlParserVisitor import PqlParserVisitor as _PqlParserVisitor
+
+from . import model as ast
 
 
 def full_text(ctx: ParserRuleContext) -> str:
@@ -45,7 +39,7 @@ def unquote(s: str):
     return s.replace('""', '"')
 
 
-class AstParser:
+class PqlAntlrToAstParser:
 
     @classmethod
     def unwrap_expr_parens(cls, e: PqlParser.ExprContext) -> PqlParser.ExprContext:
@@ -88,11 +82,11 @@ class AstParser:
             [
                 cls.parse_function_argument_pair(expr)
                 for expr in e.arguments.expr()
-            ]
+            ] if e.arguments else None
         )
 
     @classmethod
-    def parse_column_value(cls, v: PqlParser.expr) -> ast.Values:
+    def parse_column_value(cls, v: PqlParser.expr) -> ast.ColumnValue:
         # v is always PqlParser.expr, but anything can be inside
         # It's not super relevant what's inside Expr, since
         # we sent the original string-ified version of contenst to Husky anyway.
@@ -171,34 +165,6 @@ class AstParser:
 
         return v
 
-    _sql_name_map = {
-        'AND': op.OpName.AND,
-        'OR': op.OpName.OR,
-        'NOT': op.OpName.NOT,
-        'IS': op.OpName.IS,
-        '=': op.OpName.EQ,  # notice WHERE clause specific handling. NOT assignment. EQ!
-        '==': op.OpName.EQ,  # opportunistic inclusion, while we don't expect to see it in WHERE
-        '<>': op.OpName.NEQ,
-        '!=': op.OpName.NEQ,  # opportunistic inclusion, while we don't expect to see it in WHERE
-        '>': op.OpName.GT,
-        '>=': op.OpName.GTE,
-        '<': op.OpName.LT,
-        '<=': op.OpName.LTE,
-        'LIKE': op.OpName.LIKE,
-        '+':op.OpName.PLUS,
-        '-':op.OpName.MINUS,
-        '*':op.OpName.STAR,
-        '/':op.OpName.DIV,
-        '%':op.OpName.MOD,
-    }
-
-    @classmethod
-    def _lookup_operator_internal_name(cls, sql_operator: str):
-        op_name = cls._sql_name_map.get(sql_operator.upper())
-        if not op_name:
-            raise Exception(f"Could not match operator '{sql_operator}' in where clause to a supported action.")
-        return op_name
-
     @classmethod
     def parse_where_clause_expr(cls, ctx: PqlParser.ExprContext) -> ast.Node :
         ctx = cls.unwrap_expr_parens(ctx)
@@ -242,117 +208,12 @@ class AstParser:
         raise Exception(f'Where expression "{full_text(ctx)}" is not supported yet.')
 
 
-class AssertPqlVisitor(PqlParserVisitor):
-    """
-    Special TelVisitor for testing grammar. Throws error in case of invalid node.
-    """
-    def visitErrorNode(self, node):
-        wrong_symbol = node.symbol.text
-        position = node.symbol.column + 1
-        details = f'Unexpected symbol "{wrong_symbol}" at position {position}'
-        raise AssertionError(details)
+class PqlVisitor(_PqlParserVisitor):
 
-    @classmethod
-    def parse_string(cls, s):
-        inp_stream = InputStream(s)
+    def visit_from_string(self, pql: str):
+        inp_stream = InputStream(pql)
         lexer = PqlLexer(inp_stream)
         stream = CommonTokenStream(lexer)
         parser = PqlParser(stream)
         tree = parser.parsePql()
-        # Use error visitor on parsed tree to test it
-        visitor = cls()
-        visitor.visit(tree)
-
-
-class PqlAstTests(TestCase):
-    maxDiff = None
-
-    def test_select(self):
-
-        pql = """
-            select
-                ?ns1|taxon1,
-                ns2|taxon2,
-                slug1 as myns|slug1,
-                (?ns3|taxon3 + (slug2 - 1234)) as myns|custom_data,
-                fn_4(fn_1(slug))::TypeCast(arg1=value1)
-            where
-                ns6|taxon6 > 1234
-                and (ns0|taxon10 + 4321) == 0
-        """
-
-        statements = []
-
-        class V(AssertPqlVisitor):
-            def visitSelectStmt(self, ctx:PqlParser.SelectStmtContext):
-                columns = [
-                    ast.Column(
-                        AstParser.parse_column_value(column.value),
-                        AstParser.parse_column_typecast(column.type_cast),
-                        AstParser.parse_column_alias(column.alias)
-                    )
-                    for column in ctx.selectClause().columns()
-                ]
-                where_clause = AstParser.parse_where_clause_expr(ctx.whereClause().expr())
-
-                statements.append(ast.SelectStmt(
-                    columns,
-                    where_clause
-                ))
-
-        V.parse_string(pql)
-
-        stmt_should_be = ast.SelectStmt(
-            [
-                ast.Column(ast.Taxon('taxon1', 'ns1', True)),
-                ast.Column(ast.Taxon('taxon2', 'ns2', False)),
-                ast.Column(ast.Taxon('slug1'), None, ast.Taxon('slug1', 'myns')),
-                ast.Column(
-                    ast.TelExpr('?ns3|taxon3 + (slug2 - 1234)'),
-                    None,
-                    ast.Taxon('custom_data', 'myns')
-                ),
-                ast.Column(
-                    ast.TelExpr('fn_4(fn_1(slug))'),
-                    ast.Function(
-                        'TypeCast',
-                        [('arg1','value1')]
-                    ),
-                )
-            ],
-            ast.Expr(
-                'AND',
-                [
-                    ast.Expr(
-                        '>',
-                        [
-                            ast.Taxon('taxon6', 'ns6'),
-                            ast.Literal(1234, '1234')
-                        ]
-                    ),
-                    ast.Expr(
-                        '==',
-                        [
-                            ast.Expr(
-                                '+',
-                                [
-                                    ast.Taxon('taxon10', 'ns0'),
-                                    ast.Literal(4321, '4321')
-                                ]
-                            ),
-                            ast.Literal(0, '0')
-                        ]
-                    )
-                ]
-            )
-        )
-
-        assert statements
-        stmt = statements[0]
-
-        assert len(stmt.columns) == len(stmt_should_be.columns)
-        for result, should_be in zip(stmt.columns, stmt_should_be.columns):
-            assert result == should_be
-
-        # ast.ast_diff(stmt.where_clause, stmt_should_be.where_clause)
-        assert stmt.where_clause == stmt_should_be.where_clause
+        self.visit(tree)

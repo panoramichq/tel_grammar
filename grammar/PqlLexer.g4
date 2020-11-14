@@ -49,6 +49,7 @@ K_NULL : N U L L;
 K_OR : O R;
 K_ORDER : O R D E R;
 K_SELECT : S E L E C T;
+K_SET : S E T;
 K_TRUE : T R U E;
 K_WHERE : W H E R E;
 

@@ -29,6 +29,11 @@ class PqlParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PqlParser#setStmt.
+    def visitSetStmt(self, ctx:PqlParser.SetStmtContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PqlParser#selectStmt.
     def visitSelectStmt(self, ctx:PqlParser.SelectStmtContext):
         return self.visitChildren(ctx)

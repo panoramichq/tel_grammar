@@ -25,7 +25,14 @@ sqlStmtList
 
 // this is where you add more statement types, like SET and other top-level SQL statements
 sqlStmt
- : selectStmt
+ : setStmt
+ | selectStmt
+ ;
+
+// a way to set query context settings and avoid sending them inside PQL
+// Example: set "fill in dates for date-ranged sparse data" flag for Husky.
+setStmt
+ : K_SET key=identifierMultipart ASSIGN values=expr
  ;
 
 selectStmt

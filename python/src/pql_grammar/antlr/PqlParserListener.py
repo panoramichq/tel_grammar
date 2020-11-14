@@ -44,6 +44,15 @@ class PqlParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PqlParser#setStmt.
+    def enterSetStmt(self, ctx:PqlParser.SetStmtContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#setStmt.
+    def exitSetStmt(self, ctx:PqlParser.SetStmtContext):
+        pass
+
+
     # Enter a parse tree produced by PqlParser#selectStmt.
     def enterSelectStmt(self, ctx:PqlParser.SelectStmtContext):
         pass

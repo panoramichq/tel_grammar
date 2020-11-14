@@ -2,9 +2,12 @@ from dataclasses import fields
 from . import model as ast
 
 
+TYPE_ATTRIBUTE = '__typename'  # GraphQL style
+
+
 def node_to_tuples(n: ast.Node):
     return [
-        ('__type__', n.__class__.__name__)
+        (TYPE_ATTRIBUTE, n.__class__.__name__)
     ] + [
         (field.name, getattr(n, field.name))
         for field in fields(n)

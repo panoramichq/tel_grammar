@@ -3,13 +3,13 @@ from typing import List, Tuple, Any
 from . import model as ast
 
 
-AST_NODE_MARKER = '__type__'
+TYPE_ATTRIBUTE = '__typename'  # GraphQL style
 
 
 def from_json(o: dict):
 
-    if isinstance(o, dict) and AST_NODE_MARKER in o:
-        name = o[AST_NODE_MARKER]
+    if isinstance(o, dict) and TYPE_ATTRIBUTE in o:
+        name = o[TYPE_ATTRIBUTE]
         N = ast.inventory.get(name)
         if not N:
             raise NotImplementedError(f'Renderer for node type "{name}" is not implemented.')
@@ -17,7 +17,7 @@ def from_json(o: dict):
         return N(**{
             k: from_json(v)
             for k, v in o.items()
-            if k != AST_NODE_MARKER
+            if k != TYPE_ATTRIBUTE
         })
 
     if isinstance(o, (list, tuple)):

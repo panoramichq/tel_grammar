@@ -67,78 +67,78 @@ ast_should_be = ast.SelectStmt(
 
 
 json_should_be = {
-    "__type__": "SelectStmt",
+    "__typename": "SelectStmt",
     "columns": [
         {
-            "__type__": "Column",
+            "__typename": "Column",
             "value": {
-                "__type__": "Taxon",
+                "__typename": "Taxon",
                 "slug": "taxon1",
                 "namespace": "ns1",
                 "is_optional": true
             }
         },
         {
-            "__type__": "Column",
+            "__typename": "Column",
             "value": {
-                "__type__": "Taxon",
+                "__typename": "Taxon",
                 "slug": "taxon2",
                 "namespace": "ns2",
                 "is_optional": false
             }
         },
         {
-            "__type__": "Column",
+            "__typename": "Column",
             "value": {
-                "__type__": "Taxon",
+                "__typename": "Taxon",
                 "slug": "slug1",
                 "is_optional": false
             },
             "alias": {
-                "__type__": "Taxon",
+                "__typename": "Taxon",
                 "slug": "slug1",
                 "namespace": "myns",
                 "is_optional": false
             }
         },
         {
-            "__type__": "Column",
+            "__typename": "Column",
             "value": {
-                "__type__": "TelExpr",
+                "__typename": "TelExpr",
                 "raw_value": "?ns3|taxon3 + (slug2 - 1234)"
             },
             "alias": {
-                "__type__": "Taxon",
+                "__typename": "Taxon",
                 "slug": "custom_data",
                 "namespace": "myns",
                 "is_optional": false
             }
         },
         {
-            "__type__": "Column",
+            "__typename": "Column",
             "value": {
-                "__type__": "TelExpr",
+                "__typename": "TelExpr",
                 "raw_value": "ns3|taxon3 + 5"
             },
             "type_cast": {
-                "__type__": "Function",
+                "__typename": "Function",
                 "function_name": "TypeCast"
             },
             "alias": {
-                "__type__": "Taxon",
+                "__typename": "Taxon",
                 "slug": "custom_data_cast",
                 "namespace": "myns",
                 "is_optional": false
             }
         },
         {
-            "__type__": "Column",
+            "__typename": "Column",
             "value": {
-                "__type__": "TelExpr",
+                "__typename": "TelExpr",
                 "raw_value": "fn_4(fn_1(slug))"
             },
             "type_cast": {
-                "__type__": "Function",
+                "__typename": "Function",
                 "function_name": "TypeCast",
                 "args": [
                     [
@@ -150,49 +150,49 @@ json_should_be = {
         }
     ],
     "where_clause": {
-        "__type__": "Expr",
+        "__typename": "Expr",
         "operator": "AND",
         "args": [
             {
-                "__type__": "Expr",
+                "__typename": "Expr",
                 "operator": ">",
                 "args": [
                     {
-                        "__type__": "Taxon",
+                        "__typename": "Taxon",
                         "slug": "taxon6",
                         "namespace": "ns6",
                         "is_optional": false
                     },
                     {
-                        "__type__": "Literal",
+                        "__typename": "Literal",
                         "value": 1234,
                         "raw_value": "1234"
                     }
                 ]
             },
             {
-                "__type__": "Expr",
+                "__typename": "Expr",
                 "operator": "==",
                 "args": [
                     {
-                        "__type__": "Expr",
+                        "__typename": "Expr",
                         "operator": "+",
                         "args": [
                             {
-                                "__type__": "Taxon",
+                                "__typename": "Taxon",
                                 "slug": "taxon10",
                                 "namespace": "ns0",
                                 "is_optional": false
                             },
                             {
-                                "__type__": "Literal",
+                                "__typename": "Literal",
                                 "value": 4321,
                                 "raw_value": "4321"
                             }
                         ]
                     },
                     {
-                        "__type__": "Literal",
+                        "__typename": "Literal",
                         "value": 0,
                         "raw_value": "0"
                     }

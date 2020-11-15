@@ -80,6 +80,24 @@ class PqlParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PqlParser#fromClause.
+    def enterFromClause(self, ctx:PqlParser.FromClauseContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#fromClause.
+    def exitFromClause(self, ctx:PqlParser.FromClauseContext):
+        pass
+
+
+    # Enter a parse tree produced by PqlParser#tables.
+    def enterTables(self, ctx:PqlParser.TablesContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#tables.
+    def exitTables(self, ctx:PqlParser.TablesContext):
+        pass
+
+
     # Enter a parse tree produced by PqlParser#whereClause.
     def enterWhereClause(self, ctx:PqlParser.WhereClauseContext):
         pass

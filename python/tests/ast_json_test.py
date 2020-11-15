@@ -14,7 +14,7 @@ true = True
 
 
 ast_should_be = ast.SelectStmt(
-    [
+    columns = [
         ast.Column(ast.Taxon('taxon1', 'ns1', True)),
         ast.Column(ast.Taxon('taxon2', 'ns2', False)),
         ast.Column(ast.Taxon('slug1'), None, ast.Taxon('slug1', 'myns')),
@@ -38,7 +38,7 @@ ast_should_be = ast.SelectStmt(
             ),
         )
     ],
-    ast.Expr(
+    where_clause = ast.Expr(
         'AND',
         [
             ast.Expr(

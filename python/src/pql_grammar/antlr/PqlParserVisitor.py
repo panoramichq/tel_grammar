@@ -49,6 +49,16 @@ class PqlParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PqlParser#fromClause.
+    def visitFromClause(self, ctx:PqlParser.FromClauseContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PqlParser#tables.
+    def visitTables(self, ctx:PqlParser.TablesContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PqlParser#whereClause.
     def visitWhereClause(self, ctx:PqlParser.WhereClauseContext):
         return self.visitChildren(ctx)

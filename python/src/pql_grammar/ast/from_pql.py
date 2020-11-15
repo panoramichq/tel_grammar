@@ -1,6 +1,6 @@
 from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 from antlr4 import ParserRuleContext
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List, Type
 
 from ..antlr.PqlLexer import PqlLexer
 from ..antlr.PqlParser import PqlParser
@@ -166,6 +166,16 @@ class PqlAntlrToAstParser:
         return v
 
     @classmethod
+    def parse_from_clause_expr(cls, ctx: PqlParser.FromClauseContext) -> List[ast.Table]:
+        return [
+            ast.Table(
+                full_text(table.table_name),
+                full_text(table.table_alias)
+            )
+            for table in ctx.tables()
+        ]
+
+    @classmethod
     def parse_where_clause_expr(cls, ctx: PqlParser.ExprContext) -> ast.Node :
         ctx = cls.unwrap_expr_parens(ctx)
 
@@ -217,3 +227,53 @@ class PqlVisitor(_PqlParserVisitor):
         parser = PqlParser(stream)
         tree = parser.parsePql()
         self.visit(tree)
+
+
+def from_pql(pql: str, cls:Type[PqlVisitor] = PqlVisitor) -> List[ast.Node]:
+
+    statements = []
+
+    class V(cls):
+
+        def visitSelectStmt(self, ctx:PqlParser.SelectStmtContext):
+            columns = [
+                ast.Column(
+                    PqlAntlrToAstParser.parse_column_value(column.value),
+                    PqlAntlrToAstParser.parse_column_typecast(column.type_cast),
+                    PqlAntlrToAstParser.parse_column_alias(column.alias)
+                )
+                for column in ctx.selectClause().columns()
+            ]
+
+            v = ctx.fromClause()
+            if v:
+                from_clause = PqlAntlrToAstParser.parse_from_clause_expr(v)
+            else:
+                from_clause = None
+
+            v = ctx.whereClause()
+            if v:
+                where_clause = PqlAntlrToAstParser.parse_where_clause_expr(v.expr())
+            else:
+                where_clause = None
+
+            statements.append(ast.SelectStmt(
+                columns=columns,
+                from_clause=from_clause,
+                where_clause=where_clause
+            ))
+
+        def visitSetStmt(self, ctx:PqlParser.SetStmtContext):
+            key = full_text(ctx.key)
+            # TODO: parse this better. There are literals there possibly. Need to unpack them.
+            value = full_text(ctx.value)
+            statements.append(
+                ast.SetStmt(
+                    key,
+                    value
+                )
+            )
+
+    V().visit_from_string(pql)
+
+    return statements

@@ -32,14 +32,15 @@ sqlStmt
 // a way to set query context settings and avoid sending them inside PQL
 // Example: set "fill in dates for date-ranged sparse data" flag for Husky.
 setStmt
- : K_SET key=identifierMultipart ASSIGN values=expr
+ : K_SET key=identifierMultipart ASSIGN value=expr
  ;
 
 selectStmt
  : selectClause
-   ( whereClause )?
-   ( orderByClause )?
-   ( limitClause )?
+ ( fromClause )?
+ ( whereClause )?
+ ( orderByClause )?
+ ( limitClause )?
  ;
 
 selectClause: K_SELECT columns ( COMMA columns )* ;
@@ -60,9 +61,10 @@ columns: value=expr (COLON COLON type_cast=function)? (K_AS alias=taxon)? ;
 // While SQL allows non-function and function type casts,
 // we stick with requireing parens always for simplicity of syntax parser.
 
-whereClause
- : K_WHERE expr
- ;
+fromClause: K_FROM tables (COMMA tables)* ;
+tables: table_name=identifierMultipart ( K_AS? table_alias=identifierMultipart )? ;
+
+whereClause: K_WHERE expr;
 
 orderByClause
  : K_ORDER K_BY orderExpr ( COMMA orderExpr )*

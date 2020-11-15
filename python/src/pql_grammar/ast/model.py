@@ -57,9 +57,20 @@ class Column(Node):
     alias: Optional[Taxon] = None
 
 @dataclass
+class Table(Node):
+    value: str
+    alias: Optional[str] = None
+
+@dataclass
 class SelectStmt(Node):
     columns: List[Column]
-    where_clause: Optional[Expr]
+    from_clause: Optional[List[Table]] = None
+    where_clause: Optional[Expr] = None
+
+@dataclass
+class SetStmt(Node):
+    key: str
+    value: str
 
 
 def ast_diff(a, b, path=None):

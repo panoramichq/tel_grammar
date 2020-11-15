@@ -39,6 +39,7 @@ K_ASC : A S C;
 K_BY : B Y;
 K_DESC : D E S C;
 K_FALSE : F A L S E;
+K_FROM : F R O M ;
 K_IS : I S;
 K_ISNULL : I S N U L L;
 K_LIKE : L I K E;

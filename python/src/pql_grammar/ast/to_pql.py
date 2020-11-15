@@ -82,13 +82,23 @@ class Column(Node):
         return f'{value}{type_cast}{alias}'
 
 
+class Table(Node):
+    n: ast.Table
+    def __str__(self):
+        n = self.n
+        value = n.value
+        alias = f' AS {n.alias}' if n.alias else ''
+        return f'{value}{alias}'
+
+
 class SelectStmt(Node):
     n: ast.SelectStmt
     def __str__(self):
         n = self.n
-        cc = 'SELECT\n' + INDENT + (',\n' + INDENT).join(map(str, map(Column, n.columns))) + '\n'
-        w = 'WHERE\n' + INDENT + str(to_r(n.where_clause)) + '\n'
-        return cc + w + ';\n'
+        select_str = 'SELECT\n' + INDENT + (',\n' + INDENT).join(map(str, map(Column, n.columns))) + '\n'
+        from_str = 'FROM\n' + INDENT + (',\n' + INDENT).join(map(str, map(Table, n.from_clause))) + '\n'
+        where_str = 'WHERE\n' + INDENT + str(to_r(n.where_clause)) + '\n'
+        return select_str + from_str + where_str + ';\n'
 
 
 def to_r(n: ast.Node):

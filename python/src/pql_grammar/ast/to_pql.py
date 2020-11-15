@@ -1,3 +1,4 @@
+from typing import List
 from . import model as ast
 
 
@@ -100,8 +101,14 @@ def to_r(n: ast.Node):
         return renderer_map.get(type(n), Node)(n)
     return str(n)
 
-def to_pql(o):
-    return str(to_r(o))
+
+def to_pql(o: List[ast.Node]):
+    if not isinstance(o, (list, tuple)):
+        raise AttributeError(f"Argument must be a list of statements.")
+    return '\n'.join([
+        str(to_r(e))
+        for e in o
+    ])
 
 
 renderer_map.update({

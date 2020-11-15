@@ -194,5 +194,5 @@ class PqlAstTests(TestCase):
         ]
 
     def test_render_pql_from_ast(self):
-        pql_result = to_pql(stmt_should_be)
+        pql_result = to_pql([stmt_should_be])
         assert pql_result == pql_rendered_should_be

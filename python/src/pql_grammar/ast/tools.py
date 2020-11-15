@@ -23,3 +23,25 @@ def ast_diff(a, b, path=None):
     else:
         if a != b:
             raise Exception(f"Values of {a} and {b} are not same for path {path}")
+
+
+def attr_names(n: ast.Node):
+    return [
+        f.name
+        for f in fields(n)
+    ]
+
+
+def find_all(o, rule: Callable) -> Iterator[Any]:
+    if rule(o):
+        yield o
+
+    if isinstance(o, ast.Node):
+        for f in attr_names(o):
+            yield from find_all(getattr(o, f), rule)
+    elif isinstance(o, (list,tuple)):
+        for e in o:
+            yield from find_all(e, rule)
+    elif isinstance(o, dict):
+        for e in o.values():
+            yield from find_all(e, rule)

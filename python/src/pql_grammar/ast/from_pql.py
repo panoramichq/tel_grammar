@@ -34,9 +34,15 @@ def unquote(s: str):
     #   '"table name ""with quoted portion"""' becomes 'table name "with quoted portion"'
     if not s:
         return s
-    if s[0] == '"' and s[-1] == '"':
+    wrapper = (s[0], s[-1])
+    if wrapper == ('"', '"') or wrapper == ("'", "'"):
         s = s[1:-1]
-    return s.replace('""', '"')
+
+    # TODO: decide which one we want to support
+    # TEL style escapes
+    return s.replace('\\"', '"').replace("\\'", "'")
+    # # SQL style escapes
+    # return s.replace('""', '"').replace("''", "'")
 
 
 class PqlAntlrToAstParser:
@@ -69,11 +75,11 @@ class PqlAntlrToAstParser:
         o = full_text(e.operator)
         if o == '=':
             arg_name = full_text(e.left)
-            arg_value = full_text(e.right)
+            arg_value = cls.parse_expr(e.right)
         else:
             arg_name = None
-            arg_value = full_text(e)
-        return (arg_name, arg_value)
+            arg_value = cls.parse_expr(e)
+        return [arg_name, arg_value]
 
     @classmethod
     def parse_function(cls, e: PqlParser.FunctionContext) -> ast.Function:
@@ -84,29 +90,6 @@ class PqlAntlrToAstParser:
                 for expr in e.arguments.expr()
             ] if e.arguments else None
         )
-
-    @classmethod
-    def parse_column_value(cls, v: PqlParser.expr) -> ast.ColumnValue:
-        # v is always PqlParser.expr, but anything can be inside
-        # It's not super relevant what's inside Expr, since
-        # we sent the original string-ified version of contenst to Husky anyway.
-        # There are some good reasons to parse the value for realz:
-        # - understanding if there is an outter `CAST( expr as TypeCast())` in there that needs re-syntaxing
-        # - deciding if specific value is taxon AND if it's in or is not in WHERE clause to channel it to pre/post agg
-        # However, we can do that crudely just on string representations of contents and avoid parsing them.
-        # Still, let's try to parse top level into one of:
-        # - Taxon
-        # - TelExpr where all other kinds of complex expressions are packed
-        # Specifically note that we allow Literal, Function other otherwise basic structures to be packed into Tel box.
-
-        # So, if it's not Taxon object at top level, we unwrap redundant parens and pack string into TelExpr
-        v = cls.unwrap_expr_parens(v)
-
-        t: Optional[PqlParser.TaxonContext] = v.taxon()
-        if t:
-            return cls.parse_taxon(t)
-        else:
-            return ast.TelExpr(full_text(v))
 
     @classmethod
     def parse_column_typecast(cls, v: PqlParser.FunctionContext) -> Optional[ast.Function]:
@@ -123,17 +106,24 @@ class PqlAntlrToAstParser:
     @classmethod
     def parse_column(cls, e: PqlParser.ColumnsContext):
         return ast.Column(
-            cls.parse_column_value(e.value),
+            cls.parse_expr(e.value),
             cls.parse_column_typecast(e.type_cast),
             cls.parse_column_alias(e.alias)
         )
 
+    @classmethod
+    def parse_literal(cls, e:PqlParser.LiteralValueContext):
+        return ast.Literal(
+            cls.parse_literal_value(e),
+            full_text(e)
+        )
+
     @staticmethod
-    def _literalValue_to_python_native(e:PqlParser.LiteralValueContext):
-        is_number = e.NUMERIC_LITERAL()
-        is_string = e.DOUBLE_QUOTED_STRING() or e.SINGLE_QUOTED_STRING()
-        is_null = e.K_NULL()
-        is_bool = e.K_TRUE() or e.K_FALSE()
+    def parse_literal_value(e:PqlParser.LiteralValueContext):
+        is_number = bool(e.NUMERIC_LITERAL())
+        is_string = bool(e.DOUBLE_QUOTED_STRING()) or bool(e.SINGLE_QUOTED_STRING())
+        is_null = bool(e.K_NULL())
+        is_bool = bool(e.K_TRUE()) or bool(e.K_FALSE())
 
         # TODO:
         # - BLOB_LITERAL
@@ -146,7 +136,7 @@ class PqlAntlrToAstParser:
             return bool(e.K_TRUE())
 
         try:
-            v = e.getText()
+            v = full_text(e)
         except IndexError:
             raise Exception(f"Could not extract literal value node from '{e.getText()}'.")
 
@@ -176,22 +166,19 @@ class PqlAntlrToAstParser:
         ]
 
     @classmethod
-    def parse_where_clause_expr(cls, ctx: PqlParser.ExprContext) -> ast.Node :
+    def parse_expr(cls, ctx: PqlParser.ExprContext) -> ast.Node :
         ctx = cls.unwrap_expr_parens(ctx)
 
         v = ctx.literalValue()
         if v:
-            return ast.Literal(
-                cls._literalValue_to_python_native(v),
-                full_text(v)
-            )
+            return cls.parse_literal(v)
 
         v = ctx.unary_operator
         if v:
             operator = full_text(v).upper()
             return ast.Expr(
                 operator,
-                [cls.parse_where_clause_expr(ctx.right)]
+                [cls.parse_expr(ctx.right)]
             )
 
         v: Optional[str] = full_text(ctx.operator)
@@ -202,8 +189,8 @@ class PqlAntlrToAstParser:
             return ast.Expr(
                 v.upper(),
                 [
-                    cls.parse_where_clause_expr(ctx.left),
-                    cls.parse_where_clause_expr(ctx.right)
+                    cls.parse_expr(ctx.left),
+                    cls.parse_expr(ctx.right)
                 ]
             )
 
@@ -220,12 +207,20 @@ class PqlAntlrToAstParser:
 
 class PqlVisitor(_PqlParserVisitor):
 
-    def visit_from_string(self, pql: str):
+    def visit_from_pql_string(self, pql: str):
         inp_stream = InputStream(pql)
         lexer = PqlLexer(inp_stream)
         stream = CommonTokenStream(lexer)
         parser = PqlParser(stream)
         tree = parser.parsePql()
+        self.visit(tree)
+
+    def visit_from_tel_string(self, tel: str):
+        inp_stream = InputStream(tel)
+        lexer = PqlLexer(inp_stream)
+        stream = CommonTokenStream(lexer)
+        parser = PqlParser(stream)
+        tree = parser.parseTel()
         self.visit(tree)
 
 
@@ -238,7 +233,7 @@ def from_pql(pql: str, cls:Type[PqlVisitor] = PqlVisitor) -> List[ast.Node]:
         def visitSelectStmt(self, ctx:PqlParser.SelectStmtContext):
             columns = [
                 ast.Column(
-                    PqlAntlrToAstParser.parse_column_value(column.value),
+                    PqlAntlrToAstParser.parse_expr(column.value),
                     PqlAntlrToAstParser.parse_column_typecast(column.type_cast),
                     PqlAntlrToAstParser.parse_column_alias(column.alias)
                 )
@@ -253,7 +248,7 @@ def from_pql(pql: str, cls:Type[PqlVisitor] = PqlVisitor) -> List[ast.Node]:
 
             v = ctx.whereClause()
             if v:
-                where_clause = PqlAntlrToAstParser.parse_where_clause_expr(v.expr())
+                where_clause = PqlAntlrToAstParser.parse_expr(v.expr())
             else:
                 where_clause = None
 
@@ -274,6 +269,21 @@ def from_pql(pql: str, cls:Type[PqlVisitor] = PqlVisitor) -> List[ast.Node]:
                 )
             )
 
-    V().visit_from_string(pql)
+    V().visit_from_pql_string(pql)
 
     return statements
+
+
+def from_tel(tel: str, cls:Type[PqlVisitor] = PqlVisitor) -> ast.Node:
+
+    statements = []
+
+    class V(cls):
+        def visitExpr(self, ctx:PqlParser.ExprContext):
+            statements.append(
+                PqlAntlrToAstParser.parse_expr(ctx)
+            )
+
+    V().visit_from_tel_string(tel)
+
+    return statements[0] if statements else None

@@ -14,11 +14,14 @@ def from_json(o: dict):
         if not N:
             raise NotImplementedError(f'Renderer for node type "{name}" is not implemented.')
 
-        return N(**{
-            k: from_json(v)
-            for k, v in o.items()
-            if k != TYPE_ATTRIBUTE
-        })
+        try:
+            return N(**{
+                k: from_json(v)
+                for k, v in o.items()
+                if k != TYPE_ATTRIBUTE
+            })
+        except TypeError as ex:
+            raise TypeError(f"'{ex}' While processing {N} {o}")
 
     if isinstance(o, (list, tuple)):
         return [

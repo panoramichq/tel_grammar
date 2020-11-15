@@ -4,6 +4,7 @@ from unittest import TestCase
 sys.path.append('./src')
 
 from pql_grammar.ast import model as ast
+from pql_grammar.ast.tools import ast_diff
 from pql_grammar.ast.to_json import to_json
 from pql_grammar.ast.from_json import from_json
 
@@ -19,19 +20,48 @@ ast_should_be = ast.SelectStmt(
         ast.Column(ast.Taxon('taxon2', 'ns2', False)),
         ast.Column(ast.Taxon('slug1'), None, ast.Taxon('slug1', 'myns')),
         ast.Column(
-            ast.TelExpr('?ns3|taxon3 + (slug2 - 1234)'),
+            ast.Expr(
+                '+',
+                [
+                    ast.Taxon(
+                        'taxon3',
+                        'ns3',
+                        True
+                    ),
+                    ast.Expr(
+                        '-',
+                        [
+                            ast.Taxon('slug'),
+                            ast.Literal(1234, '1234')
+                        ]
+                    )
+                ]
+            ),
             None,
             ast.Taxon('custom_data', 'myns')
         ),
         ast.Column(
-            ast.TelExpr('ns3|taxon3 + 5'),
+            ast.Expr(
+                '+',
+                [
+                    ast.Taxon(
+                        'taxon3',
+                        'ns3',
+                    ),
+                    ast.Literal(5, '5'),
+                ]
+            ),
             ast.Function(
                 'TypeCast'
             ),
             ast.Taxon('custom_data_cast', 'myns')
         ),
         ast.Column(
-            ast.TelExpr('fn_4(fn_1(slug))'),
+            ast.Function('fn_4', [
+                [None, ast.Function('fn_1', [
+                    [None, ast.Taxon('slug')]
+                ])]
+            ]),
             ast.Function(
                 'TypeCast',
                 [['arg1','value1']]  # normally inner pair is a tuple, but for comparison making list.
@@ -104,8 +134,32 @@ json_should_be = {
         {
             "__typename": "Column",
             "value": {
-                "__typename": "TelExpr",
-                "raw_value": "?ns3|taxon3 + (slug2 - 1234)"
+                "__typename": "Expr",
+                "operator": "+",
+                "args": [
+                    {
+                        "__typename": "Taxon",
+                        "slug": "taxon3",
+                        "namespace": "ns3",
+                        "is_optional": true
+                    },
+                    {
+                        "__typename": "Expr",
+                        "operator": "-",
+                        "args": [
+                            {
+                                "__typename": "Taxon",
+                                "slug": "slug",
+                                "is_optional": false
+                            },
+                            {
+                                "__typename": "Literal",
+                                "value": 1234,
+                                "raw_value": "1234"
+                            }
+                        ]
+                    }
+                ]
             },
             "alias": {
                 "__typename": "Taxon",
@@ -117,8 +171,21 @@ json_should_be = {
         {
             "__typename": "Column",
             "value": {
-                "__typename": "TelExpr",
-                "raw_value": "ns3|taxon3 + 5"
+                "__typename": "Expr",
+                "operator": "+",
+                "args": [
+                    {
+                        "__typename": "Taxon",
+                        "slug": "taxon3",
+                        "namespace": "ns3",
+                        "is_optional": false
+                    },
+                    {
+                        "__typename": "Literal",
+                        "value": 5,
+                        "raw_value": "5"
+                    }
+                ]
             },
             "type_cast": {
                 "__typename": "Function",
@@ -134,8 +201,27 @@ json_should_be = {
         {
             "__typename": "Column",
             "value": {
-                "__typename": "TelExpr",
-                "raw_value": "fn_4(fn_1(slug))"
+                "__typename": "Function",
+                "function_name": "fn_4",
+                "args": [
+                    [
+                        null,
+                        {
+                            "__typename": "Function",
+                            "function_name": "fn_1",
+                            "args": [
+                                [
+                                    null,
+                                    {
+                                        "__typename": "Taxon",
+                                        "slug": "slug",
+                                        "is_optional": false
+                                    }
+                                ]
+                            ]
+                        }
+                    ]
+                ]
             },
             "type_cast": {
                 "__typename": "Function",
@@ -214,6 +300,5 @@ class JsonAstTests(TestCase):
     def test_render_ast_from_json(self):
         ast_result = from_json(json_should_be)
         # import json; print(json.dumps(json_result, indent=4))
-
-        ast.ast_diff(ast_should_be, ast_result)
+        ast_diff(ast_should_be, ast_result)
         assert ast_should_be == ast_result

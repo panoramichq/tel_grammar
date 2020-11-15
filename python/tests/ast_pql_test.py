@@ -26,7 +26,7 @@ select
     slug1 as myns|slug1,
     ?ns3|taxon3 + (slug2 - 1234) as myns|custom_data,
     (ns3|taxon3 + 5)::TypeCast() as myns|custom_data_cast,
-    fn_4(fn_1(slug))::TypeCast(arg1=value1)
+    fn_4(fn_1(slug))::TypeCast(arg1='value1')
 from my_ns, your_ns as super_ns
 where
     ns6|taxon6 > 1234
@@ -41,9 +41,9 @@ SELECT
     ?ns1|taxon1,
     ns2|taxon2,
     slug1 AS myns|slug1,
-    ?ns3|taxon3 + (slug2 - 1234) AS myns|custom_data,
+    (?ns3|taxon3 + (slug2 - 1234)) AS myns|custom_data,
     (ns3|taxon3 + 5)::TypeCast() AS myns|custom_data_cast,
-    (fn_4(fn_1(slug)))::TypeCast(arg1=value1)
+    (fn_4(fn_1(slug)))::TypeCast(arg1='value1')
 FROM
     my_ns,
     your_ns AS super_ns
@@ -58,22 +58,51 @@ stmt_should_be = ast.SelectStmt(
         ast.Column(ast.Taxon('taxon2', 'ns2', False)),
         ast.Column(ast.Taxon('slug1'), None, ast.Taxon('slug1', 'myns')),
         ast.Column(
-            ast.TelExpr('?ns3|taxon3 + (slug2 - 1234)'),
+            ast.Expr(
+                '+',
+                [
+                    ast.Taxon(
+                        'taxon3',
+                        'ns3',
+                        True
+                    ),
+                    ast.Expr(
+                        '-',
+                        [
+                            ast.Taxon('slug2'),
+                            ast.Literal(1234, '1234')
+                        ]
+                    )
+                ]
+            ),
             None,
             ast.Taxon('custom_data', 'myns')
         ),
         ast.Column(
-            ast.TelExpr('ns3|taxon3 + 5'),
+            ast.Expr(
+                '+',
+                [
+                    ast.Taxon(
+                        'taxon3',
+                        'ns3',
+                    ),
+                    ast.Literal(5, '5'),
+                ]
+            ),
             ast.Function(
                 'TypeCast'
             ),
             ast.Taxon('custom_data_cast', 'myns')
         ),
         ast.Column(
-            ast.TelExpr('fn_4(fn_1(slug))'),
+            ast.Function('fn_4', [
+                [None, ast.Function('fn_1', [
+                    [None, ast.Taxon('slug')]
+                ])]
+            ]),
             ast.Function(
                 'TypeCast',
-                [('arg1','value1')]
+                [['arg1',ast.Literal('value1', "'value1'")]]
             ),
         )
     ],
@@ -166,4 +195,4 @@ class PqlAstTests(TestCase):
 
     def test_render_pql_from_ast(self):
         pql_result = to_pql(stmt_should_be)
-        assert pql_rendered_should_be == pql_result
+        assert pql_result == pql_rendered_should_be

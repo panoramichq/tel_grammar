@@ -35,12 +35,6 @@ class Expr(Node):
             return f'({to_r(left)} {op} {to_r(right)})'
 
 
-class TelExpr(Node):
-    n: ast.TelExpr
-    def __str__(self):
-        return self.n.raw_value
-
-
 class Literal(Node):
     n: ast.Literal
     def __str__(self):
@@ -64,8 +58,8 @@ class Function(Node):
         fn = self.n.function_name
         # args are string pairs, not parsed deeper at all.
         args = ','.join([
-            f'{n}={v}' if n else f'{v}'
-            for n,v in (self.n.args or [])
+            f'{n}={to_r(v)}' if n else f'{to_r(v)}'
+            for n, v in (self.n.args or [])
         ])
         return f'{fn}({args})'
 
@@ -102,10 +96,11 @@ class SelectStmt(Node):
 
 
 def to_r(n: ast.Node):
-    return renderer_map.get(type(n), Node)(n)
+    if isinstance(n, ast.Node):
+        return renderer_map.get(type(n), Node)(n)
+    return str(n)
 
-
-def to_pql(o: ast.Node):
+def to_pql(o):
     return str(to_r(o))
 
 

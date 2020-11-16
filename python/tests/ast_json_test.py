@@ -7,6 +7,7 @@ from pql_grammar.ast import model as ast
 from pql_grammar.ast.tools import ast_diff
 from pql_grammar.ast.to_json import to_json
 from pql_grammar.ast.from_json import from_json
+from pql_grammar.ast.tools import find_all
 
 
 null = None
@@ -15,14 +16,14 @@ true = True
 
 
 ast_should_be = ast.SelectStmt(
-    columns = [
+    columns = (
         ast.Column(ast.Taxon('taxon1', 'ns1', True)),
         ast.Column(ast.Taxon('taxon2', 'ns2', False)),
         ast.Column(ast.Taxon('slug1'), None, ast.Taxon('slug1', 'myns')),
         ast.Column(
             ast.Expr(
                 '+',
-                [
+                (
                     ast.Taxon(
                         'taxon3',
                         'ns3',
@@ -30,12 +31,12 @@ ast_should_be = ast.SelectStmt(
                     ),
                     ast.Expr(
                         '-',
-                        [
+                        (
                             ast.Taxon('slug'),
                             ast.Literal(1234, '1234')
-                        ]
-                    )
-                ]
+                        ),
+                    ),
+                ),
             ),
             None,
             ast.Taxon('custom_data', 'myns')
@@ -43,13 +44,13 @@ ast_should_be = ast.SelectStmt(
         ast.Column(
             ast.Expr(
                 '+',
-                [
+                (
                     ast.Taxon(
                         'taxon3',
                         'ns3',
                     ),
                     ast.Literal(5, '5'),
-                ]
+                ),
             ),
             ast.Function(
                 'TypeCast'
@@ -57,42 +58,42 @@ ast_should_be = ast.SelectStmt(
             ast.Taxon('custom_data_cast', 'myns')
         ),
         ast.Column(
-            ast.Function('fn_4', [
-                [None, ast.Function('fn_1', [
-                    [None, ast.Taxon('slug')]
-                ])]
-            ]),
+            ast.Function('fn_4', (
+                (None, ast.Function('fn_1', (
+                    (None, ast.Taxon('slug')),
+                ),),),
+            ),),
             ast.Function(
                 'TypeCast',
-                [['arg1','value1']]  # normally inner pair is a tuple, but for comparison making list.
+                (('arg1','value1'),),  # normally inner pair is a tuple, but for comparison making list.
             ),
         )
-    ],
+    ),
     where_clause = ast.Expr(
         'AND',
-        [
+        (
             ast.Expr(
                 '>',
-                [
+                (
                     ast.Taxon('taxon6', 'ns6'),
-                    ast.Literal(1234, '1234')
-                ]
+                    ast.Literal(1234, '1234'),
+                ),
             ),
             ast.Expr(
                 '==',
-                [
+                (
                     ast.Expr(
                         '+',
-                        [
+                        (
                             ast.Taxon('taxon10', 'ns0'),
-                            ast.Literal(4321, '4321')
-                        ]
+                            ast.Literal(4321, '4321'),
+                        ),
                     ),
-                    ast.Literal(0, '0')
-                ]
-            )
-        ]
-    )
+                    ast.Literal(0, '0'),
+                ),
+            ),
+        ),
+    ),
 )
 
 
@@ -302,3 +303,11 @@ class JsonAstTests(TestCase):
         # import json; print(json.dumps(json_result, indent=4))
         ast_diff(ast_should_be, ast_result)
         assert ast_should_be == ast_result
+
+        # ensure produced nodes are hashable
+        set(
+            find_all(
+                ast_result,
+                lambda o: isinstance(o, ast.Node)
+            )
+        )

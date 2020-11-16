@@ -24,10 +24,10 @@ def from_json(o: dict):
             raise TypeError(f"'{ex}' While processing {N} {o}")
 
     if isinstance(o, (list, tuple)):
-        return [
+        return tuple([
             from_json(v)
             for v in o
-        ]
+        ])
 
     if isinstance(o, dict):
         return {

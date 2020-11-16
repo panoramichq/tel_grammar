@@ -6,6 +6,7 @@ sys.path.append('./src')
 from pql_grammar.ast import model as ast
 from pql_grammar.ast.to_pql import to_pql
 from pql_grammar.ast.from_pql import PqlVisitor, PqlParser, from_pql
+from pql_grammar.ast.tools import find_all
 
 
 class ErrorAssertingPqlVisitor(PqlVisitor):
@@ -53,14 +54,14 @@ WHERE
 """
 
 stmt_should_be = ast.SelectStmt(
-    columns = [
+    columns = (
         ast.Column(ast.Taxon('taxon1', 'ns1', True)),
         ast.Column(ast.Taxon('taxon2', 'ns2', False)),
         ast.Column(ast.Taxon('slug1'), None, ast.Taxon('slug1', 'myns')),
         ast.Column(
             ast.Expr(
                 '+',
-                [
+                (
                     ast.Taxon(
                         'taxon3',
                         'ns3',
@@ -68,26 +69,26 @@ stmt_should_be = ast.SelectStmt(
                     ),
                     ast.Expr(
                         '-',
-                        [
+                        (
                             ast.Taxon('slug2'),
-                            ast.Literal(1234, '1234')
-                        ]
-                    )
-                ]
+                            ast.Literal(1234, '1234'),
+                        ),
+                    ),
+                ),
             ),
             None,
-            ast.Taxon('custom_data', 'myns')
+            ast.Taxon('custom_data', 'myns'),
         ),
         ast.Column(
             ast.Expr(
                 '+',
-                [
+                (
                     ast.Taxon(
                         'taxon3',
                         'ns3',
                     ),
                     ast.Literal(5, '5'),
-                ]
+                ),
             ),
             ast.Function(
                 'TypeCast'
@@ -95,46 +96,48 @@ stmt_should_be = ast.SelectStmt(
             ast.Taxon('custom_data_cast', 'myns')
         ),
         ast.Column(
-            ast.Function('fn_4', [
-                [None, ast.Function('fn_1', [
-                    [None, ast.Taxon('slug')]
-                ])]
-            ]),
+            ast.Function('fn_4', (
+                (None, ast.Function('fn_1', (
+                    (None, ast.Taxon('slug')),
+                ),),),
+            ),),
             ast.Function(
                 'TypeCast',
-                [['arg1',ast.Literal('value1', "'value1'")]]
+                (
+                    ('arg1',ast.Literal('value1', "'value1'")),
+                ),
             ),
-        )
-    ],
-    from_clause = [
+        ),
+    ),
+    from_clause = (
         ast.Table('my_ns'),
         ast.Table('your_ns', 'super_ns')
-    ],
+    ),
     where_clause = ast.Expr(
         'AND',
-        [
+        (
             ast.Expr(
                 '>',
-                [
+                (
                     ast.Taxon('taxon6', 'ns6'),
-                    ast.Literal(1234, '1234')
-                ]
+                    ast.Literal(1234, '1234'),
+                ),
             ),
             ast.Expr(
                 '==',
-                [
+                (
                     ast.Expr(
                         '+',
-                        [
+                        (
                             ast.Taxon('taxon10', 'ns0'),
-                            ast.Literal(4321, '4321')
-                        ]
+                            ast.Literal(4321, '4321'),
+                        ),
                     ),
-                    ast.Literal(0, '0')
-                ]
-            )
-        ]
-    )
+                    ast.Literal(0, '0'),
+                ),
+            ),
+        ),
+    ),
 )
 
 
@@ -156,10 +159,10 @@ class PqlAstTests(TestCase):
         # Till then, this is mostly a placeholder for future functionality
         assert set_stmt == ast.SetStmt('fill_empty_dates', 'true')
         assert select_stmt == ast.SelectStmt(
-            columns=[
+            columns=(
                 ast.Column(ast.Taxon('a')),
-                ast.Column(ast.Taxon('b'))
-            ]
+                ast.Column(ast.Taxon('b')),
+            )
         )
 
     def test_select(self):
@@ -172,6 +175,14 @@ class PqlAstTests(TestCase):
             assert result == should_be
         # ast.ast_diff(stmt.where_clause, stmt_should_be.where_clause)
         assert stmt.where_clause == stmt_should_be.where_clause
+
+        # ensure produced nodes are hashable
+        set(
+            find_all(
+                stmt,
+                lambda o: isinstance(o, ast.Node)
+            )
+        )
 
     def test_parse_from_statement(self):
         pql_input = """\
@@ -188,10 +199,18 @@ class PqlAstTests(TestCase):
         statements = from_pql(pql_input, ErrorAssertingPqlVisitor)
         assert len(statements) == 1
         select_stmt: ast.SelectStmt = statements[0]
-        assert select_stmt.from_clause == [
+        assert select_stmt.from_clause == (
             ast.Table('dataset_one'),
-            ast.Table('dataset_two', 'two')
-        ]
+            ast.Table('dataset_two', 'two'),
+        )
+
+        # ensure produced nodes are hashable
+        set(
+            find_all(
+                statements,
+                lambda o: isinstance(o, ast.Node)
+            )
+        )
 
     def test_render_pql_from_ast(self):
         pql_result = to_pql([stmt_should_be])

@@ -1,6 +1,6 @@
 from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 from antlr4 import ParserRuleContext
-from typing import Optional, Tuple, List, Type
+from typing import Optional, Tuple, List, Type, Any
 
 from ..antlr.PqlLexer import PqlLexer
 from ..antlr.PqlParser import PqlParser
@@ -70,7 +70,7 @@ class PqlAntlrToAstParser:
         )
 
     @classmethod
-    def parse_function_argument_pair(cls, e: PqlParser.ExprContext) -> Tuple[Optional[str],str]:
+    def parse_function_argument_pair(cls, e: PqlParser.ExprContext) -> Tuple[Optional[str],Any]:
         e = cls.unwrap_expr_parens(e)
         o = full_text(e.operator)
         if o == '=':
@@ -79,16 +79,16 @@ class PqlAntlrToAstParser:
         else:
             arg_name = None
             arg_value = cls.parse_expr(e)
-        return [arg_name, arg_value]
+        return arg_name, arg_value
 
     @classmethod
     def parse_function(cls, e: PqlParser.FunctionContext) -> ast.Function:
         return ast.Function(
             full_text(e.function_name),
-            [
+            tuple([
                 cls.parse_function_argument_pair(expr)
                 for expr in e.arguments.expr()
-            ] if e.arguments else None
+            ]) if e.arguments else None
         )
 
     @classmethod
@@ -156,14 +156,14 @@ class PqlAntlrToAstParser:
         return v
 
     @classmethod
-    def parse_from_clause_expr(cls, ctx: PqlParser.FromClauseContext) -> List[ast.Table]:
-        return [
+    def parse_from_clause_expr(cls, ctx: PqlParser.FromClauseContext) -> Tuple[ast.Table, ...]:
+        return tuple([
             ast.Table(
                 full_text(table.table_name),
                 full_text(table.table_alias)
             )
             for table in ctx.tables()
-        ]
+        ])
 
     @classmethod
     def parse_expr(cls, ctx: PqlParser.ExprContext) -> ast.Node :
@@ -178,7 +178,7 @@ class PqlAntlrToAstParser:
             operator = full_text(v).upper()
             return ast.Expr(
                 operator,
-                [cls.parse_expr(ctx.right)]
+                (cls.parse_expr(ctx.right),)
             )
 
         v: Optional[str] = full_text(ctx.operator)
@@ -188,10 +188,10 @@ class PqlAntlrToAstParser:
             # with a lot of options for OP value.
             return ast.Expr(
                 v.upper(),
-                [
+                (
                     cls.parse_expr(ctx.left),
                     cls.parse_expr(ctx.right)
-                ]
+                )
             )
 
         v: PqlParser.TaxonContext = ctx.taxon()
@@ -231,14 +231,14 @@ def from_pql(pql: str, cls:Type[PqlVisitor] = PqlVisitor) -> List[ast.Node]:
     class V(cls):
 
         def visitSelectStmt(self, ctx:PqlParser.SelectStmtContext):
-            columns = [
+            columns = tuple([
                 ast.Column(
                     PqlAntlrToAstParser.parse_expr(column.value),
                     PqlAntlrToAstParser.parse_column_typecast(column.type_cast),
                     PqlAntlrToAstParser.parse_column_alias(column.alias)
                 )
                 for column in ctx.selectClause().columns()
-            ]
+            ])
 
             v = ctx.fromClause()
             if v:

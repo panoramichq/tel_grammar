@@ -16,28 +16,30 @@ inventory = {}
 class Node:
     pass
 
-@dataclass
+@dataclass(eq=True, frozen=True)
 class Expr(Node):
     """ arithmetic operation like 'a > b' in Pre-fix notation"""
     operator: str
     # some operations are unary. there will be only one arg
     # most others are left-right, so len would be 2.
     # rarely there will be len more than 2.
-    args: List[Any]
+    args: Tuple
 
-@dataclass
+@dataclass(eq=True, frozen=True)
 class Literal(Node):
     value: Union[int,float,str,Decimal]
     raw_value: str
 
-@dataclass
+@dataclass(eq=True, frozen=True)
 class Taxon(Node):
     slug: str
     namespace: Optional[str] = None
     is_optional: Optional[bool] = False
     tag: Optional[str] = None
 
-@dataclass
+CallArgs = Tuple[Optional[str],Any]
+
+@dataclass(eq=True, frozen=True)
 class Function(Node):
     function_name: str
     # Note, we supported named args.
@@ -48,28 +50,28 @@ class Function(Node):
     # [['arg','value'],['arg2',2]]
     # fn('value',2)
     # [[null,'value'],[null,2]]
-    args: Optional[List[List[Any]]] = None
+    args: Optional[Tuple[CallArgs, ...]] = None
 
 ColumnValue = Union[Expr,Function,Taxon,Literal]
 
-@dataclass
+@dataclass(eq=True, frozen=True)
 class Column(Node):
     value: ColumnValue
     type_cast: Optional[Function] = None
     alias: Optional[Taxon] = None
 
-@dataclass
+@dataclass(eq=True, frozen=True)
 class Table(Node):
     value: str
     alias: Optional[str] = None
 
-@dataclass
+@dataclass(eq=True, frozen=True)
 class SelectStmt(Node):
-    columns: List[Column]
-    from_clause: Optional[List[Table]] = None
+    columns: Tuple[Column, ...]
+    from_clause: Optional[Tuple[Table, ...]] = None
     where_clause: Optional[Expr] = None
 
-@dataclass
+@dataclass(eq=True, frozen=True)
 class SetStmt(Node):
     key: str
     value: str

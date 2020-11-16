@@ -8,7 +8,7 @@ from pql_grammar.ast.tools import find_all
 
 
 sample_tree = ast.SelectStmt(
-    columns = [
+    columns = (
         ast.Column(ast.Taxon('taxon1', 'ns1', True)),
         ast.Column(ast.Taxon('taxon2', 'ns2', False)),
         ast.Column(ast.Literal(5555, '5555')),
@@ -16,81 +16,81 @@ sample_tree = ast.SelectStmt(
         ast.Column(
             ast.Expr(
                 '+',
-                [
+                (
                     ast.Taxon(
                         'taxon3',
                         'ns3',
-                        True
+                        True,
                     ),
                     ast.Expr(
                         '-',
-                        [
+                        (
                             ast.Taxon('slug'),
-                            ast.Literal(12345, '12345')
-                        ]
-                    )
-                ]
+                            ast.Literal(12345, '12345'),
+                        ),
+                    ),
+                ),
             ),
             None,
-            ast.Taxon('custom_data', 'myns')
+            ast.Taxon('custom_data', 'myns'),
         ),
         ast.Column(
             ast.Expr(
                 '+',
-                [
+                (
                     ast.Taxon(
                         'taxon3',
                         'ns3',
                     ),
                     ast.Literal(5, '5'),
-                ]
+                ),
             ),
-            ast.Function(
-                'TypeCast'
-            ),
-            ast.Taxon('custom_data_cast', 'myns')
-        ),
-        ast.Column(
-            ast.Function('fn_4', [
-                [None, ast.Function('fn_1', [
-                    [None, ast.Taxon('slug')]
-                ])]
-            ]),
             ast.Function(
                 'TypeCast',
-                [['arg1','value1']]  # normally inner pair is a tuple, but for comparison making list.
             ),
-        )
-    ],
-    from_clause = [
+            ast.Taxon('custom_data_cast', 'myns'),
+        ),
+        ast.Column(
+            ast.Function('fn_4', (
+                (None, ast.Function('fn_1', (
+                    (None, ast.Taxon('slug'),),
+                ),),),
+            ),),
+            ast.Function(
+                'TypeCast',
+                (('arg1','value1'),),  # normally inner pair is a tuple, but for comparison making list.
+            ),
+        ),
+    ),
+    from_clause = (
         ast.Table('my_ns'),
-        ast.Table('your_ns', 'super_ns')
-    ],
+        ast.Table('your_ns', 'super_ns'),
+    ),
     where_clause = ast.Expr(
         'AND',
-        [
+        (
             ast.Expr(
                 '>',
-                [
+                (
                     ast.Taxon('taxon6', 'ns6'),
-                    ast.Literal(1234, '1234')
-                ]
+                    ast.Literal(1234, '1234'),
+                ),
             ),
             ast.Expr(
                 '==',
-                [
+                (
                     ast.Expr(
                         '+',
-                        [
+                        (
                             ast.Taxon('taxon10', 'ns0'),
-                            ast.Literal(4321, '4321')
-                        ]
+                            ast.Literal(4321, '4321'),
+                        ),
                     ),
-                    ast.Literal(0, '0')
-                ]
-            )
-        ]
-    )
+                    ast.Literal(0, '0'),
+                ),
+            ),
+        ),
+    ),
 )
 
 

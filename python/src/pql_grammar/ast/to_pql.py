@@ -1,3 +1,5 @@
+# fmt: off
+
 from typing import List
 from . import model as ast
 

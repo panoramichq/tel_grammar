@@ -1,3 +1,5 @@
+# fmt: off
+
 from dataclasses import fields
 from typing import Callable, Iterator, Any
 from . import model as ast

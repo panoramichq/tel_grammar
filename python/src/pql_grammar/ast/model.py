@@ -1,3 +1,10 @@
+"""
+- Intentionally minimalistic set of nodes to express AST of SQL-like statements and expressions
+- Intentionally "frozen" (immutable) to prevent attempts to modify in-place and to allow set-like and eq operations
+
+"""
+# fmt: off
+
 from dataclasses import dataclass
 from decimal import Decimal
 from typing import (
@@ -16,6 +23,7 @@ inventory = {}
 class Node:
     pass
 
+
 @dataclass(eq=True, frozen=True)
 class Expr(Node):
     """ arithmetic operation like 'a > b' in Pre-fix notation"""
@@ -25,10 +33,12 @@ class Expr(Node):
     # rarely there will be len more than 2.
     args: Tuple
 
+
 @dataclass(eq=True, frozen=True)
 class Literal(Node):
     value: Union[int,float,str,Decimal]
     raw_value: str
+
 
 @dataclass(eq=True, frozen=True)
 class Taxon(Node):
@@ -38,6 +48,7 @@ class Taxon(Node):
     tag: Optional[str] = None
 
 CallArgs = Tuple[Optional[str],Any]
+
 
 @dataclass(eq=True, frozen=True)
 class Function(Node):
@@ -54,22 +65,26 @@ class Function(Node):
 
 ColumnValue = Union[Expr,Function,Taxon,Literal]
 
+
 @dataclass(eq=True, frozen=True)
 class Column(Node):
     value: ColumnValue
     type_cast: Optional[Function] = None
     alias: Optional[Taxon] = None
 
+
 @dataclass(eq=True, frozen=True)
 class Table(Node):
     value: str
     alias: Optional[str] = None
+
 
 @dataclass(eq=True, frozen=True)
 class SelectStmt(Node):
     columns: Tuple[Column, ...]
     from_clause: Optional[Tuple[Table, ...]] = None
     where_clause: Optional[Expr] = None
+
 
 @dataclass(eq=True, frozen=True)
 class SetStmt(Node):

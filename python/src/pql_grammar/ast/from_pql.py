@@ -1,3 +1,5 @@
+# fmt: off
+
 from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 from antlr4 import ParserRuleContext
 from typing import Optional, Tuple, List, Type, Any

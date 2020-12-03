@@ -111,3 +111,17 @@ class AstToolsTests(TestCase):
             ast.Literal(value=4321, raw_value='4321'),
             ast.Literal(value=0, raw_value='0'),
         ]
+
+    def test_nodes_hashable(self):
+
+        a = {
+            ast.Taxon('slug1'),
+            ast.Taxon('slug2'),
+        }
+
+        b = {
+            ast.Taxon('slug2'),
+            ast.Taxon('slug1'),
+        }
+
+        assert a == b

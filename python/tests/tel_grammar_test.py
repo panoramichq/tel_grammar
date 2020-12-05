@@ -77,8 +77,10 @@ def test_grammar(test_case):
         ('ds|sl|ug - sluging',),
         # Handle nested functions
         ('slug is',),
-        ('slug not',),
+        ('not',),
         ('',),
+        ('a BETWEEN e',),
+        ('a BETWEEN f OR x',),
     ],
 )
 def test_grammar_bad(test_case):

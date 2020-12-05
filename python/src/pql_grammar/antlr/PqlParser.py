@@ -11,40 +11,46 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\63")
-        buf.write("]\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\65")
+        buf.write("r\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
         buf.write("\t\b\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
         buf.write("\3\5\3\36\n\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
-        buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3\62\n\3\f\3\16\3\65")
-        buf.write("\13\3\3\4\3\4\3\4\5\4:\n\4\3\4\3\4\3\5\3\5\3\5\7\5A\n")
-        buf.write("\5\f\5\16\5D\13\5\3\6\5\6G\n\6\3\6\3\6\3\6\5\6L\n\6\3")
-        buf.write("\6\3\6\3\6\5\6Q\n\6\3\7\3\7\3\7\7\7V\n\7\f\7\16\7Y\13")
-        buf.write("\7\3\b\3\b\3\b\2\3\4\t\2\4\6\b\n\f\16\2\n\5\2\25\25\31")
-        buf.write("\31$$\5\2\22\22\26\26\34\34\4\2\25\25\31\31\4\2\5\6\23")
-        buf.write("\24\6\2\4\4\7\b\r\r!!\4\2\3\3\37\37\4\2\t\t\'\'\6\2  ")
-        buf.write("&&(*--\2e\2\20\3\2\2\2\4\35\3\2\2\2\6\66\3\2\2\2\b=\3")
-        buf.write("\2\2\2\nF\3\2\2\2\fR\3\2\2\2\16Z\3\2\2\2\20\21\5\4\3\2")
-        buf.write("\21\22\7\2\2\3\22\3\3\2\2\2\23\24\b\3\1\2\24\25\t\2\2")
-        buf.write("\2\25\36\5\4\3\r\26\27\7\27\2\2\27\30\5\4\3\2\30\31\7")
-        buf.write("\16\2\2\31\36\3\2\2\2\32\36\5\16\b\2\33\36\5\6\4\2\34")
-        buf.write("\36\5\n\6\2\35\23\3\2\2\2\35\26\3\2\2\2\35\32\3\2\2\2")
-        buf.write("\35\33\3\2\2\2\35\34\3\2\2\2\36\63\3\2\2\2\37 \f\f\2\2")
-        buf.write(" !\t\3\2\2!\62\5\4\3\r\"#\f\13\2\2#$\t\4\2\2$\62\5\4\3")
-        buf.write("\f%&\f\n\2\2&\'\t\5\2\2\'\62\5\4\3\13()\f\t\2\2)*\t\6")
-        buf.write("\2\2*\62\5\4\3\n+,\f\b\2\2,-\t\7\2\2-\62\5\4\3\t./\f\7")
-        buf.write("\2\2/\60\t\b\2\2\60\62\5\4\3\b\61\37\3\2\2\2\61\"\3\2")
-        buf.write("\2\2\61%\3\2\2\2\61(\3\2\2\2\61+\3\2\2\2\61.\3\2\2\2\62")
-        buf.write("\65\3\2\2\2\63\61\3\2\2\2\63\64\3\2\2\2\64\5\3\2\2\2\65")
-        buf.write("\63\3\2\2\2\66\67\5\f\7\2\679\7\27\2\28:\5\b\5\298\3\2")
-        buf.write("\2\29:\3\2\2\2:;\3\2\2\2;<\7\16\2\2<\7\3\2\2\2=B\5\4\3")
-        buf.write("\2>?\7\20\2\2?A\5\4\3\2@>\3\2\2\2AD\3\2\2\2B@\3\2\2\2")
-        buf.write("BC\3\2\2\2C\t\3\2\2\2DB\3\2\2\2EG\7\32\2\2FE\3\2\2\2F")
-        buf.write("G\3\2\2\2GK\3\2\2\2HI\5\f\7\2IJ\7\30\2\2JL\3\2\2\2KH\3")
-        buf.write("\2\2\2KL\3\2\2\2LM\3\2\2\2MP\5\f\7\2NO\7\17\2\2OQ\5\f")
-        buf.write("\7\2PN\3\2\2\2PQ\3\2\2\2Q\13\3\2\2\2RW\7\63\2\2ST\7\21")
-        buf.write("\2\2TV\7\63\2\2US\3\2\2\2VY\3\2\2\2WU\3\2\2\2WX\3\2\2")
-        buf.write("\2X\r\3\2\2\2YW\3\2\2\2Z[\t\t\2\2[\17\3\2\2\2\13\35\61")
-        buf.write("\639BFKPW")
+        buf.write("\3\3\3\3\3\3\3\3\5\3.\n\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
+        buf.write("\3\3\3\3\3\3\5\3:\n\3\3\3\3\3\3\3\3\3\5\3@\n\3\3\3\3\3")
+        buf.write("\3\3\3\3\3\3\7\3G\n\3\f\3\16\3J\13\3\3\4\3\4\3\4\5\4O")
+        buf.write("\n\4\3\4\3\4\3\5\3\5\3\5\7\5V\n\5\f\5\16\5Y\13\5\3\6\5")
+        buf.write("\6\\\n\6\3\6\3\6\3\6\5\6a\n\6\3\6\3\6\3\6\5\6f\n\6\3\7")
+        buf.write("\3\7\3\7\7\7k\n\7\f\7\16\7n\13\7\3\b\3\b\3\b\2\3\4\t\2")
+        buf.write("\4\6\b\n\f\16\2\n\5\2\25\25\31\31&&\5\2\22\22\26\26\34")
+        buf.write("\34\4\2\25\25\31\31\4\2\5\6\23\24\6\2\4\4\7\b\r\r##\4")
+        buf.write("\2\3\3\37\37\4\2\t\t))\6\2!!((*,//\2\u0080\2\20\3\2\2")
+        buf.write("\2\4\35\3\2\2\2\6K\3\2\2\2\bR\3\2\2\2\n[\3\2\2\2\fg\3")
+        buf.write("\2\2\2\16o\3\2\2\2\20\21\5\4\3\2\21\22\7\2\2\3\22\3\3")
+        buf.write("\2\2\2\23\24\b\3\1\2\24\25\t\2\2\2\25\36\5\4\3\20\26\27")
+        buf.write("\7\27\2\2\27\30\5\4\3\2\30\31\7\16\2\2\31\36\3\2\2\2\32")
+        buf.write("\36\5\16\b\2\33\36\5\6\4\2\34\36\5\n\6\2\35\23\3\2\2\2")
+        buf.write("\35\26\3\2\2\2\35\32\3\2\2\2\35\33\3\2\2\2\35\34\3\2\2")
+        buf.write("\2\36H\3\2\2\2\37 \f\17\2\2 !\t\3\2\2!G\5\4\3\20\"#\f")
+        buf.write("\16\2\2#$\t\4\2\2$G\5\4\3\17%&\f\r\2\2&\'\t\5\2\2\'G\5")
+        buf.write("\4\3\16()\f\f\2\2)*\t\6\2\2*G\5\4\3\r+-\f\13\2\2,.\7&")
+        buf.write("\2\2-,\3\2\2\2-.\3\2\2\2./\3\2\2\2/\60\7%\2\2\60G\5\4")
+        buf.write("\3\f\61\62\f\t\2\2\62\63\t\7\2\2\63G\5\4\3\n\64\65\f\b")
+        buf.write("\2\2\65\66\t\b\2\2\66G\5\4\3\t\679\f\7\2\28:\7&\2\298")
+        buf.write("\3\2\2\29:\3\2\2\2:;\3\2\2\2;<\7 \2\2<G\5\4\3\b=?\f\n")
+        buf.write("\2\2>@\7&\2\2?>\3\2\2\2?@\3\2\2\2@A\3\2\2\2AB\7\"\2\2")
+        buf.write("BC\7\27\2\2CD\5\b\5\2DE\7\16\2\2EG\3\2\2\2F\37\3\2\2\2")
+        buf.write("F\"\3\2\2\2F%\3\2\2\2F(\3\2\2\2F+\3\2\2\2F\61\3\2\2\2")
+        buf.write("F\64\3\2\2\2F\67\3\2\2\2F=\3\2\2\2GJ\3\2\2\2HF\3\2\2\2")
+        buf.write("HI\3\2\2\2I\5\3\2\2\2JH\3\2\2\2KL\5\f\7\2LN\7\27\2\2M")
+        buf.write("O\5\b\5\2NM\3\2\2\2NO\3\2\2\2OP\3\2\2\2PQ\7\16\2\2Q\7")
+        buf.write("\3\2\2\2RW\5\4\3\2ST\7\20\2\2TV\5\4\3\2US\3\2\2\2VY\3")
+        buf.write("\2\2\2WU\3\2\2\2WX\3\2\2\2X\t\3\2\2\2YW\3\2\2\2Z\\\7\32")
+        buf.write("\2\2[Z\3\2\2\2[\\\3\2\2\2\\`\3\2\2\2]^\5\f\7\2^_\7\30")
+        buf.write("\2\2_a\3\2\2\2`]\3\2\2\2`a\3\2\2\2ab\3\2\2\2be\5\f\7\2")
+        buf.write("cd\7\17\2\2df\5\f\7\2ec\3\2\2\2ef\3\2\2\2f\13\3\2\2\2")
+        buf.write("gl\7\65\2\2hi\7\21\2\2ik\7\65\2\2jh\3\2\2\2kn\3\2\2\2")
+        buf.write("lj\3\2\2\2lm\3\2\2\2m\r\3\2\2\2nl\3\2\2\2op\t\t\2\2p\17")
+        buf.write("\3\2\2\2\16\35-9?FHNW[`el")
         return buf.getvalue()
 
 
@@ -68,13 +74,13 @@ class PqlParser ( Parser ):
                       "ASSIGN", "CLOSE_PAREN", "COLON", "COMMA", "DOT", 
                       "FORWARD_SLASH", "GT", "LT", "MINUS", "MOD", "OPEN_PAREN", 
                       "PIPE", "PLUS", "QUESTION_MARK", "SCOL", "STAR", "TILDE", 
-                      "UNDER", "K_AND", "K_FALSE", "K_IS", "K_ISNULL", "K_LIKE", 
-                      "K_NOT", "K_NOTNULL", "K_NULL", "K_OR", "K_TRUE", 
-                      "NUMERIC_LITERAL", "DOUBLE_QUOTED_STRING", "DOUBLE_QUOTED_STRING_TEL", 
-                      "DOUBLE_QUOTED_STRING_SQL", "SINGLE_QUOTED_STRING", 
-                      "SINGLE_QUOTED_STRING_TEL", "SINGLE_QUOTED_STRING_SQL", 
-                      "SINGLE_LINE_COMMENT", "MULTILINE_COMMENT", "SPACES", 
-                      "WORD" ]
+                      "UNDER", "K_AND", "K_BETWEEN", "K_FALSE", "K_IN", 
+                      "K_IS", "K_ISNULL", "K_LIKE", "K_NOT", "K_NOTNULL", 
+                      "K_NULL", "K_OR", "K_TRUE", "NUMERIC_LITERAL", "DOUBLE_QUOTED_STRING", 
+                      "DOUBLE_QUOTED_STRING_TEL", "DOUBLE_QUOTED_STRING_SQL", 
+                      "SINGLE_QUOTED_STRING", "SINGLE_QUOTED_STRING_TEL", 
+                      "SINGLE_QUOTED_STRING_SQL", "SINGLE_LINE_COMMENT", 
+                      "MULTILINE_COMMENT", "SPACES", "WORD" ]
 
     RULE_parseTel = 0
     RULE_expr = 1
@@ -117,26 +123,28 @@ class PqlParser ( Parser ):
     TILDE=27
     UNDER=28
     K_AND=29
-    K_FALSE=30
-    K_IS=31
-    K_ISNULL=32
-    K_LIKE=33
-    K_NOT=34
-    K_NOTNULL=35
-    K_NULL=36
-    K_OR=37
-    K_TRUE=38
-    NUMERIC_LITERAL=39
-    DOUBLE_QUOTED_STRING=40
-    DOUBLE_QUOTED_STRING_TEL=41
-    DOUBLE_QUOTED_STRING_SQL=42
-    SINGLE_QUOTED_STRING=43
-    SINGLE_QUOTED_STRING_TEL=44
-    SINGLE_QUOTED_STRING_SQL=45
-    SINGLE_LINE_COMMENT=46
-    MULTILINE_COMMENT=47
-    SPACES=48
-    WORD=49
+    K_BETWEEN=30
+    K_FALSE=31
+    K_IN=32
+    K_IS=33
+    K_ISNULL=34
+    K_LIKE=35
+    K_NOT=36
+    K_NOTNULL=37
+    K_NULL=38
+    K_OR=39
+    K_TRUE=40
+    NUMERIC_LITERAL=41
+    DOUBLE_QUOTED_STRING=42
+    DOUBLE_QUOTED_STRING_TEL=43
+    DOUBLE_QUOTED_STRING_SQL=44
+    SINGLE_QUOTED_STRING=45
+    SINGLE_QUOTED_STRING_TEL=46
+    SINGLE_QUOTED_STRING_SQL=47
+    SINGLE_LINE_COMMENT=48
+    MULTILINE_COMMENT=49
+    SPACES=50
+    WORD=51
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -209,6 +217,8 @@ class PqlParser ( Parser ):
             self.right = None # ExprContext
             self.inner = None # ExprContext
             self.operator = None # Token
+            self.is_negated = None # Token
+            self.right_list = None # ExprListContext
 
         def expr(self, i:int=None):
             if i is None:
@@ -280,6 +290,9 @@ class PqlParser ( Parser ):
         def K_IS(self):
             return self.getToken(PqlParser.K_IS, 0)
 
+        def K_LIKE(self):
+            return self.getToken(PqlParser.K_LIKE, 0)
+
         def K_AND(self):
             return self.getToken(PqlParser.K_AND, 0)
 
@@ -291,6 +304,16 @@ class PqlParser ( Parser ):
 
         def OR(self):
             return self.getToken(PqlParser.OR, 0)
+
+        def K_BETWEEN(self):
+            return self.getToken(PqlParser.K_BETWEEN, 0)
+
+        def K_IN(self):
+            return self.getToken(PqlParser.K_IN, 0)
+
+        def exprList(self):
+            return self.getTypedRuleContext(PqlParser.ExprListContext,0)
+
 
         def getRuleIndex(self):
             return PqlParser.RULE_expr
@@ -334,7 +357,7 @@ class PqlParser ( Parser ):
                     self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 19
-                localctx.right = self.expr(11)
+                localctx.right = self.expr(14)
                 pass
 
             elif la_ == 2:
@@ -363,25 +386,25 @@ class PqlParser ( Parser ):
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 49
+            self.state = 70
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 47
+                    self.state = 68
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
                     if la_ == 1:
                         localctx = PqlParser.ExprContext(self, _parentctx, _parentState)
                         localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 29
-                        if not self.precpred(self._ctx, 10):
+                        if not self.precpred(self._ctx, 13):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 13)")
                         self.state = 30
                         localctx.operator = self._input.LT(1)
                         _la = self._input.LA(1)
@@ -391,7 +414,7 @@ class PqlParser ( Parser ):
                             self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 31
-                        localctx.right = self.expr(11)
+                        localctx.right = self.expr(14)
                         pass
 
                     elif la_ == 2:
@@ -399,9 +422,9 @@ class PqlParser ( Parser ):
                         localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 32
-                        if not self.precpred(self._ctx, 9):
+                        if not self.precpred(self._ctx, 12):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 12)")
                         self.state = 33
                         localctx.operator = self._input.LT(1)
                         _la = self._input.LA(1)
@@ -411,7 +434,7 @@ class PqlParser ( Parser ):
                             self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 34
-                        localctx.right = self.expr(10)
+                        localctx.right = self.expr(13)
                         pass
 
                     elif la_ == 3:
@@ -419,9 +442,9 @@ class PqlParser ( Parser ):
                         localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 35
-                        if not self.precpred(self._ctx, 8):
+                        if not self.precpred(self._ctx, 11):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 11)")
                         self.state = 36
                         localctx.operator = self._input.LT(1)
                         _la = self._input.LA(1)
@@ -431,7 +454,7 @@ class PqlParser ( Parser ):
                             self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 37
-                        localctx.right = self.expr(9)
+                        localctx.right = self.expr(12)
                         pass
 
                     elif la_ == 4:
@@ -439,9 +462,9 @@ class PqlParser ( Parser ):
                         localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 38
-                        if not self.precpred(self._ctx, 7):
+                        if not self.precpred(self._ctx, 10):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
                         self.state = 39
                         localctx.operator = self._input.LT(1)
                         _la = self._input.LA(1)
@@ -451,7 +474,7 @@ class PqlParser ( Parser ):
                             self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 40
-                        localctx.right = self.expr(8)
+                        localctx.right = self.expr(11)
                         pass
 
                     elif la_ == 5:
@@ -459,10 +482,32 @@ class PqlParser ( Parser ):
                         localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
                         self.state = 41
-                        if not self.precpred(self._ctx, 6):
+                        if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 42
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
+                        self.state = 43
+                        self._errHandler.sync(self)
+                        _la = self._input.LA(1)
+                        if _la==PqlParser.K_NOT:
+                            self.state = 42
+                            localctx.is_negated = self.match(PqlParser.K_NOT)
+
+
+                        self.state = 45
+                        localctx.operator = self.match(PqlParser.K_LIKE)
+                        self.state = 46
+                        localctx.right = self.expr(10)
+                        pass
+
+                    elif la_ == 6:
+                        localctx = PqlParser.ExprContext(self, _parentctx, _parentState)
+                        localctx.left = _prevctx
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 47
+                        if not self.precpred(self._ctx, 7):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
+                        self.state = 48
                         localctx.operator = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==PqlParser.AND or _la==PqlParser.K_AND):
@@ -470,19 +515,19 @@ class PqlParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 43
-                        localctx.right = self.expr(7)
+                        self.state = 49
+                        localctx.right = self.expr(8)
                         pass
 
-                    elif la_ == 6:
+                    elif la_ == 7:
                         localctx = PqlParser.ExprContext(self, _parentctx, _parentState)
                         localctx.left = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 44
-                        if not self.precpred(self._ctx, 5):
+                        self.state = 50
+                        if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 45
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
+                        self.state = 51
                         localctx.operator = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==PqlParser.OR or _la==PqlParser.K_OR):
@@ -490,14 +535,62 @@ class PqlParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 46
+                        self.state = 52
+                        localctx.right = self.expr(7)
+                        pass
+
+                    elif la_ == 8:
+                        localctx = PqlParser.ExprContext(self, _parentctx, _parentState)
+                        localctx.left = _prevctx
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 53
+                        if not self.precpred(self._ctx, 5):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
+                        self.state = 55
+                        self._errHandler.sync(self)
+                        _la = self._input.LA(1)
+                        if _la==PqlParser.K_NOT:
+                            self.state = 54
+                            localctx.is_negated = self.match(PqlParser.K_NOT)
+
+
+                        self.state = 57
+                        localctx.operator = self.match(PqlParser.K_BETWEEN)
+                        self.state = 58
                         localctx.right = self.expr(6)
                         pass
 
+                    elif la_ == 9:
+                        localctx = PqlParser.ExprContext(self, _parentctx, _parentState)
+                        localctx.left = _prevctx
+                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                        self.state = 59
+                        if not self.precpred(self._ctx, 8):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
+                        self.state = 61
+                        self._errHandler.sync(self)
+                        _la = self._input.LA(1)
+                        if _la==PqlParser.K_NOT:
+                            self.state = 60
+                            localctx.is_negated = self.match(PqlParser.K_NOT)
+
+
+                        self.state = 63
+                        localctx.operator = self.match(PqlParser.K_IN)
+                        self.state = 64
+                        self.match(PqlParser.OPEN_PAREN)
+                        self.state = 65
+                        localctx.right_list = self.exprList()
+                        self.state = 66
+                        self.match(PqlParser.CLOSE_PAREN)
+                        pass
+
              
-                self.state = 51
+                self.state = 72
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,2,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -557,19 +650,19 @@ class PqlParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 52
+            self.state = 73
             localctx.function_name = self.identifierMultipart()
-            self.state = 53
+            self.state = 74
             self.match(PqlParser.OPEN_PAREN)
-            self.state = 55
+            self.state = 76
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << PqlParser.MINUS) | (1 << PqlParser.OPEN_PAREN) | (1 << PqlParser.PLUS) | (1 << PqlParser.QUESTION_MARK) | (1 << PqlParser.K_FALSE) | (1 << PqlParser.K_NOT) | (1 << PqlParser.K_NULL) | (1 << PqlParser.K_TRUE) | (1 << PqlParser.NUMERIC_LITERAL) | (1 << PqlParser.DOUBLE_QUOTED_STRING) | (1 << PqlParser.SINGLE_QUOTED_STRING) | (1 << PqlParser.WORD))) != 0):
-                self.state = 54
+                self.state = 75
                 localctx.arguments = self.exprList()
 
 
-            self.state = 57
+            self.state = 78
             self.match(PqlParser.CLOSE_PAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -626,17 +719,17 @@ class PqlParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 59
+            self.state = 80
             self.expr(0)
-            self.state = 64
+            self.state = 85
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==PqlParser.COMMA:
-                self.state = 60
+                self.state = 81
                 self.match(PqlParser.COMMA)
-                self.state = 61
+                self.state = 82
                 self.expr(0)
-                self.state = 66
+                self.state = 87
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -702,33 +795,33 @@ class PqlParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 68
+            self.state = 89
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==PqlParser.QUESTION_MARK:
-                self.state = 67
+                self.state = 88
                 localctx.is_optional = self.match(PqlParser.QUESTION_MARK)
 
 
-            self.state = 73
+            self.state = 94
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
             if la_ == 1:
-                self.state = 70
+                self.state = 91
                 localctx.namespace = self.identifierMultipart()
-                self.state = 71
+                self.state = 92
                 self.match(PqlParser.PIPE)
 
 
-            self.state = 75
+            self.state = 96
             localctx.slug = self.identifierMultipart()
-            self.state = 78
+            self.state = 99
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
             if la_ == 1:
-                self.state = 76
+                self.state = 97
                 self.match(PqlParser.COLON)
-                self.state = 77
+                self.state = 98
                 localctx.tag = self.identifierMultipart()
 
 
@@ -785,20 +878,20 @@ class PqlParser ( Parser ):
         self.enterRule(localctx, 10, self.RULE_identifierMultipart)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 80
+            self.state = 101
             self.match(PqlParser.WORD)
-            self.state = 85
+            self.state = 106
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,11,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 81
+                    self.state = 102
                     self.match(PqlParser.DOT)
-                    self.state = 82
+                    self.state = 103
                     self.match(PqlParser.WORD) 
-                self.state = 87
+                self.state = 108
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,11,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -860,7 +953,7 @@ class PqlParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 88
+            self.state = 109
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << PqlParser.K_FALSE) | (1 << PqlParser.K_NULL) | (1 << PqlParser.K_TRUE) | (1 << PqlParser.NUMERIC_LITERAL) | (1 << PqlParser.DOUBLE_QUOTED_STRING) | (1 << PqlParser.SINGLE_QUOTED_STRING))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -889,27 +982,39 @@ class PqlParser ( Parser ):
 
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 10)
+                return self.precpred(self._ctx, 13)
          
 
             if predIndex == 1:
-                return self.precpred(self._ctx, 9)
+                return self.precpred(self._ctx, 12)
          
 
             if predIndex == 2:
-                return self.precpred(self._ctx, 8)
+                return self.precpred(self._ctx, 11)
          
 
             if predIndex == 3:
-                return self.precpred(self._ctx, 7)
+                return self.precpred(self._ctx, 10)
          
 
             if predIndex == 4:
-                return self.precpred(self._ctx, 6)
+                return self.precpred(self._ctx, 9)
          
 
             if predIndex == 5:
+                return self.precpred(self._ctx, 7)
+         
+
+            if predIndex == 6:
+                return self.precpred(self._ctx, 6)
+         
+
+            if predIndex == 7:
                 return self.precpred(self._ctx, 5)
+         
+
+            if predIndex == 8:
+                return self.precpred(self._ctx, 8)
          
 
 

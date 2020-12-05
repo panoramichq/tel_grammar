@@ -19,7 +19,13 @@ inputs = (
     '(ns3|taxon3 + 5)',
     'fn_4(fn_1(slug))',
     'TypeCast(arg1=\'value1\')',
-    'ns6|taxon6 > 1234 and (ns0|taxon10 + 4321) == 0'
+    'ns6|taxon6 > 1234 and (ns0|taxon10 + 4321) == 0',
+    'slug like \'blah%\'',
+    'slug not like \'blah%\'',
+    'slug in (1,2)',
+    'slug not in (1,2)',
+    'a BETWEEN b AND c', ##   -->   (a >= b) AND (a <= c)
+    'a NOT BETWEEN b AND c', ##  -->   (a < b) OR (a > c)
 )
 
 
@@ -90,6 +96,94 @@ ast_should_bes = (
             ),
         ),
     ),
+    ast.Expr(
+        'LIKE',
+        (
+            ast.Taxon(
+                'slug',
+            ),
+            ast.Literal('blah%', "'blah%'"),
+        ),
+    ),
+    ast.Expr(
+        'NOT',
+        (
+            ast.Expr(
+                'LIKE',
+                (
+                    ast.Taxon(
+                        'slug',
+                    ),
+                    ast.Literal('blah%', "'blah%'"),
+                ),
+            ),
+        )
+    ),
+    ast.Expr(
+        'IN',
+        (
+            ast.Taxon(
+                'slug',
+            ),
+            ast.Literal(1, "1"),
+            ast.Literal(2, "2"),
+        ),
+    ),
+    ast.Expr(
+        'NOT',
+        (
+            ast.Expr(
+                'IN',
+                (
+                    ast.Taxon(
+                        'slug',
+                    ),
+                    ast.Literal(1, "1"),
+                    ast.Literal(2, "2"),
+                ),
+            ),
+        )
+    ),
+    # 'a BETWEEN b AND c', ##   -->   (a >= b) AND (a <= c)
+    ast.Expr(
+        'AND',
+        (
+            ast.Expr(
+                '>=',
+                (
+                    ast.Taxon('a'),
+                    ast.Taxon('b'),
+                ),
+            ),
+            ast.Expr(
+                '<=',
+                (
+                    ast.Taxon('a'),
+                    ast.Taxon('c'),
+                ),
+            ),
+        ),
+    ),
+    # 'a NOT BETWEEN b AND c', ##  -->   (a < b) OR (a > c)
+    ast.Expr(
+        'OR',
+        (
+            ast.Expr(
+                '<',
+                (
+                    ast.Taxon('a'),
+                    ast.Taxon('b'),
+                ),
+            ),
+            ast.Expr(
+                '>',
+                (
+                    ast.Taxon('a'),
+                    ast.Taxon('c'),
+                ),
+            ),
+        ),
+    ),
 )
 
 
@@ -101,7 +195,13 @@ outputs = (
     '(ns3|taxon3 + 5)',
     'fn_4(fn_1(slug))',
     'TypeCast(arg1=\'value1\')',
-    '((ns6|taxon6 > 1234) AND ((ns0|taxon10 + 4321) == 0))'
+    '((ns6|taxon6 > 1234) AND ((ns0|taxon10 + 4321) == 0))',
+    '(slug LIKE \'blah%\')',
+    'NOT (slug LIKE \'blah%\')',
+    '(slug IN (1, 2))',
+    'NOT (slug IN (1, 2))',
+    '((a >= b) AND (a <= c))',  # was: a BETWEEN b AND c
+    '((a < b) OR (a > c))',  # was: a NOT BETWEEN b AND c
 )
 
 
@@ -115,3 +215,53 @@ def test_tel_to_ast_and_back(input: str, ast_should_be: ast.Node, output_should_
 
     output_is = to_tel(ast_is)
     assert output_is == output_should_be
+
+
+
+@pytest.mark.parametrize(
+    'ast_input, str_output_should_be',
+    (
+        (
+            ast.Expr(
+                'AND',
+                (
+                    ast.Taxon(
+                        'slug',
+                    ),
+                    ast.Expr(
+                        'OR',
+                        (
+                            ast.Literal(1, "1"),
+                            ast.Literal(2, "2"),
+                        ),
+                    ),
+                    ast.Literal(3, "3"),
+                ),
+            ),
+            '(slug AND (1 OR 2) AND 3)',
+        ),
+        (
+            ast.Expr(
+                'BETWEEN',
+                (
+                    ast.Taxon(
+                        'slug',
+                    ),
+                    ast.Expr(
+                        'AND',
+                        (
+                            ast.Literal(2, "2"),
+                            ast.Literal(3, "3"),
+                        ),
+                    ),
+                )
+            ),
+            '(slug BETWEEN 2 AND 3)',
+        ),
+    )
+)
+def test_ast_to_tel_special_cases(ast_input: ast.Node, str_output_should_be: str):
+    output_is = to_tel(ast_input)
+    assert output_is == str_output_should_be
+
+

@@ -34,7 +34,9 @@ UNDER: '_';
 
 // SQL keywords we adapt:
 K_AND : A N D;
+K_BETWEEN : B E T W E E N;
 K_FALSE : F A L S E;
+K_IN : I N;
 K_IS : I S;
 K_ISNULL : I S N U L L;
 K_LIKE : L I K E;

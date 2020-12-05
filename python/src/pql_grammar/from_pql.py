@@ -127,10 +127,6 @@ class PqlAntlrToAstParser:
         is_null = bool(e.K_NULL())
         is_bool = bool(e.K_TRUE()) or bool(e.K_FALSE())
 
-        # TODO:
-        # - BLOB_LITERAL
-        # - CURRENT_[DATE|TIME|TIMESTAMP]
-
         if is_null:
             return None
 
@@ -173,24 +169,136 @@ class PqlAntlrToAstParser:
                 (cls.parse_expr(ctx.right),)
             )
 
+
         v: Optional[str] = full_text(ctx.operator)
         if v:
             # this is super generic expression of type
             #  left OP right
-            # with a lot of options for OP value.
-            return ast.Expr(
-                v.upper(),
-                (
-                    cls.parse_expr(ctx.left),
-                    cls.parse_expr(ctx.right)
-                )
+            # with a lot of options for OP values.
+            # The only exception is IN operator where there no `right` but `right_list`
+
+            # we standardize operator keywords to upper case
+            # this is to establish a standard expectation for consuming code
+            # 'and' -> 'AND'
+            op = v.upper()
+
+            # Let's handle IN-like cases first and fall through left-OP-right for rest.
+            # IN-like cases are characterized by non-null `.right_list` (instead of .right)
+            if ctx.right_list:
+                right = [
+                    cls.parse_expr(expr)
+                    for expr in ctx.right_list.expr()
+                ]
+            else:
+                right = [cls.parse_expr(ctx.right)]
+
+            is_negated = ctx.is_negated
+
+            # Normally AST parsers should not be in business of
+            # rewriting the subject matter.
+            # However, there is one ugly nuance of SQL-like language
+            # that does not warrant "rewrite" but a "more standard way to express"
+            #    a BETWEEN b AND c
+            #    a NOT BETWEEN b AND c
+            # It's an ugly wart of SQL that requires very special-cased handling
+            # in all consumer code if it stays as BETWEEN.
+            # TO save the children, and humanity, will express BETWEEN as explicit inequality
+            #    a BETWEEN b AND c   -->   (a >= b) AND (a <= c)
+            #    a NOT BETWEEN b AND c  -->   (a < b) OR (a > c)
+            # Dont think of it as "transform".
+            # Think of it as the only sane way to express what BETWEEN means.
+
+            if op == 'BETWEEN':
+                left = cls.parse_expr(ctx.left)
+
+                # this one is an Expr('AND', [v1, v2]))
+                between_and = cls.parse_expr(ctx.right)
+
+                if (
+                    isinstance(between_and, ast.Expr) and
+                    between_and.operator == 'AND' and
+                    len(between_and.args) == 2
+                ):
+                    pass
+                else:
+                    raise ParseError(
+                        f"Contents of BETWEEN's AND expression - {full_text(ctx.right)} - are not valid. "
+                        "Must be of form `valueA AND valueB`."
+                    )
+
+                if is_negated:
+                    #    a NOT BETWEEN b AND c  -->   (a < b) OR (a > c)
+                    ex = ast.Expr(
+                        'OR',
+                        (
+                            ast.Expr(
+                                '<',
+                                (
+                                    left,  # TODO: think about copy
+                                    between_and.args[0]
+                                )
+                            ),
+                            ast.Expr(
+                                '>',
+                                (
+                                    left,  # TODO: think about copy
+                                    between_and.args[1]
+                                )
+                            ),
+                        )
+                    )
+                else:
+                    # a BETWEEN b AND c   -->   (a >= b) AND (a <= c)
+                    ex = ast.Expr(
+                        'AND',
+                        (
+                            ast.Expr(
+                                '>=',
+                                (
+                                    left,  # TODO: think about copy
+                                    between_and.args[0]
+                                )
+                            ),
+                            ast.Expr(
+                                '<=',
+                                (
+                                    left,  # TODO: think about copy
+                                    between_and.args[1]
+                                )
+                            ),
+                        )
+                    )
+                # we internalized NOT into the expression.
+                # can return without further NOT processing
+                return ex
+
+            ex = ast.Expr(
+                op,
+                tuple([cls.parse_expr(ctx.left)] + right)
             )
+
+            # lastly, some statements allow NOT before operator
+            # (if it's before expression, it's captured by Unary operator)
+            # In this case as opposed to creating of a separate NOT-variant operator
+            # we just wrap the non-NOT version of the statement into
+            # a unary NOT
+            #   c not in (1,2,3)
+            # becomes
+            #   not (c in (1,2,3))
+
+            if ctx.is_negated:
+                return ast.Expr(
+                    'NOT',
+                    (ex,)
+                )
+            else:
+                return ex
 
         v: PqlParser.TaxonContext = ctx.taxon()
         if v:
             return cls.parse_taxon(v)
 
-        v: PqlParser.FunctionContext = ctx.fn()
+        v: PqlParser.FnContext = ctx.fn()
         if v:
             return cls.parse_function(v)
 

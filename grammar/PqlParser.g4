@@ -24,10 +24,13 @@ expr
  | left=expr operator=( PLUS | MINUS ) right=expr
  | left=expr operator=( LT | LT_EQ | GT | GT_EQ ) right=expr
  | left=expr operator=( ASSIGN | EQ | NOT_EQ1 | NOT_EQ2 | K_IS ) right=expr
-// | left=expr is_negated=K_NOT? operator=( K_LIKE | K_BETWEEN ) right=expr
-// | left=expr is_negated=K_NOT? operator=K_IN '(' exprList? ')'
+ | left=expr is_negated=K_NOT? operator=K_LIKE right=expr
+ | left=expr is_negated=K_NOT? operator=K_IN OPEN_PAREN right_list=exprList CLOSE_PAREN
  | left=expr operator=( K_AND | AND ) right=expr
  | left=expr operator=( K_OR | OR ) right=expr
+ // BETWEEN must come after AND or risk being parsed before it
+ // resulting in `a BETWEEN b` where `AND c` fragment is outside of BETWEEN expression
+ | left=expr is_negated=K_NOT? operator=K_BETWEEN right=expr
  | OPEN_PAREN inner=expr CLOSE_PAREN
  | literalValue
  | fn

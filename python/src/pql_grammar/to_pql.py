@@ -23,19 +23,50 @@ class Node:
         raise NotImplementedError(f'Renderer for "{self.n}" is not implemented.')
 
 
+def _in_expr_render(o, vv):
+    right = ", ".join([
+        str(to_r(v))
+        for v in vv[1:]
+    ])
+    return f'{to_r(vv[0])} IN ({right})'
+
+
+def _between_expr_renderer(o, vv):
+    # `right` is a nested Expr('AND", [left, right]) expression
+    # as long as all expressions get parens on outside,
+    # we need to strip them out otherwise we get:
+    #   a BETWEEN (b AND c)
+    # which does not work as SQL
+    right = str(to_r(vv[LAST]))[1:-1]
+    return f'{to_r(vv[FIRST])} BETWEEN {right}'
+
+
+def _default_expr_render(o, vv):
+    return f' {o} '.join([
+        str(to_r(v))
+        for v in vv
+    ])
+
+
+_expr_renderers = {
+    'IN': _in_expr_render,
+    'BETWEEN': _between_expr_renderer,
+}
+
+
 class Expr(Node):
     n: ast.Expr
     def __str__(self):
         op = self.n.operator
-        if len(self.n.args) == 1:
+        args_len = len(self.n.args)
+        if args_len == 1:
             right = self.n.args[FIRST]
             # could be something like 'NOT' which needs padding
             padding = '' if op in ('+','-') else ' '
             return f'{op}{padding}{to_r(right)}'
-        else:
-            left = self.n.args[FIRST]
-            right = self.n.args[SECOND]
-            return f'({to_r(left)} {op} {to_r(right)})'
+
+        renderer = _expr_renderers.get(op, _default_expr_render)
+        return '(' + renderer(op, self.n.args) + ')'
 
 
 class Literal(Node):

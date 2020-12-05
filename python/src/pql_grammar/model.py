@@ -47,7 +47,7 @@ class Taxon(Node):
     tag: Optional[str] = None
 
     @property
-    def raw_value(self):
+    def value(self):
         is_optional = '?' if self.is_optional else ''
         namespace = self.namespace + '|' if self.namespace else ''
         slug = self.slug

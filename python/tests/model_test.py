@@ -32,5 +32,5 @@ outputs = (
 
 
 @pytest.mark.parametrize('input, output', zip(inputs, outputs))
-def test_taxon_raw_value(input: ast.Taxon, output: str):
-    assert input.raw_value == output
+def test_taxon_value(input: ast.Taxon, output: str):
+    assert input.value == output

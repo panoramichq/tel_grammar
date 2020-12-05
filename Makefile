@@ -100,4 +100,4 @@ build-code-js: grammar/PqlLexer.tokens grammar/PqlParser.g4 # image-antlr
 
 build-code: build-code-python build-code-js
 
-.PHONY: image.antlr build-code-python build-code-js build-code
+.PHONY: image-antlr build-code-python build-code-js build-code

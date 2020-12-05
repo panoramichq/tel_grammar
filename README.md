@@ -15,7 +15,7 @@ To release a new version of the library, follow these steps:
 ## Introduction
 
 This repository contains formal definition of grammar for TEL written in [ANTLR v4](https://github.com/antlr/antlr4).
-It can generate following components in both python and JavaScript to handle parsing string expressions:
+It can generate following components in Python, JavaScript to handle parsing string expressions:
 
 - *lexer* - splits string expression into tokens
 - *parser* - connects tokens into parse tree (similar to AST)

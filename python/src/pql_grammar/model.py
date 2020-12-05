@@ -46,6 +46,15 @@ class Taxon(Node):
     is_optional: Optional[bool] = False
     tag: Optional[str] = None
 
+    @property
+    def raw_value(self):
+        is_optional = '?' if self.is_optional else ''
+        namespace = self.namespace + '|' if self.namespace else ''
+        slug = self.slug
+        tag = ':' + self.tag if self.tag else ''
+        return f'{is_optional}{namespace}{slug}{tag}'
+
+
 CallArgs = Tuple[Optional[str],Any]
 
 

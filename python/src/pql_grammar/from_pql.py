@@ -104,7 +104,7 @@ class PqlAntlrToAstParser:
         return arg_name, arg_value
 
     @classmethod
-    def parse_function(cls, e: PqlParser.FunctionContext) -> ast.Function:
+    def parse_function(cls, e: PqlParser.FnContext) -> ast.Function:
         return ast.Function(
             full_text(e.function_name),
             tuple([
@@ -190,7 +190,7 @@ class PqlAntlrToAstParser:
         if v:
             return cls.parse_taxon(v)
 
-        v: PqlParser.FunctionContext = ctx.function()
+        v: PqlParser.FunctionContext = ctx.fn()
         if v:
             return cls.parse_function(v)
 

@@ -30,7 +30,7 @@ expr
  | left=expr operator=( K_OR | OR ) right=expr
  | OPEN_PAREN inner=expr CLOSE_PAREN
  | literalValue
- | function
+ | fn
  | taxon
  ;
 
@@ -41,7 +41,7 @@ expr
 // Named ones will come as `expr` with left=expr,operator=ASSIGN,right=expr contents.
 //  You might need to express these as ordered dict / list of tuples to preserve names of args.
 // Positional will be whatever literal or other single-valued expr content could be.
-function: function_name=identifierMultipart OPEN_PAREN arguments=exprList? CLOSE_PAREN;
+fn: function_name=identifierMultipart OPEN_PAREN arguments=exprList? CLOSE_PAREN;
 exprList: expr ( COMMA expr )* ;
 
 // TODO: TAXON_TAG_DELIMITER is being killed off. Remove when we migrate out of taxon tags.

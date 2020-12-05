@@ -26,12 +26,12 @@ class PqlParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PqlParser#function.
-    def enterFunction(self, ctx:PqlParser.FunctionContext):
+    # Enter a parse tree produced by PqlParser#fn.
+    def enterFn(self, ctx:PqlParser.FnContext):
         pass
 
-    # Exit a parse tree produced by PqlParser#function.
-    def exitFunction(self, ctx:PqlParser.FunctionContext):
+    # Exit a parse tree produced by PqlParser#fn.
+    def exitFn(self, ctx:PqlParser.FnContext):
         pass
 
 

@@ -20,93 +20,30 @@ PqlParserListener.prototype.exitParseTel = function(ctx) {
 };
 
 
-// Enter a parse tree produced by PqlParser#parsePql.
-PqlParserListener.prototype.enterParsePql = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#parsePql.
-PqlParserListener.prototype.exitParsePql = function(ctx) {
-};
-
-
-// Enter a parse tree produced by PqlParser#sqlStmtList.
-PqlParserListener.prototype.enterSqlStmtList = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#sqlStmtList.
-PqlParserListener.prototype.exitSqlStmtList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by PqlParser#sqlStmt.
-PqlParserListener.prototype.enterSqlStmt = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#sqlStmt.
-PqlParserListener.prototype.exitSqlStmt = function(ctx) {
-};
-
-
-// Enter a parse tree produced by PqlParser#selectStmt.
-PqlParserListener.prototype.enterSelectStmt = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#selectStmt.
-PqlParserListener.prototype.exitSelectStmt = function(ctx) {
-};
-
-
-// Enter a parse tree produced by PqlParser#columns.
-PqlParserListener.prototype.enterColumns = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#columns.
-PqlParserListener.prototype.exitColumns = function(ctx) {
-};
-
-
-// Enter a parse tree produced by PqlParser#whereClause.
-PqlParserListener.prototype.enterWhereClause = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#whereClause.
-PqlParserListener.prototype.exitWhereClause = function(ctx) {
-};
-
-
-// Enter a parse tree produced by PqlParser#orderByClause.
-PqlParserListener.prototype.enterOrderByClause = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#orderByClause.
-PqlParserListener.prototype.exitOrderByClause = function(ctx) {
-};
-
-
-// Enter a parse tree produced by PqlParser#orderExpr.
-PqlParserListener.prototype.enterOrderExpr = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#orderExpr.
-PqlParserListener.prototype.exitOrderExpr = function(ctx) {
-};
-
-
-// Enter a parse tree produced by PqlParser#limitClause.
-PqlParserListener.prototype.enterLimitClause = function(ctx) {
-};
-
-// Exit a parse tree produced by PqlParser#limitClause.
-PqlParserListener.prototype.exitLimitClause = function(ctx) {
-};
-
-
 // Enter a parse tree produced by PqlParser#expr.
 PqlParserListener.prototype.enterExpr = function(ctx) {
 };
 
 // Exit a parse tree produced by PqlParser#expr.
 PqlParserListener.prototype.exitExpr = function(ctx) {
+};
+
+
+// Enter a parse tree produced by PqlParser#fn.
+PqlParserListener.prototype.enterFn = function(ctx) {
+};
+
+// Exit a parse tree produced by PqlParser#fn.
+PqlParserListener.prototype.exitFn = function(ctx) {
+};
+
+
+// Enter a parse tree produced by PqlParser#exprList.
+PqlParserListener.prototype.enterExprList = function(ctx) {
+};
+
+// Exit a parse tree produced by PqlParser#exprList.
+PqlParserListener.prototype.exitExprList = function(ctx) {
 };
 
 

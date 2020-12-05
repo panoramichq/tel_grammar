@@ -18,62 +18,20 @@ PqlParserVisitor.prototype.visitParseTel = function(ctx) {
 };
 
 
-// Visit a parse tree produced by PqlParser#parsePql.
-PqlParserVisitor.prototype.visitParsePql = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by PqlParser#sqlStmtList.
-PqlParserVisitor.prototype.visitSqlStmtList = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by PqlParser#sqlStmt.
-PqlParserVisitor.prototype.visitSqlStmt = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by PqlParser#selectStmt.
-PqlParserVisitor.prototype.visitSelectStmt = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by PqlParser#columns.
-PqlParserVisitor.prototype.visitColumns = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by PqlParser#whereClause.
-PqlParserVisitor.prototype.visitWhereClause = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by PqlParser#orderByClause.
-PqlParserVisitor.prototype.visitOrderByClause = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by PqlParser#orderExpr.
-PqlParserVisitor.prototype.visitOrderExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by PqlParser#limitClause.
-PqlParserVisitor.prototype.visitLimitClause = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
 // Visit a parse tree produced by PqlParser#expr.
 PqlParserVisitor.prototype.visitExpr = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by PqlParser#fn.
+PqlParserVisitor.prototype.visitFn = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by PqlParser#exprList.
+PqlParserVisitor.prototype.visitExprList = function(ctx) {
   return this.visitChildren(ctx);
 };
 

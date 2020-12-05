@@ -78,14 +78,14 @@ class PqlParser ( Parser ):
 
     RULE_parseTel = 0
     RULE_expr = 1
-    RULE_function = 2
+    RULE_fn = 2
     RULE_exprList = 3
     RULE_taxon = 4
     RULE_identifierMultipart = 5
     RULE_literalValue = 6
 
-    ruleNames =  [ "parseTel", "expr", "function", "exprList", "taxon", 
-                   "identifierMultipart", "literalValue" ]
+    ruleNames =  [ "parseTel", "expr", "fn", "exprList", "taxon", "identifierMultipart", 
+                   "literalValue" ]
 
     EOF = Token.EOF
     AND=1
@@ -236,8 +236,8 @@ class PqlParser ( Parser ):
             return self.getTypedRuleContext(PqlParser.LiteralValueContext,0)
 
 
-        def function(self):
-            return self.getTypedRuleContext(PqlParser.FunctionContext,0)
+        def fn(self):
+            return self.getTypedRuleContext(PqlParser.FnContext,0)
 
 
         def taxon(self):
@@ -353,7 +353,7 @@ class PqlParser ( Parser ):
 
             elif la_ == 4:
                 self.state = 25
-                self.function()
+                self.fn()
                 pass
 
             elif la_ == 5:
@@ -508,7 +508,7 @@ class PqlParser ( Parser ):
         return localctx
 
 
-    class FunctionContext(ParserRuleContext):
+    class FnContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -531,29 +531,29 @@ class PqlParser ( Parser ):
 
 
         def getRuleIndex(self):
-            return PqlParser.RULE_function
+            return PqlParser.RULE_fn
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFunction" ):
-                listener.enterFunction(self)
+            if hasattr( listener, "enterFn" ):
+                listener.enterFn(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFunction" ):
-                listener.exitFunction(self)
+            if hasattr( listener, "exitFn" ):
+                listener.exitFn(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFunction" ):
-                return visitor.visitFunction(self)
+            if hasattr( visitor, "visitFn" ):
+                return visitor.visitFn(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
 
-    def function(self):
+    def fn(self):
 
-        localctx = PqlParser.FunctionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_function)
+        localctx = PqlParser.FnContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_fn)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)

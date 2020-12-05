@@ -19,8 +19,8 @@ class PqlParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PqlParser#function.
-    def visitFunction(self, ctx:PqlParser.FunctionContext):
+    # Visit a parse tree produced by PqlParser#fn.
+    def visitFn(self, ctx:PqlParser.FnContext):
         return self.visitChildren(ctx)
 
 

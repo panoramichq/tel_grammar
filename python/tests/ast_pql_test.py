@@ -24,8 +24,22 @@ inputs = (
     'slug not like \'blah%\'',
     'slug in (1,2)',
     'slug not in (1,2)',
+    # Special non-literal extractions:
+    #
+    # BETWEEN expressions extremely annoying to deal with in consumer code
+    # Between is expressed as union of simple expressions depicting its meaning.
     'a BETWEEN b AND c', ##   -->   (a >= b) AND (a <= c)
     'a NOT BETWEEN b AND c', ##  -->   (a < b) OR (a > c)
+    # unary expressions are annoying to deal with in consumer code
+    # too many edge cases. This parser extracts meaning statically where possible.
+    'NOT a',  ## (NOT (Taxon a))
+    '-a',  ## ('-' (Taxon a))
+    '+a',  ## (Taxon a)  # skip +
+    '-2',  ## (Literal -2)  # negate number if expr is number
+    'NOT 3',  ## becomes boolean false
+    'NOT 0',  ## becomes boolean true
+    'NOT "text"',  ## becomes boolean false
+    'NOT ""',  ## becomes boolean true
 )
 
 
@@ -184,6 +198,14 @@ ast_should_bes = (
             ),
         ),
     ),
+    ast.Expr('NOT', (ast.Taxon('a'),)),  # 'not a'
+    ast.Expr('-', (ast.Taxon('a'),)),  # '-a'
+    ast.Taxon('a'),  ## '+a' skips +
+    ast.Literal(-2, '-2'),  ## '-2'
+    ast.Literal(False, 'false'),  # NOT 3
+    ast.Literal(True, 'true'),  # NOT 0
+    ast.Literal(False, 'false'),  # NOT 'text'
+    ast.Literal(True, 'true'),  # NOT ''
 )
 
 
@@ -202,6 +224,14 @@ outputs = (
     'NOT (slug IN (1, 2))',
     '((a >= b) AND (a <= c))',  # was: a BETWEEN b AND c
     '((a < b) OR (a > c))',  # was: a NOT BETWEEN b AND c
+    'NOT a',  # ast.Expr('NOT', (ast.Taxon('a'),)),  # 'not a'
+    '-a',  # ast.Expr('-', (ast.Taxon('a'),)),  # '-a'
+    'a',  # ast.Taxon('a'),  ## '+a' skips +
+    '-2',  # ast.Literal(-2, '-2'),  ## '-2'
+    'false',  # NOT 3
+    'true',  # NOT 0
+    'false',  # NOT 'text'
+    'true',  # NOT ''
 )
 
 
@@ -263,5 +293,3 @@ def test_tel_to_ast_and_back(input: str, ast_should_be: ast.Node, output_should_
 def test_ast_to_tel_special_cases(ast_input: ast.Node, str_output_should_be: str):
     output_is = to_tel(ast_input)
     assert output_is == str_output_should_be
-
-

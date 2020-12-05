@@ -2,6 +2,7 @@
 
 from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 from antlr4 import ParserRuleContext
+from decimal import Decimal
 from typing import Optional, Tuple, List, Type, Any
 
 from .antlr.PqlLexer import PqlLexer
@@ -164,11 +165,52 @@ class PqlAntlrToAstParser:
         v = ctx.unary_operator
         if v:
             operator = full_text(v).upper()
+            right = cls.parse_expr(ctx.right)
+
+            # some unary have no meaning
+            # and packing them into AST just creates noise for consuming
+            if operator == '+':
+                # skip the BS. ignore the plus
+                # We can do this because we don't support `++a` expressions
+                return right
+
+            if (
+                operator == '-' and
+                isinstance(right, ast.Literal) and
+                isinstance(right.value, (int, float, Decimal))
+            ):
+                # right.value will always be positive digit.
+                # Our syntax parser guarantees that.
+                return ast.Literal(
+                    right.value * -1,
+                    full_text(ctx)  # unary minus with underlying literal value as one string
+                )
+
+            if (
+                operator == 'NOT' and
+                isinstance(right, ast.Literal)
+            ):
+                # unlikely to ever happen, but still
+                v = not right.value
+                return ast.Literal(
+                    v,
+                    'true' if v else 'false'
+                )
+
+
+            # else:
+            #     # cannot avoid packaging unary "-" separate.
+            #     # it's in front of a non-literal expression that need to be negated manually later
+            # TODO: contemplate converting this from unary `-expr` into regular `-1 * expr`
+            #       to escape Unary minus completely.
+
+            # We dealt with '+'. We half-dealt with '-'
+            # What's left is 'NOT'
+            # These leftovers we pass through as unary.
             return ast.Expr(
                 operator,
-                (cls.parse_expr(ctx.right),)
+                (right,)
             )
-
 
         v: Optional[str] = full_text(ctx.operator)
         if v:

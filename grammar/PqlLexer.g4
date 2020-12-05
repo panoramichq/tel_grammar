@@ -34,25 +34,15 @@ UNDER: '_';
 
 // SQL keywords we adapt:
 K_AND : A N D;
-K_AS : A S;
-K_ASC : A S C;
-K_BY : B Y;
-K_DESC : D E S C;
 K_FALSE : F A L S E;
-K_FROM : F R O M ;
 K_IS : I S;
 K_ISNULL : I S N U L L;
 K_LIKE : L I K E;
-K_LIMIT : L I M I T;
 K_NOT : N O T;
 K_NOTNULL : N O T N U L L;
 K_NULL : N U L L;
 K_OR : O R;
-K_ORDER : O R D E R;
-K_SELECT : S E L E C T;
-K_SET : S E T;
 K_TRUE : T R U E;
-K_WHERE : W H E R E;
 
 NUMERIC_LITERAL
  : DIGIT+ ( '.' DIGIT* )? ( E [-+]? DIGIT+ )?

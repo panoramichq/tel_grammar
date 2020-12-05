@@ -4,11 +4,15 @@ from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 from antlr4 import ParserRuleContext
 from typing import Optional, Tuple, List, Type, Any
 
-from ..antlr.PqlLexer import PqlLexer
-from ..antlr.PqlParser import PqlParser
-from ..antlr.PqlParserVisitor import PqlParserVisitor as _PqlParserVisitor
+from .antlr.PqlLexer import PqlLexer
+from .antlr.PqlParser import PqlParser
+from .antlr.PqlParserVisitor import PqlParserVisitor as _PqlParserVisitor
 
 from . import model as ast
+
+
+class ParseError(ValueError):
+    pass
 
 
 def full_text(ctx: ParserRuleContext) -> str:
@@ -16,7 +20,22 @@ def full_text(ctx: ParserRuleContext) -> str:
     # including white space.
     if ctx:
         if isinstance(ctx, ParserRuleContext):
-            return ctx.start.getInputStream().getText(ctx.start.start, ctx.stop.stop)
+            try:
+                start = ctx.start.start
+            except AttributeError:
+                start = None
+            try:
+                stop = ctx.stop.stop
+            except AttributeError:
+                stop = None
+
+            if not(start is None) and stop is None:
+                stop = start
+
+            if start is None:
+                return str(ctx)
+
+            return ctx.start.getInputStream().getText(start, stop)
         else:
             try:
                 # some primitive context object
@@ -26,6 +45,7 @@ def full_text(ctx: ParserRuleContext) -> str:
                 return str(ctx)
     else:
         return None
+
 
 
 def unquote(s: str):
@@ -94,26 +114,6 @@ class PqlAntlrToAstParser:
         )
 
     @classmethod
-    def parse_column_typecast(cls, v: PqlParser.FunctionContext) -> Optional[ast.Function]:
-        if not v:
-            return None
-        return cls.parse_function(v)
-
-    @classmethod
-    def parse_column_alias(cls, v: PqlParser.TaxonContext) -> Optional[ast.Taxon]:
-        if not v:
-            return None
-        return cls.parse_taxon(v)
-
-    @classmethod
-    def parse_column(cls, e: PqlParser.ColumnsContext):
-        return ast.Column(
-            cls.parse_expr(e.value),
-            cls.parse_column_typecast(e.type_cast),
-            cls.parse_column_alias(e.alias)
-        )
-
-    @classmethod
     def parse_literal(cls, e:PqlParser.LiteralValueContext):
         return ast.Literal(
             cls.parse_literal_value(e),
@@ -140,7 +140,7 @@ class PqlAntlrToAstParser:
         try:
             v = full_text(e)
         except IndexError:
-            raise Exception(f"Could not extract literal value node from '{e.getText()}'.")
+            raise ParseError(f"Could not extract literal value node from '{e.getText()}'.")
 
         if is_number:
             # TODO: contemplate decimal type instead
@@ -150,22 +150,12 @@ class PqlAntlrToAstParser:
                 try:
                     return float(v)
                 except Exception:
-                    raise Exception(f"Could not convert SQL number {v} to native number representation.")
+                    raise ParseError(f"Could not convert SQL number {v} to native number representation.")
 
         if is_string:
             return unquote(v)
 
         return v
-
-    @classmethod
-    def parse_from_clause_expr(cls, ctx: PqlParser.FromClauseContext) -> Tuple[ast.Table, ...]:
-        return tuple([
-            ast.Table(
-                full_text(table.table_name),
-                full_text(table.table_alias)
-            )
-            for table in ctx.tables()
-        ])
 
     @classmethod
     def parse_expr(cls, ctx: PqlParser.ExprContext) -> ast.Node :
@@ -204,18 +194,17 @@ class PqlAntlrToAstParser:
         if v:
             return cls.parse_function(v)
 
-        raise Exception(f'Where expression "{full_text(ctx)}" is not supported yet.')
+        raise ParseError(f'Where expression "{full_text(ctx)}" is not supported yet.')
 
 
 class PqlVisitor(_PqlParserVisitor):
 
-    def visit_from_pql_string(self, pql: str):
-        inp_stream = InputStream(pql)
-        lexer = PqlLexer(inp_stream)
-        stream = CommonTokenStream(lexer)
-        parser = PqlParser(stream)
-        tree = parser.parsePql()
-        self.visit(tree)
+    def visitErrorNode(self, node):
+        wrong_symbol = node.symbol.text
+        line = node.symbol.line
+        column = node.symbol.column + 1
+        details = f'Unexpected symbol "{wrong_symbol}" on line {line}, position {column}'
+        raise ParseError(details)
 
     def visit_from_tel_string(self, tel: str):
         inp_stream = InputStream(tel)
@@ -224,56 +213,6 @@ class PqlVisitor(_PqlParserVisitor):
         parser = PqlParser(stream)
         tree = parser.parseTel()
         self.visit(tree)
-
-
-def from_pql(pql: str, cls:Type[PqlVisitor] = PqlVisitor) -> List[ast.Node]:
-
-    statements = []
-
-    class V(cls):
-
-        def visitSelectStmt(self, ctx:PqlParser.SelectStmtContext):
-            columns = tuple([
-                ast.Column(
-                    PqlAntlrToAstParser.parse_expr(column.value),
-                    PqlAntlrToAstParser.parse_column_typecast(column.type_cast),
-                    PqlAntlrToAstParser.parse_column_alias(column.alias)
-                )
-                for column in ctx.selectClause().columns()
-            ])
-
-            v = ctx.fromClause()
-            if v:
-                from_clause = PqlAntlrToAstParser.parse_from_clause_expr(v)
-            else:
-                from_clause = None
-
-            v = ctx.whereClause()
-            if v:
-                where_clause = PqlAntlrToAstParser.parse_expr(v.expr())
-            else:
-                where_clause = None
-
-            statements.append(ast.SelectStmt(
-                columns=columns,
-                from_clause=from_clause,
-                where_clause=where_clause
-            ))
-
-        def visitSetStmt(self, ctx:PqlParser.SetStmtContext):
-            key = full_text(ctx.key)
-            # TODO: parse this better. There are literals there possibly. Need to unpack them.
-            value = full_text(ctx.value)
-            statements.append(
-                ast.SetStmt(
-                    key,
-                    value
-                )
-            )
-
-    V().visit_from_pql_string(pql)
-
-    return statements
 
 
 def from_tel(tel: str, cls:Type[PqlVisitor] = PqlVisitor) -> ast.Node:

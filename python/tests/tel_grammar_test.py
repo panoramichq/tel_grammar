@@ -5,38 +5,8 @@ import pytest
 from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 
 sys.path.append('./src')
-from pql_grammar.antlr.PqlLexer import PqlLexer
-from pql_grammar.antlr.PqlParser import PqlParser
-from pql_grammar.antlr.PqlParserVisitor import PqlParserVisitor
 
-
-def full_text(ctx: ParserRuleContext) -> str:
-    # extracts full text from a tree of nodes,
-    # including white space.
-    if ctx:
-        if isinstance(ctx, ParserRuleContext):
-            return ctx.start.getInputStream().getText(ctx.start.start, ctx.stop.stop)
-        else:
-            try:
-                # some primitive context object
-                return ctx.text
-            except AttributeError:
-                # Terminal Node of some sort
-                return str(ctx)
-    else:
-        return None
-
-
-class AssertTelVisitor(PqlParserVisitor):
-    """
-    Special TelVisitor for testing grammar. Throws error in case of invalid node.
-    """
-
-    def visitErrorNode(self, node):
-        wrong_symbol = node.symbol.text
-        position = node.symbol.column + 1
-        details = f'Unexpected symbol "{wrong_symbol}" at position {position}'
-        raise AssertionError(details)
+from pql_grammar.from_pql import from_tel, ParseError
 
 
 @pytest.mark.parametrize(
@@ -92,11 +62,25 @@ class AssertTelVisitor(PqlParserVisitor):
     ],
 )
 def test_grammar(test_case):
-    inp_stream = InputStream(test_case)
-    lexer = PqlLexer(inp_stream)
-    stream = CommonTokenStream(lexer)
-    parser = PqlParser(stream)
-    tree = parser.parseTel()
-    # Use error visitor on parsed tree to test it
-    visitor = AssertTelVisitor()
-    visitor.visit(tree)
+    assert from_tel(test_case)
+
+
+@pytest.mark.parametrize(
+    ["test_case"],
+    [
+        # Basic operations
+        ('1.3.3 + slug',),
+        ('1 + slug) - 3',),
+        # ('34 - (slug * 2',), passes because does not need closing paren
+        ('-------------',),
+        # Handle namespaced taxons
+        ('ds|sl|ug - sluging',),
+        # Handle nested functions
+        ('slug is',),
+        ('slug not',),
+        ('',),
+    ],
+)
+def test_grammar_bad(test_case):
+    with pytest.raises(ParseError) as ex:
+        assert from_tel(test_case)

@@ -9,7 +9,6 @@ from dataclasses import dataclass
 from decimal import Decimal
 from typing import (
     Any,
-    List,
     Optional,
     Tuple,
     Union,
@@ -62,34 +61,6 @@ class Function(Node):
     # fn('value',2)
     # [[null,'value'],[null,2]]
     args: Optional[Tuple[CallArgs, ...]] = None
-
-ColumnValue = Union[Expr,Function,Taxon,Literal]
-
-
-@dataclass(eq=True, frozen=True)
-class Column(Node):
-    value: ColumnValue
-    type_cast: Optional[Function] = None
-    alias: Optional[Taxon] = None
-
-
-@dataclass(eq=True, frozen=True)
-class Table(Node):
-    value: str
-    alias: Optional[str] = None
-
-
-@dataclass(eq=True, frozen=True)
-class SelectStmt(Node):
-    columns: Tuple[Column, ...]
-    from_clause: Optional[Tuple[Table, ...]] = None
-    where_clause: Optional[Expr] = None
-
-
-@dataclass(eq=True, frozen=True)
-class SetStmt(Node):
-    key: str
-    value: str
 
 
 inventory.update({

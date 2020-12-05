@@ -1,7 +1,5 @@
 # fmt: off
 
-from dataclasses import fields
-from typing import List, Tuple, Any
 from . import model as ast
 
 

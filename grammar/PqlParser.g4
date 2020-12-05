@@ -1,10 +1,12 @@
 /*
 SQL-inspired "Pano Query Language" syntax
-Subset of SQL Select statement with just 2 clauses supported:
-    - select plethora of taxons and TEL expressions combination
-    - where clause supporting plethora of taxons and TEL expressions logical comparisons
+focusing on Expressions
 
-Subset of https://github.com/panoramichq/entity-tree-sql-service/blob/master/src/sql/SQLSelect.g4
+Weird parts:
+- Taxon is a SQL-column-like object with similar heritage (namespace etc)
+  and extra syntax for optionality
+- Some operator characters are more "programming" than SQL
+  Example: Eq compare '==' vs SQL-like '=' (though '=' could be converted to '==' internally)
 */
 
 parser grammar PqlParser;
@@ -13,70 +15,8 @@ options {
   tokenVocab = PqlLexer;
 }
 
-// we have 2 entry points:
-// parse Tel expression:
+// entry point
 parseTel: expr EOF ;
-// parse PQL statements with TEL inside:
-parsePql : ( sqlStmtList )* EOF ;
-
-sqlStmtList
- : ';'* sqlStmt ( ';'+ sqlStmt )* ';'*
- ;
-
-// this is where you add more statement types, like SET and other top-level SQL statements
-sqlStmt
- : setStmt
- | selectStmt
- ;
-
-// a way to set query context settings and avoid sending them inside PQL
-// Example: set "fill in dates for date-ranged sparse data" flag for Husky.
-setStmt
- : K_SET key=identifierMultipart ASSIGN value=expr
- ;
-
-selectStmt
- : selectClause
- ( fromClause )?
- ( whereClause )?
- ( orderByClause )?
- ( limitClause )?
- ;
-
-selectClause: K_SELECT columns ( COMMA columns )* ;
-// Column is a complicated structure of many parts:
-//  {tel expression (includes taxon)}{::Type Cast function or token} {{AS} taxon-like}
-// Example:
-//  (?ns3|taxon3 + (slug2 - 1234))::TypeHint(agg=ave) as ns1|custom_data1,
-columns: value=expr (COLON COLON type_cast=function)? (K_AS alias=taxon)? ;
-// TypeCasting with ::TypeCast() conflicts with end of taxon ":tag"
-// This means that typecasting cannot be used on naked taxon
-// Must wrap whatever expression into parens or other non-taxon before Type Casting
-// WRONG:
-//   ns1|taxon:tag:TypeCast()
-//   ns1|taxon::TypeCast()
-// CORRECT:
-//   (ns1|taxon:tag)::TypeCast()
-//   (ns1|taxon)::TypeCast()
-// While SQL allows non-function and function type casts,
-// we stick with requireing parens always for simplicity of syntax parser.
-
-fromClause: K_FROM tables (COMMA tables)* ;
-tables: table_name=identifierMultipart ( K_AS? table_alias=identifierMultipart )? ;
-
-whereClause: K_WHERE expr;
-
-orderByClause
- : K_ORDER K_BY orderExpr ( COMMA orderExpr )*
- ;
-
-orderExpr
- : expr ( K_ASC | K_DESC )?
- ;
-
-limitClause
- : K_LIMIT limit=expr // ( ( K_OFFSET | COMMA ) expr )?
- ;
 
 expr
  : unary_operator=( MINUS | PLUS | K_NOT ) right=expr

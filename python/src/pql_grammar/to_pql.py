@@ -67,50 +67,14 @@ class Function(Node):
         return f'{fn}({args})'
 
 
-class Column(Node):
-    n: ast.Column
-    def __str__(self):
-        n = self.n
-        value = f'{to_r(n.value)}'
-        type_cast = f'::{to_r(n.type_cast)}' if n.type_cast else ''
-        if type_cast and (value[FIRST] != '(' or value[LAST] != ')'):
-            value = f'({value})'
-        alias = f' AS {to_r(n.alias)}' if n.alias else ''
-        return f'{value}{type_cast}{alias}'
-
-
-class Table(Node):
-    n: ast.Table
-    def __str__(self):
-        n = self.n
-        value = n.value
-        alias = f' AS {n.alias}' if n.alias else ''
-        return f'{value}{alias}'
-
-
-class SelectStmt(Node):
-    n: ast.SelectStmt
-    def __str__(self):
-        n = self.n
-        select_str = 'SELECT\n' + INDENT + (',\n' + INDENT).join(map(str, map(Column, n.columns))) + '\n'
-        from_str = 'FROM\n' + INDENT + (',\n' + INDENT).join(map(str, map(Table, n.from_clause))) + '\n'
-        where_str = 'WHERE\n' + INDENT + str(to_r(n.where_clause)) + '\n'
-        return select_str + from_str + where_str + ';\n'
-
-
 def to_r(n: ast.Node):
     if isinstance(n, ast.Node):
         return renderer_map.get(type(n), Node)(n)
     return str(n)
 
 
-def to_pql(o: List[ast.Node]):
-    if not isinstance(o, (list, tuple)):
-        raise AttributeError(f"Argument must be a list of statements.")
-    return '\n'.join([
-        str(to_r(e))
-        for e in o
-    ])
+def to_tel(o: ast.Node):
+    return str(to_r(o))
 
 
 renderer_map.update({

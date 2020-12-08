@@ -24,6 +24,6 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     install_requires=['antlr4-python3-runtime==4.8'],
-    extras_require={"tests": ["pytest>=5.3.5"], "dev": ["pytest>=5.3.5", "pre-commit>=2.1.1"]},
+    extras_require={"tests": ["pytest>=5.3.5"]},
     include_package_data=True,
 )

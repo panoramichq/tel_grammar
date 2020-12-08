@@ -1,0 +1,12 @@
+FROM java:8
+
+ENV ANTLR_VERSION=4.8
+ENV CLASSPATH .:/antlr-${ANTLR_VERSION}-complete.jar:$CLASSPATH
+
+ADD http://www.antlr.org/download/antlr-${ANTLR_VERSION}-complete.jar /usr/bin/
+RUN chmod +r /usr/bin/antlr-${ANTLR_VERSION}-complete.jar \
+    && ln /usr/bin/antlr-${ANTLR_VERSION}-complete.jar /usr/bin/antlr.jar
+
+WORKDIR /mnt
+
+ENTRYPOINT ["java", "-jar", "/usr/bin/antlr.jar"]

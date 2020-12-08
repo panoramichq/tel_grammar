@@ -1,66 +1,83 @@
-// Generated from grammar/Tel.g4 by ANTLR 4.8
+// Generated from grammar/TelParser.g4 by ANTLR 4.8
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
-var TelListener = require('./TelListener').TelListener;
-var TelVisitor = require('./TelVisitor').TelVisitor;
+var TelParserListener = require('./TelParserListener').TelParserListener;
+var TelParserVisitor = require('./TelParserVisitor').TelParserVisitor;
 
-var grammarFileName = "Tel.g4";
+var grammarFileName = "TelParser.g4";
 
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003\u001fT\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
-    "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0003",
-    "\u0002\u0003\u0002\u0003\u0002\u0005\u0002\u0012\n\u0002\u0003\u0002",
-    "\u0003\u0002\u0007\u0002\u0016\n\u0002\f\u0002\u000e\u0002\u0019\u000b",
-    "\u0002\u0003\u0002\u0003\u0002\u0003\u0003\u0003\u0003\u0003\u0003\u0005",
-    "\u0003 \n\u0003\u0003\u0003\u0003\u0003\u0005\u0003$\n\u0003\u0003\u0004",
-    "\u0005\u0004\'\n\u0004\u0003\u0004\u0003\u0004\u0003\u0005\u0003\u0005",
-    "\u0003\u0005\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0005\u0006",
-    "2\n\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006",
-    "\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006",
-    "\u0003\u0006\u0005\u0006@\n\u0006\u0003\u0006\u0007\u0006C\n\u0006\f",
-    "\u0006\u000e\u0006F\u000b\u0006\u0003\u0007\u0003\u0007\u0003\u0007",
-    "\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007",
-    "\u0003\u0007\u0005\u0007R\n\u0007\u0003\u0007\u0002\u0003\n\b\u0002",
-    "\u0004\u0006\b\n\f\u0002\u0007\u0003\u0002\u001c\u001d\u0003\u0002\u001a",
-    "\u001b\u0003\u0002\u0012\u0019\u0003\u0002\u0003\u0004\u0003\u0002\u0005",
-    "\u0006\u0002^\u0002\u000e\u0003\u0002\u0002\u0002\u0004\u001c\u0003",
-    "\u0002\u0002\u0002\u0006&\u0003\u0002\u0002\u0002\b*\u0003\u0002\u0002",
-    "\u0002\n1\u0003\u0002\u0002\u0002\fQ\u0003\u0002\u0002\u0002\u000e\u000f",
-    "\u0007\n\u0002\u0002\u000f\u0011\u0007\r\u0002\u0002\u0010\u0012\u0005",
-    "\n\u0006\u0002\u0011\u0010\u0003\u0002\u0002\u0002\u0011\u0012\u0003",
-    "\u0002\u0002\u0002\u0012\u0017\u0003\u0002\u0002\u0002\u0013\u0014\u0007",
-    "\u0011\u0002\u0002\u0014\u0016\u0005\n\u0006\u0002\u0015\u0013\u0003",
-    "\u0002\u0002\u0002\u0016\u0019\u0003\u0002\u0002\u0002\u0017\u0015\u0003",
-    "\u0002\u0002\u0002\u0017\u0018\u0003\u0002\u0002\u0002\u0018\u001a\u0003",
-    "\u0002\u0002\u0002\u0019\u0017\u0003\u0002\u0002\u0002\u001a\u001b\u0007",
-    "\u000e\u0002\u0002\u001b\u0003\u0003\u0002\u0002\u0002\u001c\u001f\u0007",
-    "\n\u0002\u0002\u001d\u001e\u0007\u000f\u0002\u0002\u001e \u0007\n\u0002",
-    "\u0002\u001f\u001d\u0003\u0002\u0002\u0002\u001f \u0003\u0002\u0002",
-    "\u0002 #\u0003\u0002\u0002\u0002!\"\u0007\u0010\u0002\u0002\"$\u0007",
-    "\n\u0002\u0002#!\u0003\u0002\u0002\u0002#$\u0003\u0002\u0002\u0002$",
-    "\u0005\u0003\u0002\u0002\u0002%\'\u0007\u001e\u0002\u0002&%\u0003\u0002",
-    "\u0002\u0002&\'\u0003\u0002\u0002\u0002\'(\u0003\u0002\u0002\u0002(",
-    ")\u0005\u0004\u0003\u0002)\u0007\u0003\u0002\u0002\u0002*+\u0005\n\u0006",
-    "\u0002+,\u0007\u0002\u0002\u0003,\t\u0003\u0002\u0002\u0002-.\b\u0006",
-    "\u0001\u0002./\u0007\u0007\u0002\u0002/2\u0005\n\u0006\b02\u0005\f\u0007",
-    "\u00021-\u0003\u0002\u0002\u000210\u0003\u0002\u0002\u00022D\u0003\u0002",
-    "\u0002\u000234\f\u0007\u0002\u000245\t\u0002\u0002\u00025C\u0005\n\u0006",
-    "\b67\f\u0006\u0002\u000278\t\u0003\u0002\u00028C\u0005\n\u0006\u0007",
-    "9:\f\u0005\u0002\u0002:;\t\u0004\u0002\u0002;C\u0005\n\u0006\u0006<",
-    "=\f\u0004\u0002\u0002=?\u0007\b\u0002\u0002>@\u0007\u0007\u0002\u0002",
-    "?>\u0003\u0002\u0002\u0002?@\u0003\u0002\u0002\u0002@A\u0003\u0002\u0002",
-    "\u0002AC\u0007\t\u0002\u0002B3\u0003\u0002\u0002\u0002B6\u0003\u0002",
-    "\u0002\u0002B9\u0003\u0002\u0002\u0002B<\u0003\u0002\u0002\u0002CF\u0003",
-    "\u0002\u0002\u0002DB\u0003\u0002\u0002\u0002DE\u0003\u0002\u0002\u0002",
-    "E\u000b\u0003\u0002\u0002\u0002FD\u0003\u0002\u0002\u0002GH\u0007\r",
-    "\u0002\u0002HI\u0005\n\u0006\u0002IJ\u0007\u000e\u0002\u0002JR\u0003",
-    "\u0002\u0002\u0002KR\t\u0005\u0002\u0002LR\u0005\u0002\u0002\u0002M",
-    "R\t\u0006\u0002\u0002NR\u0005\u0006\u0004\u0002OR\u0007\f\u0002\u0002",
-    "PR\u0007\u000b\u0002\u0002QG\u0003\u0002\u0002\u0002QK\u0003\u0002\u0002",
-    "\u0002QL\u0003\u0002\u0002\u0002QM\u0003\u0002\u0002\u0002QN\u0003\u0002",
-    "\u0002\u0002QO\u0003\u0002\u0002\u0002QP\u0003\u0002\u0002\u0002R\r",
-    "\u0003\u0002\u0002\u0002\f\u0011\u0017\u001f#&1?BDQ"].join("");
+    "\u0003>p\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t\u0004",
+    "\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004\b",
+    "\t\b\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0007",
+    "\u0003\u001c\n\u0003\f\u0003\u000e\u0003\u001f\u000b\u0003\u0005\u0003",
+    "!\n\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0005\u0003+\n\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0005\u0003B\n\u0003\u0007\u0003D\n\u0003\f",
+    "\u0003\u000e\u0003G\u000b\u0003\u0003\u0004\u0005\u0004J\n\u0004\u0003",
+    "\u0004\u0003\u0004\u0005\u0004N\n\u0004\u0003\u0004\u0003\u0004\u0005",
+    "\u0004R\n\u0004\u0003\u0005\u0003\u0005\u0003\u0005\u0005\u0005W\n\u0005",
+    "\u0003\u0006\u0005\u0006Z\n\u0006\u0003\u0006\u0003\u0006\u0003\u0006",
+    "\u0005\u0006_\n\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0005\u0006",
+    "d\n\u0006\u0003\u0007\u0003\u0007\u0003\u0007\u0007\u0007i\n\u0007\f",
+    "\u0007\u000e\u0007l\u000b\u0007\u0003\b\u0003\b\u0003\b\u0002\u0003",
+    "\u0004\t\u0002\u0004\u0006\b\n\f\u000e\u0002\n\u0005\u0002\u0019\u0019",
+    "\u001e\u001e,,\u0004\u0002\u0014\u0014\u001a\u001b\u0004\u0002\u0019",
+    "\u0019\u001e\u001e\u0004\u0002\t\n\u0017\u0018\u0005\u0002\b\b\u000b",
+    "\f\u0011\u0011\u0004\u0002\u0007\u0007##\u0004\u0002\r\r//\u0007\u0002",
+    "\'\'..224588\u0002~\u0002\u0010\u0003\u0002\u0002\u0002\u0004*\u0003",
+    "\u0002\u0002\u0002\u0006Q\u0003\u0002\u0002\u0002\bV\u0003\u0002\u0002",
+    "\u0002\nY\u0003\u0002\u0002\u0002\fe\u0003\u0002\u0002\u0002\u000em",
+    "\u0003\u0002\u0002\u0002\u0010\u0011\u0005\u0004\u0003\u0002\u0011\u0012",
+    "\u0007\u0002\u0002\u0003\u0012\u0003\u0003\u0002\u0002\u0002\u0013\u0014",
+    "\b\u0003\u0001\u0002\u0014\u0015\t\u0002\u0002\u0002\u0015+\u0005\u0004",
+    "\u0003\u000e\u0016\u0017\u0005\f\u0007\u0002\u0017 \u0007\u001c\u0002",
+    "\u0002\u0018\u001d\u0005\u0004\u0003\u0002\u0019\u001a\u0007\u0013\u0002",
+    "\u0002\u001a\u001c\u0005\u0004\u0003\u0002\u001b\u0019\u0003\u0002\u0002",
+    "\u0002\u001c\u001f\u0003\u0002\u0002\u0002\u001d\u001b\u0003\u0002\u0002",
+    "\u0002\u001d\u001e\u0003\u0002\u0002\u0002\u001e!\u0003\u0002\u0002",
+    "\u0002\u001f\u001d\u0003\u0002\u0002\u0002 \u0018\u0003\u0002\u0002",
+    "\u0002 !\u0003\u0002\u0002\u0002!\"\u0003\u0002\u0002\u0002\"#\u0007",
+    "\u0012\u0002\u0002#+\u0003\u0002\u0002\u0002$%\u0007\u001c\u0002\u0002",
+    "%&\u0005\u0004\u0003\u0002&\'\u0007\u0012\u0002\u0002\'+\u0003\u0002",
+    "\u0002\u0002(+\u0005\n\u0006\u0002)+\u0005\u000e\b\u0002*\u0013\u0003",
+    "\u0002\u0002\u0002*\u0016\u0003\u0002\u0002\u0002*$\u0003\u0002\u0002",
+    "\u0002*(\u0003\u0002\u0002\u0002*)\u0003\u0002\u0002\u0002+E\u0003\u0002",
+    "\u0002\u0002,-\f\u000b\u0002\u0002-.\t\u0003\u0002\u0002.D\u0005\u0004",
+    "\u0003\f/0\f\n\u0002\u000201\t\u0004\u0002\u00021D\u0005\u0004\u0003",
+    "\u000b23\f\t\u0002\u000234\t\u0005\u0002\u00024D\u0005\u0004\u0003\n",
+    "56\f\b\u0002\u000267\t\u0006\u0002\u00027D\u0005\u0004\u0003\t89\f\u0007",
+    "\u0002\u00029:\t\u0007\u0002\u0002:D\u0005\u0004\u0003\b;<\f\u0006\u0002",
+    "\u0002<=\t\b\u0002\u0002=D\u0005\u0004\u0003\u0007>A\f\f\u0002\u0002",
+    "?B\u0005\b\u0005\u0002@B\u0005\u0006\u0004\u0002A?\u0003\u0002\u0002",
+    "\u0002A@\u0003\u0002\u0002\u0002BD\u0003\u0002\u0002\u0002C,\u0003\u0002",
+    "\u0002\u0002C/\u0003\u0002\u0002\u0002C2\u0003\u0002\u0002\u0002C5\u0003",
+    "\u0002\u0002\u0002C8\u0003\u0002\u0002\u0002C;\u0003\u0002\u0002\u0002",
+    "C>\u0003\u0002\u0002\u0002DG\u0003\u0002\u0002\u0002EC\u0003\u0002\u0002",
+    "\u0002EF\u0003\u0002\u0002\u0002F\u0005\u0003\u0002\u0002\u0002GE\u0003",
+    "\u0002\u0002\u0002HJ\u0007(\u0002\u0002IH\u0003\u0002\u0002\u0002IJ",
+    "\u0003\u0002\u0002\u0002JK\u0003\u0002\u0002\u0002KR\u0007-\u0002\u0002",
+    "LN\u0007(\u0002\u0002ML\u0003\u0002\u0002\u0002MN\u0003\u0002\u0002",
+    "\u0002NO\u0003\u0002\u0002\u0002OP\u0007,\u0002\u0002PR\u0007.\u0002",
+    "\u0002QI\u0003\u0002\u0002\u0002QM\u0003\u0002\u0002\u0002R\u0007\u0003",
+    "\u0002\u0002\u0002SW\u0007)\u0002\u0002TU\u0007(\u0002\u0002UW\u0007",
+    ".\u0002\u0002VS\u0003\u0002\u0002\u0002VT\u0003\u0002\u0002\u0002W\t",
+    "\u0003\u0002\u0002\u0002XZ\u0007\u0005\u0002\u0002YX\u0003\u0002\u0002",
+    "\u0002YZ\u0003\u0002\u0002\u0002Z^\u0003\u0002\u0002\u0002[\\\u0005",
+    "\f\u0007\u0002\\]\u0007\u0003\u0002\u0002]_\u0003\u0002\u0002\u0002",
+    "^[\u0003\u0002\u0002\u0002^_\u0003\u0002\u0002\u0002_`\u0003\u0002\u0002",
+    "\u0002`c\u0005\f\u0007\u0002ab\u0007\u0004\u0002\u0002bd\u0005\f\u0007",
+    "\u0002ca\u0003\u0002\u0002\u0002cd\u0003\u0002\u0002\u0002d\u000b\u0003",
+    "\u0002\u0002\u0002ej\u0007>\u0002\u0002fg\u0007\u0015\u0002\u0002gi",
+    "\u0007>\u0002\u0002hf\u0003\u0002\u0002\u0002il\u0003\u0002\u0002\u0002",
+    "jh\u0003\u0002\u0002\u0002jk\u0003\u0002\u0002\u0002k\r\u0003\u0002",
+    "\u0002\u0002lj\u0003\u0002\u0002\u0002mn\t\t\u0002\u0002n\u000f\u0003",
+    "\u0002\u0002\u0002\u0010\u001d *ACEIMQVY^cj"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -69,20 +86,30 @@ var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new a
 
 var sharedContextCache = new antlr4.PredictionContextCache();
 
-var literalNames = [ null, null, null, null, null, null, null, null, null, 
-                     null, null, "'('", "')'", "'|'", "':'", "','", "'||'", 
-                     "'&&'", "'=='", "'!='", "'>'", "'<'", "'>='", "'<='", 
-                     "'+'", "'-'", "'*'", "'/'", "'?'" ];
+var literalNames = [ null, null, "':'", "'?'", null, "'&&'", "'=='", "'>='", 
+                     "'<='", "'!='", "'<>'", "'||'", "'<<'", "'>>'", "'&'", 
+                     "'='", "')'", "','", null, "'.'", "'/'", "'>'", "'<'", 
+                     "'-'", "'%'", null, "'('", "'|'", "'+'", "';'", "'*'", 
+                     "'~'", "'_'" ];
 
-var symbolicNames = [ null, "INT", "REAL", "TRUE", "FALSE", "NOT", "KW_IS", 
-                      "KW_NULL", "WORD", "STRING_CONSTANT", "SINGLE_QUOTED_ELEMENT", 
-                      "L_BRACKET", "R_BRACKET", "TAXON_NAMESPACE_DELIMITER", 
-                      "TAXON_TAG_DELIMITER", "FN_PARAMETER_DELIMITER", "OR", 
-                      "AND", "EQ", "NEQ", "GT", "LT", "GTEQ", "LTEQ", "PLUS", 
-                      "MINUS", "MULT", "DIV", "OPTIONAL_TAXON_OPERATOR", 
-                      "WS" ];
+var symbolicNames = [ null, "TAXON_NAMESPACE_DELIMITER", "TAXON_TAG_DELIMITER", 
+                      "TAXON_OPTIONAL_OPERATOR", "IDENTIFIER_TEL", "AND", 
+                      "EQ", "GT_EQ", "LT_EQ", "NOT_EQ1", "NOT_EQ2", "OR", 
+                      "SHIFT_LEFT", "SHIFT_RIGHT", "AMP", "ASSIGN", "CLOSE_PAREN", 
+                      "COMMA", "DIV", "DOT", "FORWARD_SLASH", "GT", "LT", 
+                      "MINUS", "MOD", "MULT", "OPEN_PAREN", "PIPE", "PLUS", 
+                      "SCOL", "STAR", "TILDE", "UNDER", "K_AND", "K_ASC", 
+                      "K_BY", "K_DESC", "K_FALSE", "K_IS", "K_ISNULL", "K_LIKE", 
+                      "K_LIMIT", "K_NOT", "K_NOTNULL", "K_NULL", "K_OR", 
+                      "K_ORDER", "K_SELECT", "K_TRUE", "K_WHERE", "NUMERIC_LITERAL", 
+                      "DOUBLE_QUOTED_STRING", "DOUBLE_QUOTED_STRING_TEL", 
+                      "DOUBLE_QUOTED_STRING_SQL", "SINGLE_QUOTED_STRING", 
+                      "SINGLE_QUOTED_STRING_TEL", "SINGLE_QUOTED_STRING_SQL", 
+                      "SINGLE_LINE_COMMENT", "MULTILINE_COMMENT", "SPACES", 
+                      "IDENTIFIER" ];
 
-var ruleNames =  [ "fn", "taxon", "taxon_expr", "parse", "expr", "atom" ];
+var ruleNames =  [ "parse", "expr", "isNotNull", "isNull", "taxon", "identifierMultipart", 
+                   "literalValue" ];
 
 function TelParser (input) {
 	antlr4.Parser.call(this, input);
@@ -103,351 +130,74 @@ Object.defineProperty(TelParser.prototype, "atn", {
 });
 
 TelParser.EOF = antlr4.Token.EOF;
-TelParser.INT = 1;
-TelParser.REAL = 2;
-TelParser.TRUE = 3;
-TelParser.FALSE = 4;
-TelParser.NOT = 5;
-TelParser.KW_IS = 6;
-TelParser.KW_NULL = 7;
-TelParser.WORD = 8;
-TelParser.STRING_CONSTANT = 9;
-TelParser.SINGLE_QUOTED_ELEMENT = 10;
-TelParser.L_BRACKET = 11;
-TelParser.R_BRACKET = 12;
-TelParser.TAXON_NAMESPACE_DELIMITER = 13;
-TelParser.TAXON_TAG_DELIMITER = 14;
-TelParser.FN_PARAMETER_DELIMITER = 15;
-TelParser.OR = 16;
-TelParser.AND = 17;
-TelParser.EQ = 18;
-TelParser.NEQ = 19;
-TelParser.GT = 20;
-TelParser.LT = 21;
-TelParser.GTEQ = 22;
-TelParser.LTEQ = 23;
-TelParser.PLUS = 24;
-TelParser.MINUS = 25;
-TelParser.MULT = 26;
-TelParser.DIV = 27;
-TelParser.OPTIONAL_TAXON_OPERATOR = 28;
-TelParser.WS = 29;
+TelParser.TAXON_NAMESPACE_DELIMITER = 1;
+TelParser.TAXON_TAG_DELIMITER = 2;
+TelParser.TAXON_OPTIONAL_OPERATOR = 3;
+TelParser.IDENTIFIER_TEL = 4;
+TelParser.AND = 5;
+TelParser.EQ = 6;
+TelParser.GT_EQ = 7;
+TelParser.LT_EQ = 8;
+TelParser.NOT_EQ1 = 9;
+TelParser.NOT_EQ2 = 10;
+TelParser.OR = 11;
+TelParser.SHIFT_LEFT = 12;
+TelParser.SHIFT_RIGHT = 13;
+TelParser.AMP = 14;
+TelParser.ASSIGN = 15;
+TelParser.CLOSE_PAREN = 16;
+TelParser.COMMA = 17;
+TelParser.DIV = 18;
+TelParser.DOT = 19;
+TelParser.FORWARD_SLASH = 20;
+TelParser.GT = 21;
+TelParser.LT = 22;
+TelParser.MINUS = 23;
+TelParser.MOD = 24;
+TelParser.MULT = 25;
+TelParser.OPEN_PAREN = 26;
+TelParser.PIPE = 27;
+TelParser.PLUS = 28;
+TelParser.SCOL = 29;
+TelParser.STAR = 30;
+TelParser.TILDE = 31;
+TelParser.UNDER = 32;
+TelParser.K_AND = 33;
+TelParser.K_ASC = 34;
+TelParser.K_BY = 35;
+TelParser.K_DESC = 36;
+TelParser.K_FALSE = 37;
+TelParser.K_IS = 38;
+TelParser.K_ISNULL = 39;
+TelParser.K_LIKE = 40;
+TelParser.K_LIMIT = 41;
+TelParser.K_NOT = 42;
+TelParser.K_NOTNULL = 43;
+TelParser.K_NULL = 44;
+TelParser.K_OR = 45;
+TelParser.K_ORDER = 46;
+TelParser.K_SELECT = 47;
+TelParser.K_TRUE = 48;
+TelParser.K_WHERE = 49;
+TelParser.NUMERIC_LITERAL = 50;
+TelParser.DOUBLE_QUOTED_STRING = 51;
+TelParser.DOUBLE_QUOTED_STRING_TEL = 52;
+TelParser.DOUBLE_QUOTED_STRING_SQL = 53;
+TelParser.SINGLE_QUOTED_STRING = 54;
+TelParser.SINGLE_QUOTED_STRING_TEL = 55;
+TelParser.SINGLE_QUOTED_STRING_SQL = 56;
+TelParser.SINGLE_LINE_COMMENT = 57;
+TelParser.MULTILINE_COMMENT = 58;
+TelParser.SPACES = 59;
+TelParser.IDENTIFIER = 60;
 
-TelParser.RULE_fn = 0;
-TelParser.RULE_taxon = 1;
-TelParser.RULE_taxon_expr = 2;
-TelParser.RULE_parse = 3;
-TelParser.RULE_expr = 4;
-TelParser.RULE_atom = 5;
-
-
-function FnContext(parser, parent, invokingState) {
-	if(parent===undefined) {
-	    parent = null;
-	}
-	if(invokingState===undefined || invokingState===null) {
-		invokingState = -1;
-	}
-	antlr4.ParserRuleContext.call(this, parent, invokingState);
-    this.parser = parser;
-    this.ruleIndex = TelParser.RULE_fn;
-    return this;
-}
-
-FnContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
-FnContext.prototype.constructor = FnContext;
-
-FnContext.prototype.WORD = function() {
-    return this.getToken(TelParser.WORD, 0);
-};
-
-FnContext.prototype.L_BRACKET = function() {
-    return this.getToken(TelParser.L_BRACKET, 0);
-};
-
-FnContext.prototype.R_BRACKET = function() {
-    return this.getToken(TelParser.R_BRACKET, 0);
-};
-
-FnContext.prototype.expr = function(i) {
-    if(i===undefined) {
-        i = null;
-    }
-    if(i===null) {
-        return this.getTypedRuleContexts(ExprContext);
-    } else {
-        return this.getTypedRuleContext(ExprContext,i);
-    }
-};
-
-FnContext.prototype.FN_PARAMETER_DELIMITER = function(i) {
-	if(i===undefined) {
-		i = null;
-	}
-    if(i===null) {
-        return this.getTokens(TelParser.FN_PARAMETER_DELIMITER);
-    } else {
-        return this.getToken(TelParser.FN_PARAMETER_DELIMITER, i);
-    }
-};
-
-
-FnContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterFn(this);
-	}
-};
-
-FnContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitFn(this);
-	}
-};
-
-FnContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitFn(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-
-
-TelParser.FnContext = FnContext;
-
-TelParser.prototype.fn = function() {
-
-    var localctx = new FnContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 0, TelParser.RULE_fn);
-    var _la = 0; // Token type
-    try {
-        this.enterOuterAlt(localctx, 1);
-        this.state = 12;
-        this.match(TelParser.WORD);
-        this.state = 13;
-        this.match(TelParser.L_BRACKET);
-        this.state = 15;
-        this._errHandler.sync(this);
-        _la = this._input.LA(1);
-        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.INT) | (1 << TelParser.REAL) | (1 << TelParser.TRUE) | (1 << TelParser.FALSE) | (1 << TelParser.NOT) | (1 << TelParser.WORD) | (1 << TelParser.STRING_CONSTANT) | (1 << TelParser.SINGLE_QUOTED_ELEMENT) | (1 << TelParser.L_BRACKET) | (1 << TelParser.OPTIONAL_TAXON_OPERATOR))) !== 0)) {
-            this.state = 14;
-            this.expr(0);
-        }
-
-        this.state = 21;
-        this._errHandler.sync(this);
-        _la = this._input.LA(1);
-        while(_la===TelParser.FN_PARAMETER_DELIMITER) {
-            this.state = 17;
-            this.match(TelParser.FN_PARAMETER_DELIMITER);
-            this.state = 18;
-            this.expr(0);
-            this.state = 23;
-            this._errHandler.sync(this);
-            _la = this._input.LA(1);
-        }
-        this.state = 24;
-        this.match(TelParser.R_BRACKET);
-    } catch (re) {
-    	if(re instanceof antlr4.error.RecognitionException) {
-	        localctx.exception = re;
-	        this._errHandler.reportError(this, re);
-	        this._errHandler.recover(this, re);
-	    } else {
-	    	throw re;
-	    }
-    } finally {
-        this.exitRule();
-    }
-    return localctx;
-};
-
-
-function TaxonContext(parser, parent, invokingState) {
-	if(parent===undefined) {
-	    parent = null;
-	}
-	if(invokingState===undefined || invokingState===null) {
-		invokingState = -1;
-	}
-	antlr4.ParserRuleContext.call(this, parent, invokingState);
-    this.parser = parser;
-    this.ruleIndex = TelParser.RULE_taxon;
-    return this;
-}
-
-TaxonContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
-TaxonContext.prototype.constructor = TaxonContext;
-
-TaxonContext.prototype.WORD = function(i) {
-	if(i===undefined) {
-		i = null;
-	}
-    if(i===null) {
-        return this.getTokens(TelParser.WORD);
-    } else {
-        return this.getToken(TelParser.WORD, i);
-    }
-};
-
-
-TaxonContext.prototype.TAXON_NAMESPACE_DELIMITER = function() {
-    return this.getToken(TelParser.TAXON_NAMESPACE_DELIMITER, 0);
-};
-
-TaxonContext.prototype.TAXON_TAG_DELIMITER = function() {
-    return this.getToken(TelParser.TAXON_TAG_DELIMITER, 0);
-};
-
-TaxonContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterTaxon(this);
-	}
-};
-
-TaxonContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitTaxon(this);
-	}
-};
-
-TaxonContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitTaxon(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-
-
-TelParser.TaxonContext = TaxonContext;
-
-TelParser.prototype.taxon = function() {
-
-    var localctx = new TaxonContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 2, TelParser.RULE_taxon);
-    try {
-        this.enterOuterAlt(localctx, 1);
-        this.state = 26;
-        this.match(TelParser.WORD);
-        this.state = 29;
-        this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
-        if(la_===1) {
-            this.state = 27;
-            this.match(TelParser.TAXON_NAMESPACE_DELIMITER);
-            this.state = 28;
-            this.match(TelParser.WORD);
-
-        }
-        this.state = 33;
-        this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
-        if(la_===1) {
-            this.state = 31;
-            this.match(TelParser.TAXON_TAG_DELIMITER);
-            this.state = 32;
-            this.match(TelParser.WORD);
-
-        }
-    } catch (re) {
-    	if(re instanceof antlr4.error.RecognitionException) {
-	        localctx.exception = re;
-	        this._errHandler.reportError(this, re);
-	        this._errHandler.recover(this, re);
-	    } else {
-	    	throw re;
-	    }
-    } finally {
-        this.exitRule();
-    }
-    return localctx;
-};
-
-
-function Taxon_exprContext(parser, parent, invokingState) {
-	if(parent===undefined) {
-	    parent = null;
-	}
-	if(invokingState===undefined || invokingState===null) {
-		invokingState = -1;
-	}
-	antlr4.ParserRuleContext.call(this, parent, invokingState);
-    this.parser = parser;
-    this.ruleIndex = TelParser.RULE_taxon_expr;
-    return this;
-}
-
-Taxon_exprContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
-Taxon_exprContext.prototype.constructor = Taxon_exprContext;
-
-Taxon_exprContext.prototype.taxon = function() {
-    return this.getTypedRuleContext(TaxonContext,0);
-};
-
-Taxon_exprContext.prototype.OPTIONAL_TAXON_OPERATOR = function() {
-    return this.getToken(TelParser.OPTIONAL_TAXON_OPERATOR, 0);
-};
-
-Taxon_exprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterTaxon_expr(this);
-	}
-};
-
-Taxon_exprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitTaxon_expr(this);
-	}
-};
-
-Taxon_exprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitTaxon_expr(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-
-
-TelParser.Taxon_exprContext = Taxon_exprContext;
-
-TelParser.prototype.taxon_expr = function() {
-
-    var localctx = new Taxon_exprContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 4, TelParser.RULE_taxon_expr);
-    var _la = 0; // Token type
-    try {
-        this.enterOuterAlt(localctx, 1);
-        this.state = 36;
-        this._errHandler.sync(this);
-        _la = this._input.LA(1);
-        if(_la===TelParser.OPTIONAL_TAXON_OPERATOR) {
-            this.state = 35;
-            this.match(TelParser.OPTIONAL_TAXON_OPERATOR);
-        }
-
-        this.state = 38;
-        this.taxon();
-    } catch (re) {
-    	if(re instanceof antlr4.error.RecognitionException) {
-	        localctx.exception = re;
-	        this._errHandler.reportError(this, re);
-	        this._errHandler.recover(this, re);
-	    } else {
-	    	throw re;
-	    }
-    } finally {
-        this.exitRule();
-    }
-    return localctx;
-};
+TelParser.RULE_parse = 0;
+TelParser.RULE_expr = 1;
+TelParser.RULE_isNotNull = 2;
+TelParser.RULE_isNull = 3;
+TelParser.RULE_taxon = 4;
+TelParser.RULE_identifierMultipart = 5;
+TelParser.RULE_literalValue = 6;
 
 
 function ParseContext(parser, parent, invokingState) {
@@ -475,19 +225,19 @@ ParseContext.prototype.EOF = function() {
 };
 
 ParseContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
+    if(listener instanceof TelParserListener ) {
         listener.enterParse(this);
 	}
 };
 
 ParseContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
+    if(listener instanceof TelParserListener ) {
         listener.exitParse(this);
 	}
 };
 
 ParseContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
+    if ( visitor instanceof TelParserVisitor ) {
         return visitor.visitParse(this);
     } else {
         return visitor.visitChildren(this);
@@ -502,12 +252,12 @@ TelParser.ParseContext = ParseContext;
 TelParser.prototype.parse = function() {
 
     var localctx = new ParseContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 6, TelParser.RULE_parse);
+    this.enterRule(localctx, 0, TelParser.RULE_parse);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 40;
+        this.state = 14;
         this.expr(0);
-        this.state = 41;
+        this.state = 15;
         this.match(TelParser.EOF);
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -534,117 +284,21 @@ function ExprContext(parser, parent, invokingState) {
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
     this.ruleIndex = TelParser.RULE_expr;
+    this.left = null; // ExprContext
+    this.unary_operator = null; // Token
+    this.right = null; // ExprContext
+    this.function_name = null; // IdentifierMultipartContext
+    this.arguments = null; // ExprContext
+    this.operator = null; // Token
+    this.is_null = null; // IsNullContext
+    this.is_not_null = null; // IsNotNullContext
     return this;
 }
 
 ExprContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
 ExprContext.prototype.constructor = ExprContext;
 
-
- 
-ExprContext.prototype.copyFrom = function(ctx) {
-    antlr4.ParserRuleContext.prototype.copyFrom.call(this, ctx);
-};
-
-function NullTestExprContext(parser, ctx) {
-	ExprContext.call(this, parser);
-    ExprContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-NullTestExprContext.prototype = Object.create(ExprContext.prototype);
-NullTestExprContext.prototype.constructor = NullTestExprContext;
-
-TelParser.NullTestExprContext = NullTestExprContext;
-
-NullTestExprContext.prototype.expr = function() {
-    return this.getTypedRuleContext(ExprContext,0);
-};
-
-NullTestExprContext.prototype.KW_IS = function() {
-    return this.getToken(TelParser.KW_IS, 0);
-};
-
-NullTestExprContext.prototype.KW_NULL = function() {
-    return this.getToken(TelParser.KW_NULL, 0);
-};
-
-NullTestExprContext.prototype.NOT = function() {
-    return this.getToken(TelParser.NOT, 0);
-};
-NullTestExprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterNullTestExpr(this);
-	}
-};
-
-NullTestExprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitNullTestExpr(this);
-	}
-};
-
-NullTestExprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitNullTestExpr(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function NotExprContext(parser, ctx) {
-	ExprContext.call(this, parser);
-    ExprContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-NotExprContext.prototype = Object.create(ExprContext.prototype);
-NotExprContext.prototype.constructor = NotExprContext;
-
-TelParser.NotExprContext = NotExprContext;
-
-NotExprContext.prototype.NOT = function() {
-    return this.getToken(TelParser.NOT, 0);
-};
-
-NotExprContext.prototype.expr = function() {
-    return this.getTypedRuleContext(ExprContext,0);
-};
-NotExprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterNotExpr(this);
-	}
-};
-
-NotExprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitNotExpr(this);
-	}
-};
-
-NotExprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitNotExpr(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function LogicalExprContext(parser, ctx) {
-	ExprContext.call(this, parser);
-    this.op = null; // Token;
-    ExprContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-LogicalExprContext.prototype = Object.create(ExprContext.prototype);
-LogicalExprContext.prototype.constructor = LogicalExprContext;
-
-TelParser.LogicalExprContext = LogicalExprContext;
-
-LogicalExprContext.prototype.expr = function(i) {
+ExprContext.prototype.expr = function(i) {
     if(i===undefined) {
         i = null;
     }
@@ -655,189 +309,133 @@ LogicalExprContext.prototype.expr = function(i) {
     }
 };
 
-LogicalExprContext.prototype.OR = function() {
-    return this.getToken(TelParser.OR, 0);
+ExprContext.prototype.MINUS = function() {
+    return this.getToken(TelParser.MINUS, 0);
 };
 
-LogicalExprContext.prototype.AND = function() {
-    return this.getToken(TelParser.AND, 0);
-};
-
-LogicalExprContext.prototype.EQ = function() {
-    return this.getToken(TelParser.EQ, 0);
-};
-
-LogicalExprContext.prototype.NEQ = function() {
-    return this.getToken(TelParser.NEQ, 0);
-};
-
-LogicalExprContext.prototype.GT = function() {
-    return this.getToken(TelParser.GT, 0);
-};
-
-LogicalExprContext.prototype.LT = function() {
-    return this.getToken(TelParser.LT, 0);
-};
-
-LogicalExprContext.prototype.GTEQ = function() {
-    return this.getToken(TelParser.GTEQ, 0);
-};
-
-LogicalExprContext.prototype.LTEQ = function() {
-    return this.getToken(TelParser.LTEQ, 0);
-};
-LogicalExprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterLogicalExpr(this);
-	}
-};
-
-LogicalExprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitLogicalExpr(this);
-	}
-};
-
-LogicalExprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitLogicalExpr(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function MultiplicationExprContext(parser, ctx) {
-	ExprContext.call(this, parser);
-    this.op = null; // Token;
-    ExprContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-MultiplicationExprContext.prototype = Object.create(ExprContext.prototype);
-MultiplicationExprContext.prototype.constructor = MultiplicationExprContext;
-
-TelParser.MultiplicationExprContext = MultiplicationExprContext;
-
-MultiplicationExprContext.prototype.expr = function(i) {
-    if(i===undefined) {
-        i = null;
-    }
-    if(i===null) {
-        return this.getTypedRuleContexts(ExprContext);
-    } else {
-        return this.getTypedRuleContext(ExprContext,i);
-    }
-};
-
-MultiplicationExprContext.prototype.MULT = function() {
-    return this.getToken(TelParser.MULT, 0);
-};
-
-MultiplicationExprContext.prototype.DIV = function() {
-    return this.getToken(TelParser.DIV, 0);
-};
-MultiplicationExprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterMultiplicationExpr(this);
-	}
-};
-
-MultiplicationExprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitMultiplicationExpr(this);
-	}
-};
-
-MultiplicationExprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitMultiplicationExpr(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function AtomExprContext(parser, ctx) {
-	ExprContext.call(this, parser);
-    ExprContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-AtomExprContext.prototype = Object.create(ExprContext.prototype);
-AtomExprContext.prototype.constructor = AtomExprContext;
-
-TelParser.AtomExprContext = AtomExprContext;
-
-AtomExprContext.prototype.atom = function() {
-    return this.getTypedRuleContext(AtomContext,0);
-};
-AtomExprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterAtomExpr(this);
-	}
-};
-
-AtomExprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitAtomExpr(this);
-	}
-};
-
-AtomExprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitAtomExpr(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function AdditiveExprContext(parser, ctx) {
-	ExprContext.call(this, parser);
-    this.op = null; // Token;
-    ExprContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-AdditiveExprContext.prototype = Object.create(ExprContext.prototype);
-AdditiveExprContext.prototype.constructor = AdditiveExprContext;
-
-TelParser.AdditiveExprContext = AdditiveExprContext;
-
-AdditiveExprContext.prototype.expr = function(i) {
-    if(i===undefined) {
-        i = null;
-    }
-    if(i===null) {
-        return this.getTypedRuleContexts(ExprContext);
-    } else {
-        return this.getTypedRuleContext(ExprContext,i);
-    }
-};
-
-AdditiveExprContext.prototype.PLUS = function() {
+ExprContext.prototype.PLUS = function() {
     return this.getToken(TelParser.PLUS, 0);
 };
 
-AdditiveExprContext.prototype.MINUS = function() {
-    return this.getToken(TelParser.MINUS, 0);
+ExprContext.prototype.K_NOT = function() {
+    return this.getToken(TelParser.K_NOT, 0);
 };
-AdditiveExprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterAdditiveExpr(this);
+
+ExprContext.prototype.OPEN_PAREN = function() {
+    return this.getToken(TelParser.OPEN_PAREN, 0);
+};
+
+ExprContext.prototype.CLOSE_PAREN = function() {
+    return this.getToken(TelParser.CLOSE_PAREN, 0);
+};
+
+ExprContext.prototype.identifierMultipart = function() {
+    return this.getTypedRuleContext(IdentifierMultipartContext,0);
+};
+
+ExprContext.prototype.COMMA = function(i) {
+	if(i===undefined) {
+		i = null;
+	}
+    if(i===null) {
+        return this.getTokens(TelParser.COMMA);
+    } else {
+        return this.getToken(TelParser.COMMA, i);
+    }
+};
+
+
+ExprContext.prototype.taxon = function() {
+    return this.getTypedRuleContext(TaxonContext,0);
+};
+
+ExprContext.prototype.literalValue = function() {
+    return this.getTypedRuleContext(LiteralValueContext,0);
+};
+
+ExprContext.prototype.MULT = function() {
+    return this.getToken(TelParser.MULT, 0);
+};
+
+ExprContext.prototype.DIV = function() {
+    return this.getToken(TelParser.DIV, 0);
+};
+
+ExprContext.prototype.MOD = function() {
+    return this.getToken(TelParser.MOD, 0);
+};
+
+ExprContext.prototype.LT = function() {
+    return this.getToken(TelParser.LT, 0);
+};
+
+ExprContext.prototype.LT_EQ = function() {
+    return this.getToken(TelParser.LT_EQ, 0);
+};
+
+ExprContext.prototype.GT = function() {
+    return this.getToken(TelParser.GT, 0);
+};
+
+ExprContext.prototype.GT_EQ = function() {
+    return this.getToken(TelParser.GT_EQ, 0);
+};
+
+ExprContext.prototype.ASSIGN = function() {
+    return this.getToken(TelParser.ASSIGN, 0);
+};
+
+ExprContext.prototype.EQ = function() {
+    return this.getToken(TelParser.EQ, 0);
+};
+
+ExprContext.prototype.NOT_EQ1 = function() {
+    return this.getToken(TelParser.NOT_EQ1, 0);
+};
+
+ExprContext.prototype.NOT_EQ2 = function() {
+    return this.getToken(TelParser.NOT_EQ2, 0);
+};
+
+ExprContext.prototype.K_AND = function() {
+    return this.getToken(TelParser.K_AND, 0);
+};
+
+ExprContext.prototype.AND = function() {
+    return this.getToken(TelParser.AND, 0);
+};
+
+ExprContext.prototype.K_OR = function() {
+    return this.getToken(TelParser.K_OR, 0);
+};
+
+ExprContext.prototype.OR = function() {
+    return this.getToken(TelParser.OR, 0);
+};
+
+ExprContext.prototype.isNull = function() {
+    return this.getTypedRuleContext(IsNullContext,0);
+};
+
+ExprContext.prototype.isNotNull = function() {
+    return this.getTypedRuleContext(IsNotNullContext,0);
+};
+
+ExprContext.prototype.enterRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.enterExpr(this);
 	}
 };
 
-AdditiveExprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitAdditiveExpr(this);
+ExprContext.prototype.exitRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.exitExpr(this);
 	}
 };
 
-AdditiveExprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitAdditiveExpr(this);
+ExprContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof TelParserVisitor ) {
+        return visitor.visitExpr(this);
     } else {
         return visitor.visitChildren(this);
     }
@@ -853,145 +451,255 @@ TelParser.prototype.expr = function(_p) {
     var _parentState = this.state;
     var localctx = new ExprContext(this, this._ctx, _parentState);
     var _prevctx = localctx;
-    var _startState = 8;
-    this.enterRecursionRule(localctx, 8, TelParser.RULE_expr, _p);
+    var _startState = 2;
+    this.enterRecursionRule(localctx, 2, TelParser.RULE_expr, _p);
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 47;
+        this.state = 40;
         this._errHandler.sync(this);
-        switch(this._input.LA(1)) {
-        case TelParser.NOT:
-            localctx = new NotExprContext(this, localctx);
-            this._ctx = localctx;
-            _prevctx = localctx;
+        var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
+        switch(la_) {
+        case 1:
+            this.state = 18;
+            localctx.unary_operator = this._input.LT(1);
+            _la = this._input.LA(1);
+            if(!(((((_la - 23)) & ~0x1f) == 0 && ((1 << (_la - 23)) & ((1 << (TelParser.MINUS - 23)) | (1 << (TelParser.PLUS - 23)) | (1 << (TelParser.K_NOT - 23)))) !== 0))) {
+                localctx.unary_operator = this._errHandler.recoverInline(this);
+            }
+            else {
+            	this._errHandler.reportMatch(this);
+                this.consume();
+            }
+            this.state = 19;
+            localctx.right = this.expr(12);
+            break;
 
-            this.state = 44;
-            this.match(TelParser.NOT);
-            this.state = 45;
-            this.expr(6);
+        case 2:
+            this.state = 20;
+            localctx.function_name = this.identifierMultipart();
+            this.state = 21;
+            this.match(TelParser.OPEN_PAREN);
+            this.state = 30;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.TAXON_OPTIONAL_OPERATOR) | (1 << TelParser.MINUS) | (1 << TelParser.OPEN_PAREN) | (1 << TelParser.PLUS))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (TelParser.K_FALSE - 37)) | (1 << (TelParser.K_NOT - 37)) | (1 << (TelParser.K_NULL - 37)) | (1 << (TelParser.K_TRUE - 37)) | (1 << (TelParser.NUMERIC_LITERAL - 37)) | (1 << (TelParser.DOUBLE_QUOTED_STRING - 37)) | (1 << (TelParser.SINGLE_QUOTED_STRING - 37)) | (1 << (TelParser.IDENTIFIER - 37)))) !== 0)) {
+                this.state = 22;
+                localctx.arguments = this.expr(0);
+                this.state = 27;
+                this._errHandler.sync(this);
+                _la = this._input.LA(1);
+                while(_la===TelParser.COMMA) {
+                    this.state = 23;
+                    this.match(TelParser.COMMA);
+                    this.state = 24;
+                    localctx.arguments = this.expr(0);
+                    this.state = 29;
+                    this._errHandler.sync(this);
+                    _la = this._input.LA(1);
+                }
+            }
+
+            this.state = 32;
+            this.match(TelParser.CLOSE_PAREN);
             break;
-        case TelParser.INT:
-        case TelParser.REAL:
-        case TelParser.TRUE:
-        case TelParser.FALSE:
-        case TelParser.WORD:
-        case TelParser.STRING_CONSTANT:
-        case TelParser.SINGLE_QUOTED_ELEMENT:
-        case TelParser.L_BRACKET:
-        case TelParser.OPTIONAL_TAXON_OPERATOR:
-            localctx = new AtomExprContext(this, localctx);
-            this._ctx = localctx;
-            _prevctx = localctx;
-            this.state = 46;
-            this.atom();
+
+        case 3:
+            this.state = 34;
+            this.match(TelParser.OPEN_PAREN);
+            this.state = 35;
+            this.expr(0);
+            this.state = 36;
+            this.match(TelParser.CLOSE_PAREN);
             break;
-        default:
-            throw new antlr4.error.NoViableAltException(this);
+
+        case 4:
+            this.state = 38;
+            this.taxon();
+            break;
+
+        case 5:
+            this.state = 39;
+            this.literalValue();
+            break;
+
         }
         this._ctx.stop = this._input.LT(-1);
-        this.state = 66;
+        this.state = 67;
         this._errHandler.sync(this);
-        var _alt = this._interp.adaptivePredict(this._input,8,this._ctx)
+        var _alt = this._interp.adaptivePredict(this._input,5,this._ctx)
         while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
             if(_alt===1) {
                 if(this._parseListeners!==null) {
                     this.triggerExitRuleEvent();
                 }
                 _prevctx = localctx;
-                this.state = 64;
+                this.state = 65;
                 this._errHandler.sync(this);
-                var la_ = this._interp.adaptivePredict(this._input,7,this._ctx);
+                var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
                 switch(la_) {
                 case 1:
-                    localctx = new MultiplicationExprContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
-                    this.state = 49;
-                    if (!( this.precpred(this._ctx, 5))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+                    this.state = 42;
+                    if (!( this.precpred(this._ctx, 9))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 9)");
                     }
-                    this.state = 50;
-                    localctx.op = this._input.LT(1);
+                    this.state = 43;
+                    localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
-                    if(!(_la===TelParser.MULT || _la===TelParser.DIV)) {
-                        localctx.op = this._errHandler.recoverInline(this);
+                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.DIV) | (1 << TelParser.MOD) | (1 << TelParser.MULT))) !== 0))) {
+                        localctx.operator = this._errHandler.recoverInline(this);
                     }
                     else {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 51;
-                    this.expr(6);
+                    this.state = 44;
+                    localctx.right = this.expr(10);
                     break;
 
                 case 2:
-                    localctx = new AdditiveExprContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
-                    this.state = 52;
-                    if (!( this.precpred(this._ctx, 4))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
+                    this.state = 45;
+                    if (!( this.precpred(this._ctx, 8))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
                     }
-                    this.state = 53;
-                    localctx.op = this._input.LT(1);
+                    this.state = 46;
+                    localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
-                    if(!(_la===TelParser.PLUS || _la===TelParser.MINUS)) {
-                        localctx.op = this._errHandler.recoverInline(this);
+                    if(!(_la===TelParser.MINUS || _la===TelParser.PLUS)) {
+                        localctx.operator = this._errHandler.recoverInline(this);
                     }
                     else {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 54;
-                    this.expr(5);
+                    this.state = 47;
+                    localctx.right = this.expr(9);
                     break;
 
                 case 3:
-                    localctx = new LogicalExprContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
-                    this.state = 55;
-                    if (!( this.precpred(this._ctx, 3))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
+                    this.state = 48;
+                    if (!( this.precpred(this._ctx, 7))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
                     }
-                    this.state = 56;
-                    localctx.op = this._input.LT(1);
+                    this.state = 49;
+                    localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
-                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.OR) | (1 << TelParser.AND) | (1 << TelParser.EQ) | (1 << TelParser.NEQ) | (1 << TelParser.GT) | (1 << TelParser.LT) | (1 << TelParser.GTEQ) | (1 << TelParser.LTEQ))) !== 0))) {
-                        localctx.op = this._errHandler.recoverInline(this);
+                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.GT_EQ) | (1 << TelParser.LT_EQ) | (1 << TelParser.GT) | (1 << TelParser.LT))) !== 0))) {
+                        localctx.operator = this._errHandler.recoverInline(this);
                     }
                     else {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 57;
-                    this.expr(4);
+                    this.state = 50;
+                    localctx.right = this.expr(8);
                     break;
 
                 case 4:
-                    localctx = new NullTestExprContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
+                    this.state = 51;
+                    if (!( this.precpred(this._ctx, 6))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
+                    }
+                    this.state = 52;
+                    localctx.operator = this._input.LT(1);
+                    _la = this._input.LA(1);
+                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << TelParser.EQ) | (1 << TelParser.NOT_EQ1) | (1 << TelParser.NOT_EQ2) | (1 << TelParser.ASSIGN))) !== 0))) {
+                        localctx.operator = this._errHandler.recoverInline(this);
+                    }
+                    else {
+                    	this._errHandler.reportMatch(this);
+                        this.consume();
+                    }
+                    this.state = 53;
+                    localctx.right = this.expr(7);
+                    break;
+
+                case 5:
+                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx.left = _prevctx;
+                    this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
+                    this.state = 54;
+                    if (!( this.precpred(this._ctx, 5))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+                    }
+                    this.state = 55;
+                    localctx.operator = this._input.LT(1);
+                    _la = this._input.LA(1);
+                    if(!(_la===TelParser.AND || _la===TelParser.K_AND)) {
+                        localctx.operator = this._errHandler.recoverInline(this);
+                    }
+                    else {
+                    	this._errHandler.reportMatch(this);
+                        this.consume();
+                    }
+                    this.state = 56;
+                    localctx.right = this.expr(6);
+                    break;
+
+                case 6:
+                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx.left = _prevctx;
+                    this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
+                    this.state = 57;
+                    if (!( this.precpred(this._ctx, 4))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
+                    }
                     this.state = 58;
-                    if (!( this.precpred(this._ctx, 2))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
+                    localctx.operator = this._input.LT(1);
+                    _la = this._input.LA(1);
+                    if(!(_la===TelParser.OR || _la===TelParser.K_OR)) {
+                        localctx.operator = this._errHandler.recoverInline(this);
+                    }
+                    else {
+                    	this._errHandler.reportMatch(this);
+                        this.consume();
                     }
                     this.state = 59;
-                    this.match(TelParser.KW_IS);
-                    this.state = 61;
-                    this._errHandler.sync(this);
-                    _la = this._input.LA(1);
-                    if(_la===TelParser.NOT) {
-                        this.state = 60;
-                        this.match(TelParser.NOT);
-                    }
+                    localctx.right = this.expr(5);
+                    break;
 
+                case 7:
+                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx.left = _prevctx;
+                    this.pushNewRecursionContext(localctx, _startState, TelParser.RULE_expr);
+                    this.state = 60;
+                    if (!( this.precpred(this._ctx, 10))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 10)");
+                    }
                     this.state = 63;
-                    this.match(TelParser.KW_NULL);
+                    this._errHandler.sync(this);
+                    var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
+                    switch(la_) {
+                    case 1:
+                        this.state = 61;
+                        localctx.is_null = this.isNull();
+                        break;
+
+                    case 2:
+                        this.state = 62;
+                        localctx.is_not_null = this.isNotNull();
+                        break;
+
+                    }
                     break;
 
                 } 
             }
-            this.state = 68;
+            this.state = 69;
             this._errHandler.sync(this);
-            _alt = this._interp.adaptivePredict(this._input,8,this._ctx);
+            _alt = this._interp.adaptivePredict(this._input,5,this._ctx);
         }
 
     } catch( error) {
@@ -1009,7 +717,7 @@ TelParser.prototype.expr = function(_p) {
 };
 
 
-function AtomContext(parser, parent, invokingState) {
+function IsNotNullContext(parser, parent, invokingState) {
 	if(parent===undefined) {
 	    parent = null;
 	}
@@ -1018,275 +726,44 @@ function AtomContext(parser, parent, invokingState) {
 	}
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
-    this.ruleIndex = TelParser.RULE_atom;
+    this.ruleIndex = TelParser.RULE_isNotNull;
     return this;
 }
 
-AtomContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
-AtomContext.prototype.constructor = AtomContext;
+IsNotNullContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+IsNotNullContext.prototype.constructor = IsNotNullContext;
 
-
- 
-AtomContext.prototype.copyFrom = function(ctx) {
-    antlr4.ParserRuleContext.prototype.copyFrom.call(this, ctx);
+IsNotNullContext.prototype.K_NOTNULL = function() {
+    return this.getToken(TelParser.K_NOTNULL, 0);
 };
 
-
-function FnExprContext(parser, ctx) {
-	AtomContext.call(this, parser);
-    AtomContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-FnExprContext.prototype = Object.create(AtomContext.prototype);
-FnExprContext.prototype.constructor = FnExprContext;
-
-TelParser.FnExprContext = FnExprContext;
-
-FnExprContext.prototype.fn = function() {
-    return this.getTypedRuleContext(FnContext,0);
+IsNotNullContext.prototype.K_IS = function() {
+    return this.getToken(TelParser.K_IS, 0);
 };
-FnExprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterFnExpr(this);
+
+IsNotNullContext.prototype.K_NOT = function() {
+    return this.getToken(TelParser.K_NOT, 0);
+};
+
+IsNotNullContext.prototype.K_NULL = function() {
+    return this.getToken(TelParser.K_NULL, 0);
+};
+
+IsNotNullContext.prototype.enterRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.enterIsNotNull(this);
 	}
 };
 
-FnExprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitFnExpr(this);
+IsNotNullContext.prototype.exitRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.exitIsNotNull(this);
 	}
 };
 
-FnExprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitFnExpr(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function TaxonSlugAtomContext(parser, ctx) {
-	AtomContext.call(this, parser);
-    AtomContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-TaxonSlugAtomContext.prototype = Object.create(AtomContext.prototype);
-TaxonSlugAtomContext.prototype.constructor = TaxonSlugAtomContext;
-
-TelParser.TaxonSlugAtomContext = TaxonSlugAtomContext;
-
-TaxonSlugAtomContext.prototype.taxon_expr = function() {
-    return this.getTypedRuleContext(Taxon_exprContext,0);
-};
-TaxonSlugAtomContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterTaxonSlugAtom(this);
-	}
-};
-
-TaxonSlugAtomContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitTaxonSlugAtom(this);
-	}
-};
-
-TaxonSlugAtomContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitTaxonSlugAtom(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function BooleanAtomContext(parser, ctx) {
-	AtomContext.call(this, parser);
-    AtomContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-BooleanAtomContext.prototype = Object.create(AtomContext.prototype);
-BooleanAtomContext.prototype.constructor = BooleanAtomContext;
-
-TelParser.BooleanAtomContext = BooleanAtomContext;
-
-BooleanAtomContext.prototype.TRUE = function() {
-    return this.getToken(TelParser.TRUE, 0);
-};
-
-BooleanAtomContext.prototype.FALSE = function() {
-    return this.getToken(TelParser.FALSE, 0);
-};
-BooleanAtomContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterBooleanAtom(this);
-	}
-};
-
-BooleanAtomContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitBooleanAtom(this);
-	}
-};
-
-BooleanAtomContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitBooleanAtom(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function BracketExprContext(parser, ctx) {
-	AtomContext.call(this, parser);
-    AtomContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-BracketExprContext.prototype = Object.create(AtomContext.prototype);
-BracketExprContext.prototype.constructor = BracketExprContext;
-
-TelParser.BracketExprContext = BracketExprContext;
-
-BracketExprContext.prototype.L_BRACKET = function() {
-    return this.getToken(TelParser.L_BRACKET, 0);
-};
-
-BracketExprContext.prototype.expr = function() {
-    return this.getTypedRuleContext(ExprContext,0);
-};
-
-BracketExprContext.prototype.R_BRACKET = function() {
-    return this.getToken(TelParser.R_BRACKET, 0);
-};
-BracketExprContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterBracketExpr(this);
-	}
-};
-
-BracketExprContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitBracketExpr(this);
-	}
-};
-
-BracketExprContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitBracketExpr(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function SingleQuotedAtomContext(parser, ctx) {
-	AtomContext.call(this, parser);
-    AtomContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-SingleQuotedAtomContext.prototype = Object.create(AtomContext.prototype);
-SingleQuotedAtomContext.prototype.constructor = SingleQuotedAtomContext;
-
-TelParser.SingleQuotedAtomContext = SingleQuotedAtomContext;
-
-SingleQuotedAtomContext.prototype.SINGLE_QUOTED_ELEMENT = function() {
-    return this.getToken(TelParser.SINGLE_QUOTED_ELEMENT, 0);
-};
-SingleQuotedAtomContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterSingleQuotedAtom(this);
-	}
-};
-
-SingleQuotedAtomContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitSingleQuotedAtom(this);
-	}
-};
-
-SingleQuotedAtomContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitSingleQuotedAtom(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function NumberAtomContext(parser, ctx) {
-	AtomContext.call(this, parser);
-    AtomContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-NumberAtomContext.prototype = Object.create(AtomContext.prototype);
-NumberAtomContext.prototype.constructor = NumberAtomContext;
-
-TelParser.NumberAtomContext = NumberAtomContext;
-
-NumberAtomContext.prototype.INT = function() {
-    return this.getToken(TelParser.INT, 0);
-};
-
-NumberAtomContext.prototype.REAL = function() {
-    return this.getToken(TelParser.REAL, 0);
-};
-NumberAtomContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterNumberAtom(this);
-	}
-};
-
-NumberAtomContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitNumberAtom(this);
-	}
-};
-
-NumberAtomContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitNumberAtom(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-function StringConstantAtomContext(parser, ctx) {
-	AtomContext.call(this, parser);
-    AtomContext.prototype.copyFrom.call(this, ctx);
-    return this;
-}
-
-StringConstantAtomContext.prototype = Object.create(AtomContext.prototype);
-StringConstantAtomContext.prototype.constructor = StringConstantAtomContext;
-
-TelParser.StringConstantAtomContext = StringConstantAtomContext;
-
-StringConstantAtomContext.prototype.STRING_CONSTANT = function() {
-    return this.getToken(TelParser.STRING_CONSTANT, 0);
-};
-StringConstantAtomContext.prototype.enterRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.enterStringConstantAtom(this);
-	}
-};
-
-StringConstantAtomContext.prototype.exitRule = function(listener) {
-    if(listener instanceof TelListener ) {
-        listener.exitStringConstantAtom(this);
-	}
-};
-
-StringConstantAtomContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof TelVisitor ) {
-        return visitor.visitStringConstantAtom(this);
+IsNotNullContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof TelParserVisitor ) {
+        return visitor.visitIsNotNull(this);
     } else {
         return visitor.visitChildren(this);
     }
@@ -1294,83 +771,47 @@ StringConstantAtomContext.prototype.accept = function(visitor) {
 
 
 
-TelParser.AtomContext = AtomContext;
 
-TelParser.prototype.atom = function() {
+TelParser.IsNotNullContext = IsNotNullContext;
 
-    var localctx = new AtomContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 10, TelParser.RULE_atom);
+TelParser.prototype.isNotNull = function() {
+
+    var localctx = new IsNotNullContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 4, TelParser.RULE_isNotNull);
     var _la = 0; // Token type
     try {
         this.state = 79;
         this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
+        var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
         switch(la_) {
         case 1:
-            localctx = new BracketExprContext(this, localctx);
             this.enterOuterAlt(localctx, 1);
-            this.state = 69;
-            this.match(TelParser.L_BRACKET);
-            this.state = 70;
-            this.expr(0);
             this.state = 71;
-            this.match(TelParser.R_BRACKET);
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+            if(_la===TelParser.K_IS) {
+                this.state = 70;
+                this.match(TelParser.K_IS);
+            }
+
+            this.state = 73;
+            this.match(TelParser.K_NOTNULL);
             break;
 
         case 2:
-            localctx = new NumberAtomContext(this, localctx);
             this.enterOuterAlt(localctx, 2);
-            this.state = 73;
-            _la = this._input.LA(1);
-            if(!(_la===TelParser.INT || _la===TelParser.REAL)) {
-            this._errHandler.recoverInline(this);
-            }
-            else {
-            	this._errHandler.reportMatch(this);
-                this.consume();
-            }
-            break;
-
-        case 3:
-            localctx = new FnExprContext(this, localctx);
-            this.enterOuterAlt(localctx, 3);
-            this.state = 74;
-            this.fn();
-            break;
-
-        case 4:
-            localctx = new BooleanAtomContext(this, localctx);
-            this.enterOuterAlt(localctx, 4);
             this.state = 75;
+            this._errHandler.sync(this);
             _la = this._input.LA(1);
-            if(!(_la===TelParser.TRUE || _la===TelParser.FALSE)) {
-            this._errHandler.recoverInline(this);
+            if(_la===TelParser.K_IS) {
+                this.state = 74;
+                this.match(TelParser.K_IS);
             }
-            else {
-            	this._errHandler.reportMatch(this);
-                this.consume();
-            }
-            break;
 
-        case 5:
-            localctx = new TaxonSlugAtomContext(this, localctx);
-            this.enterOuterAlt(localctx, 5);
-            this.state = 76;
-            this.taxon_expr();
-            break;
-
-        case 6:
-            localctx = new SingleQuotedAtomContext(this, localctx);
-            this.enterOuterAlt(localctx, 6);
             this.state = 77;
-            this.match(TelParser.SINGLE_QUOTED_ELEMENT);
-            break;
-
-        case 7:
-            localctx = new StringConstantAtomContext(this, localctx);
-            this.enterOuterAlt(localctx, 7);
+            this.match(TelParser.K_NOT);
             this.state = 78;
-            this.match(TelParser.STRING_CONSTANT);
+            this.match(TelParser.K_NULL);
             break;
 
         }
@@ -1389,9 +830,419 @@ TelParser.prototype.atom = function() {
 };
 
 
+function IsNullContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = TelParser.RULE_isNull;
+    return this;
+}
+
+IsNullContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+IsNullContext.prototype.constructor = IsNullContext;
+
+IsNullContext.prototype.K_ISNULL = function() {
+    return this.getToken(TelParser.K_ISNULL, 0);
+};
+
+IsNullContext.prototype.K_IS = function() {
+    return this.getToken(TelParser.K_IS, 0);
+};
+
+IsNullContext.prototype.K_NULL = function() {
+    return this.getToken(TelParser.K_NULL, 0);
+};
+
+IsNullContext.prototype.enterRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.enterIsNull(this);
+	}
+};
+
+IsNullContext.prototype.exitRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.exitIsNull(this);
+	}
+};
+
+IsNullContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof TelParserVisitor ) {
+        return visitor.visitIsNull(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+TelParser.IsNullContext = IsNullContext;
+
+TelParser.prototype.isNull = function() {
+
+    var localctx = new IsNullContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 6, TelParser.RULE_isNull);
+    try {
+        this.state = 84;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case TelParser.K_ISNULL:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 81;
+            this.match(TelParser.K_ISNULL);
+            break;
+        case TelParser.K_IS:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 82;
+            this.match(TelParser.K_IS);
+            this.state = 83;
+            this.match(TelParser.K_NULL);
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
+function TaxonContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = TelParser.RULE_taxon;
+    this.namespace = null; // IdentifierMultipartContext
+    this.slug = null; // IdentifierMultipartContext
+    this.tag = null; // IdentifierMultipartContext
+    return this;
+}
+
+TaxonContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+TaxonContext.prototype.constructor = TaxonContext;
+
+TaxonContext.prototype.identifierMultipart = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(IdentifierMultipartContext);
+    } else {
+        return this.getTypedRuleContext(IdentifierMultipartContext,i);
+    }
+};
+
+TaxonContext.prototype.TAXON_OPTIONAL_OPERATOR = function() {
+    return this.getToken(TelParser.TAXON_OPTIONAL_OPERATOR, 0);
+};
+
+TaxonContext.prototype.TAXON_NAMESPACE_DELIMITER = function() {
+    return this.getToken(TelParser.TAXON_NAMESPACE_DELIMITER, 0);
+};
+
+TaxonContext.prototype.TAXON_TAG_DELIMITER = function() {
+    return this.getToken(TelParser.TAXON_TAG_DELIMITER, 0);
+};
+
+TaxonContext.prototype.enterRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.enterTaxon(this);
+	}
+};
+
+TaxonContext.prototype.exitRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.exitTaxon(this);
+	}
+};
+
+TaxonContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof TelParserVisitor ) {
+        return visitor.visitTaxon(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+TelParser.TaxonContext = TaxonContext;
+
+TelParser.prototype.taxon = function() {
+
+    var localctx = new TaxonContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 8, TelParser.RULE_taxon);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 87;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        if(_la===TelParser.TAXON_OPTIONAL_OPERATOR) {
+            this.state = 86;
+            this.match(TelParser.TAXON_OPTIONAL_OPERATOR);
+        }
+
+        this.state = 92;
+        this._errHandler.sync(this);
+        var la_ = this._interp.adaptivePredict(this._input,11,this._ctx);
+        if(la_===1) {
+            this.state = 89;
+            localctx.namespace = this.identifierMultipart();
+            this.state = 90;
+            this.match(TelParser.TAXON_NAMESPACE_DELIMITER);
+
+        }
+        this.state = 94;
+        localctx.slug = this.identifierMultipart();
+        this.state = 97;
+        this._errHandler.sync(this);
+        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
+        if(la_===1) {
+            this.state = 95;
+            this.match(TelParser.TAXON_TAG_DELIMITER);
+            this.state = 96;
+            localctx.tag = this.identifierMultipart();
+
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
+function IdentifierMultipartContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = TelParser.RULE_identifierMultipart;
+    this.parts = null; // Token
+    return this;
+}
+
+IdentifierMultipartContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+IdentifierMultipartContext.prototype.constructor = IdentifierMultipartContext;
+
+IdentifierMultipartContext.prototype.IDENTIFIER = function(i) {
+	if(i===undefined) {
+		i = null;
+	}
+    if(i===null) {
+        return this.getTokens(TelParser.IDENTIFIER);
+    } else {
+        return this.getToken(TelParser.IDENTIFIER, i);
+    }
+};
+
+
+IdentifierMultipartContext.prototype.DOT = function(i) {
+	if(i===undefined) {
+		i = null;
+	}
+    if(i===null) {
+        return this.getTokens(TelParser.DOT);
+    } else {
+        return this.getToken(TelParser.DOT, i);
+    }
+};
+
+
+IdentifierMultipartContext.prototype.enterRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.enterIdentifierMultipart(this);
+	}
+};
+
+IdentifierMultipartContext.prototype.exitRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.exitIdentifierMultipart(this);
+	}
+};
+
+IdentifierMultipartContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof TelParserVisitor ) {
+        return visitor.visitIdentifierMultipart(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+TelParser.IdentifierMultipartContext = IdentifierMultipartContext;
+
+TelParser.prototype.identifierMultipart = function() {
+
+    var localctx = new IdentifierMultipartContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 10, TelParser.RULE_identifierMultipart);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 99;
+        localctx.parts = this.match(TelParser.IDENTIFIER);
+        this.state = 104;
+        this._errHandler.sync(this);
+        var _alt = this._interp.adaptivePredict(this._input,13,this._ctx)
+        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+            if(_alt===1) {
+                this.state = 100;
+                this.match(TelParser.DOT);
+                this.state = 101;
+                localctx.parts = this.match(TelParser.IDENTIFIER); 
+            }
+            this.state = 106;
+            this._errHandler.sync(this);
+            _alt = this._interp.adaptivePredict(this._input,13,this._ctx);
+        }
+
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
+function LiteralValueContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = TelParser.RULE_literalValue;
+    return this;
+}
+
+LiteralValueContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+LiteralValueContext.prototype.constructor = LiteralValueContext;
+
+LiteralValueContext.prototype.NUMERIC_LITERAL = function() {
+    return this.getToken(TelParser.NUMERIC_LITERAL, 0);
+};
+
+LiteralValueContext.prototype.DOUBLE_QUOTED_STRING = function() {
+    return this.getToken(TelParser.DOUBLE_QUOTED_STRING, 0);
+};
+
+LiteralValueContext.prototype.SINGLE_QUOTED_STRING = function() {
+    return this.getToken(TelParser.SINGLE_QUOTED_STRING, 0);
+};
+
+LiteralValueContext.prototype.K_NULL = function() {
+    return this.getToken(TelParser.K_NULL, 0);
+};
+
+LiteralValueContext.prototype.K_TRUE = function() {
+    return this.getToken(TelParser.K_TRUE, 0);
+};
+
+LiteralValueContext.prototype.K_FALSE = function() {
+    return this.getToken(TelParser.K_FALSE, 0);
+};
+
+LiteralValueContext.prototype.enterRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.enterLiteralValue(this);
+	}
+};
+
+LiteralValueContext.prototype.exitRule = function(listener) {
+    if(listener instanceof TelParserListener ) {
+        listener.exitLiteralValue(this);
+	}
+};
+
+LiteralValueContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof TelParserVisitor ) {
+        return visitor.visitLiteralValue(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+TelParser.LiteralValueContext = LiteralValueContext;
+
+TelParser.prototype.literalValue = function() {
+
+    var localctx = new LiteralValueContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 12, TelParser.RULE_literalValue);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 107;
+        _la = this._input.LA(1);
+        if(!(((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (TelParser.K_FALSE - 37)) | (1 << (TelParser.K_NULL - 37)) | (1 << (TelParser.K_TRUE - 37)) | (1 << (TelParser.NUMERIC_LITERAL - 37)) | (1 << (TelParser.DOUBLE_QUOTED_STRING - 37)) | (1 << (TelParser.SINGLE_QUOTED_STRING - 37)))) !== 0))) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
 TelParser.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 	switch(ruleIndex) {
-	case 4:
+	case 1:
 			return this.expr_sempred(localctx, predIndex);
     default:
         throw "No predicate with index:" + ruleIndex;
@@ -1401,13 +1252,19 @@ TelParser.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 TelParser.prototype.expr_sempred = function(localctx, predIndex) {
 	switch(predIndex) {
 		case 0:
-			return this.precpred(this._ctx, 5);
+			return this.precpred(this._ctx, 9);
 		case 1:
-			return this.precpred(this._ctx, 4);
+			return this.precpred(this._ctx, 8);
 		case 2:
-			return this.precpred(this._ctx, 3);
+			return this.precpred(this._ctx, 7);
 		case 3:
-			return this.precpred(this._ctx, 2);
+			return this.precpred(this._ctx, 6);
+		case 4:
+			return this.precpred(this._ctx, 5);
+		case 5:
+			return this.precpred(this._ctx, 4);
+		case 6:
+			return this.precpred(this._ctx, 10);
 		default:
 			throw "No predicate with index:" + predIndex;
 	}

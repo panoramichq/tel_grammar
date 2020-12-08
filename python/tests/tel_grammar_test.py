@@ -1,22 +1,12 @@
+import os
+import sys
 import pytest
 
-from antlr4 import CommonTokenStream, InputStream
+from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
 
-from tel_grammar.antlr.TelLexer import TelLexer
-from tel_grammar.antlr.TelParser import TelParser
-from tel_grammar.antlr.TelVisitor import TelVisitor
+sys.path.append('./src')
 
-
-class AssertTelVisitor(TelVisitor):
-    """
-    Special TelVisitor for testing grammar. Throws error in case of invalid node.
-    """
-
-    def visitErrorNode(self, node):
-        wrong_symbol = node.symbol.text
-        position = node.symbol.column + 1
-        details = f'Unexpected symbol "{wrong_symbol}" at position {position}'
-        raise AssertionError(details)
+from pql_grammar.from_pql import from_tel, ParseError
 
 
 @pytest.mark.parametrize(
@@ -56,7 +46,7 @@ class AssertTelVisitor(TelVisitor):
         # Handle taxon slugs and functions with dot
         ('db.prod',),
         ('db.prod|schema.table.column',),
-        ('db.prod|schema.table.column:v2.0',),
+        ('db.prod|schema.table.column:v2.b0',),
         ('fn.contains()',),
         ('fn.contains.v2(db.prod, 3.14)',),
         # Handle not operator
@@ -69,14 +59,31 @@ class AssertTelVisitor(TelVisitor):
         ('slug IS NOT NULL',),
         ('slug is         NULL',),
         ('slug is   NOT   NULL',),
+        ("a like 'asdf'",),
+        ("a ilike 'asdf'",),
     ],
 )
 def test_grammar(test_case):
-    inp_stream = InputStream(test_case)
-    lexer = TelLexer(inp_stream)
-    stream = CommonTokenStream(lexer)
-    parser = TelParser(stream)
-    tree = parser.parse()
-    # Use error visitor on parsed tree to test it
-    visitor = AssertTelVisitor()
-    visitor.visit(tree)
+    assert from_tel(test_case)
+
+
+@pytest.mark.parametrize(
+    ["test_case"],
+    [
+        # Basic operations
+        ('1.3.3 + slug',),
+        ('1 + slug) - 3',),
+        # ('34 - (slug * 2',), passes because does not need closing paren
+        ('-------------',),
+        # Handle namespaced taxons
+        ('ds|sl|ug - sluging',),
+        # Handle nested functions
+        ('slug is',),
+        ('',),
+        ('a BETWEEN e',),
+        ('a BETWEEN f OR x',),
+    ],
+)
+def test_grammar_bad(test_case):
+    with pytest.raises(ParseError) as ex:
+        assert from_tel(test_case)

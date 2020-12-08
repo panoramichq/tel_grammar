@@ -1,0 +1,5 @@
+# file used as alternative to setup.py
+# to avoid installing tel_grammar package in development
+# If you change setup.py requirements, change this too, please.
+-r requirements.txt
+pytest>=5.3.5

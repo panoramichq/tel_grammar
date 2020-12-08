@@ -7,8 +7,7 @@ sys.path.append('./src')
 
 from pql_grammar import model as ast
 from pql_grammar.to_pql import to_tel
-from pql_grammar.from_pql import PqlVisitor, from_tel
-from pql_grammar.tools import find_all
+from pql_grammar.from_pql import from_tel
 
 
 inputs = (

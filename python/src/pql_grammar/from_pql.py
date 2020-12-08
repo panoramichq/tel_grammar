@@ -1,9 +1,16 @@
 # fmt: off
 
-from antlr4 import CommonTokenStream, InputStream, ParserRuleContext
-from antlr4 import ParserRuleContext
+from antlr4 import (
+    CommonTokenStream,
+    InputStream,
+    ParserRuleContext,
+    RecognitionException,
+    Recognizer,
+    Token,
+)
+from antlr4.error.ErrorListener import ErrorListener
 from decimal import Decimal
-from typing import Optional, Tuple, List, Type, Any
+from typing import Optional, Tuple, List, Type, Any, Union
 
 from .antlr.PqlLexer import PqlLexer
 from .antlr.PqlParser import PqlParser
@@ -14,6 +21,59 @@ from . import model as ast
 
 class ParseError(ValueError):
     pass
+
+
+class PqlErrorListener(ErrorListener):
+    # TODO: Contemplate DiagnosticErrorListener as base class for richer error reporting
+
+    def syntaxError(
+        self,
+        recognizer: Recognizer,
+        offending_symbol: Token,
+        line: int,
+        column: int,
+        msg: str,
+        e: RecognitionException
+    ):
+        # See chapter 9.2 "Altering and Redirecting ANTLR Error Messages"
+        # http://books.killf.info/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/The%20Definitive%20ANTLR4%20Reference.pdf
+
+        tokens = recognizer.getInputStream()
+        input = full_text(tokens.tokenSource.inputStream)
+        # when input == '' splitlines makes it [] - empty. Need at last one line.
+        lines = input.splitlines() or ['']
+        error_line = lines[line - 1]
+        start = offending_symbol.start
+        stop = offending_symbol.stop
+
+        base_msg = f'Unexpected "{full_text(offending_symbol)}"' if offending_symbol else msg
+        base_msg = base_msg.replace('<EOF>', '<End Of Input>')
+
+        if len(lines) > 1:
+            line_msg = f'line {line}, '
+        else:
+            line_msg = ''
+
+        # "unexpected end of line" errors have index reversed
+        # stop is smaller than start.
+        if start < stop:
+            pos_msg = f'positions {start+1} to {stop+1}'
+        else:
+            pos_msg = f'position {start+1}'
+
+
+        if len(error_line) <= start + 1:
+            error_line_focus = error_line
+        else:
+            error_line_focus = (
+                error_line[:start] +
+                '-->' +
+                error_line[start:stop+1] +
+                '<--' +
+                error_line[stop+1:]
+            )
+        msg = f'{base_msg} ({line_msg}{pos_msg}) in fragment "{error_line_focus}"'
+        raise ParseError(msg)
 
 
 def full_text(ctx: ParserRuleContext) -> str:
@@ -68,76 +128,50 @@ def unquote(s: str):
     # return s.replace('""', '"').replace("''", "'")
 
 
-class PqlAntlrToAstParser:
+class PqlVisitor(_PqlParserVisitor):
 
-    @classmethod
-    def unwrap_expr_parens(cls, e: PqlParser.ExprContext) -> PqlParser.ExprContext:
-        # it's allowed to wrap expressions into superflous amounts of parens
-        #   (((column > 5)))
-        # These come across as triple-nested [TerminalNodeImpl('('), expr, TerminalNodeImpl(')')]
-        # Here we check for len == 3 and if last and first Terminals are (), return middle element - expression,
-        # Run this recursively.
-        # inner attribute is enabled only on cleanly-paren-wrapped expressions
-        if e.inner:
-            return cls.unwrap_expr_parens(e.inner)
-        else:
-            return e
+    def visitErrorNode(self, node):
+        """
+        Override this with no-op if you don't want automatic syntax errors emitted
+        """
+        wrong_symbol = node.symbol.text
+        line = node.symbol.line
+        column = node.symbol.column + 1
+        details = f'Unexpected symbol "{wrong_symbol}" on line {line}, position {column}'
+        raise ParseError(details)
 
-    @classmethod
-    def parse_taxon(cls, e: PqlParser.TaxonContext) -> ast.Taxon:
-        return ast.Taxon(
-            full_text(e.slug),
-            full_text(e.namespace),
-            bool(e.is_optional),
-            full_text(e.tag)
-        )
+    def visit_from_tel_string(self, tel: str):
+        inp_stream = InputStream(tel)
+        error_listener = PqlErrorListener()
+        lexer = PqlLexer(inp_stream)
+        lexer.removeErrorListeners()  # default is PrintToConsole
+        lexer.addErrorListener(error_listener)
+        stream = CommonTokenStream(lexer)
+        parser = PqlParser(stream)
+        parser.removeErrorListeners()  # default is PrintToConsole
+        parser.addErrorListener(error_listener)
+        tree = parser.parseTel()
+        return self.visit(tree)
 
-    @classmethod
-    def parse_function_argument_pair(cls, e: PqlParser.ExprContext) -> Tuple[Optional[str],Any]:
-        e = cls.unwrap_expr_parens(e)
-        o = full_text(e.operator)
-        if o == '=':
-            arg_name = full_text(e.left)
-            arg_value = cls.parse_expr(e.right)
-        else:
-            arg_name = None
-            arg_value = cls.parse_expr(e)
-        return arg_name, arg_value
+    def visitParseTel(self, ctx:PqlParser.ParseTelContext):
+        return self.visitExpr(ctx.expr())
 
-    @classmethod
-    def parse_function(cls, e: PqlParser.FnContext) -> ast.Function:
-        return ast.Function(
-            full_text(e.function_name),
-            tuple([
-                cls.parse_function_argument_pair(expr)
-                for expr in e.arguments.expr()
-            ]) if e.arguments else None
-        )
-
-    @classmethod
-    def parse_literal(cls, e:PqlParser.LiteralValueContext):
-        return ast.Literal(
-            cls.parse_literal_value(e),
-            full_text(e)
-        )
-
-    @staticmethod
-    def parse_literal_value(e:PqlParser.LiteralValueContext):
-        is_number = bool(e.NUMERIC_LITERAL())
-        is_string = bool(e.DOUBLE_QUOTED_STRING()) or bool(e.SINGLE_QUOTED_STRING())
-        is_null = bool(e.K_NULL())
-        is_bool = bool(e.K_TRUE()) or bool(e.K_FALSE())
+    def _parse_literal(self, ctx: PqlParser.LiteralValueContext):
+        is_number = bool(ctx.NUMERIC_LITERAL())
+        is_string = bool(ctx.DOUBLE_QUOTED_STRING()) or bool(ctx.SINGLE_QUOTED_STRING())
+        is_null = bool(ctx.K_NULL())
+        is_bool = bool(ctx.K_TRUE()) or bool(ctx.K_FALSE())
 
         if is_null:
             return None
 
         if is_bool:
-            return bool(e.K_TRUE())
+            return bool(ctx.K_TRUE())
 
         try:
-            v = full_text(e)
+            v = full_text(ctx)
         except IndexError:
-            raise ParseError(f"Could not extract literal value node from '{e.getText()}'.")
+            raise ParseError(f"Could not extract literal value node from '{ctx.getText()}'.")
 
         if is_number:
             # TODO: contemplate decimal type instead
@@ -154,20 +188,50 @@ class PqlAntlrToAstParser:
 
         return v
 
-    @classmethod
-    def parse_expr(cls, ctx: PqlParser.ExprContext) -> ast.Node :
-        ctx = cls.unwrap_expr_parens(ctx)
+    def visitLiteralValue(self, ctx:PqlParser.LiteralValueContext):
+        return ast.Literal(
+            self._parse_literal(ctx),
+            full_text(ctx)
+        )
+
+    def visitTaxon(self, ctx:PqlParser.TaxonContext):
+        return ast.Taxon(
+            full_text(ctx.slug),
+            full_text(ctx.namespace),
+            bool(ctx.is_optional),
+            full_text(ctx.tag)
+        )
+
+    def visitFn(self, ctx:PqlParser.FnContext):
+        return ast.Function(
+            full_text(ctx.function_name),
+            tuple([
+                # argument_name may be undefined, returning Null for name.
+                # that's fine.
+                # Null for name value means it's not named, but positional argument.
+                # positional args are stored as (None, arg_value) tuples.
+                (full_text(fn_arg.argument_name), self.visitExpr(fn_arg.argument_value))
+                for fn_arg in ctx.arguments.fnArg()
+            ]) if ctx.arguments else None
+        )
+
+    def visitExpr(self, ctx:PqlParser.ExprContext):
+        # unpack parens
+        if ctx.inner:
+            return self.visitExpr(ctx.inner)
 
         v = ctx.literalValue()
         if v:
-            return cls.parse_literal(v)
+            return self.visitLiteralValue(v)
 
         v = ctx.unary_operator
         if v:
             operator = full_text(v).upper()
-            right = cls.parse_expr(ctx.right)
 
-            # some unary have no meaning
+            # expr
+            right = self.visitExpr(ctx.right)
+
+            # some unary operators have no meaning
             # and packing them into AST just creates noise for consuming
             if operator == '+':
                 # skip the BS. ignore the plus
@@ -191,12 +255,11 @@ class PqlAntlrToAstParser:
                 isinstance(right, ast.Literal)
             ):
                 # unlikely to ever happen, but still
-                v = not right.value
+                _v = not right.value
                 return ast.Literal(
-                    v,
-                    'true' if v else 'false'
+                    _v,
+                    'true' if _v else 'false'
                 )
-
 
             # else:
             #     # cannot avoid packaging unary "-" separate.
@@ -228,11 +291,11 @@ class PqlAntlrToAstParser:
             # IN-like cases are characterized by non-null `.right_list` (instead of .right)
             if ctx.right_list:
                 right = [
-                    cls.parse_expr(expr)
+                    self.visitExpr(expr)
                     for expr in ctx.right_list.expr()
                 ]
             else:
-                right = [cls.parse_expr(ctx.right)]
+                right = [self.visitExpr(ctx.right)]
 
             is_negated = ctx.is_negated
 
@@ -251,10 +314,10 @@ class PqlAntlrToAstParser:
             # Think of it as the only sane way to express what BETWEEN means.
 
             if op == 'BETWEEN':
-                left = cls.parse_expr(ctx.left)
+                left = self.visitExpr(ctx.left)
 
                 # this one is an Expr('AND', [v1, v2]))
-                between_and = cls.parse_expr(ctx.right)
+                between_and = self.visitExpr(ctx.right)
 
                 if (
                     isinstance(between_and, ast.Expr) and
@@ -316,7 +379,7 @@ class PqlAntlrToAstParser:
 
             ex = ast.Expr(
                 op,
-                tuple([cls.parse_expr(ctx.left)] + right)
+                tuple([self.visitExpr(ctx.left)] + right)
             )
 
             # lastly, some statements allow NOT before operator
@@ -338,43 +401,12 @@ class PqlAntlrToAstParser:
 
         v: PqlParser.TaxonContext = ctx.taxon()
         if v:
-            return cls.parse_taxon(v)
+            return self.visitTaxon(v)
 
         v: PqlParser.FnContext = ctx.fn()
         if v:
-            return cls.parse_function(v)
-
-        raise ParseError(f'Where expression "{full_text(ctx)}" is not supported yet.')
-
-
-class PqlVisitor(_PqlParserVisitor):
-
-    def visitErrorNode(self, node):
-        wrong_symbol = node.symbol.text
-        line = node.symbol.line
-        column = node.symbol.column + 1
-        details = f'Unexpected symbol "{wrong_symbol}" on line {line}, position {column}'
-        raise ParseError(details)
-
-    def visit_from_tel_string(self, tel: str):
-        inp_stream = InputStream(tel)
-        lexer = PqlLexer(inp_stream)
-        stream = CommonTokenStream(lexer)
-        parser = PqlParser(stream)
-        tree = parser.parseTel()
-        self.visit(tree)
+            return self.visitFn(v)
 
 
 def from_tel(tel: str, cls:Type[PqlVisitor] = PqlVisitor) -> ast.Node:
-
-    statements = []
-
-    class V(cls):
-        def visitExpr(self, ctx:PqlParser.ExprContext):
-            statements.append(
-                PqlAntlrToAstParser.parse_expr(ctx)
-            )
-
-    V().visit_from_tel_string(tel)
-
-    return statements[0] if statements else None
+    return cls().visit_from_tel_string(tel)

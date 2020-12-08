@@ -24,14 +24,26 @@ PqlParserVisitor.prototype.visitExpr = function(ctx) {
 };
 
 
+// Visit a parse tree produced by PqlParser#exprList.
+PqlParserVisitor.prototype.visitExprList = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by PqlParser#fn.
 PqlParserVisitor.prototype.visitFn = function(ctx) {
   return this.visitChildren(ctx);
 };
 
 
-// Visit a parse tree produced by PqlParser#exprList.
-PqlParserVisitor.prototype.visitExprList = function(ctx) {
+// Visit a parse tree produced by PqlParser#fnArgs.
+PqlParserVisitor.prototype.visitFnArgs = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by PqlParser#fnArg.
+PqlParserVisitor.prototype.visitFnArg = function(ctx) {
   return this.visitChildren(ctx);
 };
 

@@ -26,6 +26,15 @@ class PqlParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PqlParser#exprList.
+    def enterExprList(self, ctx:PqlParser.ExprListContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#exprList.
+    def exitExprList(self, ctx:PqlParser.ExprListContext):
+        pass
+
+
     # Enter a parse tree produced by PqlParser#fn.
     def enterFn(self, ctx:PqlParser.FnContext):
         pass
@@ -35,12 +44,21 @@ class PqlParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PqlParser#exprList.
-    def enterExprList(self, ctx:PqlParser.ExprListContext):
+    # Enter a parse tree produced by PqlParser#fnArgs.
+    def enterFnArgs(self, ctx:PqlParser.FnArgsContext):
         pass
 
-    # Exit a parse tree produced by PqlParser#exprList.
-    def exitExprList(self, ctx:PqlParser.ExprListContext):
+    # Exit a parse tree produced by PqlParser#fnArgs.
+    def exitFnArgs(self, ctx:PqlParser.FnArgsContext):
+        pass
+
+
+    # Enter a parse tree produced by PqlParser#fnArg.
+    def enterFnArg(self, ctx:PqlParser.FnArgContext):
+        pass
+
+    # Exit a parse tree produced by PqlParser#fnArg.
+    def exitFnArg(self, ctx:PqlParser.FnArgContext):
         pass
 
 

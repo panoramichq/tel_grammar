@@ -8,78 +8,86 @@ var grammarFileName = "PqlParser.g4";
 
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u00035r\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t\u0004",
-    "\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004\b",
-    "\t\b\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0003\u0003\u0003\u0003",
+    "\u00035\u0084\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004",
+    "\b\t\b\u0004\t\t\t\u0004\n\t\n\u0003\u0002\u0003\u0002\u0003\u0002\u0003",
     "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0005\u0003\u001e\n\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0005\u0003\"\n\u0003\u0003",
     "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
     "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0005\u0003.\n\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0005\u00032\n\u0003\u0003\u0003\u0003\u0003\u0003",
     "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0005\u0003:\n\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0005\u0003@\n\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0007\u0003G\n\u0003\f\u0003\u000e\u0003J\u000b\u0003\u0003",
-    "\u0004\u0003\u0004\u0003\u0004\u0005\u0004O\n\u0004\u0003\u0004\u0003",
-    "\u0004\u0003\u0005\u0003\u0005\u0003\u0005\u0007\u0005V\n\u0005\f\u0005",
-    "\u000e\u0005Y\u000b\u0005\u0003\u0006\u0005\u0006\\\n\u0006\u0003\u0006",
-    "\u0003\u0006\u0003\u0006\u0005\u0006a\n\u0006\u0003\u0006\u0003\u0006",
-    "\u0003\u0006\u0005\u0006f\n\u0006\u0003\u0007\u0003\u0007\u0003\u0007",
-    "\u0007\u0007k\n\u0007\f\u0007\u000e\u0007n\u000b\u0007\u0003\b\u0003",
-    "\b\u0003\b\u0002\u0003\u0004\t\u0002\u0004\u0006\b\n\f\u000e\u0002\n",
-    "\u0005\u0002\u0015\u0015\u0019\u0019&&\u0005\u0002\u0012\u0012\u0016",
-    "\u0016\u001c\u001c\u0004\u0002\u0015\u0015\u0019\u0019\u0004\u0002\u0005",
-    "\u0006\u0013\u0014\u0006\u0002\u0004\u0004\u0007\b\r\r##\u0004\u0002",
-    "\u0003\u0003\u001f\u001f\u0004\u0002\t\t))\u0006\u0002!!((*,//\u0002",
-    "\u0080\u0002\u0010\u0003\u0002\u0002\u0002\u0004\u001d\u0003\u0002\u0002",
-    "\u0002\u0006K\u0003\u0002\u0002\u0002\bR\u0003\u0002\u0002\u0002\n[",
-    "\u0003\u0002\u0002\u0002\fg\u0003\u0002\u0002\u0002\u000eo\u0003\u0002",
-    "\u0002\u0002\u0010\u0011\u0005\u0004\u0003\u0002\u0011\u0012\u0007\u0002",
-    "\u0002\u0003\u0012\u0003\u0003\u0002\u0002\u0002\u0013\u0014\b\u0003",
-    "\u0001\u0002\u0014\u0015\t\u0002\u0002\u0002\u0015\u001e\u0005\u0004",
-    "\u0003\u0010\u0016\u0017\u0007\u0017\u0002\u0002\u0017\u0018\u0005\u0004",
-    "\u0003\u0002\u0018\u0019\u0007\u000e\u0002\u0002\u0019\u001e\u0003\u0002",
-    "\u0002\u0002\u001a\u001e\u0005\u000e\b\u0002\u001b\u001e\u0005\u0006",
-    "\u0004\u0002\u001c\u001e\u0005\n\u0006\u0002\u001d\u0013\u0003\u0002",
-    "\u0002\u0002\u001d\u0016\u0003\u0002\u0002\u0002\u001d\u001a\u0003\u0002",
-    "\u0002\u0002\u001d\u001b\u0003\u0002\u0002\u0002\u001d\u001c\u0003\u0002",
-    "\u0002\u0002\u001eH\u0003\u0002\u0002\u0002\u001f \f\u000f\u0002\u0002",
-    " !\t\u0003\u0002\u0002!G\u0005\u0004\u0003\u0010\"#\f\u000e\u0002\u0002",
-    "#$\t\u0004\u0002\u0002$G\u0005\u0004\u0003\u000f%&\f\r\u0002\u0002&",
-    "\'\t\u0005\u0002\u0002\'G\u0005\u0004\u0003\u000e()\f\f\u0002\u0002",
-    ")*\t\u0006\u0002\u0002*G\u0005\u0004\u0003\r+-\f\u000b\u0002\u0002,",
-    ".\u0007&\u0002\u0002-,\u0003\u0002\u0002\u0002-.\u0003\u0002\u0002\u0002",
-    "./\u0003\u0002\u0002\u0002/0\u0007%\u0002\u00020G\u0005\u0004\u0003",
-    "\f12\f\t\u0002\u000223\t\u0007\u0002\u00023G\u0005\u0004\u0003\n45\f",
-    "\b\u0002\u000256\t\b\u0002\u00026G\u0005\u0004\u0003\t79\f\u0007\u0002",
-    "\u00028:\u0007&\u0002\u000298\u0003\u0002\u0002\u00029:\u0003\u0002",
-    "\u0002\u0002:;\u0003\u0002\u0002\u0002;<\u0007 \u0002\u0002<G\u0005",
-    "\u0004\u0003\b=?\f\n\u0002\u0002>@\u0007&\u0002\u0002?>\u0003\u0002",
-    "\u0002\u0002?@\u0003\u0002\u0002\u0002@A\u0003\u0002\u0002\u0002AB\u0007",
-    "\"\u0002\u0002BC\u0007\u0017\u0002\u0002CD\u0005\b\u0005\u0002DE\u0007",
-    "\u000e\u0002\u0002EG\u0003\u0002\u0002\u0002F\u001f\u0003\u0002\u0002",
-    "\u0002F\"\u0003\u0002\u0002\u0002F%\u0003\u0002\u0002\u0002F(\u0003",
-    "\u0002\u0002\u0002F+\u0003\u0002\u0002\u0002F1\u0003\u0002\u0002\u0002",
-    "F4\u0003\u0002\u0002\u0002F7\u0003\u0002\u0002\u0002F=\u0003\u0002\u0002",
-    "\u0002GJ\u0003\u0002\u0002\u0002HF\u0003\u0002\u0002\u0002HI\u0003\u0002",
-    "\u0002\u0002I\u0005\u0003\u0002\u0002\u0002JH\u0003\u0002\u0002\u0002",
-    "KL\u0005\f\u0007\u0002LN\u0007\u0017\u0002\u0002MO\u0005\b\u0005\u0002",
-    "NM\u0003\u0002\u0002\u0002NO\u0003\u0002\u0002\u0002OP\u0003\u0002\u0002",
-    "\u0002PQ\u0007\u000e\u0002\u0002Q\u0007\u0003\u0002\u0002\u0002RW\u0005",
-    "\u0004\u0003\u0002ST\u0007\u0010\u0002\u0002TV\u0005\u0004\u0003\u0002",
-    "US\u0003\u0002\u0002\u0002VY\u0003\u0002\u0002\u0002WU\u0003\u0002\u0002",
-    "\u0002WX\u0003\u0002\u0002\u0002X\t\u0003\u0002\u0002\u0002YW\u0003",
-    "\u0002\u0002\u0002Z\\\u0007\u001a\u0002\u0002[Z\u0003\u0002\u0002\u0002",
-    "[\\\u0003\u0002\u0002\u0002\\`\u0003\u0002\u0002\u0002]^\u0005\f\u0007",
-    "\u0002^_\u0007\u0018\u0002\u0002_a\u0003\u0002\u0002\u0002`]\u0003\u0002",
-    "\u0002\u0002`a\u0003\u0002\u0002\u0002ab\u0003\u0002\u0002\u0002be\u0005",
-    "\f\u0007\u0002cd\u0007\u000f\u0002\u0002df\u0005\f\u0007\u0002ec\u0003",
-    "\u0002\u0002\u0002ef\u0003\u0002\u0002\u0002f\u000b\u0003\u0002\u0002",
-    "\u0002gl\u00075\u0002\u0002hi\u0007\u0011\u0002\u0002ik\u00075\u0002",
-    "\u0002jh\u0003\u0002\u0002\u0002kn\u0003\u0002\u0002\u0002lj\u0003\u0002",
-    "\u0002\u0002lm\u0003\u0002\u0002\u0002m\r\u0003\u0002\u0002\u0002nl",
-    "\u0003\u0002\u0002\u0002op\t\t\u0002\u0002p\u000f\u0003\u0002\u0002",
-    "\u0002\u000e\u001d-9?FHNW[`el"].join("");
+    "\u0003\u0003\u0003\u0005\u0003>\n\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0005\u0003D\n\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0007\u0003K\n\u0003\f\u0003\u000e\u0003",
+    "N\u000b\u0003\u0003\u0004\u0003\u0004\u0003\u0004\u0007\u0004S\n\u0004",
+    "\f\u0004\u000e\u0004V\u000b\u0004\u0003\u0005\u0003\u0005\u0003\u0005",
+    "\u0005\u0005[\n\u0005\u0003\u0005\u0003\u0005\u0003\u0006\u0003\u0006",
+    "\u0003\u0006\u0007\u0006b\n\u0006\f\u0006\u000e\u0006e\u000b\u0006\u0003",
+    "\u0007\u0003\u0007\u0005\u0007i\n\u0007\u0003\u0007\u0003\u0007\u0003",
+    "\b\u0005\bn\n\b\u0003\b\u0003\b\u0003\b\u0005\bs\n\b\u0003\b\u0003\b",
+    "\u0003\b\u0005\bx\n\b\u0003\t\u0003\t\u0003\t\u0007\t}\n\t\f\t\u000e",
+    "\t\u0080\u000b\t\u0003\n\u0003\n\u0003\n\u0002\u0003\u0004\u000b\u0002",
+    "\u0004\u0006\b\n\f\u000e\u0010\u0012\u0002\n\u0005\u0002\u0015\u0015",
+    "\u0019\u0019&&\u0005\u0002\u0012\u0012\u0016\u0016\u001c\u001c\u0004",
+    "\u0002\u0015\u0015\u0019\u0019\u0004\u0002\u0005\u0006\u0013\u0014\u0006",
+    "\u0002\u0004\u0004\u0007\b\r\r##\u0004\u0002\u0003\u0003\u001f\u001f",
+    "\u0004\u0002\t\t))\u0006\u0002!!((*,//\u0002\u0092\u0002\u0014\u0003",
+    "\u0002\u0002\u0002\u0004!\u0003\u0002\u0002\u0002\u0006O\u0003\u0002",
+    "\u0002\u0002\bW\u0003\u0002\u0002\u0002\n^\u0003\u0002\u0002\u0002\f",
+    "h\u0003\u0002\u0002\u0002\u000em\u0003\u0002\u0002\u0002\u0010y\u0003",
+    "\u0002\u0002\u0002\u0012\u0081\u0003\u0002\u0002\u0002\u0014\u0015\u0005",
+    "\u0004\u0003\u0002\u0015\u0016\u0007\u0002\u0002\u0003\u0016\u0003\u0003",
+    "\u0002\u0002\u0002\u0017\u0018\b\u0003\u0001\u0002\u0018\u0019\t\u0002",
+    "\u0002\u0002\u0019\"\u0005\u0004\u0003\u0010\u001a\u001b\u0007\u0017",
+    "\u0002\u0002\u001b\u001c\u0005\u0004\u0003\u0002\u001c\u001d\u0007\u000e",
+    "\u0002\u0002\u001d\"\u0003\u0002\u0002\u0002\u001e\"\u0005\u0012\n\u0002",
+    "\u001f\"\u0005\b\u0005\u0002 \"\u0005\u000e\b\u0002!\u0017\u0003\u0002",
+    "\u0002\u0002!\u001a\u0003\u0002\u0002\u0002!\u001e\u0003\u0002\u0002",
+    "\u0002!\u001f\u0003\u0002\u0002\u0002! \u0003\u0002\u0002\u0002\"L\u0003",
+    "\u0002\u0002\u0002#$\f\u000f\u0002\u0002$%\t\u0003\u0002\u0002%K\u0005",
+    "\u0004\u0003\u0010&\'\f\u000e\u0002\u0002\'(\t\u0004\u0002\u0002(K\u0005",
+    "\u0004\u0003\u000f)*\f\r\u0002\u0002*+\t\u0005\u0002\u0002+K\u0005\u0004",
+    "\u0003\u000e,-\f\f\u0002\u0002-.\t\u0006\u0002\u0002.K\u0005\u0004\u0003",
+    "\r/1\f\u000b\u0002\u000202\u0007&\u0002\u000210\u0003\u0002\u0002\u0002",
+    "12\u0003\u0002\u0002\u000223\u0003\u0002\u0002\u000234\u0007%\u0002",
+    "\u00024K\u0005\u0004\u0003\f56\f\t\u0002\u000267\t\u0007\u0002\u0002",
+    "7K\u0005\u0004\u0003\n89\f\b\u0002\u00029:\t\b\u0002\u0002:K\u0005\u0004",
+    "\u0003\t;=\f\u0007\u0002\u0002<>\u0007&\u0002\u0002=<\u0003\u0002\u0002",
+    "\u0002=>\u0003\u0002\u0002\u0002>?\u0003\u0002\u0002\u0002?@\u0007 ",
+    "\u0002\u0002@K\u0005\u0004\u0003\bAC\f\n\u0002\u0002BD\u0007&\u0002",
+    "\u0002CB\u0003\u0002\u0002\u0002CD\u0003\u0002\u0002\u0002DE\u0003\u0002",
+    "\u0002\u0002EF\u0007\"\u0002\u0002FG\u0007\u0017\u0002\u0002GH\u0005",
+    "\u0006\u0004\u0002HI\u0007\u000e\u0002\u0002IK\u0003\u0002\u0002\u0002",
+    "J#\u0003\u0002\u0002\u0002J&\u0003\u0002\u0002\u0002J)\u0003\u0002\u0002",
+    "\u0002J,\u0003\u0002\u0002\u0002J/\u0003\u0002\u0002\u0002J5\u0003\u0002",
+    "\u0002\u0002J8\u0003\u0002\u0002\u0002J;\u0003\u0002\u0002\u0002JA\u0003",
+    "\u0002\u0002\u0002KN\u0003\u0002\u0002\u0002LJ\u0003\u0002\u0002\u0002",
+    "LM\u0003\u0002\u0002\u0002M\u0005\u0003\u0002\u0002\u0002NL\u0003\u0002",
+    "\u0002\u0002OT\u0005\u0004\u0003\u0002PQ\u0007\u0010\u0002\u0002QS\u0005",
+    "\u0004\u0003\u0002RP\u0003\u0002\u0002\u0002SV\u0003\u0002\u0002\u0002",
+    "TR\u0003\u0002\u0002\u0002TU\u0003\u0002\u0002\u0002U\u0007\u0003\u0002",
+    "\u0002\u0002VT\u0003\u0002\u0002\u0002WX\u0005\u0010\t\u0002XZ\u0007",
+    "\u0017\u0002\u0002Y[\u0005\n\u0006\u0002ZY\u0003\u0002\u0002\u0002Z",
+    "[\u0003\u0002\u0002\u0002[\\\u0003\u0002\u0002\u0002\\]\u0007\u000e",
+    "\u0002\u0002]\t\u0003\u0002\u0002\u0002^c\u0005\f\u0007\u0002_`\u0007",
+    "\u0010\u0002\u0002`b\u0005\f\u0007\u0002a_\u0003\u0002\u0002\u0002b",
+    "e\u0003\u0002\u0002\u0002ca\u0003\u0002\u0002\u0002cd\u0003\u0002\u0002",
+    "\u0002d\u000b\u0003\u0002\u0002\u0002ec\u0003\u0002\u0002\u0002fg\u0007",
+    "5\u0002\u0002gi\u0007\r\u0002\u0002hf\u0003\u0002\u0002\u0002hi\u0003",
+    "\u0002\u0002\u0002ij\u0003\u0002\u0002\u0002jk\u0005\u0004\u0003\u0002",
+    "k\r\u0003\u0002\u0002\u0002ln\u0007\u001a\u0002\u0002ml\u0003\u0002",
+    "\u0002\u0002mn\u0003\u0002\u0002\u0002nr\u0003\u0002\u0002\u0002op\u0005",
+    "\u0010\t\u0002pq\u0007\u0018\u0002\u0002qs\u0003\u0002\u0002\u0002r",
+    "o\u0003\u0002\u0002\u0002rs\u0003\u0002\u0002\u0002st\u0003\u0002\u0002",
+    "\u0002tw\u0005\u0010\t\u0002uv\u0007\u000f\u0002\u0002vx\u0005\u0010",
+    "\t\u0002wu\u0003\u0002\u0002\u0002wx\u0003\u0002\u0002\u0002x\u000f",
+    "\u0003\u0002\u0002\u0002y~\u00075\u0002\u0002z{\u0007\u0011\u0002\u0002",
+    "{}\u00075\u0002\u0002|z\u0003\u0002\u0002\u0002}\u0080\u0003\u0002\u0002",
+    "\u0002~|\u0003\u0002\u0002\u0002~\u007f\u0003\u0002\u0002\u0002\u007f",
+    "\u0011\u0003\u0002\u0002\u0002\u0080~\u0003\u0002\u0002\u0002\u0081",
+    "\u0082\t\t\u0002\u0002\u0082\u0013\u0003\u0002\u0002\u0002\u0010!1=",
+    "CJLTZchmrw~"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -106,8 +114,8 @@ var symbolicNames = [ null, "AND", "EQ", "GT_EQ", "LT_EQ", "NOT_EQ1", "NOT_EQ2",
                       "SINGLE_QUOTED_STRING_SQL", "SINGLE_LINE_COMMENT", 
                       "MULTILINE_COMMENT", "SPACES", "WORD" ];
 
-var ruleNames =  [ "parseTel", "expr", "fn", "exprList", "taxon", "identifierMultipart", 
-                   "literalValue" ];
+var ruleNames =  [ "parseTel", "expr", "exprList", "fn", "fnArgs", "fnArg", 
+                   "taxon", "identifierMultipart", "literalValue" ];
 
 function PqlParser (input) {
 	antlr4.Parser.call(this, input);
@@ -182,11 +190,13 @@ PqlParser.WORD = 51;
 
 PqlParser.RULE_parseTel = 0;
 PqlParser.RULE_expr = 1;
-PqlParser.RULE_fn = 2;
-PqlParser.RULE_exprList = 3;
-PqlParser.RULE_taxon = 4;
-PqlParser.RULE_identifierMultipart = 5;
-PqlParser.RULE_literalValue = 6;
+PqlParser.RULE_exprList = 2;
+PqlParser.RULE_fn = 3;
+PqlParser.RULE_fnArgs = 4;
+PqlParser.RULE_fnArg = 5;
+PqlParser.RULE_taxon = 6;
+PqlParser.RULE_identifierMultipart = 7;
+PqlParser.RULE_literalValue = 8;
 
 
 function ParseTelContext(parser, parent, invokingState) {
@@ -244,9 +254,9 @@ PqlParser.prototype.parseTel = function() {
     this.enterRule(localctx, 0, PqlParser.RULE_parseTel);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 14;
+        this.state = 18;
         this.expr(0);
-        this.state = 15;
+        this.state = 19;
         this.match(PqlParser.EOF);
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -444,12 +454,12 @@ PqlParser.prototype.expr = function(_p) {
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 27;
+        this.state = 31;
         this._errHandler.sync(this);
         var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
         switch(la_) {
         case 1:
-            this.state = 18;
+            this.state = 22;
             localctx.unary_operator = this._input.LT(1);
             _la = this._input.LA(1);
             if(!(((((_la - 19)) & ~0x1f) == 0 && ((1 << (_la - 19)) & ((1 << (PqlParser.MINUS - 19)) | (1 << (PqlParser.PLUS - 19)) | (1 << (PqlParser.K_NOT - 19)))) !== 0))) {
@@ -459,37 +469,37 @@ PqlParser.prototype.expr = function(_p) {
             	this._errHandler.reportMatch(this);
                 this.consume();
             }
-            this.state = 19;
+            this.state = 23;
             localctx.right = this.expr(14);
             break;
 
         case 2:
-            this.state = 20;
+            this.state = 24;
             this.match(PqlParser.OPEN_PAREN);
-            this.state = 21;
+            this.state = 25;
             localctx.inner = this.expr(0);
-            this.state = 22;
+            this.state = 26;
             this.match(PqlParser.CLOSE_PAREN);
             break;
 
         case 3:
-            this.state = 24;
+            this.state = 28;
             this.literalValue();
             break;
 
         case 4:
-            this.state = 25;
+            this.state = 29;
             this.fn();
             break;
 
         case 5:
-            this.state = 26;
+            this.state = 30;
             this.taxon();
             break;
 
         }
         this._ctx.stop = this._input.LT(-1);
-        this.state = 70;
+        this.state = 74;
         this._errHandler.sync(this);
         var _alt = this._interp.adaptivePredict(this._input,5,this._ctx)
         while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -498,7 +508,7 @@ PqlParser.prototype.expr = function(_p) {
                     this.triggerExitRuleEvent();
                 }
                 _prevctx = localctx;
-                this.state = 68;
+                this.state = 72;
                 this._errHandler.sync(this);
                 var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
                 switch(la_) {
@@ -506,11 +516,11 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 29;
+                    this.state = 33;
                     if (!( this.precpred(this._ctx, 13))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 13)");
                     }
-                    this.state = 30;
+                    this.state = 34;
                     localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PqlParser.FORWARD_SLASH) | (1 << PqlParser.MOD) | (1 << PqlParser.STAR))) !== 0))) {
@@ -520,7 +530,7 @@ PqlParser.prototype.expr = function(_p) {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 31;
+                    this.state = 35;
                     localctx.right = this.expr(14);
                     break;
 
@@ -528,11 +538,11 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 32;
+                    this.state = 36;
                     if (!( this.precpred(this._ctx, 12))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 12)");
                     }
-                    this.state = 33;
+                    this.state = 37;
                     localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(!(_la===PqlParser.MINUS || _la===PqlParser.PLUS)) {
@@ -542,7 +552,7 @@ PqlParser.prototype.expr = function(_p) {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 34;
+                    this.state = 38;
                     localctx.right = this.expr(13);
                     break;
 
@@ -550,11 +560,11 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 35;
+                    this.state = 39;
                     if (!( this.precpred(this._ctx, 11))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 11)");
                     }
-                    this.state = 36;
+                    this.state = 40;
                     localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PqlParser.GT_EQ) | (1 << PqlParser.LT_EQ) | (1 << PqlParser.GT) | (1 << PqlParser.LT))) !== 0))) {
@@ -564,7 +574,7 @@ PqlParser.prototype.expr = function(_p) {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 37;
+                    this.state = 41;
                     localctx.right = this.expr(12);
                     break;
 
@@ -572,11 +582,11 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 38;
+                    this.state = 42;
                     if (!( this.precpred(this._ctx, 10))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 10)");
                     }
-                    this.state = 39;
+                    this.state = 43;
                     localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(!(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (PqlParser.EQ - 2)) | (1 << (PqlParser.NOT_EQ1 - 2)) | (1 << (PqlParser.NOT_EQ2 - 2)) | (1 << (PqlParser.ASSIGN - 2)) | (1 << (PqlParser.K_IS - 2)))) !== 0))) {
@@ -586,7 +596,7 @@ PqlParser.prototype.expr = function(_p) {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 40;
+                    this.state = 44;
                     localctx.right = this.expr(11);
                     break;
 
@@ -594,21 +604,21 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 41;
+                    this.state = 45;
                     if (!( this.precpred(this._ctx, 9))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 9)");
                     }
-                    this.state = 43;
+                    this.state = 47;
                     this._errHandler.sync(this);
                     _la = this._input.LA(1);
                     if(_la===PqlParser.K_NOT) {
-                        this.state = 42;
+                        this.state = 46;
                         localctx.is_negated = this.match(PqlParser.K_NOT);
                     }
 
-                    this.state = 45;
+                    this.state = 49;
                     localctx.operator = this.match(PqlParser.K_LIKE);
-                    this.state = 46;
+                    this.state = 50;
                     localctx.right = this.expr(10);
                     break;
 
@@ -616,11 +626,11 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 47;
+                    this.state = 51;
                     if (!( this.precpred(this._ctx, 7))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
                     }
-                    this.state = 48;
+                    this.state = 52;
                     localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(!(_la===PqlParser.AND || _la===PqlParser.K_AND)) {
@@ -630,7 +640,7 @@ PqlParser.prototype.expr = function(_p) {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 49;
+                    this.state = 53;
                     localctx.right = this.expr(8);
                     break;
 
@@ -638,11 +648,11 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 50;
+                    this.state = 54;
                     if (!( this.precpred(this._ctx, 6))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
                     }
-                    this.state = 51;
+                    this.state = 55;
                     localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
                     if(!(_la===PqlParser.OR || _la===PqlParser.K_OR)) {
@@ -652,7 +662,7 @@ PqlParser.prototype.expr = function(_p) {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 52;
+                    this.state = 56;
                     localctx.right = this.expr(7);
                     break;
 
@@ -660,21 +670,21 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 53;
+                    this.state = 57;
                     if (!( this.precpred(this._ctx, 5))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
                     }
-                    this.state = 55;
+                    this.state = 59;
                     this._errHandler.sync(this);
                     _la = this._input.LA(1);
                     if(_la===PqlParser.K_NOT) {
-                        this.state = 54;
+                        this.state = 58;
                         localctx.is_negated = this.match(PqlParser.K_NOT);
                     }
 
-                    this.state = 57;
+                    this.state = 61;
                     localctx.operator = this.match(PqlParser.K_BETWEEN);
-                    this.state = 58;
+                    this.state = 62;
                     localctx.right = this.expr(6);
                     break;
 
@@ -682,31 +692,31 @@ PqlParser.prototype.expr = function(_p) {
                     localctx = new ExprContext(this, _parentctx, _parentState);
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, PqlParser.RULE_expr);
-                    this.state = 59;
+                    this.state = 63;
                     if (!( this.precpred(this._ctx, 8))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
                     }
-                    this.state = 61;
+                    this.state = 65;
                     this._errHandler.sync(this);
                     _la = this._input.LA(1);
                     if(_la===PqlParser.K_NOT) {
-                        this.state = 60;
+                        this.state = 64;
                         localctx.is_negated = this.match(PqlParser.K_NOT);
                     }
 
-                    this.state = 63;
+                    this.state = 67;
                     localctx.operator = this.match(PqlParser.K_IN);
-                    this.state = 64;
+                    this.state = 68;
                     this.match(PqlParser.OPEN_PAREN);
-                    this.state = 65;
+                    this.state = 69;
                     localctx.right_list = this.exprList();
-                    this.state = 66;
+                    this.state = 70;
                     this.match(PqlParser.CLOSE_PAREN);
                     break;
 
                 } 
             }
-            this.state = 72;
+            this.state = 76;
             this._errHandler.sync(this);
             _alt = this._interp.adaptivePredict(this._input,5,this._ctx);
         }
@@ -721,101 +731,6 @@ PqlParser.prototype.expr = function(_p) {
 	    }
     } finally {
         this.unrollRecursionContexts(_parentctx)
-    }
-    return localctx;
-};
-
-
-function FnContext(parser, parent, invokingState) {
-	if(parent===undefined) {
-	    parent = null;
-	}
-	if(invokingState===undefined || invokingState===null) {
-		invokingState = -1;
-	}
-	antlr4.ParserRuleContext.call(this, parent, invokingState);
-    this.parser = parser;
-    this.ruleIndex = PqlParser.RULE_fn;
-    this.function_name = null; // IdentifierMultipartContext
-    this.arguments = null; // ExprListContext
-    return this;
-}
-
-FnContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
-FnContext.prototype.constructor = FnContext;
-
-FnContext.prototype.OPEN_PAREN = function() {
-    return this.getToken(PqlParser.OPEN_PAREN, 0);
-};
-
-FnContext.prototype.CLOSE_PAREN = function() {
-    return this.getToken(PqlParser.CLOSE_PAREN, 0);
-};
-
-FnContext.prototype.identifierMultipart = function() {
-    return this.getTypedRuleContext(IdentifierMultipartContext,0);
-};
-
-FnContext.prototype.exprList = function() {
-    return this.getTypedRuleContext(ExprListContext,0);
-};
-
-FnContext.prototype.enterRule = function(listener) {
-    if(listener instanceof PqlParserListener ) {
-        listener.enterFn(this);
-	}
-};
-
-FnContext.prototype.exitRule = function(listener) {
-    if(listener instanceof PqlParserListener ) {
-        listener.exitFn(this);
-	}
-};
-
-FnContext.prototype.accept = function(visitor) {
-    if ( visitor instanceof PqlParserVisitor ) {
-        return visitor.visitFn(this);
-    } else {
-        return visitor.visitChildren(this);
-    }
-};
-
-
-
-
-PqlParser.FnContext = FnContext;
-
-PqlParser.prototype.fn = function() {
-
-    var localctx = new FnContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 4, PqlParser.RULE_fn);
-    var _la = 0; // Token type
-    try {
-        this.enterOuterAlt(localctx, 1);
-        this.state = 73;
-        localctx.function_name = this.identifierMultipart();
-        this.state = 74;
-        this.match(PqlParser.OPEN_PAREN);
-        this.state = 76;
-        this._errHandler.sync(this);
-        _la = this._input.LA(1);
-        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PqlParser.MINUS) | (1 << PqlParser.OPEN_PAREN) | (1 << PqlParser.PLUS) | (1 << PqlParser.QUESTION_MARK) | (1 << PqlParser.K_FALSE))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (PqlParser.K_NOT - 36)) | (1 << (PqlParser.K_NULL - 36)) | (1 << (PqlParser.K_TRUE - 36)) | (1 << (PqlParser.NUMERIC_LITERAL - 36)) | (1 << (PqlParser.DOUBLE_QUOTED_STRING - 36)) | (1 << (PqlParser.SINGLE_QUOTED_STRING - 36)) | (1 << (PqlParser.WORD - 36)))) !== 0)) {
-            this.state = 75;
-            localctx.arguments = this.exprList();
-        }
-
-        this.state = 78;
-        this.match(PqlParser.CLOSE_PAREN);
-    } catch (re) {
-    	if(re instanceof antlr4.error.RecognitionException) {
-	        localctx.exception = re;
-	        this._errHandler.reportError(this, re);
-	        this._errHandler.recover(this, re);
-	    } else {
-	    	throw re;
-	    }
-    } finally {
-        this.exitRule();
     }
     return localctx;
 };
@@ -888,24 +803,307 @@ PqlParser.ExprListContext = ExprListContext;
 PqlParser.prototype.exprList = function() {
 
     var localctx = new ExprListContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 6, PqlParser.RULE_exprList);
+    this.enterRule(localctx, 4, PqlParser.RULE_exprList);
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 80;
+        this.state = 77;
         this.expr(0);
-        this.state = 85;
+        this.state = 82;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
         while(_la===PqlParser.COMMA) {
-            this.state = 81;
+            this.state = 78;
             this.match(PqlParser.COMMA);
-            this.state = 82;
+            this.state = 79;
             this.expr(0);
-            this.state = 87;
+            this.state = 84;
             this._errHandler.sync(this);
             _la = this._input.LA(1);
         }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
+function FnContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = PqlParser.RULE_fn;
+    this.function_name = null; // IdentifierMultipartContext
+    this.arguments = null; // FnArgsContext
+    return this;
+}
+
+FnContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+FnContext.prototype.constructor = FnContext;
+
+FnContext.prototype.OPEN_PAREN = function() {
+    return this.getToken(PqlParser.OPEN_PAREN, 0);
+};
+
+FnContext.prototype.CLOSE_PAREN = function() {
+    return this.getToken(PqlParser.CLOSE_PAREN, 0);
+};
+
+FnContext.prototype.identifierMultipart = function() {
+    return this.getTypedRuleContext(IdentifierMultipartContext,0);
+};
+
+FnContext.prototype.fnArgs = function() {
+    return this.getTypedRuleContext(FnArgsContext,0);
+};
+
+FnContext.prototype.enterRule = function(listener) {
+    if(listener instanceof PqlParserListener ) {
+        listener.enterFn(this);
+	}
+};
+
+FnContext.prototype.exitRule = function(listener) {
+    if(listener instanceof PqlParserListener ) {
+        listener.exitFn(this);
+	}
+};
+
+FnContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof PqlParserVisitor ) {
+        return visitor.visitFn(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+PqlParser.FnContext = FnContext;
+
+PqlParser.prototype.fn = function() {
+
+    var localctx = new FnContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 6, PqlParser.RULE_fn);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 85;
+        localctx.function_name = this.identifierMultipart();
+        this.state = 86;
+        this.match(PqlParser.OPEN_PAREN);
+        this.state = 88;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PqlParser.MINUS) | (1 << PqlParser.OPEN_PAREN) | (1 << PqlParser.PLUS) | (1 << PqlParser.QUESTION_MARK) | (1 << PqlParser.K_FALSE))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (PqlParser.K_NOT - 36)) | (1 << (PqlParser.K_NULL - 36)) | (1 << (PqlParser.K_TRUE - 36)) | (1 << (PqlParser.NUMERIC_LITERAL - 36)) | (1 << (PqlParser.DOUBLE_QUOTED_STRING - 36)) | (1 << (PqlParser.SINGLE_QUOTED_STRING - 36)) | (1 << (PqlParser.WORD - 36)))) !== 0)) {
+            this.state = 87;
+            localctx.arguments = this.fnArgs();
+        }
+
+        this.state = 90;
+        this.match(PqlParser.CLOSE_PAREN);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
+function FnArgsContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = PqlParser.RULE_fnArgs;
+    return this;
+}
+
+FnArgsContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+FnArgsContext.prototype.constructor = FnArgsContext;
+
+FnArgsContext.prototype.fnArg = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(FnArgContext);
+    } else {
+        return this.getTypedRuleContext(FnArgContext,i);
+    }
+};
+
+FnArgsContext.prototype.COMMA = function(i) {
+	if(i===undefined) {
+		i = null;
+	}
+    if(i===null) {
+        return this.getTokens(PqlParser.COMMA);
+    } else {
+        return this.getToken(PqlParser.COMMA, i);
+    }
+};
+
+
+FnArgsContext.prototype.enterRule = function(listener) {
+    if(listener instanceof PqlParserListener ) {
+        listener.enterFnArgs(this);
+	}
+};
+
+FnArgsContext.prototype.exitRule = function(listener) {
+    if(listener instanceof PqlParserListener ) {
+        listener.exitFnArgs(this);
+	}
+};
+
+FnArgsContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof PqlParserVisitor ) {
+        return visitor.visitFnArgs(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+PqlParser.FnArgsContext = FnArgsContext;
+
+PqlParser.prototype.fnArgs = function() {
+
+    var localctx = new FnArgsContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 8, PqlParser.RULE_fnArgs);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 92;
+        this.fnArg();
+        this.state = 97;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        while(_la===PqlParser.COMMA) {
+            this.state = 93;
+            this.match(PqlParser.COMMA);
+            this.state = 94;
+            this.fnArg();
+            this.state = 99;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
+function FnArgContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = PqlParser.RULE_fnArg;
+    this.argument_name = null; // Token
+    this.argument_value = null; // ExprContext
+    return this;
+}
+
+FnArgContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+FnArgContext.prototype.constructor = FnArgContext;
+
+FnArgContext.prototype.expr = function() {
+    return this.getTypedRuleContext(ExprContext,0);
+};
+
+FnArgContext.prototype.ASSIGN = function() {
+    return this.getToken(PqlParser.ASSIGN, 0);
+};
+
+FnArgContext.prototype.WORD = function() {
+    return this.getToken(PqlParser.WORD, 0);
+};
+
+FnArgContext.prototype.enterRule = function(listener) {
+    if(listener instanceof PqlParserListener ) {
+        listener.enterFnArg(this);
+	}
+};
+
+FnArgContext.prototype.exitRule = function(listener) {
+    if(listener instanceof PqlParserListener ) {
+        listener.exitFnArg(this);
+	}
+};
+
+FnArgContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof PqlParserVisitor ) {
+        return visitor.visitFnArg(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+PqlParser.FnArgContext = FnArgContext;
+
+PqlParser.prototype.fnArg = function() {
+
+    var localctx = new FnArgContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 10, PqlParser.RULE_fnArg);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 102;
+        this._errHandler.sync(this);
+        var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
+        if(la_===1) {
+            this.state = 100;
+            localctx.argument_name = this.match(PqlParser.WORD);
+            this.state = 101;
+            this.match(PqlParser.ASSIGN);
+
+        }
+        this.state = 104;
+        localctx.argument_value = this.expr(0);
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
 	        localctx.exception = re;
@@ -992,37 +1190,37 @@ PqlParser.TaxonContext = TaxonContext;
 PqlParser.prototype.taxon = function() {
 
     var localctx = new TaxonContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 8, PqlParser.RULE_taxon);
+    this.enterRule(localctx, 12, PqlParser.RULE_taxon);
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 89;
+        this.state = 107;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
         if(_la===PqlParser.QUESTION_MARK) {
-            this.state = 88;
+            this.state = 106;
             localctx.is_optional = this.match(PqlParser.QUESTION_MARK);
         }
 
-        this.state = 94;
+        this.state = 112;
         this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,9,this._ctx);
+        var la_ = this._interp.adaptivePredict(this._input,11,this._ctx);
         if(la_===1) {
-            this.state = 91;
+            this.state = 109;
             localctx.namespace = this.identifierMultipart();
-            this.state = 92;
+            this.state = 110;
             this.match(PqlParser.PIPE);
 
         }
-        this.state = 96;
+        this.state = 114;
         localctx.slug = this.identifierMultipart();
-        this.state = 99;
+        this.state = 117;
         this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
+        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
         if(la_===1) {
-            this.state = 97;
+            this.state = 115;
             this.match(PqlParser.COLON);
-            this.state = 98;
+            this.state = 116;
             localctx.tag = this.identifierMultipart();
 
         }
@@ -1109,24 +1307,24 @@ PqlParser.IdentifierMultipartContext = IdentifierMultipartContext;
 PqlParser.prototype.identifierMultipart = function() {
 
     var localctx = new IdentifierMultipartContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 10, PqlParser.RULE_identifierMultipart);
+    this.enterRule(localctx, 14, PqlParser.RULE_identifierMultipart);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 101;
+        this.state = 119;
         this.match(PqlParser.WORD);
-        this.state = 106;
+        this.state = 124;
         this._errHandler.sync(this);
-        var _alt = this._interp.adaptivePredict(this._input,11,this._ctx)
+        var _alt = this._interp.adaptivePredict(this._input,13,this._ctx)
         while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
             if(_alt===1) {
-                this.state = 102;
+                this.state = 120;
                 this.match(PqlParser.DOT);
-                this.state = 103;
+                this.state = 121;
                 this.match(PqlParser.WORD); 
             }
-            this.state = 108;
+            this.state = 126;
             this._errHandler.sync(this);
-            _alt = this._interp.adaptivePredict(this._input,11,this._ctx);
+            _alt = this._interp.adaptivePredict(this._input,13,this._ctx);
         }
 
     } catch (re) {
@@ -1212,11 +1410,11 @@ PqlParser.LiteralValueContext = LiteralValueContext;
 PqlParser.prototype.literalValue = function() {
 
     var localctx = new LiteralValueContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 12, PqlParser.RULE_literalValue);
+    this.enterRule(localctx, 16, PqlParser.RULE_literalValue);
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 109;
+        this.state = 127;
         _la = this._input.LA(1);
         if(!(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (PqlParser.K_FALSE - 31)) | (1 << (PqlParser.K_NULL - 31)) | (1 << (PqlParser.K_TRUE - 31)) | (1 << (PqlParser.NUMERIC_LITERAL - 31)) | (1 << (PqlParser.DOUBLE_QUOTED_STRING - 31)) | (1 << (PqlParser.SINGLE_QUOTED_STRING - 31)))) !== 0))) {
         this._errHandler.recoverInline(this);

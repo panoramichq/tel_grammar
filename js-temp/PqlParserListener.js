@@ -29,6 +29,15 @@ PqlParserListener.prototype.exitExpr = function(ctx) {
 };
 
 
+// Enter a parse tree produced by PqlParser#exprList.
+PqlParserListener.prototype.enterExprList = function(ctx) {
+};
+
+// Exit a parse tree produced by PqlParser#exprList.
+PqlParserListener.prototype.exitExprList = function(ctx) {
+};
+
+
 // Enter a parse tree produced by PqlParser#fn.
 PqlParserListener.prototype.enterFn = function(ctx) {
 };
@@ -38,12 +47,21 @@ PqlParserListener.prototype.exitFn = function(ctx) {
 };
 
 
-// Enter a parse tree produced by PqlParser#exprList.
-PqlParserListener.prototype.enterExprList = function(ctx) {
+// Enter a parse tree produced by PqlParser#fnArgs.
+PqlParserListener.prototype.enterFnArgs = function(ctx) {
 };
 
-// Exit a parse tree produced by PqlParser#exprList.
-PqlParserListener.prototype.exitExprList = function(ctx) {
+// Exit a parse tree produced by PqlParser#fnArgs.
+PqlParserListener.prototype.exitFnArgs = function(ctx) {
+};
+
+
+// Enter a parse tree produced by PqlParser#fnArg.
+PqlParserListener.prototype.enterFnArg = function(ctx) {
+};
+
+// Exit a parse tree produced by PqlParser#fnArg.
+PqlParserListener.prototype.exitFnArg = function(ctx) {
 };
 
 

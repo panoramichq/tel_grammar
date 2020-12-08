@@ -19,13 +19,23 @@ class PqlParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PqlParser#exprList.
+    def visitExprList(self, ctx:PqlParser.ExprListContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PqlParser#fn.
     def visitFn(self, ctx:PqlParser.FnContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PqlParser#exprList.
-    def visitExprList(self, ctx:PqlParser.ExprListContext):
+    # Visit a parse tree produced by PqlParser#fnArgs.
+    def visitFnArgs(self, ctx:PqlParser.FnArgsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PqlParser#fnArg.
+    def visitFnArg(self, ctx:PqlParser.FnArgContext):
         return self.visitChildren(ctx)
 
 

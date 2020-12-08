@@ -24,7 +24,7 @@ expr
  | left=expr operator=( PLUS | MINUS ) right=expr
  | left=expr operator=( LT | LT_EQ | GT | GT_EQ ) right=expr
  | left=expr operator=( ASSIGN | EQ | NOT_EQ1 | NOT_EQ2 | K_IS ) right=expr
- | left=expr is_negated=K_NOT? operator=K_LIKE right=expr
+ | left=expr is_negated=K_NOT? operator=(K_LIKE | K_ILIKE) right=expr
  | left=expr is_negated=K_NOT? operator=K_IN OPEN_PAREN right_list=exprList CLOSE_PAREN
  | left=expr operator=( K_AND | AND ) right=expr
  | left=expr operator=( K_OR | OR ) right=expr

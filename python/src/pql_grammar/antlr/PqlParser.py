@@ -11,7 +11,7 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\65")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\66")
         buf.write("\u0084\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3")
         buf.write("\3\3\3\3\3\3\3\3\3\3\3\5\3\"\n\3\3\3\3\3\3\3\3\3\3\3\3")
@@ -23,40 +23,40 @@ def serializedATN():
         buf.write("\3\7\5\7i\n\7\3\7\3\7\3\b\5\bn\n\b\3\b\3\b\3\b\5\bs\n")
         buf.write("\b\3\b\3\b\3\b\5\bx\n\b\3\t\3\t\3\t\7\t}\n\t\f\t\16\t")
         buf.write("\u0080\13\t\3\n\3\n\3\n\2\3\4\13\2\4\6\b\n\f\16\20\22")
-        buf.write("\2\n\5\2\25\25\31\31&&\5\2\22\22\26\26\34\34\4\2\25\25")
-        buf.write("\31\31\4\2\5\6\23\24\6\2\4\4\7\b\r\r##\4\2\3\3\37\37\4")
-        buf.write("\2\t\t))\6\2!!((*,//\2\u0092\2\24\3\2\2\2\4!\3\2\2\2\6")
-        buf.write("O\3\2\2\2\bW\3\2\2\2\n^\3\2\2\2\fh\3\2\2\2\16m\3\2\2\2")
-        buf.write("\20y\3\2\2\2\22\u0081\3\2\2\2\24\25\5\4\3\2\25\26\7\2")
-        buf.write("\2\3\26\3\3\2\2\2\27\30\b\3\1\2\30\31\t\2\2\2\31\"\5\4")
-        buf.write("\3\20\32\33\7\27\2\2\33\34\5\4\3\2\34\35\7\16\2\2\35\"")
-        buf.write("\3\2\2\2\36\"\5\22\n\2\37\"\5\b\5\2 \"\5\16\b\2!\27\3")
-        buf.write("\2\2\2!\32\3\2\2\2!\36\3\2\2\2!\37\3\2\2\2! \3\2\2\2\"")
-        buf.write("L\3\2\2\2#$\f\17\2\2$%\t\3\2\2%K\5\4\3\20&\'\f\16\2\2")
-        buf.write("\'(\t\4\2\2(K\5\4\3\17)*\f\r\2\2*+\t\5\2\2+K\5\4\3\16")
-        buf.write(",-\f\f\2\2-.\t\6\2\2.K\5\4\3\r/\61\f\13\2\2\60\62\7&\2")
-        buf.write("\2\61\60\3\2\2\2\61\62\3\2\2\2\62\63\3\2\2\2\63\64\7%")
-        buf.write("\2\2\64K\5\4\3\f\65\66\f\t\2\2\66\67\t\7\2\2\67K\5\4\3")
-        buf.write("\n89\f\b\2\29:\t\b\2\2:K\5\4\3\t;=\f\7\2\2<>\7&\2\2=<")
-        buf.write("\3\2\2\2=>\3\2\2\2>?\3\2\2\2?@\7 \2\2@K\5\4\3\bAC\f\n")
-        buf.write("\2\2BD\7&\2\2CB\3\2\2\2CD\3\2\2\2DE\3\2\2\2EF\7\"\2\2")
-        buf.write("FG\7\27\2\2GH\5\6\4\2HI\7\16\2\2IK\3\2\2\2J#\3\2\2\2J")
-        buf.write("&\3\2\2\2J)\3\2\2\2J,\3\2\2\2J/\3\2\2\2J\65\3\2\2\2J8")
-        buf.write("\3\2\2\2J;\3\2\2\2JA\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2")
-        buf.write("\2\2M\5\3\2\2\2NL\3\2\2\2OT\5\4\3\2PQ\7\20\2\2QS\5\4\3")
-        buf.write("\2RP\3\2\2\2SV\3\2\2\2TR\3\2\2\2TU\3\2\2\2U\7\3\2\2\2")
-        buf.write("VT\3\2\2\2WX\5\20\t\2XZ\7\27\2\2Y[\5\n\6\2ZY\3\2\2\2Z")
-        buf.write("[\3\2\2\2[\\\3\2\2\2\\]\7\16\2\2]\t\3\2\2\2^c\5\f\7\2")
-        buf.write("_`\7\20\2\2`b\5\f\7\2a_\3\2\2\2be\3\2\2\2ca\3\2\2\2cd")
-        buf.write("\3\2\2\2d\13\3\2\2\2ec\3\2\2\2fg\7\65\2\2gi\7\r\2\2hf")
-        buf.write("\3\2\2\2hi\3\2\2\2ij\3\2\2\2jk\5\4\3\2k\r\3\2\2\2ln\7")
-        buf.write("\32\2\2ml\3\2\2\2mn\3\2\2\2nr\3\2\2\2op\5\20\t\2pq\7\30")
-        buf.write("\2\2qs\3\2\2\2ro\3\2\2\2rs\3\2\2\2st\3\2\2\2tw\5\20\t")
-        buf.write("\2uv\7\17\2\2vx\5\20\t\2wu\3\2\2\2wx\3\2\2\2x\17\3\2\2")
-        buf.write("\2y~\7\65\2\2z{\7\21\2\2{}\7\65\2\2|z\3\2\2\2}\u0080\3")
-        buf.write("\2\2\2~|\3\2\2\2~\177\3\2\2\2\177\21\3\2\2\2\u0080~\3")
-        buf.write("\2\2\2\u0081\u0082\t\t\2\2\u0082\23\3\2\2\2\20!\61=CJ")
-        buf.write("LTZchmrw~")
+        buf.write("\2\13\5\2\25\25\31\31\'\'\5\2\22\22\26\26\34\34\4\2\25")
+        buf.write("\25\31\31\4\2\5\6\23\24\6\2\4\4\7\b\r\r$$\4\2\"\"&&\4")
+        buf.write("\2\3\3\37\37\4\2\t\t**\6\2!!))+-\60\60\2\u0092\2\24\3")
+        buf.write("\2\2\2\4!\3\2\2\2\6O\3\2\2\2\bW\3\2\2\2\n^\3\2\2\2\fh")
+        buf.write("\3\2\2\2\16m\3\2\2\2\20y\3\2\2\2\22\u0081\3\2\2\2\24\25")
+        buf.write("\5\4\3\2\25\26\7\2\2\3\26\3\3\2\2\2\27\30\b\3\1\2\30\31")
+        buf.write("\t\2\2\2\31\"\5\4\3\20\32\33\7\27\2\2\33\34\5\4\3\2\34")
+        buf.write("\35\7\16\2\2\35\"\3\2\2\2\36\"\5\22\n\2\37\"\5\b\5\2 ")
+        buf.write("\"\5\16\b\2!\27\3\2\2\2!\32\3\2\2\2!\36\3\2\2\2!\37\3")
+        buf.write("\2\2\2! \3\2\2\2\"L\3\2\2\2#$\f\17\2\2$%\t\3\2\2%K\5\4")
+        buf.write("\3\20&\'\f\16\2\2\'(\t\4\2\2(K\5\4\3\17)*\f\r\2\2*+\t")
+        buf.write("\5\2\2+K\5\4\3\16,-\f\f\2\2-.\t\6\2\2.K\5\4\3\r/\61\f")
+        buf.write("\13\2\2\60\62\7\'\2\2\61\60\3\2\2\2\61\62\3\2\2\2\62\63")
+        buf.write("\3\2\2\2\63\64\t\7\2\2\64K\5\4\3\f\65\66\f\t\2\2\66\67")
+        buf.write("\t\b\2\2\67K\5\4\3\n89\f\b\2\29:\t\t\2\2:K\5\4\3\t;=\f")
+        buf.write("\7\2\2<>\7\'\2\2=<\3\2\2\2=>\3\2\2\2>?\3\2\2\2?@\7 \2")
+        buf.write("\2@K\5\4\3\bAC\f\n\2\2BD\7\'\2\2CB\3\2\2\2CD\3\2\2\2D")
+        buf.write("E\3\2\2\2EF\7#\2\2FG\7\27\2\2GH\5\6\4\2HI\7\16\2\2IK\3")
+        buf.write("\2\2\2J#\3\2\2\2J&\3\2\2\2J)\3\2\2\2J,\3\2\2\2J/\3\2\2")
+        buf.write("\2J\65\3\2\2\2J8\3\2\2\2J;\3\2\2\2JA\3\2\2\2KN\3\2\2\2")
+        buf.write("LJ\3\2\2\2LM\3\2\2\2M\5\3\2\2\2NL\3\2\2\2OT\5\4\3\2PQ")
+        buf.write("\7\20\2\2QS\5\4\3\2RP\3\2\2\2SV\3\2\2\2TR\3\2\2\2TU\3")
+        buf.write("\2\2\2U\7\3\2\2\2VT\3\2\2\2WX\5\20\t\2XZ\7\27\2\2Y[\5")
+        buf.write("\n\6\2ZY\3\2\2\2Z[\3\2\2\2[\\\3\2\2\2\\]\7\16\2\2]\t\3")
+        buf.write("\2\2\2^c\5\f\7\2_`\7\20\2\2`b\5\f\7\2a_\3\2\2\2be\3\2")
+        buf.write("\2\2ca\3\2\2\2cd\3\2\2\2d\13\3\2\2\2ec\3\2\2\2fg\7\66")
+        buf.write("\2\2gi\7\r\2\2hf\3\2\2\2hi\3\2\2\2ij\3\2\2\2jk\5\4\3\2")
+        buf.write("k\r\3\2\2\2ln\7\32\2\2ml\3\2\2\2mn\3\2\2\2nr\3\2\2\2o")
+        buf.write("p\5\20\t\2pq\7\30\2\2qs\3\2\2\2ro\3\2\2\2rs\3\2\2\2st")
+        buf.write("\3\2\2\2tw\5\20\t\2uv\7\17\2\2vx\5\20\t\2wu\3\2\2\2wx")
+        buf.write("\3\2\2\2x\17\3\2\2\2y~\7\66\2\2z{\7\21\2\2{}\7\66\2\2")
+        buf.write("|z\3\2\2\2}\u0080\3\2\2\2~|\3\2\2\2~\177\3\2\2\2\177\21")
+        buf.write("\3\2\2\2\u0080~\3\2\2\2\u0081\u0082\t\n\2\2\u0082\23\3")
+        buf.write("\2\2\2\20!\61=CJLTZchmrw~")
         return buf.getvalue()
 
 
@@ -80,8 +80,8 @@ class PqlParser ( Parser ):
                       "ASSIGN", "CLOSE_PAREN", "COLON", "COMMA", "DOT", 
                       "FORWARD_SLASH", "GT", "LT", "MINUS", "MOD", "OPEN_PAREN", 
                       "PIPE", "PLUS", "QUESTION_MARK", "SCOL", "STAR", "TILDE", 
-                      "UNDER", "K_AND", "K_BETWEEN", "K_FALSE", "K_IN", 
-                      "K_IS", "K_ISNULL", "K_LIKE", "K_NOT", "K_NOTNULL", 
+                      "UNDER", "K_AND", "K_BETWEEN", "K_FALSE", "K_ILIKE", 
+                      "K_IN", "K_IS", "K_ISNULL", "K_LIKE", "K_NOT", "K_NOTNULL", 
                       "K_NULL", "K_OR", "K_TRUE", "NUMERIC_LITERAL", "DOUBLE_QUOTED_STRING", 
                       "DOUBLE_QUOTED_STRING_TEL", "DOUBLE_QUOTED_STRING_SQL", 
                       "SINGLE_QUOTED_STRING", "SINGLE_QUOTED_STRING_TEL", 
@@ -133,26 +133,27 @@ class PqlParser ( Parser ):
     K_AND=29
     K_BETWEEN=30
     K_FALSE=31
-    K_IN=32
-    K_IS=33
-    K_ISNULL=34
-    K_LIKE=35
-    K_NOT=36
-    K_NOTNULL=37
-    K_NULL=38
-    K_OR=39
-    K_TRUE=40
-    NUMERIC_LITERAL=41
-    DOUBLE_QUOTED_STRING=42
-    DOUBLE_QUOTED_STRING_TEL=43
-    DOUBLE_QUOTED_STRING_SQL=44
-    SINGLE_QUOTED_STRING=45
-    SINGLE_QUOTED_STRING_TEL=46
-    SINGLE_QUOTED_STRING_SQL=47
-    SINGLE_LINE_COMMENT=48
-    MULTILINE_COMMENT=49
-    SPACES=50
-    WORD=51
+    K_ILIKE=32
+    K_IN=33
+    K_IS=34
+    K_ISNULL=35
+    K_LIKE=36
+    K_NOT=37
+    K_NOTNULL=38
+    K_NULL=39
+    K_OR=40
+    K_TRUE=41
+    NUMERIC_LITERAL=42
+    DOUBLE_QUOTED_STRING=43
+    DOUBLE_QUOTED_STRING_TEL=44
+    DOUBLE_QUOTED_STRING_SQL=45
+    SINGLE_QUOTED_STRING=46
+    SINGLE_QUOTED_STRING_TEL=47
+    SINGLE_QUOTED_STRING_SQL=48
+    SINGLE_LINE_COMMENT=49
+    MULTILINE_COMMENT=50
+    SPACES=51
+    WORD=52
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -300,6 +301,9 @@ class PqlParser ( Parser ):
 
         def K_LIKE(self):
             return self.getToken(PqlParser.K_LIKE, 0)
+
+        def K_ILIKE(self):
+            return self.getToken(PqlParser.K_ILIKE, 0)
 
         def K_AND(self):
             return self.getToken(PqlParser.K_AND, 0)
@@ -502,7 +506,13 @@ class PqlParser ( Parser ):
 
 
                         self.state = 49
-                        localctx.operator = self.match(PqlParser.K_LIKE)
+                        localctx.operator = self._input.LT(1)
+                        _la = self._input.LA(1)
+                        if not(_la==PqlParser.K_ILIKE or _la==PqlParser.K_LIKE):
+                            localctx.operator = self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
                         self.state = 50
                         localctx.right = self.expr(10)
                         pass

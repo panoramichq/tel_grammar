@@ -59,6 +59,8 @@ from pql_grammar.from_pql import from_tel, ParseError
         ('slug IS NOT NULL',),
         ('slug is         NULL',),
         ('slug is   NOT   NULL',),
+        ("a like 'asdf'",),
+        ("a ilike 'asdf'",),
     ],
 )
 def test_grammar(test_case):
@@ -77,7 +79,6 @@ def test_grammar(test_case):
         ('ds|sl|ug - sluging',),
         # Handle nested functions
         ('slug is',),
-        ('not',),
         ('',),
         ('a BETWEEN e',),
         ('a BETWEEN f OR x',),

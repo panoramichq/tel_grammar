@@ -8,7 +8,7 @@ var grammarFileName = "PqlParser.g4";
 
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u00035\u0084\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u00036\u0084\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
     "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004",
     "\b\t\b\u0004\t\t\t\u0004\n\t\n\u0003\u0002\u0003\u0002\u0003\u0002\u0003",
     "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
@@ -28,66 +28,66 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\b\u0005\bn\n\b\u0003\b\u0003\b\u0003\b\u0005\bs\n\b\u0003\b\u0003\b",
     "\u0003\b\u0005\bx\n\b\u0003\t\u0003\t\u0003\t\u0007\t}\n\t\f\t\u000e",
     "\t\u0080\u000b\t\u0003\n\u0003\n\u0003\n\u0002\u0003\u0004\u000b\u0002",
-    "\u0004\u0006\b\n\f\u000e\u0010\u0012\u0002\n\u0005\u0002\u0015\u0015",
-    "\u0019\u0019&&\u0005\u0002\u0012\u0012\u0016\u0016\u001c\u001c\u0004",
+    "\u0004\u0006\b\n\f\u000e\u0010\u0012\u0002\u000b\u0005\u0002\u0015\u0015",
+    "\u0019\u0019\'\'\u0005\u0002\u0012\u0012\u0016\u0016\u001c\u001c\u0004",
     "\u0002\u0015\u0015\u0019\u0019\u0004\u0002\u0005\u0006\u0013\u0014\u0006",
-    "\u0002\u0004\u0004\u0007\b\r\r##\u0004\u0002\u0003\u0003\u001f\u001f",
-    "\u0004\u0002\t\t))\u0006\u0002!!((*,//\u0002\u0092\u0002\u0014\u0003",
-    "\u0002\u0002\u0002\u0004!\u0003\u0002\u0002\u0002\u0006O\u0003\u0002",
-    "\u0002\u0002\bW\u0003\u0002\u0002\u0002\n^\u0003\u0002\u0002\u0002\f",
-    "h\u0003\u0002\u0002\u0002\u000em\u0003\u0002\u0002\u0002\u0010y\u0003",
-    "\u0002\u0002\u0002\u0012\u0081\u0003\u0002\u0002\u0002\u0014\u0015\u0005",
-    "\u0004\u0003\u0002\u0015\u0016\u0007\u0002\u0002\u0003\u0016\u0003\u0003",
-    "\u0002\u0002\u0002\u0017\u0018\b\u0003\u0001\u0002\u0018\u0019\t\u0002",
-    "\u0002\u0002\u0019\"\u0005\u0004\u0003\u0010\u001a\u001b\u0007\u0017",
-    "\u0002\u0002\u001b\u001c\u0005\u0004\u0003\u0002\u001c\u001d\u0007\u000e",
-    "\u0002\u0002\u001d\"\u0003\u0002\u0002\u0002\u001e\"\u0005\u0012\n\u0002",
-    "\u001f\"\u0005\b\u0005\u0002 \"\u0005\u000e\b\u0002!\u0017\u0003\u0002",
-    "\u0002\u0002!\u001a\u0003\u0002\u0002\u0002!\u001e\u0003\u0002\u0002",
-    "\u0002!\u001f\u0003\u0002\u0002\u0002! \u0003\u0002\u0002\u0002\"L\u0003",
-    "\u0002\u0002\u0002#$\f\u000f\u0002\u0002$%\t\u0003\u0002\u0002%K\u0005",
-    "\u0004\u0003\u0010&\'\f\u000e\u0002\u0002\'(\t\u0004\u0002\u0002(K\u0005",
-    "\u0004\u0003\u000f)*\f\r\u0002\u0002*+\t\u0005\u0002\u0002+K\u0005\u0004",
-    "\u0003\u000e,-\f\f\u0002\u0002-.\t\u0006\u0002\u0002.K\u0005\u0004\u0003",
-    "\r/1\f\u000b\u0002\u000202\u0007&\u0002\u000210\u0003\u0002\u0002\u0002",
-    "12\u0003\u0002\u0002\u000223\u0003\u0002\u0002\u000234\u0007%\u0002",
-    "\u00024K\u0005\u0004\u0003\f56\f\t\u0002\u000267\t\u0007\u0002\u0002",
-    "7K\u0005\u0004\u0003\n89\f\b\u0002\u00029:\t\b\u0002\u0002:K\u0005\u0004",
-    "\u0003\t;=\f\u0007\u0002\u0002<>\u0007&\u0002\u0002=<\u0003\u0002\u0002",
-    "\u0002=>\u0003\u0002\u0002\u0002>?\u0003\u0002\u0002\u0002?@\u0007 ",
-    "\u0002\u0002@K\u0005\u0004\u0003\bAC\f\n\u0002\u0002BD\u0007&\u0002",
-    "\u0002CB\u0003\u0002\u0002\u0002CD\u0003\u0002\u0002\u0002DE\u0003\u0002",
-    "\u0002\u0002EF\u0007\"\u0002\u0002FG\u0007\u0017\u0002\u0002GH\u0005",
-    "\u0006\u0004\u0002HI\u0007\u000e\u0002\u0002IK\u0003\u0002\u0002\u0002",
-    "J#\u0003\u0002\u0002\u0002J&\u0003\u0002\u0002\u0002J)\u0003\u0002\u0002",
-    "\u0002J,\u0003\u0002\u0002\u0002J/\u0003\u0002\u0002\u0002J5\u0003\u0002",
-    "\u0002\u0002J8\u0003\u0002\u0002\u0002J;\u0003\u0002\u0002\u0002JA\u0003",
-    "\u0002\u0002\u0002KN\u0003\u0002\u0002\u0002LJ\u0003\u0002\u0002\u0002",
-    "LM\u0003\u0002\u0002\u0002M\u0005\u0003\u0002\u0002\u0002NL\u0003\u0002",
-    "\u0002\u0002OT\u0005\u0004\u0003\u0002PQ\u0007\u0010\u0002\u0002QS\u0005",
-    "\u0004\u0003\u0002RP\u0003\u0002\u0002\u0002SV\u0003\u0002\u0002\u0002",
-    "TR\u0003\u0002\u0002\u0002TU\u0003\u0002\u0002\u0002U\u0007\u0003\u0002",
-    "\u0002\u0002VT\u0003\u0002\u0002\u0002WX\u0005\u0010\t\u0002XZ\u0007",
-    "\u0017\u0002\u0002Y[\u0005\n\u0006\u0002ZY\u0003\u0002\u0002\u0002Z",
-    "[\u0003\u0002\u0002\u0002[\\\u0003\u0002\u0002\u0002\\]\u0007\u000e",
-    "\u0002\u0002]\t\u0003\u0002\u0002\u0002^c\u0005\f\u0007\u0002_`\u0007",
-    "\u0010\u0002\u0002`b\u0005\f\u0007\u0002a_\u0003\u0002\u0002\u0002b",
-    "e\u0003\u0002\u0002\u0002ca\u0003\u0002\u0002\u0002cd\u0003\u0002\u0002",
-    "\u0002d\u000b\u0003\u0002\u0002\u0002ec\u0003\u0002\u0002\u0002fg\u0007",
-    "5\u0002\u0002gi\u0007\r\u0002\u0002hf\u0003\u0002\u0002\u0002hi\u0003",
-    "\u0002\u0002\u0002ij\u0003\u0002\u0002\u0002jk\u0005\u0004\u0003\u0002",
-    "k\r\u0003\u0002\u0002\u0002ln\u0007\u001a\u0002\u0002ml\u0003\u0002",
-    "\u0002\u0002mn\u0003\u0002\u0002\u0002nr\u0003\u0002\u0002\u0002op\u0005",
-    "\u0010\t\u0002pq\u0007\u0018\u0002\u0002qs\u0003\u0002\u0002\u0002r",
-    "o\u0003\u0002\u0002\u0002rs\u0003\u0002\u0002\u0002st\u0003\u0002\u0002",
-    "\u0002tw\u0005\u0010\t\u0002uv\u0007\u000f\u0002\u0002vx\u0005\u0010",
-    "\t\u0002wu\u0003\u0002\u0002\u0002wx\u0003\u0002\u0002\u0002x\u000f",
-    "\u0003\u0002\u0002\u0002y~\u00075\u0002\u0002z{\u0007\u0011\u0002\u0002",
-    "{}\u00075\u0002\u0002|z\u0003\u0002\u0002\u0002}\u0080\u0003\u0002\u0002",
-    "\u0002~|\u0003\u0002\u0002\u0002~\u007f\u0003\u0002\u0002\u0002\u007f",
-    "\u0011\u0003\u0002\u0002\u0002\u0080~\u0003\u0002\u0002\u0002\u0081",
-    "\u0082\t\t\u0002\u0002\u0082\u0013\u0003\u0002\u0002\u0002\u0010!1=",
-    "CJLTZchmrw~"].join("");
+    "\u0002\u0004\u0004\u0007\b\r\r$$\u0004\u0002\"\"&&\u0004\u0002\u0003",
+    "\u0003\u001f\u001f\u0004\u0002\t\t**\u0006\u0002!!))+-00\u0002\u0092",
+    "\u0002\u0014\u0003\u0002\u0002\u0002\u0004!\u0003\u0002\u0002\u0002",
+    "\u0006O\u0003\u0002\u0002\u0002\bW\u0003\u0002\u0002\u0002\n^\u0003",
+    "\u0002\u0002\u0002\fh\u0003\u0002\u0002\u0002\u000em\u0003\u0002\u0002",
+    "\u0002\u0010y\u0003\u0002\u0002\u0002\u0012\u0081\u0003\u0002\u0002",
+    "\u0002\u0014\u0015\u0005\u0004\u0003\u0002\u0015\u0016\u0007\u0002\u0002",
+    "\u0003\u0016\u0003\u0003\u0002\u0002\u0002\u0017\u0018\b\u0003\u0001",
+    "\u0002\u0018\u0019\t\u0002\u0002\u0002\u0019\"\u0005\u0004\u0003\u0010",
+    "\u001a\u001b\u0007\u0017\u0002\u0002\u001b\u001c\u0005\u0004\u0003\u0002",
+    "\u001c\u001d\u0007\u000e\u0002\u0002\u001d\"\u0003\u0002\u0002\u0002",
+    "\u001e\"\u0005\u0012\n\u0002\u001f\"\u0005\b\u0005\u0002 \"\u0005\u000e",
+    "\b\u0002!\u0017\u0003\u0002\u0002\u0002!\u001a\u0003\u0002\u0002\u0002",
+    "!\u001e\u0003\u0002\u0002\u0002!\u001f\u0003\u0002\u0002\u0002! \u0003",
+    "\u0002\u0002\u0002\"L\u0003\u0002\u0002\u0002#$\f\u000f\u0002\u0002",
+    "$%\t\u0003\u0002\u0002%K\u0005\u0004\u0003\u0010&\'\f\u000e\u0002\u0002",
+    "\'(\t\u0004\u0002\u0002(K\u0005\u0004\u0003\u000f)*\f\r\u0002\u0002",
+    "*+\t\u0005\u0002\u0002+K\u0005\u0004\u0003\u000e,-\f\f\u0002\u0002-",
+    ".\t\u0006\u0002\u0002.K\u0005\u0004\u0003\r/1\f\u000b\u0002\u000202",
+    "\u0007\'\u0002\u000210\u0003\u0002\u0002\u000212\u0003\u0002\u0002\u0002",
+    "23\u0003\u0002\u0002\u000234\t\u0007\u0002\u00024K\u0005\u0004\u0003",
+    "\f56\f\t\u0002\u000267\t\b\u0002\u00027K\u0005\u0004\u0003\n89\f\b\u0002",
+    "\u00029:\t\t\u0002\u0002:K\u0005\u0004\u0003\t;=\f\u0007\u0002\u0002",
+    "<>\u0007\'\u0002\u0002=<\u0003\u0002\u0002\u0002=>\u0003\u0002\u0002",
+    "\u0002>?\u0003\u0002\u0002\u0002?@\u0007 \u0002\u0002@K\u0005\u0004",
+    "\u0003\bAC\f\n\u0002\u0002BD\u0007\'\u0002\u0002CB\u0003\u0002\u0002",
+    "\u0002CD\u0003\u0002\u0002\u0002DE\u0003\u0002\u0002\u0002EF\u0007#",
+    "\u0002\u0002FG\u0007\u0017\u0002\u0002GH\u0005\u0006\u0004\u0002HI\u0007",
+    "\u000e\u0002\u0002IK\u0003\u0002\u0002\u0002J#\u0003\u0002\u0002\u0002",
+    "J&\u0003\u0002\u0002\u0002J)\u0003\u0002\u0002\u0002J,\u0003\u0002\u0002",
+    "\u0002J/\u0003\u0002\u0002\u0002J5\u0003\u0002\u0002\u0002J8\u0003\u0002",
+    "\u0002\u0002J;\u0003\u0002\u0002\u0002JA\u0003\u0002\u0002\u0002KN\u0003",
+    "\u0002\u0002\u0002LJ\u0003\u0002\u0002\u0002LM\u0003\u0002\u0002\u0002",
+    "M\u0005\u0003\u0002\u0002\u0002NL\u0003\u0002\u0002\u0002OT\u0005\u0004",
+    "\u0003\u0002PQ\u0007\u0010\u0002\u0002QS\u0005\u0004\u0003\u0002RP\u0003",
+    "\u0002\u0002\u0002SV\u0003\u0002\u0002\u0002TR\u0003\u0002\u0002\u0002",
+    "TU\u0003\u0002\u0002\u0002U\u0007\u0003\u0002\u0002\u0002VT\u0003\u0002",
+    "\u0002\u0002WX\u0005\u0010\t\u0002XZ\u0007\u0017\u0002\u0002Y[\u0005",
+    "\n\u0006\u0002ZY\u0003\u0002\u0002\u0002Z[\u0003\u0002\u0002\u0002[",
+    "\\\u0003\u0002\u0002\u0002\\]\u0007\u000e\u0002\u0002]\t\u0003\u0002",
+    "\u0002\u0002^c\u0005\f\u0007\u0002_`\u0007\u0010\u0002\u0002`b\u0005",
+    "\f\u0007\u0002a_\u0003\u0002\u0002\u0002be\u0003\u0002\u0002\u0002c",
+    "a\u0003\u0002\u0002\u0002cd\u0003\u0002\u0002\u0002d\u000b\u0003\u0002",
+    "\u0002\u0002ec\u0003\u0002\u0002\u0002fg\u00076\u0002\u0002gi\u0007",
+    "\r\u0002\u0002hf\u0003\u0002\u0002\u0002hi\u0003\u0002\u0002\u0002i",
+    "j\u0003\u0002\u0002\u0002jk\u0005\u0004\u0003\u0002k\r\u0003\u0002\u0002",
+    "\u0002ln\u0007\u001a\u0002\u0002ml\u0003\u0002\u0002\u0002mn\u0003\u0002",
+    "\u0002\u0002nr\u0003\u0002\u0002\u0002op\u0005\u0010\t\u0002pq\u0007",
+    "\u0018\u0002\u0002qs\u0003\u0002\u0002\u0002ro\u0003\u0002\u0002\u0002",
+    "rs\u0003\u0002\u0002\u0002st\u0003\u0002\u0002\u0002tw\u0005\u0010\t",
+    "\u0002uv\u0007\u000f\u0002\u0002vx\u0005\u0010\t\u0002wu\u0003\u0002",
+    "\u0002\u0002wx\u0003\u0002\u0002\u0002x\u000f\u0003\u0002\u0002\u0002",
+    "y~\u00076\u0002\u0002z{\u0007\u0011\u0002\u0002{}\u00076\u0002\u0002",
+    "|z\u0003\u0002\u0002\u0002}\u0080\u0003\u0002\u0002\u0002~|\u0003\u0002",
+    "\u0002\u0002~\u007f\u0003\u0002\u0002\u0002\u007f\u0011\u0003\u0002",
+    "\u0002\u0002\u0080~\u0003\u0002\u0002\u0002\u0081\u0082\t\n\u0002\u0002",
+    "\u0082\u0013\u0003\u0002\u0002\u0002\u0010!1=CJLTZchmrw~"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -106,8 +106,8 @@ var symbolicNames = [ null, "AND", "EQ", "GT_EQ", "LT_EQ", "NOT_EQ1", "NOT_EQ2",
                       "CLOSE_PAREN", "COLON", "COMMA", "DOT", "FORWARD_SLASH", 
                       "GT", "LT", "MINUS", "MOD", "OPEN_PAREN", "PIPE", 
                       "PLUS", "QUESTION_MARK", "SCOL", "STAR", "TILDE", 
-                      "UNDER", "K_AND", "K_BETWEEN", "K_FALSE", "K_IN", 
-                      "K_IS", "K_ISNULL", "K_LIKE", "K_NOT", "K_NOTNULL", 
+                      "UNDER", "K_AND", "K_BETWEEN", "K_FALSE", "K_ILIKE", 
+                      "K_IN", "K_IS", "K_ISNULL", "K_LIKE", "K_NOT", "K_NOTNULL", 
                       "K_NULL", "K_OR", "K_TRUE", "NUMERIC_LITERAL", "DOUBLE_QUOTED_STRING", 
                       "DOUBLE_QUOTED_STRING_TEL", "DOUBLE_QUOTED_STRING_SQL", 
                       "SINGLE_QUOTED_STRING", "SINGLE_QUOTED_STRING_TEL", 
@@ -167,26 +167,27 @@ PqlParser.UNDER = 28;
 PqlParser.K_AND = 29;
 PqlParser.K_BETWEEN = 30;
 PqlParser.K_FALSE = 31;
-PqlParser.K_IN = 32;
-PqlParser.K_IS = 33;
-PqlParser.K_ISNULL = 34;
-PqlParser.K_LIKE = 35;
-PqlParser.K_NOT = 36;
-PqlParser.K_NOTNULL = 37;
-PqlParser.K_NULL = 38;
-PqlParser.K_OR = 39;
-PqlParser.K_TRUE = 40;
-PqlParser.NUMERIC_LITERAL = 41;
-PqlParser.DOUBLE_QUOTED_STRING = 42;
-PqlParser.DOUBLE_QUOTED_STRING_TEL = 43;
-PqlParser.DOUBLE_QUOTED_STRING_SQL = 44;
-PqlParser.SINGLE_QUOTED_STRING = 45;
-PqlParser.SINGLE_QUOTED_STRING_TEL = 46;
-PqlParser.SINGLE_QUOTED_STRING_SQL = 47;
-PqlParser.SINGLE_LINE_COMMENT = 48;
-PqlParser.MULTILINE_COMMENT = 49;
-PqlParser.SPACES = 50;
-PqlParser.WORD = 51;
+PqlParser.K_ILIKE = 32;
+PqlParser.K_IN = 33;
+PqlParser.K_IS = 34;
+PqlParser.K_ISNULL = 35;
+PqlParser.K_LIKE = 36;
+PqlParser.K_NOT = 37;
+PqlParser.K_NOTNULL = 38;
+PqlParser.K_NULL = 39;
+PqlParser.K_OR = 40;
+PqlParser.K_TRUE = 41;
+PqlParser.NUMERIC_LITERAL = 42;
+PqlParser.DOUBLE_QUOTED_STRING = 43;
+PqlParser.DOUBLE_QUOTED_STRING_TEL = 44;
+PqlParser.DOUBLE_QUOTED_STRING_SQL = 45;
+PqlParser.SINGLE_QUOTED_STRING = 46;
+PqlParser.SINGLE_QUOTED_STRING_TEL = 47;
+PqlParser.SINGLE_QUOTED_STRING_SQL = 48;
+PqlParser.SINGLE_LINE_COMMENT = 49;
+PqlParser.MULTILINE_COMMENT = 50;
+PqlParser.SPACES = 51;
+PqlParser.WORD = 52;
 
 PqlParser.RULE_parseTel = 0;
 PqlParser.RULE_expr = 1;
@@ -391,6 +392,10 @@ ExprContext.prototype.K_LIKE = function() {
     return this.getToken(PqlParser.K_LIKE, 0);
 };
 
+ExprContext.prototype.K_ILIKE = function() {
+    return this.getToken(PqlParser.K_ILIKE, 0);
+};
+
 ExprContext.prototype.K_AND = function() {
     return this.getToken(PqlParser.K_AND, 0);
 };
@@ -589,7 +594,7 @@ PqlParser.prototype.expr = function(_p) {
                     this.state = 43;
                     localctx.operator = this._input.LT(1);
                     _la = this._input.LA(1);
-                    if(!(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (PqlParser.EQ - 2)) | (1 << (PqlParser.NOT_EQ1 - 2)) | (1 << (PqlParser.NOT_EQ2 - 2)) | (1 << (PqlParser.ASSIGN - 2)) | (1 << (PqlParser.K_IS - 2)))) !== 0))) {
+                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PqlParser.EQ) | (1 << PqlParser.NOT_EQ1) | (1 << PqlParser.NOT_EQ2) | (1 << PqlParser.ASSIGN))) !== 0) || _la===PqlParser.K_IS)) {
                         localctx.operator = this._errHandler.recoverInline(this);
                     }
                     else {
@@ -617,7 +622,15 @@ PqlParser.prototype.expr = function(_p) {
                     }
 
                     this.state = 49;
-                    localctx.operator = this.match(PqlParser.K_LIKE);
+                    localctx.operator = this._input.LT(1);
+                    _la = this._input.LA(1);
+                    if(!(_la===PqlParser.K_ILIKE || _la===PqlParser.K_LIKE)) {
+                        localctx.operator = this._errHandler.recoverInline(this);
+                    }
+                    else {
+                    	this._errHandler.reportMatch(this);
+                        this.consume();
+                    }
                     this.state = 50;
                     localctx.right = this.expr(10);
                     break;
@@ -909,7 +922,7 @@ PqlParser.prototype.fn = function() {
         this.state = 88;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
-        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PqlParser.MINUS) | (1 << PqlParser.OPEN_PAREN) | (1 << PqlParser.PLUS) | (1 << PqlParser.QUESTION_MARK) | (1 << PqlParser.K_FALSE))) !== 0) || ((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (PqlParser.K_NOT - 36)) | (1 << (PqlParser.K_NULL - 36)) | (1 << (PqlParser.K_TRUE - 36)) | (1 << (PqlParser.NUMERIC_LITERAL - 36)) | (1 << (PqlParser.DOUBLE_QUOTED_STRING - 36)) | (1 << (PqlParser.SINGLE_QUOTED_STRING - 36)) | (1 << (PqlParser.WORD - 36)))) !== 0)) {
+        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << PqlParser.MINUS) | (1 << PqlParser.OPEN_PAREN) | (1 << PqlParser.PLUS) | (1 << PqlParser.QUESTION_MARK) | (1 << PqlParser.K_FALSE))) !== 0) || ((((_la - 37)) & ~0x1f) == 0 && ((1 << (_la - 37)) & ((1 << (PqlParser.K_NOT - 37)) | (1 << (PqlParser.K_NULL - 37)) | (1 << (PqlParser.K_TRUE - 37)) | (1 << (PqlParser.NUMERIC_LITERAL - 37)) | (1 << (PqlParser.DOUBLE_QUOTED_STRING - 37)) | (1 << (PqlParser.SINGLE_QUOTED_STRING - 37)) | (1 << (PqlParser.WORD - 37)))) !== 0)) {
             this.state = 87;
             localctx.arguments = this.fnArgs();
         }
